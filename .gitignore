@@ -1,0 +1,5 @@
+node_modules/
+.astro/
+.vercel/
+.DS_Store
+.env

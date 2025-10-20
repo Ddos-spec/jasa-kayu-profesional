@@ -1,0 +1,110 @@
+---
+const services = [
+  {
+    title: 'Lantai Kayu Premium',
+    icon: '/icons/flooring.svg',
+    description:
+      'Mulai dari lantai kayu jati, merbau, bengkirai, hingga engineered flooring untuk area lembap seperti kamar mandi kering dan dapur, kami memastikan setiap papan mengalami proses kiln dry sempurna, kelembapan terkontrol, serta finishing UV tahan gores. Tim kami mengadopsi metode pemasangan tongue & groove, instalasi foam underlay anti lembap, hingga lapisan coating anti rayap dan waterproof. Kami juga menyediakan opsi parket motif klasik herringbone, chevron, maupun desain kontemporer yang disesuaikan dengan arsitektur rumah Anda sehingga lantai tampil elegan sekaligus tahan lama.',
+    highlights: [
+      'Solid wood flooring pilihan: Jati, Merbau, Bengkirai, Oak Eropa',
+      'Engineered flooring berteknologi HDF untuk area dengan kelembapan tinggi',
+      'Parket motif klasik dan modern dengan toleransi celah <0.5 mm',
+      'Finishing UV anti rayap, waterproof, dan mudah perawatan'
+    ]
+  },
+  {
+    title: 'Dinding Kayu & Wall Cladding',
+    icon: '/icons/wall.svg',
+    description:
+      'Panel dinding kayu kami menghadirkan kehangatan alami sekaligus meningkatkan nilai properti. Mulai dari interior living room, kamar utama, home theater, hingga cladding fasad luar yang tahan terhadap hujan dan sinar UV. Kami menggunakan sistem ventilasi tersembunyi, coating exterior grade, serta perhitungan expansion joint agar panel awet puluhan tahun. Untuk aksen interior, kami memadukan profil minimalis, list bevel, hingga panel 3D rustic yang mempertegas focal point ruang. Setiap panel diberi perlindungan anti jamur dan finishing matte atau satin sesuai preferensi desain Anda.',
+    highlights: [
+      'Panel kayu interior premium untuk ruang tamu dan kamar tidur',
+      'Exterior cladding dengan perlindungan UV dan anti cuaca',
+      'Accent wall kayu sebagai focal point ruang keluarga atau kantor',
+      'Wood paneling bergaya minimalis, klasik, hingga rustic kontemporer'
+    ]
+  },
+  {
+    title: 'Tangga Kayu Artistik',
+    icon: '/icons/stairs.svg',
+    description:
+      'Tangga kayu kami dirancang sebagai elemen sculptural yang menyatu dengan interior sekaligus aman digunakan seluruh keluarga. Struktur stringer terbuat dari kayu keras pilihan atau kombinasi besi yang dilapisi kayu. Setiap anak tangga dilengkapi sistem anti slip, radius tepi halus, dan finishing catalyzed lacquer agar tahan gores. Kami menyediakan opsi tangga lurus, L-shape, U-shape, hingga spiral staircase mewah dengan railing custom, balustrade carved, dan handrail ergonomis. Semua komponen diproduksi menggunakan CNC presisi lalu dirakit on-site untuk memastikan kesempurnaan detail.',
+    highlights: [
+      'Tangga kayu solid dengan railing custom sesuai desain arsitek',
+      'Spiral staircase kayu untuk foyer mewah dan penthouse',
+      'Anak tangga anti slip dengan lapisan karet atau groove safety',
+      'Handle dan balustrade ukir tangan dengan finishing premium'
+    ]
+  },
+  {
+    title: 'Plafon Kayu & Ceiling',
+    icon: '/icons/ceiling.svg',
+    description:
+      'Kami menghadirkan suasana hangat sekaligus akustik optimal melalui plafon kayu eksklusif. Mulai dari exposed beam natural untuk hunian bergaya resort, coffered ceiling mewah dengan list profil detail, hingga akustik panel kayu yang menyerap gema di home theater dan ruang meeting. Setiap struktur plafon diperkuat rangka baja ringan galvanis, disertai insulasi panas serta sistem downlight tersembunyi. Kami juga merancang frame skylight kayu custom yang tahan cuaca, menggunakan finishing marine grade untuk memastikan performa jangka panjang meskipun terpapar sinar matahari langsung.',
+    highlights: [
+      'Plafon exposed beam yang menonjolkan serat kayu natural',
+      'Desain coffered ceiling dengan kombinasi list dan panel dekoratif',
+      'Panel akustik kayu untuk home theater dan studio musik',
+      'Skylight frame kayu dengan perlindungan anti lembap dan UV'
+    ]
+  },
+  {
+    title: 'Furniture Kayu Built-in',
+    icon: '/icons/furniture.svg',
+    description:
+      'Layanan built-in kami mencakup kitchen set kayu solid, lemari lantai ke plafon, meja kerja terintegrasi, hingga platform bed minimalis. Kami memulai dari konsultasi desain ergonomis, pemilihan hardware soft-close premium, serta integrasi pencahayaan LED tersembunyi. Setiap modul diproduksi di workshop kami dengan mesin panel saw presisi, finishing melamine atau polyurethane, kemudian dirakit rapat tanpa celah. Kombinasi veneer natural dan solid wood memastikan tampilan mewah namun tetap stabil terhadap perubahan suhu, menjadikan furniture tahan lama dan mudah perawatan.',
+    highlights: [
+      'Kitchen set kayu solid custom dengan top table batu alam atau solid surface',
+      'Lemari built-in seamless hingga plafon dengan sistem ventilasi tersembunyi',
+      'Meja kerja, rak buku, dan credenza terintegrasi sesuai kebutuhan ruang',
+      'Platform bed kayu minimalis dengan storage dan finishing halus'
+    ]
+  },
+  {
+    title: 'Pergola & Decking Outdoor',
+    icon: '/icons/pergola.svg',
+    description:
+      'Kami merancang area luar rumah yang menawan dan tahan terhadap iklim tropis. Decking kayu untuk teras, balkon, hingga kolam renang menggunakan kayu ulin, bengkirai, atau composite premium dengan sistem ventilasi bawah yang mencegah lembap. Pergola taman dan carport dirancang dengan struktur kuat, dilengkapi atap polycarbonate UV protection atau kain kanopi motorized. Kami juga menghadirkan gazebo kayu untuk area BBQ dan fence dekoratif dengan perlindungan anti jamur. Setiap sambungan menggunakan stainless steel marine grade sehingga tahan karat meski terkena hujan terus-menerus.',
+    highlights: [
+      'Decking kayu outdoor dengan sistem ventilasi dan screw tersembunyi',
+      'Pergola kayu taman, teras, hingga carport dengan desain modern',
+      'Gazebo kayu untuk area santai dan BBQ keluarga',
+      'Pagar kayu dekoratif dan privacy screen tahan cuaca tropis'
+    ]
+  }
+];
+---
+<section id="layanan" class="section-anchor bg-[#FFF8DC] py-20 md:py-28">
+  <div class="mx-auto max-w-6xl px-4 md:px-8">
+    <div class="flex flex-col items-center text-center">
+      <span class="badge bg-wood-brown-100 text-wood-brown-800">Layanan Terintegrasi</span>
+      <h2 class="mt-5 font-serif text-4xl font-semibold text-wood-brown-800 md:text-5xl">Layanan Kayu Premium Paling Lengkap</h2>
+      <p class="mt-4 max-w-3xl text-lg leading-relaxed text-[#4A4A4A]">
+        Setiap proyek ditangani tim project manager, designer, dan craftsman bersertifikat sehingga Anda mendapat solusi end-to-end mulai dari survei lokasi, visualisasi 3D, produksi workshop, hingga instalasi dan maintenance berkala.
+      </p>
+    </div>
+    <div class="mt-16 grid gap-8 md:grid-cols-2">
+      {services.map((service) => (
+        <article class="card-hover flex h-full flex-col rounded-3xl border border-wood-brown-100 bg-[#FFFAF0] p-8 shadow-elegant">
+          <div class="flex items-center gap-4">
+            <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-wood-brown-100">
+              <img src={service.icon} alt={`Ikon ${service.title}`} class="h-8 w-8" loading="lazy" />
+            </div>
+            <h3 class="font-serif text-2xl font-semibold text-wood-brown-800">{service.title}</h3>
+          </div>
+          <p class="mt-6 flex-1 text-base leading-relaxed text-[#4A4A4A]">
+            {service.description}
+          </p>
+          <ul class="mt-6 space-y-3 text-sm text-[#4A4A4A]">
+            {service.highlights.map((item, index) => (
+              <li class="flex items-start gap-3" key={`${service.title}-${index}`}>
+                <span class="mt-1 inline-flex h-2.5 w-2.5 rounded-full bg-wood-brown-700"></span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,83 @@
+---
+const advantages = [
+  {
+    title: '30+ Tahun Pengalaman Terpercaya',
+    description:
+      'Sejak 1990, kami telah menangani ribuan proyek mulai dari rumah minimalis hingga villa mewah. Pengalaman puluhan tahun ini memastikan setiap detail pekerjaan dikerjakan dengan standar kualitas tinggi.',
+    detail:
+      'Tim internal kami terdiri dari project manager senior dan site supervisor berpengalaman yang mengawal proses produksi dari workshop hingga instalasi di lokasi. Kami memiliki SOP inspeksi harian, checklist finishing, dan dokumentasi foto untuk memastikan hasil akhir konsisten dan presisi.'
+  },
+  {
+    title: 'Jaringan Supplier Kayu Terluas',
+    description:
+      'Koneksi langsung dengan hutan produksi Kalimantan, Jawa, dan Sumatera memastikan kami mendapat kayu grade A dengan harga terbaik. Setiap kayu telah melalui proses kiln dry dan quality control ketat.',
+    detail:
+      'Kami bekerja sama dengan 35+ pemasok bersertifikat SVLK, menerapkan moisture meter pada setiap batch, dan menyimpan stok pada gudang ber-AC agar stabilitas kayu terjaga. Hal ini meminimalkan resiko melengkung dan retak setelah pemasangan.'
+  },
+  {
+    title: 'Garansi Kualitas & Purna Jual',
+    description:
+      'Setiap pekerjaan dilindungi garansi resmi 2-5 tahun. Tim after-sales siap melakukan maintenance berkala dan penanganan claim dengan responsif dan profesional.',
+    detail:
+      'Kami menyediakan jadwal maintenance terstruktur, layanan touch-up finishing, dan inspeksi struktural gratis selama masa garansi. Sistem tiket digital memastikan setiap permintaan pelanggan ditangani maksimal dalam 24 jam kerja.'
+  },
+  {
+    title: 'Tim Craftsman Bersertifikat',
+    description:
+      'Tukang kayu kami adalah craftsman pilihan dengan sertifikasi internasional. Dilengkapi tools modern dan mengikuti SOP keselamatan kerja, memastikan hasil kerja rapi dan tepat waktu.',
+    detail:
+      'Seluruh anggota tim mengikuti pelatihan tahunan mengenai teknik pemasangan terbaru, penggunaan alat CNC, hingga protokol K3. Kami menempatkan quality controller khusus yang memeriksa kualitas joinery, finishing, dan kebersihan area kerja.'
+  }
+];
+---
+<section id="mengapa" class="section-anchor bg-[#F5F5DC] py-20 md:py-28">
+  <div class="mx-auto max-w-6xl px-4 md:px-8">
+    <div class="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
+      <div>
+        <span class="badge bg-wood-brown-200 text-wood-brown-800">Mengapa Klien Memilih Kami</span>
+        <h2 class="mt-5 font-serif text-4xl font-semibold text-wood-brown-800 md:text-5xl">
+          Keunggulan yang Menjamin Investasi Kayu Anda Berumur Panjang
+        </h2>
+        <p class="mt-4 text-lg leading-relaxed text-[#4A4A4A]">
+          Kami memahami bahwa investasi kayu adalah komitmen jangka panjang. Karena itu, kami memadukan material terbaik, proses produksi presisi, serta layanan purna jual yang menjaga hasil tetap prima selama bertahun-tahun.
+        </p>
+        <div class="mt-10 grid gap-6 text-sm text-[#4A4A4A]">
+          <div class="flex items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-full bg-wood-brown-700 text-white">
+              <span class="font-semibold">ISO</span>
+            </div>
+            <p>Sertifikasi ISO 9001 untuk manajemen kualitas workshop dan proyek.</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-full bg-wood-brown-100 text-wood-brown-800">
+              <span class="font-semibold">SVLK</span>
+            </div>
+            <p>Penggunaan kayu legal bersertifikat SVLK dengan dokumentasi lengkap.</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-full bg-[#25D366] text-white">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5" aria-hidden="true">
+                <path fill="currentColor" d="M12 2a10 10 0 0 0-8.94 14.56L2 22l5.56-1.06A10 10 0 1 0 12 2Zm0 2a8 8 0 0 1 6.91 11.9l-.24.39.33 1.86-1.87-.32-.39.23A8 8 0 0 1 6.1 6.1 8 8 0 0 1 12 4Zm3.56 3.5a.75.75 0 0 0-.54.24l-1.32 1.4a.75.75 0 0 0-.07.93c.3.47.9 1.33 1.73 2.08.83.75 1.72 1.31 2.23 1.58a.75.75 0 0 0 .88-.12l1.12-1.12a.75.75 0 0 0-.11-1.16l-1.24-.82a.75.75 0 0 0-.9.04l-.45.4a5.1 5.1 0 0 1-1.74-1.49c-.36-.52-.58-1-.68-1.33l.47-.44a.75.75 0 0 0-.1-1.16l-1.31-.87a.75.75 0 0 0-.41-.12Z" />
+              </svg>
+            </div>
+            <p>Respons cepat 24/7 melalui WhatsApp dan dashboard client portal.</p>
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-6">
+        {advantages.map((item, index) => (
+          <article class="card-hover rounded-3xl border border-wood-brown-100 bg-[#FFFBF2] p-8 shadow-lg" key={item.title}>
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="font-serif text-2xl font-semibold text-wood-brown-800">{item.title}</h3>
+                <p class="mt-3 text-base text-[#4A4A4A]">{item.description}</p>
+              </div>
+              <span class="text-4xl font-semibold text-wood-brown-200">0{index + 1}</span>
+            </div>
+            <p class="mt-6 text-sm leading-relaxed text-[#4A4A4A]">{item.detail}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

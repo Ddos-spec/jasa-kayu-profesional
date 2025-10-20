@@ -1,0 +1,63 @@
+---
+const testimonials = [
+  {
+    name: 'Bpk. Ahmad Wijaya',
+    project: 'Renovasi Lantai & Tangga Villa Puncak',
+    review:
+      'Hasil kerja sangat memuaskan! Lantai kayu jati grade A yang dipasang 3 tahun lalu masih seperti baru. Tim kerja profesional, tepat waktu, dan sangat detail dalam finishing. Highly recommended!',
+    rating: 5,
+    location: 'Bogor'
+  },
+  {
+    name: 'Ibu Sari Indrawati',
+    project: 'Kitchen Set & Built-in Furniture',
+    review:
+      'Dari desain sampai eksekusi, semuanya perfect! Kitchen set kayu solid yang dibuat sangat kokoh dan fungsional. Pelayanan ramah dan harga sangat kompetitif dibanding competitor lain.',
+    rating: 5,
+    location: 'Jakarta Selatan'
+  },
+  {
+    name: 'Bpk. Robert Chen',
+    project: 'Wall Paneling & Plafon Kayu Office',
+    review:
+      'Office kami jadi terlihat premium dengan wall paneling kayu. Kualitas finishing rapi, tidak ada yang goyang atau retak setelah 2 tahun. Investment yang sangat worthit!',
+    rating: 5,
+    location: 'Tangerang'
+  }
+];
+---
+<section id="testimoni" class="section-anchor bg-[#F5F5DC] py-20 md:py-28">
+  <div class="mx-auto max-w-6xl px-4 md:px-8">
+    <div class="flex flex-col items-center text-center">
+      <span class="badge bg-wood-brown-100 text-wood-brown-800">Apa Kata Klien Kami</span>
+      <h2 class="mt-5 font-serif text-4xl font-semibold text-wood-brown-800 md:text-5xl">Cerita Kepercayaan dari Jabodetabek</h2>
+      <p class="mt-4 max-w-3xl text-lg leading-relaxed text-[#4A4A4A]">
+        Kepercayaan klien adalah aset terbesar kami. Testimoni berikut menggambarkan bagaimana tim kami membantu mewujudkan ruang impian dengan kualitas dan ketepatan waktu yang dapat diandalkan.
+      </p>
+    </div>
+    <div class="mt-14 grid gap-8 md:grid-cols-3">
+      {testimonials.map((item) => (
+        <article class="card-hover flex h-full flex-col rounded-3xl border border-wood-brown-100 bg-[#FFFAF0] p-8 shadow-elegant" key={item.name}>
+          <div class="flex items-center gap-3">
+            <div class="flex h-12 w-12 items-center justify-center rounded-full bg-wood-brown-700 text-lg font-semibold text-white">
+              {item.name.split(' ')[0][0]}
+            </div>
+            <div class="text-left">
+              <p class="font-serif text-xl font-semibold text-wood-brown-800">{item.name}</p>
+              <p class="text-sm text-[#666666]">{item.location}</p>
+            </div>
+          </div>
+          <p class="mt-5 text-sm font-semibold uppercase tracking-wide text-wood-brown-500">{item.project}</p>
+          <p class="mt-4 flex-1 text-base leading-relaxed text-[#4A4A4A]">“{item.review}”</p>
+          <div class="mt-6 flex items-center gap-1 text-wood-brown-600">
+            {Array.from({ length: item.rating }).map((_, index) => (
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5" aria-hidden="true" key={index}>
+                <path fill="currentColor" d="m12 2.5 2.472 5.186 5.72.437-4.328 3.778 1.296 5.612L12 14.87l-5.16 2.643 1.296-5.612-4.328-3.778 5.72-.437z" />
+              </svg>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
