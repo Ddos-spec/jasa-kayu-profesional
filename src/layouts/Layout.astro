@@ -1,0 +1,140 @@
+---
+import '../styles/global.css';
+
+const { title = 'Jasa Kayu Profesional Premium', description = 'Lebih dari 30 tahun pengalaman jasa kayu premium untuk lantai kayu, dinding, tangga, plafon, furniture built-in, hingga pergola outdoor di Jabodetabek.', canonical } = Astro.props;
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'Jasa Kayu Profesional',
+  description:
+    'Jasa pengerjaan kayu premium untuk lantai, dinding, tangga, plafon, furniture built-in, serta pergola outdoor di Jabodetabek.',
+  image: 'https://jasa-kayu-profesional.vercel.app/images/portfolio/hero-placeholder.svg',
+  telephone: '+62211234567',
+  areaServed: 'Jakarta, Bogor, Depok, Tangerang, Bekasi, Karawang, Sukabumi',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Jakarta',
+    addressRegion: 'DKI Jakarta',
+    addressCountry: 'ID'
+  },
+  openingHours: 'Mo-Su 00:00-23:59',
+  url: 'https://jasa-kayu-profesional.vercel.app',
+  sameAs: [
+    'https://www.instagram.com/jasakayuprofesional',
+    'https://www.facebook.com/jasakayuprofesional'
+  ]
+};
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Jasa Kayu Premium',
+  provider: {
+    '@type': 'LocalBusiness',
+    name: 'Jasa Kayu Profesional'
+  },
+  areaServed: {
+    '@type': 'AdministrativeArea',
+    name: 'Jabodetabek'
+  },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Layanan Jasa Kayu Premium',
+    itemListElement: [
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Lantai Kayu Premium' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Dinding Kayu & Wall Cladding' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Tangga Kayu Artistik' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Plafon Kayu & Ceiling' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Furniture Kayu Built-in' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Pergola & Decking Outdoor' } }
+    ]
+  }
+};
+---
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content="jasa kayu jakarta, lantai kayu, tukang kayu profesional, jasa kayu premium, jasa plafon kayu, jasa pergola kayu" />
+    <meta name="author" content="Jasa Kayu Profesional" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical ?? 'https://jasa-kayu-profesional.vercel.app'} />
+    <meta property="og:image" content="/images/portfolio/hero-placeholder.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <link rel="canonical" href={canonical ?? 'https://jasa-kayu-profesional.vercel.app'} />
+    <link rel="icon" type="image/svg+xml" href="/icons/logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(localBusinessSchema)}></script>
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(serviceSchema)}></script>
+  </head>
+  <body class="min-h-screen bg-[#FFF8DC] text-[#2F2F2F]">
+    <header class="sticky top-0 z-40 bg-[#FFF8DC]/90 backdrop-blur-lg shadow-sm">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 md:px-8">
+        <a href="#hero" class="flex items-center gap-3" aria-label="Jasa Kayu Profesional Beranda">
+          <img src="/icons/logo.svg" alt="Logo Jasa Kayu Profesional" class="h-10 w-10" />
+          <div class="flex flex-col">
+            <span class="font-serif text-xl font-semibold text-wood-brown-800">Jasa Kayu Profesional</span>
+            <span class="text-sm text-[#666666]">Premium Wood Crafting</span>
+          </div>
+        </a>
+        <nav class="hidden items-center gap-8 text-sm font-medium text-[#2F2F2F] lg:flex">
+          <a href="#layanan" class="transition hover:text-wood-brown-700">Layanan</a>
+          <a href="#mengapa" class="transition hover:text-wood-brown-700">Keunggulan</a>
+          <a href="#portofolio" class="transition hover:text-wood-brown-700">Portofolio</a>
+          <a href="#testimoni" class="transition hover:text-wood-brown-700">Testimoni</a>
+          <a href="#kontak" class="transition hover:text-wood-brown-700">Kontak</a>
+        </nav>
+        <a href="https://wa.me/6281234567890?text=Halo%20Jasa%20Kayu%20Profesional%2C%20saya%20ingin%20konsultasi%20proyek%20kayu." class="hidden rounded-full bg-wood-brown-700 px-5 py-2 text-sm font-semibold text-white shadow-lg transition hover:bg-wood-brown-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wood-brown-500 lg:inline-flex" target="_blank" rel="noopener noreferrer">
+          Konsultasi Gratis
+        </a>
+        <button class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-wood-brown-700 text-wood-brown-700 transition hover:bg-wood-brown-700 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wood-brown-500 lg:hidden" aria-label="Menu" id="mobile-menu-toggle">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="h-6 w-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+      <div id="mobile-menu" class="hidden border-t border-wood-brown-100 bg-[#FFF8DC] px-4 py-4 shadow-inner lg:hidden">
+        <div class="flex flex-col gap-3 text-base font-medium text-[#2F2F2F]">
+          <a href="#layanan" class="rounded-lg px-3 py-2 hover:bg-wood-brown-100">Layanan</a>
+          <a href="#mengapa" class="rounded-lg px-3 py-2 hover:bg-wood-brown-100">Keunggulan</a>
+          <a href="#portofolio" class="rounded-lg px-3 py-2 hover:bg-wood-brown-100">Portofolio</a>
+          <a href="#testimoni" class="rounded-lg px-3 py-2 hover:bg-wood-brown-100">Testimoni</a>
+          <a href="#kontak" class="rounded-lg px-3 py-2 hover:bg-wood-brown-100">Kontak</a>
+          <a href="https://wa.me/6281234567890?text=Halo%20Jasa%20Kayu%20Profesional%2C%20saya%20ingin%20konsultasi%20proyek%20kayu." target="_blank" rel="noopener noreferrer" class="btn-primary justify-center">Konsultasi Gratis</a>
+        </div>
+      </div>
+    </header>
+    <main class="isolate bg-[#FFF8DC]">
+      <slot />
+    </main>
+    <slot name="footer" />
+
+    <a href="https://wa.me/6281234567890?text=Halo%20Jasa%20Kayu%20Profesional%2C%20saya%20ingin%20konsultasi%20proyek%20kayu." class="fixed bottom-6 right-6 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-[#25D366]/40 transition hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#128C7E]" target="_blank" rel="noopener noreferrer" aria-label="Konsultasi WhatsApp 24/7">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="h-7 w-7" aria-hidden="true">
+        <path fill="currentColor" d="M16 3C9.4 3 4 8.4 4 15c0 2.4.7 4.7 2 6.7L4 29l7.5-1.9c1.9 1 4 1.6 6.5 1.6 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.9c-2.1 0-4-.6-5.7-1.7l-.4-.3-4.5 1.2 1.2-4.4-.3-.5C5.2 18.1 4.6 16.6 4.6 15c0-6.2 5.1-11.3 11.4-11.3S27.4 8.8 27.4 15 22.2 24.9 16 24.9zm6.2-7.8c-.3-.1-1.8-.9-2.1-1s-.5-.1-.7.1-.8 1-.9 1.1-.3.2-.6.1-1.1-.4-2-1.3c-.7-.7-1.3-1.5-1.4-1.8-.1-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2.1-.4 0-.5s-.7-1.7-.9-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.7.3-.2.2-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.7.1.5-.1 1.8-.7 2.1-1.4.3-.7.3-1.3.2-1.4-.1 0-.3-.1-.6-.2z" />
+      </svg>
+    </a>
+
+    <script is:inline>
+      const toggle = document.getElementById('mobile-menu-toggle');
+      const menu = document.getElementById('mobile-menu');
+      if (toggle && menu) {
+        toggle.addEventListener('click', () => {
+          menu.classList.toggle('hidden');
+        });
+        menu.querySelectorAll('a').forEach((link) => {
+          link.addEventListener('click', () => menu.classList.add('hidden'));
+        });
+      }
+    </script>
+  </body>
+</html>
