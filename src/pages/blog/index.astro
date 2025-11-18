@@ -1,0 +1,50 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import BlogPost from '../../layouts/BlogPost.astro';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<Layout title="Blog | Serasi Parket" description="Tips, trik, dan inspirasi seputar dunia perkayuan dari Serasi Parket.">
+  <main class="mx-auto max-w-4xl px-4 py-16 md:px-8">
+    <h1 class="font-serif text-5xl font-semibold text-wood-brown-800">Blog Serasi Parket</h1>
+    <p class="mt-4 text-lg text-gray-600">
+      Temukan wawasan terbaru seputar perawatan kayu, tren desain interior, dan panduan memilih material terbaik untuk proyek Anda.
+    </p>
+    <ul class="mt-12 space-y-10">
+      {posts.map((post) => (
+        <li class="group">
+          <a href={`/blog/${post.slug}/`}>
+            <div class="flex flex-col gap-4 sm:flex-row sm:items-center">
+              <img
+                src={`https://picsum.photos/seed/${post.slug}/300/200`}
+                alt={post.data.title}
+                class="h-48 w-full rounded-lg object-cover sm:h-32 sm:w-48"
+                width={300}
+                height={200}
+              />
+              <div>
+                <p class="text-sm text-gray-500">
+                  <time datetime={post.data.pubDate.toISOString()}>
+                    {new Date(post.data.pubDate).toLocaleDateString('id-ID', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                    })}
+                  </time>
+                </p>
+                <h2 class="mt-2 font-serif text-2xl font-semibold text-wood-brown-800 transition group-hover:text-wood-brown-600">
+                  {post.data.title}
+                </h2>
+                <p class="mt-2 text-gray-600">{post.data.description}</p>
+              </div>
+            </div>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </main>
+</Layout>

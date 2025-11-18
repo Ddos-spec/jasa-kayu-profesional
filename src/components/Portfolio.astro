@@ -1,4 +1,6 @@
 ---
+import Picture from './common/Picture.astro';
+
 const categories = [
   { id: 'all', label: 'Semua Proyek' },
   { id: 'residential', label: 'Residential' },
@@ -11,42 +13,42 @@ const projects = [
     title: 'Villa Puncak - Lantai Jati Solid',
     category: 'residential',
     displayCategory: 'Residential',
-    image: '/images/portfolio/portfolio-1.svg',
+    seed: 'villa-wood-floor',
     description: 'Instalasi lantai kayu jati solid premium dengan finishing UV matte dan tangga floating merbau.'
   },
   {
     title: 'Townhouse Jakarta - Wall Panel Walnut',
     category: 'residential',
     displayCategory: 'Residential',
-    image: '/images/portfolio/portfolio-2.svg',
+    seed: 'townhouse-walnut-panel',
     description: 'Panel dinding walnut minimalis dengan pencahayaan indirect LED untuk ruang keluarga modern.'
   },
   {
     title: 'Hotel Boutique Bandung - Lobby Ceiling',
     category: 'commercial',
     displayCategory: 'Commercial',
-    image: '/images/portfolio/portfolio-3.svg',
+    seed: 'hotel-lobby-ceiling',
     description: 'Coffered ceiling kayu dengan list emas dan panel akustik untuk lobby hotel bintang empat.'
   },
   {
     title: 'Cafe Artisan Jakarta - Decking Outdoor',
     category: 'commercial',
     displayCategory: 'Commercial',
-    image: '/images/portfolio/portfolio-4.svg',
+    seed: 'cafe-outdoor-decking',
     description: 'Decking kayu bengkirai tahan cuaca dengan pergola semi-outdoor dan furniture built-in.'
   },
   {
     title: 'Penthouse SCBD - Spiral Staircase',
     category: 'custom',
     displayCategory: 'Custom Projects',
-    image: '/images/portfolio/portfolio-5.svg',
+    seed: 'penthouse-spiral-staircase',
     description: 'Tangga spiral kayu oak dengan railing kaca tempered dan handrail ukir tangan.'
   },
   {
     title: 'Art Installation - Parametric Wall',
     category: 'custom',
     displayCategory: 'Custom Projects',
-    image: '/images/portfolio/portfolio-6.svg',
+    seed: 'art-parametric-wall',
     description: 'Wall cladding parametric berbahan kayu ash dengan finishing natural oil dan pencahayaan dinamis.'
   }
 ];
@@ -74,7 +76,13 @@ const projects = [
     <div class="mt-14 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
       {projects.map((project) => (
         <figure class="portfolio-card card-hover group relative overflow-hidden rounded-3xl bg-white shadow-elegant" data-category={project.category} key={project.title}>
-          <img src={project.image} alt={project.title} class="h-64 w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
+          <Picture
+            src={`https://picsum.photos/seed/${project.seed}/800/600`}
+            alt={project.title}
+            class="h-64 w-full object-cover transition duration-500 group-hover:scale-105"
+            width={800}
+            height={600}
+          />
           <figcaption class="flex flex-col gap-3 p-6">
             <span class="text-xs font-semibold uppercase tracking-wide text-wood-brown-500">{project.displayCategory}</span>
             <h3 class="font-serif text-2xl font-semibold text-wood-brown-800">{project.title}</h3>
@@ -82,7 +90,7 @@ const projects = [
             <button
               class="mt-2 inline-flex items-center gap-2 self-start text-sm font-semibold text-wood-brown-700 hover:text-wood-brown-900"
               data-open-modal
-              data-image={project.image}
+              data-image={`https://picsum.photos/seed/${project.seed}/800/600`}
               data-title={project.title}
               data-description={project.description}
               data-category={project.displayCategory}
