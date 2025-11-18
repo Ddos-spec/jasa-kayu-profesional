@@ -1,12 +1,12 @@
 ---
 import '../styles/global.css';
 
-const { title = 'Jasa Kayu Profesional Premium', description = 'Lebih dari 30 tahun pengalaman jasa kayu premium untuk lantai kayu, dinding, tangga, plafon, furniture built-in, hingga pergola outdoor di Jabodetabek.', canonical } = Astro.props;
+const { title = 'Serasi Parket Premium', description = 'Lebih dari 30 tahun pengalaman jasa kayu premium untuk lantai kayu, dinding, tangga, plafon, furniture built-in, hingga pergola outdoor di Jabodetabek.', canonical } = Astro.props;
 
 const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
-  name: 'Jasa Kayu Profesional',
+  name: 'Serasi Parket',
   description:
     'Jasa pengerjaan kayu premium untuk lantai, dinding, tangga, plafon, furniture built-in, serta pergola outdoor di Jabodetabek.',
   image: 'https://jasa-kayu-profesional.vercel.app/images/portfolio/hero-placeholder.svg',
@@ -32,7 +32,7 @@ const serviceSchema = {
   serviceType: 'Jasa Kayu Premium',
   provider: {
     '@type': 'LocalBusiness',
-    name: 'Jasa Kayu Profesional'
+    name: 'Serasi Parket'
   },
   areaServed: {
     '@type': 'AdministrativeArea',
@@ -60,7 +60,7 @@ const serviceSchema = {
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="keywords" content="jasa kayu jakarta, lantai kayu, tukang kayu profesional, jasa kayu premium, jasa plafon kayu, jasa pergola kayu" />
-    <meta name="author" content="Jasa Kayu Profesional" />
+    <meta name="author" content="Serasi Parket" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -79,19 +79,20 @@ const serviceSchema = {
   <body class="min-h-screen bg-[#FFF8DC] text-[#2F2F2F]">
     <header class="sticky top-0 z-40 bg-[#FFF8DC]/90 backdrop-blur-lg shadow-sm">
       <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 md:px-8">
-        <a href="#hero" class="flex items-center gap-3" aria-label="Jasa Kayu Profesional Beranda">
-          <img src="/icons/logo.svg" alt="Logo Jasa Kayu Profesional" class="h-10 w-10" />
+        <a href="#hero" class="flex items-center gap-3" aria-label="Serasi Parket Beranda">
+          <img src="/icons/logo.svg" alt="Logo Serasi Parket" class="h-10 w-10" />
           <div class="flex flex-col">
-            <span class="font-serif text-xl font-semibold text-wood-brown-800">Jasa Kayu Profesional</span>
+            <span class="font-serif text-xl font-semibold text-wood-brown-800">Serasi Parket</span>
             <span class="text-sm text-[#666666]">Premium Wood Crafting</span>
           </div>
         </a>
         <nav class="hidden items-center gap-8 text-sm font-medium text-[#2F2F2F] lg:flex">
-          <a href="#layanan" class="transition hover:text-wood-brown-700">Layanan</a>
-          <a href="#mengapa" class="transition hover:text-wood-brown-700">Keunggulan</a>
-          <a href="#portofolio" class="transition hover:text-wood-brown-700">Portofolio</a>
-          <a href="#testimoni" class="transition hover:text-wood-brown-700">Testimoni</a>
-          <a href="#kontak" class="transition hover:text-wood-brown-700">Kontak</a>
+          <a href="/#layanan" class="transition hover:text-wood-brown-700">Layanan</a>
+          <a href="/#mengapa" class="transition hover:text-wood-brown-700">Keunggulan</a>
+          <a href="/#portofolio" class="transition hover:text-wood-brown-700">Portofolio</a>
+          <a href="/#testimoni" class="transition hover:text-wood-brown-700">Testimoni</a>
+          <a href="/blog" class="transition hover:text-wood-brown-700">Blog</a>
+          <a href="/#kontak" class="transition hover:text-wood-brown-700">Kontak</a>
         </nav>
         <a href="https://wa.me/6281234567890?text=Halo%20Jasa%20Kayu%20Profesional%2C%20saya%20ingin%20konsultasi%20proyek%20kayu." class="hidden rounded-full bg-wood-brown-700 px-5 py-2 text-sm font-semibold text-white shadow-lg transition hover:bg-wood-brown-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wood-brown-500 lg:inline-flex" target="_blank" rel="noopener noreferrer">
           Konsultasi Gratis
@@ -104,11 +105,12 @@ const serviceSchema = {
       </div>
       <div id="mobile-menu" class="hidden border-t border-wood-brown-100 bg-[#FFF8DC] px-4 py-4 shadow-inner lg:hidden">
         <div class="flex flex-col gap-3 text-base font-medium text-[#2F2F2F]">
-          <a href="#layanan" class="rounded-lg px-3 py-2 hover:bg-wood-brown-100">Layanan</a>
-          <a href="#mengapa" class="rounded-lg px-3 py-2 hover:bg-wood-brown-100">Keunggulan</a>
-          <a href="#portofolio" class="rounded-lg px-3 py-2 hover:bg-wood-brown-100">Portofolio</a>
-          <a href="#testimoni" class="rounded-lg px-3 py-2 hover:bg-wood-brown-100">Testimoni</a>
-          <a href="#kontak" class="rounded-lg px-3 py-2 hover:bg-wood-brown-100">Kontak</a>
+          <a href="/#layanan" class="rounded-lg px-3 py-2 hover:bg-wood-brown-100">Layanan</a>
+          <a href="/#mengapa" class="rounded-lg px-3 py-2 hover:bg-wood-brown-100">Keunggulan</a>
+          <a href="/#portofolio" class="rounded-lg px-3 py-2 hover:bg-wood-brown-100">Portofolio</a>
+          <a href="/#testimoni" class="rounded-lg px-3 py-2 hover:bg-wood-brown-100">Testimoni</a>
+          <a href="/blog" class="rounded-lg px-3 py-2 hover:bg-wood-brown-100">Blog</a>
+          <a href="/#kontak" class="rounded-lg px-3 py-2 hover:bg-wood-brown-100">Kontak</a>
           <a href="https://wa.me/6281234567890?text=Halo%20Jasa%20Kayu%20Profesional%2C%20saya%20ingin%20konsultasi%20proyek%20kayu." target="_blank" rel="noopener noreferrer" class="btn-primary justify-center">Konsultasi Gratis</a>
         </div>
       </div>

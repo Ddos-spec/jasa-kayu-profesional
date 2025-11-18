@@ -1,4 +1,6 @@
 ---
+import { Picture } from 'astro:assets';
+
 const stats = [
   {
     label: 'Proyek Selesai',
@@ -19,7 +21,14 @@ const stats = [
 ---
 <section id="hero" class="relative overflow-hidden bg-[#F5F5DC]">
   <div class="absolute inset-0">
-    <img src="/images/portfolio/hero-placeholder.svg" alt="Pengerjaan lantai kayu premium di ruang keluarga mewah" class="h-full w-full object-cover opacity-40" loading="lazy" />
+    <Picture
+      src="https://picsum.photos/seed/woodworking-hero/1920/1080"
+      alt="Pengerjaan lantai kayu premium di ruang keluarga mewah"
+      loading="eager"
+      class="h-full w-full object-cover opacity-40"
+      width={1920}
+      height={1080}
+    />
     <div class="gradient-overlay absolute inset-0"></div>
   </div>
   <div class="relative mx-auto max-w-6xl px-4 py-24 md:px-8 lg:py-32">
@@ -27,7 +36,7 @@ const stats = [
       <div class="text-white">
         <span class="badge border border-white/40 bg-white/10 text-white">Wood Master Since 1990</span>
         <h1 class="mt-6 font-serif text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
-          Jasa Kayu Profesional di Jabodetabek
+          Serasi Parket di Jabodetabek
         </h1>
         <p class="mt-6 text-lg text-white/90 md:text-xl">
           Pengalaman 30+ tahun mewujudkan karya kayu premium untuk rumah impian Anda di Jakarta, Bogor, Depok, Tangerang, & Bekasi.
