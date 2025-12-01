@@ -75,6 +75,15 @@ const serviceSchema = {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <script type="application/ld+json" is:inline set:html={JSON.stringify(localBusinessSchema)}></script>
     <script type="application/ld+json" is:inline set:html={JSON.stringify(serviceSchema)}></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DEHKJSEDYC"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-DEHKJSEDYC');
+    </script>
   </head>
   <body class="min-h-screen bg-[#FFF8DC] text-[#2F2F2F]">
     <header class="sticky top-0 z-40 bg-[#FFF8DC]/90 backdrop-blur-lg shadow-sm">
