@@ -1,15 +1,8 @@
 {
   "buildCommand": "npm run build",
-  "outputDirectory": "dist",
   "devCommand": "npm run dev",
   "installCommand": "npm install",
   "framework": "astro",
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ],
   "headers": [
     {
       "source": "/(.*\\.(?:js|css|png|jpg|jpeg|webp|svg|ico))",
@@ -25,7 +18,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self';"
+          "value": "default-src 'self' https://www.googletagmanager.com https://www.google-analytics.com;"
         },
         {
           "key": "X-Content-Type-Options",
