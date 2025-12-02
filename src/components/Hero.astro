@@ -1,6 +1,4 @@
 ---
-import { Picture } from 'astro:assets';
-
 const stats = [
   {
     label: 'Proyek Selesai',
@@ -21,13 +19,11 @@ const stats = [
 ---
 <section id="hero" class="relative overflow-hidden bg-[#F5F5DC]">
   <div class="absolute inset-0">
-    <Picture
-      src="https://picsum.photos/seed/woodworking-hero/1920/1080"
+    <img
+      src="/images/portfolio/hero-placeholder.svg"
       alt="Pengerjaan lantai kayu premium di ruang keluarga mewah"
       loading="eager"
       class="h-full w-full object-cover opacity-40"
-      width={1920}
-      height={1080}
     />
     <div class="gradient-overlay absolute inset-0"></div>
   </div>
