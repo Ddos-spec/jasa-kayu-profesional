@@ -1,83 +1,24 @@
 ---
 import '../styles/global.css';
+import SEO from '../components/SEO.astro';
 
 const { title = 'Serasi Parket Premium', description = 'Lebih dari 30 tahun pengalaman jasa kayu premium untuk lantai kayu, dinding, tangga, plafon, furniture built-in, hingga pergola outdoor di Jabodetabek.', canonical } = Astro.props;
-
-const localBusinessSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  name: 'Serasi Parket',
-  description:
-    'Jasa pengerjaan kayu premium untuk lantai, dinding, tangga, plafon, furniture built-in, serta pergola outdoor di Jabodetabek.',
-  image: 'https://jasa-kayu-profesional.vercel.app/images/portfolio/hero-placeholder.svg',
-  telephone: '+62211234567',
-  areaServed: 'Jakarta, Bogor, Depok, Tangerang, Bekasi, Karawang, Sukabumi',
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Jakarta',
-    addressRegion: 'DKI Jakarta',
-    addressCountry: 'ID'
-  },
-  openingHours: 'Mo-Su 00:00-23:59',
-  url: 'https://jasa-kayu-profesional.vercel.app',
-  sameAs: [
-    'https://www.instagram.com/jasakayuprofesional',
-    'https://www.facebook.com/jasakayuprofesional'
-  ]
-};
-
-const serviceSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Service',
-  serviceType: 'Jasa Kayu Premium',
-  provider: {
-    '@type': 'LocalBusiness',
-    name: 'Serasi Parket'
-  },
-  areaServed: {
-    '@type': 'AdministrativeArea',
-    name: 'Jabodetabek'
-  },
-  hasOfferCatalog: {
-    '@type': 'OfferCatalog',
-    name: 'Layanan Jasa Kayu Premium',
-    itemListElement: [
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Lantai Kayu Premium' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Dinding Kayu & Wall Cladding' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Tangga Kayu Artistik' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Plafon Kayu & Ceiling' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Furniture Kayu Built-in' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Pergola & Decking Outdoor' } }
-    ]
-  }
-};
 ---
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    <meta name="keywords" content="jasa kayu jakarta, lantai kayu, tukang kayu profesional, jasa kayu premium, jasa plafon kayu, jasa pergola kayu" />
-    <meta name="author" content="Serasi Parket" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonical ?? 'https://jasa-kayu-profesional.vercel.app'} />
-    <meta property="og:image" content="/images/portfolio/hero-placeholder.svg" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-    <link rel="canonical" href={canonical ?? 'https://jasa-kayu-profesional.vercel.app'} />
+    
+    <SEO title={title} description={description} canonical={canonical} />
+
     <link rel="icon" type="image/svg+xml" href="/icons/logo.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <script type="application/ld+json" is:inline set:html={JSON.stringify(localBusinessSchema)}></script>
-    <script type="application/ld+json" is:inline set:html={JSON.stringify(serviceSchema)}></script>
+    
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DEHKJSEDYC"></script>
-    <script>
+    <script type="text/partytown" async src="https://www.googletagmanager.com/gtag/js?id=G-DEHKJSEDYC"></script>
+    <script type="text/partytown">
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
@@ -86,10 +27,11 @@ const serviceSchema = {
     </script>
   </head>
   <body class="min-h-screen bg-[#FFF8DC] text-[#2F2F2F]">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-wood-brown-800 focus:text-white focus:px-4 focus:py-2 focus:rounded-md">Skip to main content</a>
     <header class="sticky top-0 z-40 bg-[#FFF8DC]/90 backdrop-blur-lg shadow-sm">
       <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 md:px-8">
         <a href="#hero" class="flex items-center gap-3" aria-label="Serasi Parket Beranda">
-          <img src="/icons/logo.svg" alt="Logo Serasi Parket" class="h-10 w-10" />
+          <img src="/icons/logo.svg" alt="Logo Serasi Parket" class="h-10 w-10" width="40" height="40" />
           <div class="flex flex-col">
             <span class="font-serif text-xl font-semibold text-wood-brown-800">Serasi Parket</span>
             <span class="text-sm text-[#666666]">Premium Wood Crafting</span>
@@ -124,7 +66,7 @@ const serviceSchema = {
         </div>
       </div>
     </header>
-    <main class="isolate bg-[#FFF8DC]">
+    <main id="main-content" class="isolate bg-[#FFF8DC]">
       <slot />
     </main>
     <slot name="footer" />

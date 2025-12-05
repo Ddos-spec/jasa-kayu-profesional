@@ -2,6 +2,7 @@
 const services = [
   {
     title: 'Lantai Kayu Premium',
+    slug: 'lantai-kayu-premium',
     icon: '/icons/flooring.svg',
     description:
       'Mulai dari lantai kayu jati, merbau, bengkirai, hingga engineered flooring untuk area lembap seperti kamar mandi kering dan dapur, kami memastikan setiap papan mengalami proses kiln dry sempurna, kelembapan terkontrol, serta finishing UV tahan gores. Tim kami mengadopsi metode pemasangan tongue & groove, instalasi foam underlay anti lembap, hingga lapisan coating anti rayap dan waterproof. Kami juga menyediakan opsi parket motif klasik herringbone, chevron, maupun desain kontemporer yang disesuaikan dengan arsitektur rumah Anda sehingga lantai tampil elegan sekaligus tahan lama.',
@@ -14,6 +15,7 @@ const services = [
   },
   {
     title: 'Dinding Kayu & Wall Cladding',
+    slug: 'dinding-kayu-dan-wall-cladding',
     icon: '/icons/wall.svg',
     description:
       'Panel dinding kayu kami menghadirkan kehangatan alami sekaligus meningkatkan nilai properti. Mulai dari interior living room, kamar utama, home theater, hingga cladding fasad luar yang tahan terhadap hujan dan sinar UV. Kami menggunakan sistem ventilasi tersembunyi, coating exterior grade, serta perhitungan expansion joint agar panel awet puluhan tahun. Untuk aksen interior, kami memadukan profil minimalis, list bevel, hingga panel 3D rustic yang mempertegas focal point ruang. Setiap panel diberi perlindungan anti jamur dan finishing matte atau satin sesuai preferensi desain Anda.',
@@ -26,6 +28,7 @@ const services = [
   },
   {
     title: 'Tangga Kayu Artistik',
+    slug: 'tangga-kayu-artistik',
     icon: '/icons/stairs.svg',
     description:
       'Tangga kayu kami dirancang sebagai elemen sculptural yang menyatu dengan interior sekaligus aman digunakan seluruh keluarga. Struktur stringer terbuat dari kayu keras pilihan atau kombinasi besi yang dilapisi kayu. Setiap anak tangga dilengkapi sistem anti slip, radius tepi halus, dan finishing catalyzed lacquer agar tahan gores. Kami menyediakan opsi tangga lurus, L-shape, U-shape, hingga spiral staircase mewah dengan railing custom, balustrade carved, dan handrail ergonomis. Semua komponen diproduksi menggunakan CNC presisi lalu dirakit on-site untuk memastikan kesempurnaan detail.',
@@ -38,6 +41,7 @@ const services = [
   },
   {
     title: 'Plafon Kayu & Ceiling',
+    slug: 'plafon-kayu-ceiling',
     icon: '/icons/ceiling.svg',
     description:
       'Kami menghadirkan suasana hangat sekaligus akustik optimal melalui plafon kayu eksklusif. Mulai dari exposed beam natural untuk hunian bergaya resort, coffered ceiling mewah dengan list profil detail, hingga akustik panel kayu yang menyerap gema di home theater dan ruang meeting. Setiap struktur plafon diperkuat rangka baja ringan galvanis, disertai insulasi panas serta sistem downlight tersembunyi. Kami juga merancang frame skylight kayu custom yang tahan cuaca, menggunakan finishing marine grade untuk memastikan performa jangka panjang meskipun terpapar sinar matahari langsung.',
@@ -50,6 +54,7 @@ const services = [
   },
   {
     title: 'Furniture Kayu Built-in',
+    slug: 'furniture-kayu-built-in',
     icon: '/icons/furniture.svg',
     description:
       'Layanan built-in kami mencakup kitchen set kayu solid, lemari lantai ke plafon, meja kerja terintegrasi, hingga platform bed minimalis. Kami memulai dari konsultasi desain ergonomis, pemilihan hardware soft-close premium, serta integrasi pencahayaan LED tersembunyi. Setiap modul diproduksi di workshop kami dengan mesin panel saw presisi, finishing melamine atau polyurethane, kemudian dirakit rapat tanpa celah. Kombinasi veneer natural dan solid wood memastikan tampilan mewah namun tetap stabil terhadap perubahan suhu, menjadikan furniture tahan lama dan mudah perawatan.',
@@ -62,6 +67,7 @@ const services = [
   },
   {
     title: 'Pergola & Decking Outdoor',
+    slug: 'pergola-decking-outdoor',
     icon: '/icons/pergola.svg',
     description:
       'Kami merancang area luar rumah yang menawan dan tahan terhadap iklim tropis. Decking kayu untuk teras, balkon, hingga kolam renang menggunakan kayu ulin, bengkirai, atau composite premium dengan sistem ventilasi bawah yang mencegah lembap. Pergola taman dan carport dirancang dengan struktur kuat, dilengkapi atap polycarbonate UV protection atau kain kanopi motorized. Kami juga menghadirkan gazebo kayu untuk area BBQ dan fence dekoratif dengan perlindungan anti jamur. Setiap sambungan menggunakan stainless steel marine grade sehingga tahan karat meski terkena hujan terus-menerus.',
@@ -103,7 +109,13 @@ const services = [
               </li>
             ))}
           </ul>
-          <a href={`/layanan/${service.title.toLowerCase().replace(/ & /g, ' dan ').replace(/ /g, '-')}`} class="btn-secondary mt-6 self-start">Baca Selengkapnya</a>
+          <a
+            href={`/layanan/${service.slug}`}
+            class="btn-secondary mt-6 self-start"
+            aria-label={`Pelajari lebih lanjut tentang layanan ${service.title}`}
+          >
+            Detail {service.title}
+          </a>
         </article>
       ))}
     </div>

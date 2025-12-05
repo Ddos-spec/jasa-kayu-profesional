@@ -1,0 +1,146 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  image?: string;
+  type?: 'website' | 'article';
+  publishDate?: Date;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  image = '/images/portfolio/hero-placeholder.svg',
+  type = 'website',
+  publishDate,
+} = Astro.props;
+
+const siteURL = new URL(Astro.url.pathname, Astro.site);
+const canonicalURL = canonical ? new URL(canonical) : siteURL;
+const socialImageURL = new URL(image, Astro.site);
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'Serasi Parket',
+  description:
+    'Jasa pengerjaan kayu premium untuk lantai, dinding, tangga, plafon, furniture built-in, serta pergola outdoor di Jabodetabek.',
+  image: socialImageURL.href,
+  telephone: '+62211234567',
+  areaServed: 'Jakarta, Bogor, Depok, Tangerang, Bekasi, Karawang, Sukabumi',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Jakarta',
+    addressRegion: 'DKI Jakarta',
+    addressCountry: 'ID',
+  },
+  openingHours: 'Mo-Su 00:00-23:59',
+  url: Astro.site,
+  sameAs: [
+    'https://www.instagram.com/jasakayuprofesional',
+    'https://www.facebook.com/jasakayuprofesional',
+  ],
+};
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Jasa Kayu Premium',
+  provider: {
+    '@type': 'LocalBusiness',
+    name: 'Serasi Parket',
+  },
+  areaServed: {
+    '@type': 'AdministrativeArea',
+    name: 'Jabodetabek',
+  },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Layanan Jasa Kayu Premium',
+    itemListElement: [
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Lantai Kayu Premium' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Dinding Kayu & Wall Cladding' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Tangga Kayu Artistik' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Plafon Kayu & Ceiling' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Furniture Kayu Built-in' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Pergola & Decking Outdoor' } },
+    ],
+  },
+};
+
+// Breadcrumb Schema
+const pathSegments = Astro.url.pathname.split('/').filter((segment) => segment);
+const breadcrumbList = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Beranda',
+      item: Astro.site,
+    },
+    ...pathSegments.map((segment, index) => ({
+      '@type': 'ListItem',
+      position: index + 2,
+      name: segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, ' '),
+      item: new URL(`/${pathSegments.slice(0, index + 1).join('/')}`, Astro.site).href,
+    })),
+  ],
+};
+
+const articleSchema =
+  type === 'article' && publishDate
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: title,
+        datePublished: publishDate.toISOString(),
+        description: description,
+        image: socialImageURL.href,
+        author: {
+          '@type': 'Organization',
+          name: 'Serasi Parket',
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: 'Serasi Parket',
+          logo: {
+            '@type': 'ImageObject',
+            url: new URL('/icons/logo.svg', Astro.site).href,
+          },
+        },
+      }
+    : null;
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta
+  name="keywords"
+  content="jasa kayu jakarta, lantai kayu, tukang kayu profesional, jasa kayu premium, jasa plafon kayu, jasa pergola kayu, wall cladding kayu, decking outdoor"
+/>
+<meta name="author" content="Serasi Parket" />
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Open Graph -->
+<meta property="og:type" content={type} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:image" content={socialImageURL} />
+<meta property="og:site_name" content="Serasi Parket" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={socialImageURL} />
+
+<!-- JSON-LD -->
+<script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbList)} />
+{articleSchema && <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />}

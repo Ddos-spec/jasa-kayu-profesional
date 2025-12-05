@@ -1,13 +1,39 @@
 ---
+import { Image } from 'astro:assets';
+
 interface Props {
-  src: ImageMetadata;
+  src: ImageMetadata | string;
   alt: string;
   loading?: 'eager' | 'lazy';
   sizes?: string;
   class?: string;
+  width?: number;
+  height?: number;
 }
 
-const { src, alt, loading = 'lazy', sizes = '(max-width: 800px) 100vw, 800px', class: className } = Astro.props;
+const { src, alt, loading = 'lazy', sizes = '(max-width: 800px) 100vw, 800px', class: className, width, height } = Astro.props;
 ---
 
-<img {src} alt={alt} loading={loading} sizes={sizes} class:list={[className]} decoding="async" />
+{
+  typeof src === 'string' ? (
+    <img
+      src={src}
+      alt={alt}
+      loading={loading}
+      class={className}
+      decoding="async"
+      width={width}
+      height={height}
+    />
+  ) : (
+    <Image
+      src={src}
+      alt={alt}
+      loading={loading}
+      class={className}
+      width={width}
+      height={height}
+      sizes={sizes}
+    />
+  )
+}

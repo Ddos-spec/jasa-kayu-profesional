@@ -22,5 +22,8 @@ export default defineConfig({
     optimizeDeps: {
       include: ['@astrojs/tailwind']
     }
+  },
+  image: {
+    domains: ['picsum.photos']
   }
 });
