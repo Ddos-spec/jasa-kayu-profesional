@@ -1,7 +1,6 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import vercel from '@astrojs/vercel/static';
-import sitemap from '@astrojs/sitemap';
 import partytown from '@astrojs/partytown';
 
 export default defineConfig({
@@ -13,7 +12,6 @@ export default defineConfig({
   }),
   integrations: [
     tailwind(),
-    sitemap(),
     partytown({
       config: {
         forward: ['gtag']
