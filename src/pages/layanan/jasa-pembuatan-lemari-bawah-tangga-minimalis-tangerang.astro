@@ -1,0 +1,142 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Picture from '../../components/common/Picture.astro';
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Berapa harga pembuatan lemari bawah tangga di Tangerang?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Harga custom lemari bawah tangga mulai dari Rp 1.800.000 per meter lari (m¹), tergantung material (Blockboard/Multiplek) dan finishing (HPL/Duco). Hubungi kami untuk estimasi gratis."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Berapa lama proses pengerjaan lemari bawah tangga?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Proses produksi di workshop kami memakan waktu 7-14 hari kerja, dan pemasangan di lokasi (Tangerang & sekitarnya) hanya butuh 1-2 hari agar tidak mengganggu aktivitas rumah."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Apakah bisa desain custom sesuai bentuk tangga yang miring?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tentu. Tim kami akan melakukan pengukuran presisi (survey lokasi) untuk memastikan setiap milimeter ruang bawah tangga Anda termanfaatkan, baik untuk rak sepatu, gudang, atau display TV."
+      }
+    }
+  ]
+};
+---
+
+<Layout
+  title="Jasa Pembuatan Lemari Bawah Tangga Minimalis Tangerang | Serasi Parket"
+  description="Spesialis lemari bawah tangga custom di Tangerang, BSD, & Gading Serpong. Desain minimalis modern, material anti rayap, finishing HPL/Duco rapi. Harga kompetitif."
+  canonical="https://jasa-kayu-profesional.vercel.app/layanan/jasa-pembuatan-lemari-bawah-tangga-minimalis-tangerang"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <section class="relative bg-wood-brown-900 py-20 text-white md:py-32">
+    <div class="absolute inset-0 overflow-hidden">
+      <img
+        src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=1600&auto=format&fit=crop"
+        alt="Desain lemari bawah tangga minimalis modern dengan finishing HPL kayu"
+        class="h-full w-full object-cover opacity-30"
+        loading="eager"
+      />
+    </div>
+    <div class="relative mx-auto max-w-6xl px-4 md:px-8">
+      <span class="inline-block rounded-full bg-white/10 px-4 py-1.5 text-sm font-semibold text-wood-brown-100 backdrop-blur-sm">
+        Area Layanan: Tangerang, BSD, Gading Serpong, Alsut
+      </span>
+      <h1 class="mt-6 font-serif text-3xl font-bold leading-tight md:text-5xl">
+        Jasa Pembuatan Lemari <br/>Bawah Tangga Minimalis
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg text-white/80 md:text-xl">
+        Ubah area mati di bawah tangga menjadi ruang penyimpanan fungsional dan estetik. Solusi cerdas untuk rumah minimalis Anda di Tangerang.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a href="https://wa.me/6281234567890?text=Halo,%20saya%20mau%20tanya%20harga%20lemari%20bawah%20tangga%20di%20Tangerang." class="rounded-full bg-[#25D366] px-8 py-3 font-semibold text-white shadow-lg transition hover:bg-[#128C7E]">
+          Cek Harga via WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-24">
+    <div class="mx-auto max-w-4xl px-4 md:px-8">
+      
+      <div class="prose prose-lg prose-stone max-w-none">
+        <h2 class="font-serif text-3xl font-bold text-wood-brown-800">Mengapa Membiarkan Bawah Tangga Kosong?</h2>
+        <p>
+          Di banyak rumah tipe minimalis di Tangerang (BSD, Citra Raya, Gading Serpong), area bawah tangga seringkali menjadi "gudang tak bertuan" yang berantakan. Padahal, dengan desain yang tepat, area ini bisa menjadi:
+        </p>
+        <ul class="marker:text-wood-brown-600">
+          <li><strong>Rak Sepatu Tertutup:</strong> Menampung puluhan pasang sepatu agar foyer tetap rapi.</li>
+          <li><strong>Dry Kitchen / Pantry:</strong> Memaksimalkan fungsi dapur bersih.</li>
+          <li><strong>Display TV & Dekorasi:</strong> Menjadi focal point ruang keluarga.</li>
+          <li><strong>Gudang Tersembunyi:</strong> Menyimpan koper, alat pel, dan barang jarang pakai.</li>
+        </ul>
+
+        <img 
+          src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=1200&auto=format&fit=crop" 
+          alt="Contoh pengerjaan lemari bawah tangga laci tarik (drawers) fungsional" 
+          class="my-8 w-full rounded-xl shadow-lg"
+          loading="lazy"
+        />
+
+        <h3 class="mt-12 font-serif text-2xl font-bold text-wood-brown-800">Spesifikasi Material Premium (Anti Rayap)</h3>
+        <p>Kami tidak menggunakan serbuk kayu (particle board) murah yang mudah hancur terkena air pel. Standar kami untuk klien Tangerang:</p>
+      </div>
+
+      <div class="mt-8 grid gap-6 md:grid-cols-2">
+        <div class="rounded-2xl border border-wood-brown-100 bg-white p-6 shadow-sm">
+          <h4 class="font-bold text-wood-brown-800">1. Bahan Dasar: Blockboard / Multiplek 18mm</h4>
+          <p class="mt-2 text-sm text-[#666]">Kayu lapis utuh yang kuat menahan beban berat, sekrup tidak mudah dol, dan jauh lebih tahan lembap dibanding particle board.</p>
+        </div>
+        <div class="rounded-2xl border border-wood-brown-100 bg-white p-6 shadow-sm">
+          <h4 class="font-bold text-wood-brown-800">2. Finishing: HPL Taco / Duco</h4>
+          <p class="mt-2 text-sm text-[#666]">Pilih ratusan motif HPL (serat kayu, solid color, marmer) yang tahan gores dan panas. Atau cat Duco untuk hasil seamless mewah.</p>
+        </div>
+      </div>
+
+      <div class="prose prose-lg prose-stone mt-12 max-w-none">
+        <h3 class="font-serif text-2xl font-bold text-wood-brown-800">Harga & Cara Pemesanan di Tangerang</h3>
+        <p>
+            Kami melayani seluruh area Kota Tangerang, Tangerang Selatan, dan Kabupaten. Sistem kami transparan:
+        </p>
+        <ol>
+            <li><strong>Konsultasi Awal:</strong> Kirim foto lokasi bawah tangga Anda via WA.</li>
+            <li><strong>Estimasi Kasar:</strong> Kami berikan perkiraan harga berdasarkan ukuran.</li>
+            <li><strong>Survey & Ukur:</strong> Tim ke lokasi (BSD/Serpong/dll) untuk ukur presisi 100%.</li>
+            <li><strong>Desain 3D:</strong> Lihat visualisasi lemari sebelum diproduksi.</li>
+            <li><strong>Produksi & Pasang:</strong> Pengerjaan cepat dan rapi.</li>
+        </ol>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="mt-16 rounded-3xl bg-wood-brown-50 p-8">
+        <h3 class="font-serif text-2xl font-bold text-wood-brown-800">Pertanyaan Sering Diajukan</h3>
+        <div class="mt-6 space-y-6">
+            {faqSchema.mainEntity.map((faq) => (
+                <details class="group">
+                    <summary class="flex cursor-pointer items-center justify-between font-medium text-wood-brown-900 focus:outline-none">
+                        <span>{faq.name}</span>
+                        <span class="transition group-open:rotate-180">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" /></svg>
+                        </span>
+                    </summary>
+                    <p class="mt-3 text-[#4A4A4A]">{faq.acceptedAnswer.text}</p>
+                </details>
+            ))}
+        </div>
+      </div>
+
+    </div>
+  </section>
+</Layout>
