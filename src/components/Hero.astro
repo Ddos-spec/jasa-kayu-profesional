@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+
 const stats = [
   {
     label: 'Proyek Selesai',
@@ -19,9 +21,11 @@ const stats = [
 ---
 <section id="hero" class="relative overflow-hidden bg-[#F5F5DC]">
   <div class="absolute inset-0">
-    <img
+    <Image
       src="https://images.unsplash.com/photo-1622372738946-12356d983547?q=80&w=1600&auto=format&fit=crop"
       alt="Pengerjaan lantai kayu premium di ruang keluarga mewah"
+      width={1600}
+      height={900}
       loading="eager"
       class="h-full w-full object-cover opacity-40"
     />
