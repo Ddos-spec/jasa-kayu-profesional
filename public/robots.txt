@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin/
 Disallow: /private/
 
-Sitemap: https://www.jasakayuprofesional.com/sitemap.xml
+Sitemap: https://www.jasakayuprofesional.com/sitemap-index.xml
