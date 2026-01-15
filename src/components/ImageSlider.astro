@@ -1,0 +1,141 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Slide {
+  src: ImageMetadata;
+  alt: string;
+  title?: string;
+  description?: string;
+}
+
+export interface ImageSliderProps {
+  slides: Slide[];
+  autoPlay?: boolean;
+  interval?: number;
+}
+
+const { 
+  slides, 
+  autoPlay = false, 
+  interval = 5000 
+} = Astro.props;
+
+const slideCount = slides.length;
+---
+
+<div class="relative w-full max-w-6xl mx-auto overflow-hidden rounded-2xl">
+  <style>
+    {`
+      .slider-container {
+        display: grid;
+        grid-template-columns: repeat(${slideCount}, 100%);
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        scrollbar-width: none; /* Firefox */
+      }
+      
+      .slider-container::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera*/
+      }
+      
+      .slide {
+        scroll-snap-align: start;
+        position: relative;
+      }
+      
+      .slider-nav {
+        position: absolute;
+        bottom: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 0.5rem;
+        z-index: 10;
+      }
+      
+      .slider-dot {
+        width: 0.75rem;
+        height: 0.75rem;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.5);
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      
+      .slider-dot.active {
+        background-color: white;
+      }
+    `}
+  </style>
+  
+  <div class="slider-container">
+    {slides.map((slide, index) => (
+      <div class="slide" key={index}>
+        <Image
+          src={slide.src}
+          alt={slide.alt}
+          format="webp"
+          class="w-full h-auto object-cover"
+          loading="lazy"
+        />
+        {(slide.title || slide.description) && (
+          <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6 text-white">
+            {slide.title && <h3 class="font-serif text-2xl font-bold">{slide.title}</h3>}
+            {slide.description && <p class="mt-2">{slide.description}</p>}
+          </div>
+        )}
+      </div>
+    ))}
+  </div>
+  
+  <div class="slider-nav">
+    {slides.map((_, index) => (
+      <button 
+        class={`slider-dot ${index === 0 ? 'active' : ''}`}
+        aria-label={`Slide ${index + 1}`}
+        key={index}
+      />
+    ))}
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const slider = document.querySelector('.slider-container');
+    const dots = document.querySelectorAll('.slider-dot');
+    
+    // Handle dot navigation
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        slider.scrollTo({
+          left: slider.clientWidth * index,
+          behavior: 'smooth'
+        });
+        
+        // Update active dot
+        dots.forEach(d => d.classList.remove('active'));
+        dot.classList.add('active');
+      });
+    });
+    
+    // Auto play functionality
+    {#if autoPlay}
+    let currentIndex = 0;
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % ${slideCount};
+      slider.scrollTo({
+        left: slider.clientWidth * currentIndex,
+        behavior: 'smooth'
+      });
+      
+      // Update active dot
+      dots.forEach((d, i) => {
+        d.classList.toggle('active', i === currentIndex);
+      });
+    }, ${interval});
+    {/if}
+  });
+</script>
