@@ -1,0 +1,30 @@
+---
+// src/components/analytics/GoogleAnalytics.astro
+import { ANALYTICS_CONFIG } from '../../lib/analytics.config';
+
+const { debug = false } = Astro.props;
+const { measurementId } = ANALYTICS_CONFIG.ga4;
+---
+
+{measurementId ? (
+  <>
+    {/* Google Tag Manager script */}
+    <script type="text/partytown" async src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`} />
+    <script type="text/partytown" is:inline>
+      {`window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '${measurementId}'${debug ? ', { debug_mode: true }' : ''});`}
+    </script>
+    
+    {/* Enhanced measurement */}
+    <script is:inline>
+      {`// Enhanced measurement features
+      gtag('config', '${measurementId}', {
+        page_title: document.title,
+        page_location: window.location.href,
+        page_path: window.location.pathname,
+      });`}
+    </script>
+  </>
+) : null}

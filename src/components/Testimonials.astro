@@ -1,30 +1,17 @@
 ---
-const testimonials = [
-  {
-    name: 'Bpk. Ahmad Wijaya',
-    project: 'Renovasi Lantai & Tangga Villa Puncak',
-    review:
-      'Hasil kerja sangat memuaskan! Lantai kayu jati grade A yang dipasang 3 tahun lalu masih seperti baru. Tim kerja profesional, tepat waktu, dan sangat detail dalam finishing. Highly recommended!',
-    rating: 5,
-    location: 'Bogor'
-  },
-  {
-    name: 'Ibu Sari Indrawati',
-    project: 'Kitchen Set & Built-in Furniture',
-    review:
-      'Dari desain sampai eksekusi, semuanya perfect! Kitchen set kayu solid yang dibuat sangat kokoh dan fungsional. Pelayanan ramah dan harga sangat kompetitif dibanding competitor lain.',
-    rating: 5,
-    location: 'Jakarta Selatan'
-  },
-  {
-    name: 'Bpk. Robert Chen',
-    project: 'Wall Paneling & Plafon Kayu Office',
-    review:
-      'Office kami jadi terlihat premium dengan wall paneling kayu. Kualitas finishing rapi, tidak ada yang goyang atau retak setelah 2 tahun. Investment yang sangat worthit!',
-    rating: 5,
-    location: 'Tangerang'
-  }
-];
+import { getCollection } from 'astro:content';
+
+const allTestimonials = await getCollection('testimonial', ({ data }) => {
+  return data.featured === true; // Only show featured testimonials
+});
+
+const testimonials = allTestimonials.map(item => ({
+  name: item.data.name,
+  project: item.data.role || 'Proyek Terdahulu',
+  review: item.data.content,
+  rating: item.data.rating,
+  location: item.data.company || 'Lokasi Proyek',
+}));
 ---
 <section id="testimoni" class="section-anchor bg-[#F5F5DC] py-20 md:py-28">
   <div class="mx-auto max-w-6xl px-4 md:px-8">
@@ -48,7 +35,7 @@ const testimonials = [
             </div>
           </div>
           <p class="mt-5 text-sm font-semibold uppercase tracking-wide text-wood-brown-500">{item.project}</p>
-          <p class="mt-4 flex-1 text-base leading-relaxed text-[#4A4A4A]">“{item.review}”</p>
+          <p class="mt-4 flex-1 text-base leading-relaxed text-[#4A4A4A]">" {item.review} "</p>
           <div class="mt-6 flex items-center gap-1 text-wood-brown-600">
             {Array.from({ length: item.rating }).map((_, index) => (
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5" aria-hidden="true" key={index}>

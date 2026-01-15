@@ -1,0 +1,164 @@
+---
+const { 
+  type = 'WebSite', 
+  name, 
+  url, 
+  description, 
+  logo, 
+  author, 
+  datePublished, 
+  dateModified,
+  breadcrumbs = [],
+  reviews = []
+} = Astro.props;
+
+// Generate schema based on type
+let schema = {};
+
+switch(type) {
+  case 'WebSite':
+    schema = {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": name,
+      "url": url,
+      "description": description,
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": `${url}/search/?q={search_term_string}`,
+        "query-input": "required name=search_term_string"
+      }
+    };
+    break;
+    
+  case 'Organization':
+    schema = {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": name,
+      "url": url,
+      "description": description,
+      "logo": logo,
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+6281234567890",
+        "contactType": "customer service",
+        "areaServed": "ID",
+        "availableLanguage": "id"
+      },
+      "sameAs": [
+        "https://www.facebook.com/jasakayuprofesional",
+        "https://www.instagram.com/jasakayuprofesional",
+        "https://wa.me/6281234567890"
+      ]
+    };
+    break;
+    
+  case 'LocalBusiness':
+    schema = {
+      "@context": "https://schema.org",
+      "@type": "HomeAndConstructionBusiness", // More specific type for construction business
+      "name": name,
+      "image": logo,
+      "@id": url,
+      "url": url,
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Area Jabodetabek",
+        "addressLocality": "Jakarta",
+        "addressRegion": "DKI",
+        "postalCode": "10000",
+        "addressCountry": "ID"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -6.2088,
+        "longitude": 106.8456
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "08:00",
+        "closes": "17:00"
+      },
+      "telephone": "+6281234567890",
+      "priceRange": "$$$",
+      "description": description,
+      "areaServed": ["Jakarta", "Bogor", "Depok", "Tangerang", "Bekasi"]
+    };
+    break;
+    
+  case 'Article':
+    schema = {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": name,
+      "description": description,
+      "author": author ? {
+        "@type": "Person",
+        "name": author
+      } : {
+        "@type": "Organization",
+        "name": name
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": name,
+        "logo": {
+          "@type": "ImageObject",
+          "url": logo
+        }
+      },
+      "datePublished": datePublished,
+      "dateModified": dateModified
+    };
+    break;
+    
+  case 'BreadcrumbList':
+    schema = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": breadcrumbs.map((breadcrumb, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "name": breadcrumb.name,
+        "item": breadcrumb.url
+      }))
+    };
+    break;
+    
+  case 'Product':
+    schema = {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": name,
+      "provider": {
+        "@type": "HomeAndConstructionBusiness",
+        "name": "Serasi Parket",
+        "areaServed": "Jabodetabek"
+      },
+      "areaServed": "Jabodetabek",
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "price": "Variable",
+        "priceCurrency": "IDR"
+      },
+      "description": description
+    };
+    break;
+    
+  default:
+    schema = {
+      "@context": "https://schema.org",
+      "@type": type,
+      "name": name,
+      "url": url,
+      "description": description
+    };
+}
+
+const schemaString = JSON.stringify(schema);
+---
+
+<script type="application/ld+json" set:html={schemaString} />

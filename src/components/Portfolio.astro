@@ -1,5 +1,7 @@
 ---
+import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
+import Picture from '../components/common/Picture.astro';
 
 const categories = [
   { id: 'all', label: 'Semua Proyek' },
@@ -7,51 +9,16 @@ const categories = [
   { id: 'commercial', label: 'Commercial' },
   { id: 'custom', label: 'Custom Projects' }
 ];
-// ... (projects array remains same) ...
-const projects = [
-  {
-    title: 'Villa Puncak - Lantai Jati Solid',
-    category: 'residential',
-    displayCategory: 'Residential',
-    image: '/portfolio-villa.jpg',
-    description: 'Instalasi lantai kayu jati solid premium dengan finishing UV matte dan tangga floating merbau.'
-  },
-  {
-    title: 'Townhouse Jakarta - Wall Panel Walnut',
-    category: 'residential',
-    displayCategory: 'Residential',
-    image: '/portfolio-townhouse.jpg',
-    description: 'Panel dinding walnut minimalis dengan pencahayaan indirect LED untuk ruang keluarga modern.'
-  },
-  {
-    title: 'Hotel Boutique Bandung - Lobby Ceiling',
-    category: 'commercial',
-    displayCategory: 'Commercial',
-    image: '/portfolio-hotel.jpg',
-    description: 'Coffered ceiling kayu dengan list emas dan panel akustik untuk lobby hotel bintang empat.'
-  },
-  {
-    title: 'Cafe Artisan Jakarta - Decking Outdoor',
-    category: 'commercial',
-    displayCategory: 'Commercial',
-    image: '/portfolio-cafe.jpg',
-    description: 'Decking kayu bengkirai tahan cuaca dengan pergola semi-outdoor dan furniture built-in.'
-  },
-  {
-    title: 'Penthouse SCBD - Spiral Staircase',
-    category: 'custom',
-    displayCategory: 'Custom Projects',
-    image: '/portfolio-penthouse.jpg',
-    description: 'Tangga spiral kayu oak dengan railing kaca tempered dan handrail ukir tangan.'
-  },
-  {
-    title: 'Art Installation - Parametric Wall',
-    category: 'custom',
-    displayCategory: 'Custom Projects',
-    image: '/portfolio-art.jpg',
-    description: 'Wall cladding parametric berbahan kayu ash dengan finishing natural oil dan pencahayaan dinamis.'
-  }
-];
+
+const allProjects = await getCollection('portfolio');
+const projects = allProjects.map(item => ({
+  title: item.data.title,
+  category: item.data.category,
+  displayCategory: item.data.displayCategory,
+  image: `/portfolio-${item.slug.split('-')[0]}.jpg`, // Using existing placeholder images
+  description: item.data.description,
+  slug: item.slug
+}));
 ---
 <section id="portofolio" class="section-anchor bg-[#FFF8DC] py-20 md:py-28">
   <div class="mx-auto max-w-6xl px-4 md:px-8">
@@ -76,7 +43,7 @@ const projects = [
     <div class="mt-14 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
       {projects.map((project) => (
         <figure class="portfolio-card card-hover group relative overflow-hidden rounded-3xl bg-white shadow-elegant" data-category={project.category} key={project.title}>
-          <Image
+          <Picture
             src={project.image}
             alt={project.title}
             class="h-64 w-full object-cover transition duration-500 group-hover:scale-105"
@@ -113,7 +80,9 @@ const projects = [
           <path fill="currentColor" d="M6.225 4.811a1 1 0 0 0-1.414 1.414L10.586 12l-5.775 5.775a1 1 0 0 0 1.414 1.414L12 13.414l5.775 5.775a1 1 0 0 0 1.414-1.414L13.414 12l5.775-5.775a1 1 0 0 0-1.414-1.414L12 10.586Z" />
         </svg>
       </button>
-      <img id="modal-image" src="" alt="Detail proyek kayu" class="h-80 w-full object-cover" />
+      <div id="modal-image-container" class="h-80 w-full object-cover">
+        <!-- Image will be loaded dynamically via JavaScript -->
+      </div>
       <div class="space-y-3 p-6 text-[#2F2F2F]">
         <p id="modal-category" class="text-xs font-semibold uppercase tracking-wide text-wood-brown-500"></p>
         <h3 id="modal-title" class="font-serif text-3xl font-semibold text-wood-brown-800"></h3>
@@ -125,7 +94,7 @@ const projects = [
     const filterButtons = document.querySelectorAll('.filter-button');
     const cards = document.querySelectorAll('.portfolio-card');
     const modal = document.getElementById('portfolio-modal');
-    const modalImage = document.getElementById('modal-image');
+    const modalImageContainer = document.getElementById('modal-image-container');
     const modalTitle = document.getElementById('modal-title');
     const modalDescription = document.getElementById('modal-description');
     const modalCategory = document.getElementById('modal-category');
@@ -156,11 +125,23 @@ const projects = [
     cards.forEach((card) => {
       const trigger = card.querySelector('[data-open-modal]');
       trigger?.addEventListener('click', () => {
-        if (!modal || !modalImage || !modalTitle || !modalDescription || !modalCategory || !(trigger instanceof HTMLElement)) {
+        if (!modal || !modalImageContainer || !modalTitle || !modalDescription || !modalCategory || !(trigger instanceof HTMLElement)) {
           return;
         }
-        modalImage.src = trigger.dataset.image ?? '';
-        modalImage.alt = trigger.dataset.title ?? 'Detail proyek kayu';
+
+        // Clear previous content
+        modalImageContainer.innerHTML = '';
+
+        // Create and append new image element
+        const img = document.createElement('img');
+        img.src = trigger.dataset.image ?? '';
+        img.alt = trigger.dataset.title ?? 'Detail proyek kayu';
+        img.className = 'h-80 w-full object-cover';
+        img.loading = 'lazy';
+        img.decoding = 'async';
+
+        modalImageContainer.appendChild(img);
+
         modalTitle.textContent = trigger.dataset.title ?? '';
         modalDescription.textContent = trigger.dataset.description ?? '';
         modalCategory.textContent = trigger.dataset.category ?? '';

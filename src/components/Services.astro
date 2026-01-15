@@ -1,4 +1,6 @@
 ---
+import LinkButton from '../components/common/LinkButton.astro';
+
 const services = [
   {
     title: 'Lantai Kayu Premium',
@@ -109,13 +111,15 @@ const services = [
               </li>
             ))}
           </ul>
-          <a
+          <LinkButton
+            variant="secondary"
+            size="md"
+            class="mt-6 self-start"
             href={`/layanan/${service.slug}`}
-            class="btn-secondary mt-6 self-start"
             aria-label={`Pelajari lebih lanjut tentang layanan ${service.title}`}
           >
             Detail {service.title}
-          </a>
+          </LinkButton>
         </article>
       ))}
     </div>

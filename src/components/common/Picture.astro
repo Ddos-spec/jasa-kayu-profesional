@@ -9,9 +9,23 @@ interface Props {
   class?: string;
   width?: number;
   height?: number;
+  priority?: boolean;
+  placeholder?: 'blur' | 'data-url' | 'dominant-color' | 'none';
 }
 
-const { src, alt, loading = 'lazy', sizes = '(max-width: 800px) 100vw, 800px', class: className, width, height } = Astro.props;
+const {
+  src,
+  alt,
+  loading = 'lazy',
+  sizes = '(max-width: 800px) 100vw, 800px',
+  class: className,
+  width,
+  height,
+  priority = false,
+  placeholder = 'dominant-color'
+} = Astro.props;
+
+const computedLoading = priority ? 'eager' : loading;
 ---
 
 {
@@ -19,21 +33,24 @@ const { src, alt, loading = 'lazy', sizes = '(max-width: 800px) 100vw, 800px', c
     <img
       src={src}
       alt={alt}
-      loading={loading}
+      loading={computedLoading}
       class={className}
       decoding="async"
       width={width}
       height={height}
+      fetchPriority={priority ? 'high' : undefined}
     />
   ) : (
     <Image
       src={src}
       alt={alt}
-      loading={loading}
+      loading={computedLoading}
       class={className}
       width={width}
       height={height}
       sizes={sizes}
+      priority={priority}
+      placeholder={placeholder}
     />
   )
 }

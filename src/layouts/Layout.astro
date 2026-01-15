@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import SEO from '../components/SEO.astro';
+import GoogleAnalytics from '../components/analytics/GoogleAnalytics.astro';
 
 const { title = 'Serasi Parket Premium', description = 'Lebih dari 30 tahun pengalaman jasa kayu premium untuk lantai kayu, dinding, tangga, plafon, furniture built-in, hingga pergola outdoor di Jabodetabek.', canonical } = Astro.props;
 ---
@@ -9,22 +10,14 @@ const { title = 'Serasi Parket Premium', description = 'Lebih dari 30 tahun peng
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    
+
     <SEO title={title} description={description} canonical={canonical} />
 
     <link rel="icon" type="image/svg+xml" href="/icons/logo.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    
-    <!-- Google tag (gtag.js) -->
-    <script type="text/partytown" async src="https://www.googletagmanager.com/gtag/js?id=G-DEHKJSEDYC"></script>
-    <script type="text/partytown">
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
 
-      gtag('config', 'G-DEHKJSEDYC');
-    </script>
+    <GoogleAnalytics />
   </head>
   <body class="min-h-screen bg-[#FFF8DC] text-[#2F2F2F]">
     <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-wood-brown-800 focus:text-white focus:px-4 focus:py-2 focus:rounded-md">Skip to main content</a>

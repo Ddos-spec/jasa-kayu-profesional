@@ -1,0 +1,50 @@
+---
+export interface LinkButtonProps {
+  variant?: 'primary' | 'secondary' | 'ghost' | 'outline';
+  size?: 'sm' | 'md' | 'lg';
+  disabled?: boolean;
+  children: string;
+  class?: string;
+  href: string;
+  target?: '_self' | '_blank' | '_parent' | '_top';
+  rel?: string;
+}
+
+const {
+  variant = 'primary',
+  size = 'md',
+  disabled = false,
+  children,
+  class: className = '',
+  href,
+  target = '_self',
+  rel
+} = Astro.props;
+
+const baseClasses = 'inline-flex items-center justify-center font-semibold rounded-full transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2';
+
+const variantClasses = {
+  primary: 'bg-wood-brown-700 text-white shadow-lg hover:bg-wood-brown-800 focus-visible:outline-wood-brown-500',
+  secondary: 'bg-white text-wood-brown-700 border border-wood-brown-200 hover:bg-wood-brown-50 focus-visible:outline-wood-brown-500',
+  ghost: 'text-wood-brown-700 hover:bg-wood-brown-100 focus-visible:outline-wood-brown-500',
+  outline: 'border border-wood-brown-700 text-wood-brown-700 bg-transparent hover:bg-wood-brown-700 hover:text-white focus-visible:outline-wood-brown-500'
+};
+
+const sizeClasses = {
+  sm: 'text-sm px-4 py-2',
+  md: 'text-base px-6 py-3',
+  lg: 'text-lg px-8 py-4'
+};
+
+const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${disabled ? 'opacity-50 cursor-not-allowed' : ''} ${className}`;
+---
+
+<a
+  href={href}
+  class={classes}
+  target={target}
+  rel={rel ? rel : target === '_blank' ? 'noopener noreferrer' : undefined}
+  aria-disabled={disabled ? 'true' : undefined}
+>
+  <slot />
+</a>
