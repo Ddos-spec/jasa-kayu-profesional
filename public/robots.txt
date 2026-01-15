@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin/
 Disallow: /private/
 
-Sitemap: https://jasa-kayu-profesional.vercel.app/sitemap.xml
+Sitemap: https://www.jasakayuprofesional.com/sitemap.xml
