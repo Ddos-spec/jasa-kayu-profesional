@@ -2,9 +2,10 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import vercel from '@astrojs/vercel/static';
 import partytown from '@astrojs/partytown';
+import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://jasa-kayu-profesional.vercel.app',
+  site: 'https://www.jasakayuprofesional.com',
   output: 'static',
   adapter: vercel({
     webAnalytics: { enabled: true },
@@ -12,6 +13,7 @@ export default defineConfig({
   }),
   integrations: [
     tailwind(),
+    sitemap(),
     partytown({
       config: {
         forward: ['gtag']
