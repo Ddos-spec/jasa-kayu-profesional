@@ -41,7 +41,7 @@ switch(type) {
       "logo": logo,
       "contactPoint": {
         "@type": "ContactPoint",
-        "telephone": "+6281234567890",
+        "telephone": "+6281283135295",
         "contactType": "customer service",
         "areaServed": "ID",
         "availableLanguage": "id"
@@ -58,10 +58,12 @@ switch(type) {
     schema = {
       "@context": "https://schema.org",
       "@type": "HomeAndConstructionBusiness", // More specific type for construction business
-      "name": name,
+      "name": "Serasi Parket - Jasa Kayu Profesional",
+      "legalName": "Serasi Parket",
       "image": logo,
       "@id": url,
       "url": url,
+      "email": "info@jasakayuprofesional.com",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Area Jabodetabek",
@@ -77,14 +79,57 @@ switch(type) {
       },
       "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
         "opens": "08:00",
         "closes": "17:00"
       },
-      "telephone": "+6281234567890",
+      "telephone": "+6281283135295",
       "priceRange": "$$$",
-      "description": description,
-      "areaServed": ["Jakarta", "Bogor", "Depok", "Tangerang", "Bekasi"]
+      "description": "Jasa pengerjaan kayu premium untuk lantai, dinding, tangga, plafon, furniture built-in, serta pergola outdoor di Jabodetabek. Spesialis lantai kayu jati, dinding kayu, tangga kayu artistik, plafon kayu, furniture custom, pergola & decking outdoor.",
+      "areaServed": ["Jakarta", "Bogor", "Depok", "Tangerang", "Bekasi", "Karawang", "Sukabumi", "Bandung", "Cirebon"],
+      "paymentAccepted": ["Cash", "Bank Transfer", "QRIS"],
+      "founder": {
+        "@type": "Person",
+        "name": "Serasi Parket Team",
+        "jobTitle": "Professional Wood Craftsmen"
+      },
+      "foundingDate": "1990",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "1850"
+      },
+      "makesOffer": [
+        {
+          "@type": "Offer",
+          "itemOffered": [
+            {
+              "@type": "Service",
+              "name": "Jasa Pasang Lantai Kayu"
+            },
+            {
+              "@type": "Service",
+              "name": "Jasa Pasang Dinding Kayu"
+            },
+            {
+              "@type": "Service",
+              "name": "Jasa Buat Tangga Kayu"
+            },
+            {
+              "@type": "Service",
+              "name": "Jasa Pasang Plafon Kayu"
+            },
+            {
+              "@type": "Service",
+              "name": "Furniture Kayu Custom"
+            },
+            {
+              "@type": "Service",
+              "name": "Pergola & Decking Outdoor"
+            }
+          ]
+        }
+      ]
     };
     break;
     

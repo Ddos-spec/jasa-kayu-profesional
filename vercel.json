@@ -40,6 +40,31 @@
       "source": "www.jasa-kayu-profesional.vercel.app/(.*)",
       "destination": "https://jasa-kayu-profesional.vercel.app/$1",
       "permanent": true
+    },
+    {
+      "source": "/jasa-lantai-kayu",
+      "destination": "/layanan/lantai-kayu-premium",
+      "permanent": true
+    },
+    {
+      "source": "/jasa-pasang-lantai-kayu",
+      "destination": "/layanan/lantai-kayu-premium",
+      "permanent": true
+    },
+    {
+      "source": "/jasa-pembuatan-lemari",
+      "destination": "/layanan/jasa-pembuatan-lemari-bawah-tangga-minimalis-tangerang",
+      "permanent": true
+    },
+    {
+      "source": "/portofolio",
+      "destination": "/#portofolio",
+      "permanent": true
+    },
+    {
+      "source": "/layanan",
+      "destination": "/#layanan",
+      "permanent": true
     }
   ]
 }

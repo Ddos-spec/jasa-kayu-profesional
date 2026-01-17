@@ -1,6 +1,13 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://jasakayuprofesional.com/sitemap-index.xml
+
+# Blokir akses ke file-file sensitif
 Disallow: /admin/
+Disallow: /cgi-bin/
+Disallow: /tmp/
 Disallow: /private/
 
-Sitemap: https://www.jasakayuprofesional.com/sitemap-index.xml
+# Batasi crawl rate (opsional)
+Crawl-delay: 5
