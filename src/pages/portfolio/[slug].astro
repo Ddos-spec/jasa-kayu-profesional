@@ -1,0 +1,138 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import Picture from '../../components/common/Picture.astro';
+
+// Get all portfolio entries
+const allPortfolios = await getCollection('portfolio');
+// Find the specific portfolio based on the slug
+export async function getStaticPaths() {
+  const portfolios = await getCollection('portfolio');
+  return portfolios.map((portfolio) => ({
+    params: { slug: portfolio.slug },
+    props: { portfolio },
+  }));
+}
+
+const { portfolio } = Astro.props;
+
+// Set SEO variables
+const seoTitle = portfolio.data.seoTitle || `${portfolio.data.title} | Portfolio | Serasi Parket`;
+const seoDescription = portfolio.data.seoDescription || portfolio.data.description;
+const keywords = portfolio.data.keywords || 'finishing kayu, portfolio, proyek kayu, lantai kayu, dinding kayu';
+
+// Set canonical URL
+const canonical = `https://www.jasakayuprofesional.com/portfolio/${portfolio.slug}`;
+---
+
+<Layout title={seoTitle} description={seoDescription}>
+
+<!-- Schema Markup for the specific portfolio item -->
+<script type="application/ld+json">
+  {JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": portfolio.data.title,
+    "alternateName": [seoTitle],
+    "description": seoDescription,
+    "about": "Finishing kayu profesional",
+    "genre": portfolio.data.category,
+    "dateCreated": "${portfolio.data.year}-01-01",
+    "creator": {
+      "@type": "Organization",
+      "name": "Serasi Parket",
+      "url": "https://www.jasakayuprofesional.com/",
+      "sameAs": [
+        "https://www.facebook.com/jasakayuprofesional",
+        "https://www.instagram.com/jasakayuprofesional"
+      ],
+      "telephone": "+6281283135295",
+      "email": "info@jasakayuprofesional.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Jakarta",
+        "addressCountry": "ID"
+      }
+    },
+    "image": `/images/portfolio/${portfolio.slug}.jpg`,
+    "keywords": keywords,
+    "hasPart": [
+      {
+        "@type": "ImageObject",
+        "contentUrl": `/images/portfolio/${portfolio.slug}.jpg`
+      }
+    ]
+  })}
+</script>
+
+<div class="container mx-auto px-4 py-12 max-w-4xl">
+  <div class="mb-8">
+    <a href="/#portofolio" class="inline-flex items-center text-wood-brown-700 hover:text-wood-brown-900 font-medium">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4 mr-1" aria-hidden="true">
+        <path fill="currentColor" d="M5 12a1 1 0 0 1 1-1h10.586l-3.293-3.293a1 1 0 0 1 1.414-1.414l5 5a1 1 0 0 1 0 1.414l-5 5a1 1 0 0 1-1.414-1.414L16.586 13H6a1 1 0 0 1-1-1Z" />
+      </svg>
+      Kembali ke Portofolio
+    </a>
+  </div>
+  
+  <article class="bg-white rounded-3xl shadow-lg overflow-hidden">
+    <div class="h-64 md:h-96 relative">
+      <img
+        src={`/images/portfolio/${portfolio.slug}.jpg`}
+        alt={portfolio.data.title}
+        class="w-full h-full object-cover"
+        width="800"
+        height="600"
+        onerror="this.onerror=null;this.src='/images/portfolio/deckingulin-1.jpg';"
+      />
+    </div>
+    
+    <div class="p-8">
+      <div class="mb-6">
+        <span class="text-xs font-semibold uppercase tracking-wide text-wood-brown-500">{portfolio.data.displayCategory}</span>
+        <h1 class="font-serif text-3xl md:text-4xl font-bold text-wood-brown-800 mt-2">{portfolio.data.title}</h1>
+        <p class="text-wood-brown-600 mt-3">{portfolio.data.description}</p>
+        <div class="mt-4 flex flex-wrap gap-2">
+          <span class="text-sm bg-wood-brown-100 text-wood-brown-800 px-3 py-1 rounded-full">Tahun: {portfolio.data.year}</span>
+          <span class="text-sm bg-wood-brown-100 text-wood-brown-800 px-3 py-1 rounded-full">Kategori: {portfolio.data.displayCategory}</span>
+        </div>
+      </div>
+      
+      <div class="prose prose-wood-brown max-w-none">
+        {portfolio.body}
+      </div>
+      
+      <div class="mt-10 pt-8 border-t border-wood-brown-100">
+        <h3 class="font-serif text-2xl font-semibold text-wood-brown-800 mb-4">Lihat Proyek Lainnya</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {allPortfolios
+            .filter(p => p.slug !== portfolio.slug)
+            .slice(0, 2)
+            .map(p => (
+              <a 
+                href={`/portfolio/${p.slug}`} 
+                class="block group"
+              >
+                <div class="overflow-hidden rounded-xl">
+                  <img
+                    src={`/images/portfolio/${p.slug}.jpg`}
+                    alt={p.data.title}
+                    class="w-full h-48 object-cover transition duration-300 group-hover:scale-105"
+                    width="400"
+                    height="300"
+                    onerror="this.onerror=null;this.src='/images/portfolio/deckingulin-1.jpg';"
+                  />
+                </div>
+                <h4 class="font-semibold text-wood-brown-800 mt-3 group-hover:text-wood-brown-600">{p.data.title}</h4>
+                <p class="text-sm text-wood-brown-600">{p.data.description}</p>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </article>
+</div>
+
+</Layout>

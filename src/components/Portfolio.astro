@@ -11,14 +11,19 @@ const categories = [
 ];
 
 const allProjects = await getCollection('portfolio');
-const projects = allProjects.map(item => ({
-  title: item.data.title,
-  category: item.data.category,
-  displayCategory: item.data.displayCategory,
-  image: `/portfolio-${item.slug.split('-')[0]}.jpg`, // Using existing placeholder images
-  description: item.data.description,
-  slug: item.slug
-}));
+const projects = allProjects.map(item => {
+  // Try to use the specific image for the project, fallback to default if not available
+  const image = `/images/portfolio/${item.slug}.jpg`;
+
+  return {
+    title: item.data.title,
+    category: item.data.category,
+    displayCategory: item.data.displayCategory,
+    image,
+    description: item.data.description,
+    slug: item.slug
+  };
+});
 ---
 <section id="portofolio" class="section-anchor bg-[#FFF8DC] py-20 md:py-28">
   <div class="mx-auto max-w-6xl px-4 md:px-8">
@@ -43,129 +48,31 @@ const projects = allProjects.map(item => ({
     <div class="mt-14 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
       {projects.map((project) => (
         <figure class="portfolio-card card-hover group relative overflow-hidden rounded-3xl bg-white shadow-elegant" data-category={project.category} key={project.title}>
-          <Picture
+          <img
             src={project.image}
             alt={project.title}
             class="h-64 w-full object-cover transition duration-500 group-hover:scale-105"
-            width={800}
-            height={600}
+            width="800"
+            height="600"
             loading="lazy"
-            format="webp"
+            onerror="this.onerror=null;this.src='/images/portfolio/deckingulin-1.jpg';"
           />
           <figcaption class="flex flex-col gap-3 p-6">
             <span class="text-xs font-semibold uppercase tracking-wide text-wood-brown-500">{project.displayCategory}</span>
             <h3 class="font-serif text-2xl font-semibold text-wood-brown-800">{project.title}</h3>
             <p class="text-sm leading-relaxed text-[#4A4A4A]">{project.description}</p>
-            <button
+            <a
+              href={`/portfolio/${project.slug}`}
               class="mt-2 inline-flex items-center gap-2 self-start text-sm font-semibold text-wood-brown-700 hover:text-wood-brown-900"
-              data-open-modal
-              data-image={project.image}
-              data-title={project.title}
-              data-description={project.description}
-              data-category={project.displayCategory}
             >
               Lihat Detail
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4" aria-hidden="true">
                 <path fill="currentColor" d="M5 12a1 1 0 0 1 1-1h10.586l-3.293-3.293a1 1 0 0 1 1.414-1.414l5 5a1 1 0 0 1 0 1.414l-5 5a1 1 0 0 1-1.414-1.414L16.586 13H6a1 1 0 0 1-1-1Z" />
               </svg>
-            </button>
+            </a>
           </figcaption>
         </figure>
       ))}
     </div>
   </div>
-  <div id="portfolio-modal" class="modal-backdrop fixed inset-0 z-50 hidden items-center justify-center px-4 py-8">
-    <div class="relative max-w-3xl overflow-hidden rounded-3xl bg-white shadow-2xl">
-      <button class="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-[#F5F5DC] text-[#2F2F2F] transition hover:bg-wood-brown-100" type="button" data-close-modal aria-label="Tutup galeri">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5" aria-hidden="true">
-          <path fill="currentColor" d="M6.225 4.811a1 1 0 0 0-1.414 1.414L10.586 12l-5.775 5.775a1 1 0 0 0 1.414 1.414L12 13.414l5.775 5.775a1 1 0 0 0 1.414-1.414L13.414 12l5.775-5.775a1 1 0 0 0-1.414-1.414L12 10.586Z" />
-        </svg>
-      </button>
-      <div id="modal-image-container" class="h-80 w-full object-cover">
-        <!-- Image will be loaded dynamically via JavaScript -->
-      </div>
-      <div class="space-y-3 p-6 text-[#2F2F2F]">
-        <p id="modal-category" class="text-xs font-semibold uppercase tracking-wide text-wood-brown-500"></p>
-        <h3 id="modal-title" class="font-serif text-3xl font-semibold text-wood-brown-800"></h3>
-        <p id="modal-description" class="text-base leading-relaxed text-[#4A4A4A]"></p>
-      </div>
-    </div>
-  </div>
-  <script type="module">
-    const filterButtons = document.querySelectorAll('.filter-button');
-    const cards = document.querySelectorAll('.portfolio-card');
-    const modal = document.getElementById('portfolio-modal');
-    const modalImageContainer = document.getElementById('modal-image-container');
-    const modalTitle = document.getElementById('modal-title');
-    const modalDescription = document.getElementById('modal-description');
-    const modalCategory = document.getElementById('modal-category');
-
-    filterButtons.forEach((button) => {
-      button.addEventListener('click', () => {
-        const filter = button.dataset.filter;
-        filterButtons.forEach((btn) => {
-          btn.classList.remove('bg-wood-brown-700', 'text-white');
-          btn.classList.add('bg-white', 'text-wood-brown-700');
-          btn.setAttribute('aria-pressed', 'false');
-        });
-        button.classList.add('bg-wood-brown-700', 'text-white');
-        button.classList.remove('bg-white', 'text-wood-brown-700');
-        button.setAttribute('aria-pressed', 'true');
-
-        cards.forEach((card) => {
-          const category = card.dataset.category;
-          if (filter === 'all' || category === filter) {
-            card.classList.remove('hidden');
-          } else {
-            card.classList.add('hidden');
-          }
-        });
-      });
-    });
-
-    cards.forEach((card) => {
-      const trigger = card.querySelector('[data-open-modal]');
-      trigger?.addEventListener('click', () => {
-        if (!modal || !modalImageContainer || !modalTitle || !modalDescription || !modalCategory || !(trigger instanceof HTMLElement)) {
-          return;
-        }
-
-        // Clear previous content
-        modalImageContainer.innerHTML = '';
-
-        // Create and append new image element
-        const img = document.createElement('img');
-        img.src = trigger.dataset.image ?? '';
-        img.alt = trigger.dataset.title ?? 'Detail proyek kayu';
-        img.className = 'h-80 w-full object-cover';
-        img.loading = 'lazy';
-        img.decoding = 'async';
-
-        modalImageContainer.appendChild(img);
-
-        modalTitle.textContent = trigger.dataset.title ?? '';
-        modalDescription.textContent = trigger.dataset.description ?? '';
-        modalCategory.textContent = trigger.dataset.category ?? '';
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-        document.body.style.overflow = 'hidden';
-      });
-    });
-
-    modal?.addEventListener('click', (event) => {
-      if (event.target === modal || (event.target instanceof HTMLElement && event.target.closest('[data-close-modal]'))) {
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-        document.body.style.overflow = '';
-      }
-    });
-
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-        document.body.style.overflow = '';
-      }
-    });
-  </script>
 </section>
