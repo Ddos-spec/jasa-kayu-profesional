@@ -81,10 +81,10 @@ const canonical = `https://www.jasakayuprofesional.com/portfolio/${portfolio.slu
       <img
         src={`/images/portfolio/${portfolio.slug}.jpg`}
         alt={portfolio.data.title}
-        class="w-full h-full object-cover"
+        class="w-full h-full object-cover portfolio-detail-image"
         width="800"
         height="600"
-        onerror="this.onerror=null;this.src='/images/portfolio/deckingulin-1.jpg';"
+        data-fallback="/images/portfolio/deckingulin-1.jpg"
       />
     </div>
     
@@ -134,5 +134,19 @@ const canonical = `https://www.jasakayuprofesional.com/portfolio/${portfolio.slu
     </div>
   </article>
 </div>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Handle image fallback for portfolio detail page
+    const detailImage = document.querySelector('.portfolio-detail-image');
+    if (detailImage) {
+      detailImage.addEventListener('error', function() {
+        if (!this.src.endsWith(this.getAttribute('data-fallback'))) {
+          this.src = this.getAttribute('data-fallback');
+        }
+      });
+    }
+  });
+</script>
 
 </Layout>

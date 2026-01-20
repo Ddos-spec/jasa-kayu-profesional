@@ -51,11 +51,11 @@ const projects = allProjects.map(item => {
           <img
             src={project.image}
             alt={project.title}
-            class="h-64 w-full object-cover transition duration-500 group-hover:scale-105"
+            class="h-64 w-full object-cover transition duration-500 group-hover:scale-105 portfolio-image"
             width="800"
             height="600"
             loading="lazy"
-            onerror="this.onerror=null;this.src='/images/portfolio/deckingulin-1.jpg';"
+            data-fallback="/images/portfolio/deckingulin-1.jpg"
           />
           <figcaption class="flex flex-col gap-3 p-6">
             <span class="text-xs font-semibold uppercase tracking-wide text-wood-brown-500">{project.displayCategory}</span>
@@ -75,4 +75,18 @@ const projects = allProjects.map(item => {
       ))}
     </div>
   </div>
+
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Handle image fallbacks
+      const portfolioImages = document.querySelectorAll('.portfolio-image');
+      portfolioImages.forEach(img => {
+        img.addEventListener('error', function() {
+          if (!this.src.endsWith(this.getAttribute('data-fallback'))) {
+            this.src = this.getAttribute('data-fallback');
+          }
+        });
+      });
+    });
+  </script>
 </section>
