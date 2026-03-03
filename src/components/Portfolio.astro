@@ -11,15 +11,37 @@ const categories = [
 ];
 
 const allProjects = await getCollection('portfolio');
-const projects = allProjects.map(item => {
-  // Try to use the specific image for the project, fallback to default if not available
-  const image = `/images/portfolio/${item.slug}.jpg`;
+const projects = allProjects.map((item, index) => {
+  // Map specific images for slugs that don't directly match a single .jpg file
+  const overrideImages: Record<string, string> = {
+    'rumah-wagub-dki-jakarta': '/images/portfolio/rumah-wagub-dki-1.jpg',
+    'art-installation-parametric-wall': '/images/portfolio/portfolio-1.svg',
+    'cafe-artisan-jakarta-decking-outdoor': '/images/portfolio/portfolio-2.svg',
+    'hotel-boutique-bandung-lobby-ceiling': '/images/portfolio/portfolio-3.svg',
+    'penthouse-scbd-spiral-staircase': '/images/portfolio/portfolio-4.svg',
+    'townhouse-jakarta-wall-panel-walnut': '/images/portfolio/portfolio-5.svg',
+    'villa-puncak-lantai-jati-solid': '/images/portfolio/portfolio-6.svg'
+  };
+
+  const image = item.data.image || overrideImages[item.slug] || `/images/portfolio/${item.slug}.jpg`;
+  
+  // Rotating fallback SVG array for image errors
+  const fallbackImages = [
+    '/images/portfolio/portfolio-1.svg',
+    '/images/portfolio/portfolio-2.svg',
+    '/images/portfolio/portfolio-3.svg',
+    '/images/portfolio/portfolio-4.svg',
+    '/images/portfolio/portfolio-5.svg',
+    '/images/portfolio/portfolio-6.svg'
+  ];
+  const fallback = fallbackImages[index % fallbackImages.length];
 
   return {
     title: item.data.title,
     category: item.data.category,
     displayCategory: item.data.displayCategory,
     image,
+    fallback,
     description: item.data.description,
     slug: item.slug
   };
@@ -55,7 +77,7 @@ const projects = allProjects.map(item => {
             width="800"
             height="600"
             loading="lazy"
-            data-fallback="/images/portfolio/deckingulin-1.jpg"
+            data-fallback={project.fallback}
           />
           <figcaption class="flex flex-col gap-3 p-6">
             <span class="text-xs font-semibold uppercase tracking-wide text-wood-brown-500">{project.displayCategory}</span>

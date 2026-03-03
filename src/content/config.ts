@@ -14,6 +14,7 @@ const portfolioCollection = defineCollection({
     category: z.enum(['residential', 'commercial', 'custom']),
     displayCategory: z.string(),
     description: z.string(),
+    image: z.string().optional(),
     featured: z.boolean().optional().default(false),
     year: z.number().optional(),
   }),

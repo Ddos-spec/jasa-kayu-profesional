@@ -17,6 +17,20 @@ export async function getStaticPaths() {
 
 const { portfolio } = Astro.props;
 
+// Map specific images for slugs that don't directly match a single .jpg file as fallback mechanism
+const overrideImages: Record<string, string> = {
+  'rumah-wagub-dki-jakarta': '/images/portfolio/rumah-wagub-dki-1.jpg',
+  'art-installation-parametric-wall': '/images/portfolio/portfolio-1.svg',
+  'cafe-artisan-jakarta-decking-outdoor': '/images/portfolio/portfolio-2.svg',
+  'hotel-boutique-bandung-lobby-ceiling': '/images/portfolio/portfolio-3.svg',
+  'penthouse-scbd-spiral-staircase': '/images/portfolio/portfolio-4.svg',
+  'townhouse-jakarta-wall-panel-walnut': '/images/portfolio/portfolio-5.svg',
+  'villa-puncak-lantai-jati-solid': '/images/portfolio/portfolio-6.svg'
+};
+
+const image = portfolio.data.image || overrideImages[portfolio.slug] || `/images/portfolio/${portfolio.slug}.jpg`;
+const fallbackImage = '/images/portfolio/portfolio-1.svg';
+
 // Set SEO variables
 const seoTitle = portfolio.data.seoTitle || `${portfolio.data.title} | Portfolio | Serasi Parket`;
 const seoDescription = portfolio.data.seoDescription || portfolio.data.description;
@@ -38,7 +52,7 @@ const canonical = `https://www.jasakayuprofesional.com/portfolio/${portfolio.slu
     "description": seoDescription,
     "about": "Finishing kayu profesional",
     "genre": portfolio.data.category,
-    "dateCreated": "${portfolio.data.year}-01-01",
+    "dateCreated": `${portfolio.data.year || new Date().getFullYear()}-01-01`,
     "creator": {
       "@type": "Organization",
       "name": "Serasi Parket",
@@ -55,12 +69,12 @@ const canonical = `https://www.jasakayuprofesional.com/portfolio/${portfolio.slu
         "addressCountry": "ID"
       }
     },
-    "image": `/images/portfolio/${portfolio.slug}.jpg`,
+    "image": image,
     "keywords": keywords,
     "hasPart": [
       {
         "@type": "ImageObject",
-        "contentUrl": `/images/portfolio/${portfolio.slug}.jpg`
+        "contentUrl": image
       }
     ]
   })}
@@ -79,12 +93,12 @@ const canonical = `https://www.jasakayuprofesional.com/portfolio/${portfolio.slu
   <article class="bg-white rounded-3xl shadow-lg overflow-hidden">
     <div class="h-64 md:h-96 relative">
       <img
-        src={`/images/portfolio/${portfolio.slug}.jpg`}
+        src={image}
         alt={portfolio.data.title}
         class="w-full h-full object-cover portfolio-detail-image"
         width="800"
         height="600"
-        data-fallback="/images/portfolio/deckingulin-1.jpg"
+        data-fallback={fallbackImage}
       />
     </div>
     
@@ -94,13 +108,13 @@ const canonical = `https://www.jasakayuprofesional.com/portfolio/${portfolio.slu
         <h1 class="font-serif text-3xl md:text-4xl font-bold text-wood-brown-800 mt-2">{portfolio.data.title}</h1>
         <p class="text-wood-brown-600 mt-3">{portfolio.data.description}</p>
         <div class="mt-4 flex flex-wrap gap-2">
-          <span class="text-sm bg-wood-brown-100 text-wood-brown-800 px-3 py-1 rounded-full">Tahun: {portfolio.data.year}</span>
+          {portfolio.data.year && <span class="text-sm bg-wood-brown-100 text-wood-brown-800 px-3 py-1 rounded-full">Tahun: {portfolio.data.year}</span>}
           <span class="text-sm bg-wood-brown-100 text-wood-brown-800 px-3 py-1 rounded-full">Kategori: {portfolio.data.displayCategory}</span>
         </div>
       </div>
       
       <div class="prose prose-wood-brown max-w-none">
-        {portfolio.body}
+        <slot />
       </div>
       
       <div class="mt-10 pt-8 border-t border-wood-brown-100">
@@ -109,26 +123,28 @@ const canonical = `https://www.jasakayuprofesional.com/portfolio/${portfolio.slu
           {allPortfolios
             .filter(p => p.slug !== portfolio.slug)
             .slice(0, 2)
-            .map(p => (
+            .map((p, i) => {
+              const pImage = p.data.image || overrideImages[p.slug] || `/images/portfolio/${p.slug}.jpg`;
+              const fbImg = `/images/portfolio/portfolio-${(i % 6) + 1}.svg`;
+              return (
               <a 
                 href={`/portfolio/${p.slug}`} 
                 class="block group"
               >
                 <div class="overflow-hidden rounded-xl">
                   <img
-                    src={`/images/portfolio/${p.slug}.jpg`}
+                    src={pImage}
                     alt={p.data.title}
-                    class="w-full h-48 object-cover transition duration-300 group-hover:scale-105"
+                    class="w-full h-48 object-cover transition duration-300 group-hover:scale-105 portfolio-detail-image"
                     width="400"
                     height="300"
-                    onerror="this.onerror=null;this.src='/images/portfolio/deckingulin-1.jpg';"
+                    data-fallback={fbImg}
                   />
                 </div>
                 <h4 class="font-semibold text-wood-brown-800 mt-3 group-hover:text-wood-brown-600">{p.data.title}</h4>
                 <p class="text-sm text-wood-brown-600">{p.data.description}</p>
               </a>
-            ))
-          }
+            )})}
         </div>
       </div>
     </div>
@@ -138,14 +154,15 @@ const canonical = `https://www.jasakayuprofesional.com/portfolio/${portfolio.slu
 <script is:inline>
   document.addEventListener('DOMContentLoaded', function() {
     // Handle image fallback for portfolio detail page
-    const detailImage = document.querySelector('.portfolio-detail-image');
-    if (detailImage) {
-      detailImage.addEventListener('error', function() {
-        if (!this.src.endsWith(this.getAttribute('data-fallback'))) {
-          this.src = this.getAttribute('data-fallback');
+    const detailImages = document.querySelectorAll('.portfolio-detail-image');
+    detailImages.forEach(img => {
+      img.addEventListener('error', function() {
+        const fallback = this.getAttribute('data-fallback');
+        if (fallback && !this.src.endsWith(fallback)) {
+          this.src = fallback;
         }
       });
-    }
+    });
   });
 </script>
 
