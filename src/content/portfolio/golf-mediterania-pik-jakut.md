@@ -5,9 +5,10 @@ displayCategory: 'Residential'
 description: 'Finishing kayu premium di kawasan eksklusif Golf Mediterania Pantai Indah Kapuk Jakarta Utara dengan desain mewah dan fungsional.'
 featured: true
 year: 2024
-seoTitle: 'Finishing Kayu Golf Mediterania PIK Jakarta | Serasi Parket'
+seoTitle: 'Finishing Kayu Golf Mediterania PIK Jakarta | Jasa Kayu Profesional'
 seoDescription: 'Finishing kayu premium di kawasan eksklusif Golf Mediterania Pantai Indah Kapuk Jakarta Utara. Desain mewah, material terbaik, hasil memuaskan.'
 keywords: 'finishing kayu golf mediterania, finishing kayu pik, finishing kayu jakarta utara, proyek kayu mewah, lantai kayu premium'
+image: '/images/portfolio/golf-mediterania-pik-jakut.jpg'
 ---
 
 Proyek finishing kayu ini berlokasi di kawasan eksklusif Golf Mediterania, Pantai Indah Kapuk, Jakarta Utara. Proyek ini menampilkan kombinasi antara desain mewah dan fungsionalitas tinggi dengan menggunakan material kayu premium Grade A.

@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import Badge from '../components/common/Badge.astro';
 import Picture from '../components/common/Picture.astro';
+import heroBg from '../assets/images/general/hero-background.jpg';
 
 const stats = [
   {
@@ -24,10 +25,10 @@ const stats = [
 <section id="hero" class="relative overflow-hidden bg-[#F5F5DC]">
   <div class="absolute inset-0">
     <Picture
-      src="/hero-background.jpg"
+      src={heroBg}
       alt="Pengerjaan lantai kayu premium di ruang keluarga mewah"
-      width="1600"
-      height="900"
+      width={1600}
+      height={900}
       class="h-full w-full object-cover opacity-40"
       format="webp"
     />

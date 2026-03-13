@@ -26,6 +26,6 @@ export default defineConfig({
     }
   },
   image: {
-    domains: ['picsum.photos', 'images.unsplash.com']
+    domains: []
   }
 });

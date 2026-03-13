@@ -12,7 +12,7 @@ const {
   title,
   description,
   canonical,
-  image = '/images/portfolio/hero-placeholder.svg',
+  image = '/images/portfolio/jln-patimura-jaksel.jpg', // Default to a real project image instead of placeholder
   type = 'website',
   publishDate,
 } = Astro.props;
@@ -24,7 +24,7 @@ const socialImageURL = new URL(image, Astro.site);
 const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
-  name: 'Serasi Parket',
+  name: 'Jasa Kayu Profesional',
   description:
     'Spesialis lantai kayu jati solid, kayu merbau solid, sungkai, decking ulin, decking bengkirai, lambersering jati, dan pemasangan genteng sirap ulin profesional.',
   image: socialImageURL.href,
@@ -50,7 +50,7 @@ const serviceSchema = {
   serviceType: 'Jasa Kayu Premium',
   provider: {
     '@type': 'LocalBusiness',
-    name: 'Serasi Parket',
+    name: 'Jasa Kayu Profesional',
   },
   areaServed: {
     '@type': 'AdministrativeArea',
@@ -102,11 +102,11 @@ const articleSchema =
         image: socialImageURL.href,
         author: {
           '@type': 'Organization',
-          name: 'Serasi Parket',
+          name: 'Jasa Kayu Profesional',
         },
         publisher: {
           '@type': 'Organization',
-          name: 'Serasi Parket',
+          name: 'Jasa Kayu Profesional',
           logo: {
             '@type': 'ImageObject',
             url: new URL('/icons/logo.svg', Astro.site).href,
@@ -122,7 +122,7 @@ const articleSchema =
   name="keywords"
   content="lantai kayu jati solid, kayu merbau solid, kayu sungkai, decking ulin, decking bengkirai, lambersering jati, pemasangan genteng sirap ulin, jasa lantai kayu profesional, tukang kayu spesialis"
 />
-<meta name="author" content="Serasi Parket" />
+<meta name="author" content="Jasa Kayu Profesional" />
 <link rel="canonical" href={canonicalURL} />
 
 <!-- Open Graph -->
@@ -131,7 +131,7 @@ const articleSchema =
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:image" content={socialImageURL} />
-<meta property="og:site_name" content="Serasi Parket" />
+<meta property="og:site_name" content="Jasa Kayu Profesional" />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
@@ -140,7 +140,12 @@ const articleSchema =
 <meta name="twitter:image" content={socialImageURL} />
 
 <!-- JSON-LD -->
-<script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
-<script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
-<script type="application/ld+json" set:html={JSON.stringify(breadcrumbList)} />
+{Astro.url.pathname === '/' || Astro.url.pathname === '' ? (
+  <>
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  </>
+) : (
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbList)} />
+)}
 {articleSchema && <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />}

@@ -1,4 +1,4 @@
-# Panduan Penggunaan Gambar di Project Serasi Parket
+# Panduan Penggunaan Gambar di Project Jasa Kayu Profesional
 
 ## Struktur Direktori Gambar
 

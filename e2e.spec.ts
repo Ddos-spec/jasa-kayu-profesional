@@ -1,9 +1,9 @@
 import { test, expect } from '@playwright/test';
 
-test('homepage has Serasi Parket in title and body', async ({ page }) => {
+test('homepage has Jasa Kayu Profesional in title and body', async ({ page }) => {
   await page.goto('/');
-  await expect(page).toHaveTitle(/Serasi Parket/);
-  await expect(page.locator('body')).toContainText('Serasi Parket');
+  await expect(page).toHaveTitle(/Jasa Kayu Profesional/);
+  await expect(page.locator('body')).toContainText('Jasa Kayu Profesional');
   await page.screenshot({ path: '/home/jules/verification/homepage.png', fullPage: true });
 });
 

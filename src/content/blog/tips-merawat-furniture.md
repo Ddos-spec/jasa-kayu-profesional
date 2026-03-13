@@ -2,6 +2,7 @@
 title: '7 Tips Sederhana Merawat Furniture Kayu Anda'
 description: 'Jaga keindahan dan keawetan furniture kayu Anda. Ikuti 7 tips perawatan sederhana ini agar furniture Anda tetap terlihat seperti baru selama bertahun-tahun.'
 pubDate: 2023-11-15
+image: '/images/blog/blog-1.jpg'
 ---
 
 Furniture kayu adalah investasi jangka panjang. Dengan perawatan yang tepat, keindahannya dapat bertahan dari generasi ke generasi.

@@ -5,9 +5,10 @@ displayCategory: 'Residential'
 description: 'Finishing kayu eksklusif di Jln Besakih Kuningan Jakarta Selatan dengan sentuhan seni dan kualitas terbaik.'
 featured: true
 year: 2024
-seoTitle: 'Finishing Kayu Jln Besakih Kuningan Jaksel | Serasi Parket'
+seoTitle: 'Finishing Kayu Jln Besakih Kuningan Jaksel | Jasa Kayu Profesional'
 seoDescription: 'Finishing kayu eksklusif di Jln Besakih Kuningan Jakarta Selatan. Sentuhan seni dan kualitas terbaik untuk hunian mewah Anda.'
 keywords: 'finishing kayu besakih kuningan, finishing kayu jakarta selatan, finishing kayu kuningan, proyek kayu mewah, lantai kayu jakarta'
+image: '/images/portfolio/jln-besakih-kuningan-jaksel.jpg'
 ---
 
 Proyek finishing kayu eksklusif ini berlokasi di Jln Besakih Kuningan, Jakarta Selatan. Lokasi yang strategis dan prestisius ini membutuhkan standar kualitas finishing yang sangat tinggi.

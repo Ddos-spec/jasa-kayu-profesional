@@ -5,6 +5,7 @@ displayCategory: 'Commercial'
 description: 'Decking kayu bengkirai tahan cuaca dengan pergola semi-outdoor dan furniture built-in.'
 featured: true
 year: 2024
+image: '/images/portfolio/portfolio-2.svg'
 ---
 
 Proyek ini menampilkan keahlian kami dalam pembuatan decking outdoor untuk sebuah cafe artisan di Jakarta. Kami menggunakan kayu bengkirai yang dikenal tahan terhadap cuaca tropis Indonesia.

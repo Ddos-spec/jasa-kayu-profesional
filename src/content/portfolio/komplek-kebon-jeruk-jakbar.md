@@ -5,9 +5,10 @@ displayCategory: 'Residential'
 description: 'Finishing kayu modern di Komplek Kebon Jeruk Jakarta Barat dengan sentuhan kontemporer dan kualitas prima.'
 featured: true
 year: 2024
-seoTitle: 'Finishing Kayu Kebon Jeruk Jakbar | Serasi Parket'
+seoTitle: 'Finishing Kayu Kebon Jeruk Jakbar | Jasa Kayu Profesional'
 seoDescription: 'Finishing kayu modern di Komplek Kebon Jeruk Jakarta Barat. Sentuhan kontemporer dan kualitas prima untuk hunian Anda.'
 keywords: 'finishing kayu kebon jeruk, finishing kayu jakarta barat, finishing kayu komplek kebon jeruk, proyek kayu jakarta, lantai kayu modern'
+image: '/images/portfolio/komplek-kebon-jeruk-jakbar.jpg'
 ---
 
 Proyek finishing kayu ini berlokasi di Komplek Kebon Jeruk, Jakarta Barat, kawasan yang terus berkembang dengan hunian-hunian modern. Proyek ini menampilkan pendekatan finishing kayu yang menggabungkan sentuhan kontemporer dengan kualitas prima.

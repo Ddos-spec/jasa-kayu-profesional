@@ -5,6 +5,7 @@ displayCategory: 'Custom Projects'
 description: 'Wall cladding parametric berbahan kayu ash dengan finishing natural oil dan pencahayaan dinamis.'
 featured: true
 year: 2024
+image: '/images/portfolio/portfolio-1.svg'
 ---
 
 Proyek ini merupakan instalasi seni arsitektural yang menampilkan keahlian kami dalam pembuatan wall cladding parametric. Kami menggunakan kayu ash berkualitas tinggi dengan finishing natural oil untuk menonjolkan keindahan serat alami kayu.

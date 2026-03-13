@@ -2,6 +2,7 @@
 title: 'Mengenal Jenis-Jenis Lantai Kayu Populer'
 description: 'Dari solid hingga engineered, kenali perbedaan jenis lantai kayu untuk menemukan pilihan terbaik yang sesuai dengan gaya hidup dan anggaran Anda.'
 pubDate: 2023-11-10
+image: '/images/blog/blog-3.jpg'
 ---
 
 Lantai kayu memberikan kehangatan dan sentuhan kemewahan pada interior. Namun, ada beberapa jenis lantai kayu dengan karakteristik yang berbeda.

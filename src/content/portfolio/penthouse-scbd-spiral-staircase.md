@@ -5,6 +5,7 @@ displayCategory: 'Custom Projects'
 description: 'Tangga spiral kayu oak dengan railing kaca tempered dan handrail ukir tangan.'
 featured: true
 year: 2023
+image: '/images/portfolio/portfolio-4.svg'
 ---
 
 Proyek ini menampilkan keahlian kami dalam pembuatan tangga spiral kayu oak untuk sebuah penthouse mewah di kawasan SCBD. Desain tangga spiral memberikan sentuhan artistik yang unik dan modern.

@@ -2,6 +2,7 @@
 title: 'Panduan Memilih Kayu untuk Proyek Outdoor'
 description: 'Proyek outdoor butuh kayu tahan cuaca. Pelajari cara memilih kayu yang tepat untuk pergola, decking, atau furniture taman agar awet dan indah.'
 pubDate: 2023-11-05
+image: '/images/blog/blog-4.jpg'
 ---
 
 Proyek outdoor seperti pergola, decking, atau furniture taman memerlukan kayu yang mampu bertahan di bawah terik matahari dan guyuran hujan. Kesalahan memilih material bisa berakibat pada kerusakan dini dan biaya perbaikan yang mahal.
@@ -18,4 +19,4 @@ Proyek outdoor seperti pergola, decking, atau furniture taman memerlukan kayu ya
 *   **Kayu Bengkirai:** Alternatif yang lebih terjangkau dari Ulin, namun tetap memiliki daya tahan yang sangat baik.
 *   **Kayu Merbau:** Selain kuat, Merbau memiliki warna eksotis yang akan semakin matang seiring waktu.
 
-Di [Serasi Parket](/), kami menyediakan berbagai pilihan [layanan kayu outdoor](#layanan) yang sesuai dengan kebutuhan dan anggaran Anda. Jangan ragu untuk [berkonsultasi](#kontak) dengan kami.
+Di [Jasa Kayu Profesional](/), kami menyediakan berbagai pilihan [layanan kayu outdoor](#layanan) yang sesuai dengan kebutuhan dan anggaran Anda. Jangan ragu untuk [berkonsultasi](#kontak) dengan kami.

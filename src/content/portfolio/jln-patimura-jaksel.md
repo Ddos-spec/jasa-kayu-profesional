@@ -5,9 +5,10 @@ displayCategory: 'Residential'
 description: 'Finishing kayu premium di Jln Patimura Jakarta Selatan dengan desain elegan dan kualitas terjamin.'
 featured: true
 year: 2024
-seoTitle: 'Finishing Kayu Jln Patimura Jaksel | Serasi Parket'
+seoTitle: 'Finishing Kayu Jln Patimura Jaksel | Jasa Kayu Profesional'
 seoDescription: 'Finishing kayu premium di Jln Patimura Jakarta Selatan. Desain elegan dan kualitas terjamin untuk hunian Anda.'
 keywords: 'finishing kayu patimura jakarta, finishing kayu jakarta selatan, finishing kayu patimura, proyek kayu jakarta, lantai kayu premium'
+image: '/images/portfolio/jln-patimura-jaksel.jpg'
 ---
 
 Proyek finishing kayu ini berlokasi di Jln Patimura, Jakarta Selatan, kawasan yang dikenal dengan hunian-hunian eksklusif dan bergengsi. Kami menangani proyek ini dengan pendekatan yang sangat hati-hati untuk memenuhi standar kualitas yang tinggi.

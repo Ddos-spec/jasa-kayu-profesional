@@ -5,9 +5,10 @@ displayCategory: 'Residential'
 description: 'Proyek finishing kayu eksklusif untuk rumah dinas wakil gubernur DKI Jakarta dengan material Grade A dan teknik presisi tinggi.'
 featured: true
 year: 2024
-seoTitle: 'Finishing Kayu Eksklusif Rumah Wagub DKI Jakarta | Serasi Parket'
+seoTitle: 'Finishing Kayu Eksklusif Rumah Wagub DKI Jakarta | Jasa Kayu Profesional'
 seoDescription: 'Proyek finishing kayu eksklusif untuk rumah dinas wakil gubernur DKI Jakarta. Material Grade A, teknik presisi, hasil terbaik untuk institusi terhormat.'
 keywords: 'finishing kayu eksklusif, rumah dinas pejabat, finishing kayu jakarta, proyek pemerintah, finishing interior mewah'
+image: '/images/portfolio/rumah-wagub-dki-1.jpg'
 ---
 
 Proyek finishing kayu eksklusif untuk rumah dinas wakil gubernur DKI Jakarta. Kami menggunakan material kayu premium Grade A dengan teknik pengerjaan terbaik untuk menciptakan suasana yang megah namun tetap nyaman.
