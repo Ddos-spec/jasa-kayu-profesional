@@ -27,12 +27,12 @@ const stats = [
     <Picture
       src={heroBg}
       alt="Pengerjaan lantai kayu premium di ruang keluarga mewah"
-      width={1600}
-      height={900}
+      widths={[400, 800, 1200, 1600]}
+      sizes="(max-width: 800px) 100vw, 1600px"
+      formats={['avif', 'webp']}
       class="h-full w-full object-cover opacity-40"
-      format="webp"
       loading="eager"
-      priority={true}
+      fetchpriority="high"
     />
     <div class="gradient-overlay absolute inset-0"></div>
   </div>

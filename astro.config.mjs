@@ -26,6 +26,10 @@ export default defineConfig({
     }
   },
   image: {
-    domains: ['picsum.photos']
+    domains: ['picsum.photos'],
+    service: {
+      entrypoint: 'astro/assets/services/sharp'
+    },
+    formats: ['avif', 'webp']
   }
 });
