@@ -17,19 +17,21 @@ export async function getStaticPaths() {
 
 const { portfolio } = Astro.props;
 
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/portfolio/*.{jpeg,jpg,png,gif,svg}');
+
 // Map specific images for slugs that don't directly match a single .jpg file as fallback mechanism
 const overrideImages: Record<string, string> = {
-  'rumah-wagub-dki-jakarta': '/images/portfolio/rumah-wagub-dki-1.jpg',
-  'art-installation-parametric-wall': '/images/portfolio/portfolio-1.svg',
-  'cafe-artisan-jakarta-decking-outdoor': '/images/portfolio/portfolio-2.svg',
-  'hotel-boutique-bandung-lobby-ceiling': '/images/portfolio/portfolio-3.svg',
-  'penthouse-scbd-spiral-staircase': '/images/portfolio/portfolio-4.svg',
-  'townhouse-jakarta-wall-panel-walnut': '/images/portfolio/portfolio-5.svg',
-  'villa-puncak-lantai-jati-solid': '/images/portfolio/portfolio-6.svg'
+  'rumah-wagub-dki-jakarta': '/src/assets/images/portfolio/rumah-wagub-dki-1.jpg',
+  'art-installation-parametric-wall': '/src/assets/images/portfolio/portfolio-1.svg',
+  'cafe-artisan-jakarta-decking-outdoor': '/src/assets/images/portfolio/portfolio-2.svg',
+  'hotel-boutique-bandung-lobby-ceiling': '/src/assets/images/portfolio/portfolio-3.svg',
+  'penthouse-scbd-spiral-staircase': '/src/assets/images/portfolio/portfolio-4.svg',
+  'townhouse-jakarta-wall-panel-walnut': '/src/assets/images/portfolio/portfolio-5.svg',
+  'villa-puncak-lantai-jati-solid': '/src/assets/images/portfolio/portfolio-6.svg'
 };
 
-const image = portfolio.data.image || overrideImages[portfolio.slug] || `/images/portfolio/${portfolio.slug}.jpg`;
-const fallbackImage = '/images/portfolio/portfolio-1.svg';
+const imagePath = portfolio.data.image || overrideImages[portfolio.slug] || `/src/assets/images/portfolio/${portfolio.slug}.jpg`;
+const mainImage = images[imagePath] ? (await images[imagePath]()).default : (await images['/src/assets/images/portfolio/portfolio-1.svg']()).default;
 
 // Set SEO variables
 const seoTitle = portfolio.data.seoTitle || `${portfolio.data.title} | Portfolio | Jasa Kayu Profesional`;
@@ -38,6 +40,17 @@ const keywords = portfolio.data.keywords || 'finishing kayu, portfolio, proyek k
 
 // Set canonical URL
 const canonical = `https://www.jasakayuprofesional.com/portfolio/${portfolio.slug}`;
+
+const otherProjects = await Promise.all(
+  allPortfolios
+    .filter(p => p.slug !== portfolio.slug)
+    .slice(0, 2)
+    .map(async (p, i) => {
+      const pImagePath = p.data.image || overrideImages[p.slug] || `/src/assets/images/portfolio/${p.slug}.jpg`;
+      const pImage = images[pImagePath] ? (await images[pImagePath]()).default : (await images[`/src/assets/images/portfolio/portfolio-${(i % 6) + 1}.svg`]()).default;
+      return { ...p, pImage };
+    })
+);
 ---
 
 <Layout title={seoTitle} description={seoDescription}>
@@ -69,12 +82,12 @@ const canonical = `https://www.jasakayuprofesional.com/portfolio/${portfolio.slu
         "addressCountry": "ID"
       }
     },
-    "image": image,
+    "image": imagePath,
     "keywords": keywords,
     "hasPart": [
       {
         "@type": "ImageObject",
-        "contentUrl": image
+        "contentUrl": imagePath
       }
     ]
   })}
@@ -92,13 +105,13 @@ const canonical = `https://www.jasakayuprofesional.com/portfolio/${portfolio.slu
   
   <article class="bg-white rounded-3xl shadow-lg overflow-hidden">
     <div class="h-64 md:h-96 relative">
-      <img
-        src={image}
+      <Image
+        src={mainImage}
         alt={portfolio.data.title}
         class="w-full h-full object-cover portfolio-detail-image"
-        width="800"
-        height="600"
-        data-fallback={fallbackImage}
+        width={800}
+        height={600}
+        format="webp"
       />
     </div>
     
@@ -120,31 +133,25 @@ const canonical = `https://www.jasakayuprofesional.com/portfolio/${portfolio.slu
       <div class="mt-10 pt-8 border-t border-wood-brown-100">
         <h3 class="font-serif text-2xl font-semibold text-wood-brown-800 mb-4">Lihat Proyek Lainnya</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {allPortfolios
-            .filter(p => p.slug !== portfolio.slug)
-            .slice(0, 2)
-            .map((p, i) => {
-              const pImage = p.data.image || overrideImages[p.slug] || `/images/portfolio/${p.slug}.jpg`;
-              const fbImg = `/images/portfolio/portfolio-${(i % 6) + 1}.svg`;
-              return (
+          {otherProjects.map((p) => (
               <a 
                 href={`/portfolio/${p.slug}`} 
                 class="block group"
               >
                 <div class="overflow-hidden rounded-xl">
-                  <img
-                    src={pImage}
+                  <Image
+                    src={p.pImage}
                     alt={p.data.title}
                     class="w-full h-48 object-cover transition duration-300 group-hover:scale-105 portfolio-detail-image"
-                    width="400"
-                    height="300"
-                    data-fallback={fbImg}
+                    width={400}
+                    height={300}
+                    format="webp"
                   />
                 </div>
                 <h4 class="font-semibold text-wood-brown-800 mt-3 group-hover:text-wood-brown-600">{p.data.title}</h4>
                 <p class="text-sm text-wood-brown-600">{p.data.description}</p>
               </a>
-            )})}
+            ))}
         </div>
       </div>
     </div>

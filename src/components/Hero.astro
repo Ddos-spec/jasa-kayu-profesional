@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import Badge from '../components/common/Badge.astro';
 import Picture from '../components/common/Picture.astro';
-import heroBg from '../assets/images/general/hero-background.jpg';
+import heroBg from '../assets/images/portfolio/rumah-wagub-dki-1.jpg';
 
 const stats = [
   {
@@ -31,6 +31,8 @@ const stats = [
       height={900}
       class="h-full w-full object-cover opacity-40"
       format="webp"
+      loading="eager"
+      priority={true}
     />
     <div class="gradient-overlay absolute inset-0"></div>
   </div>

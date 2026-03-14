@@ -18,7 +18,7 @@ const { measurementId } = ANALYTICS_CONFIG.ga4;
     </script>
     
     {/* Enhanced measurement */}
-    <script is:inline>
+    <script type="text/partytown" is:inline>
       {`// Enhanced measurement features
       gtag('config', '${measurementId}', {
         page_title: document.title,

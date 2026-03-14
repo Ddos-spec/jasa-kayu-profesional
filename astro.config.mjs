@@ -26,6 +26,6 @@ export default defineConfig({
     }
   },
   image: {
-    domains: []
+    domains: ['picsum.photos']
   }
 });

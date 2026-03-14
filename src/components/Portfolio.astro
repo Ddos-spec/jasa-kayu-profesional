@@ -1,7 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
-import Picture from '../components/common/Picture.astro';
 
 const categories = [
   { id: 'all', label: 'Semua Proyek' },
@@ -10,31 +9,35 @@ const categories = [
   { id: 'custom', label: 'Custom Projects' }
 ];
 
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/portfolio/*.{jpeg,jpg,png,gif,svg}');
+
 const allProjects = await getCollection('portfolio');
-const projects = allProjects.map((item, index) => {
+const projects = await Promise.all(allProjects.map(async (item, index) => {
   // Map specific images for slugs that don't directly match a single .jpg file
   const overrideImages: Record<string, string> = {
-    'rumah-wagub-dki-jakarta': '/images/portfolio/rumah-wagub-dki-1.jpg',
-    'art-installation-parametric-wall': '/images/portfolio/portfolio-1.svg',
-    'cafe-artisan-jakarta-decking-outdoor': '/images/portfolio/portfolio-2.svg',
-    'hotel-boutique-bandung-lobby-ceiling': '/images/portfolio/portfolio-3.svg',
-    'penthouse-scbd-spiral-staircase': '/images/portfolio/portfolio-4.svg',
-    'townhouse-jakarta-wall-panel-walnut': '/images/portfolio/portfolio-5.svg',
-    'villa-puncak-lantai-jati-solid': '/images/portfolio/portfolio-6.svg'
+    'rumah-wagub-dki-jakarta': '/src/assets/images/portfolio/rumah-wagub-dki-1.jpg',
+    'art-installation-parametric-wall': '/src/assets/images/portfolio/portfolio-1.svg',
+    'cafe-artisan-jakarta-decking-outdoor': '/src/assets/images/portfolio/portfolio-2.svg',
+    'hotel-boutique-bandung-lobby-ceiling': '/src/assets/images/portfolio/portfolio-3.svg',
+    'penthouse-scbd-spiral-staircase': '/src/assets/images/portfolio/portfolio-4.svg',
+    'townhouse-jakarta-wall-panel-walnut': '/src/assets/images/portfolio/portfolio-5.svg',
+    'villa-puncak-lantai-jati-solid': '/src/assets/images/portfolio/portfolio-6.svg'
   };
 
-  const image = item.data.image || overrideImages[item.slug] || `/images/portfolio/${item.slug}.jpg`;
+  const imagePath = item.data.image || overrideImages[item.slug] || `/src/assets/images/portfolio/${item.slug}.jpg`;
+  const image = images[imagePath] ? (await images[imagePath]()).default : (await images['/src/assets/images/portfolio/portfolio-1.svg']()).default;
   
   // Rotating fallback SVG array for image errors
-  const fallbackImages = [
-    '/images/portfolio/portfolio-1.svg',
-    '/images/portfolio/portfolio-2.svg',
-    '/images/portfolio/portfolio-3.svg',
-    '/images/portfolio/portfolio-4.svg',
-    '/images/portfolio/portfolio-5.svg',
-    '/images/portfolio/portfolio-6.svg'
+  const fallbackPaths = [
+    '/src/assets/images/portfolio/portfolio-1.svg',
+    '/src/assets/images/portfolio/portfolio-2.svg',
+    '/src/assets/images/portfolio/portfolio-3.svg',
+    '/src/assets/images/portfolio/portfolio-4.svg',
+    '/src/assets/images/portfolio/portfolio-5.svg',
+    '/src/assets/images/portfolio/portfolio-6.svg'
   ];
-  const fallback = fallbackImages[index % fallbackImages.length];
+  const fallbackPath = fallbackPaths[index % fallbackPaths.length];
+  const fallback = (await images[fallbackPath]()).default;
 
   return {
     title: item.data.title,
@@ -45,7 +48,7 @@ const projects = allProjects.map((item, index) => {
     description: item.data.description,
     slug: item.slug
   };
-});
+}));
 ---
 <section id="portofolio" class="section-anchor bg-[#FFF8DC] py-20 md:py-28">
   <div class="mx-auto max-w-6xl px-4 md:px-8">
@@ -70,14 +73,14 @@ const projects = allProjects.map((item, index) => {
     <div class="mt-14 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
       {projects.map((project) => (
         <figure class="portfolio-card card-hover group relative overflow-hidden rounded-3xl bg-white shadow-elegant" data-category={project.category} key={project.title}>
-          <img
+          <Image
             src={project.image}
             alt={project.title}
             class="h-64 w-full object-cover transition duration-500 group-hover:scale-105 portfolio-image"
-            width="800"
-            height="600"
+            width={800}
+            height={600}
+            format="webp"
             loading="lazy"
-            data-fallback={project.fallback}
           />
           <figcaption class="flex flex-col gap-3 p-6">
             <span class="text-xs font-semibold uppercase tracking-wide text-wood-brown-500">{project.displayCategory}</span>
