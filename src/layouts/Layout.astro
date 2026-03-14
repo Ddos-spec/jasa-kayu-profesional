@@ -20,6 +20,10 @@ const { title = 'Jasa Kayu Profesional | Spesialis Lantai Kayu Jati Solid & Deck
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://www.googletagmanager.com" />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    
+    <!-- Preload the Hero Image to fix LCP -->
+    <link rel="preload" as="image" href="/src/assets/images/portfolio/rumah-wagub-dki-1.jpg" fetchpriority="high" />
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet" />
 
     <GoogleAnalytics />
@@ -81,7 +85,6 @@ const { title = 'Jasa Kayu Profesional | Spesialis Lantai Kayu Jati Solid & Deck
         const menu = document.getElementById('mobile-menu');
 
         if (toggle && menu) {
-          // Toggle menu on button click
           toggle.addEventListener('click', function(e) {
             e.stopPropagation();
             const isHidden = menu.classList.contains('hidden');
@@ -96,7 +99,6 @@ const { title = 'Jasa Kayu Profesional | Spesialis Lantai Kayu Jati Solid & Deck
             }
           });
 
-          // Close menu when clicking a link
           menu.querySelectorAll('a').forEach(function(link) {
             link.addEventListener('click', function() {
               menu.classList.add('hidden');
@@ -105,7 +107,6 @@ const { title = 'Jasa Kayu Profesional | Spesialis Lantai Kayu Jati Solid & Deck
             });
           });
 
-          // Close menu when clicking outside
           document.addEventListener('click', function(e) {
             if (!menu.contains(e.target) && !toggle.contains(e.target) && !menu.classList.contains('hidden')) {
               menu.classList.add('hidden');
@@ -114,7 +115,6 @@ const { title = 'Jasa Kayu Profesional | Spesialis Lantai Kayu Jati Solid & Deck
             }
           });
 
-          // Close menu on Escape key
           document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && !menu.classList.contains('hidden')) {
               menu.classList.add('hidden');
@@ -125,7 +125,20 @@ const { title = 'Jasa Kayu Profesional | Spesialis Lantai Kayu Jati Solid & Deck
         }
       });
     </script>
-    <Analytics />
-    <SpeedInsights />
+    
+    <!-- Defer Analytics for better LCP -->
+    <script is:inline>
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          const s1 = document.createElement('script');
+          s1.src = '/_vercel/insights/script.js';
+          document.body.appendChild(s1);
+          
+          const s2 = document.createElement('script');
+          s2.src = '/_vercel/speed-insights/script.js';
+          document.body.appendChild(s2);
+        }, 3000);
+      });
+    </script>
   </body>
 </html>

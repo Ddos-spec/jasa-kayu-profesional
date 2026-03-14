@@ -23,6 +23,8 @@
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
+    "chrome-launcher": "^1.2.1",
+    "lighthouse": "^13.0.3",
     "typescript": "^5.0.0"
   }
 }
