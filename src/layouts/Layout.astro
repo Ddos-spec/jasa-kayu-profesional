@@ -2,8 +2,6 @@
 import '../styles/global.css';
 import SEO from '../components/SEO.astro';
 import GoogleAnalytics from '../components/analytics/GoogleAnalytics.astro';
-import Analytics from '@vercel/analytics/astro';
-import SpeedInsights from '@vercel/speed-insights/astro';
 
 const { title = 'Jasa Kayu Profesional | Spesialis Lantai Kayu Jati Solid & Decking', description = 'Pakar lantai kayu jati solid, kayu merbau solid, kayu sungkai, decking ulin, decking bengkirai, lambersering jati, & pemasangan genteng sirap ulin profesional.', canonical } = Astro.props;
 ---
@@ -123,21 +121,6 @@ const { title = 'Jasa Kayu Profesional | Spesialis Lantai Kayu Jati Solid & Deck
             }
           });
         }
-      });
-    </script>
-    
-    <!-- Defer Analytics for better LCP -->
-    <script is:inline>
-      window.addEventListener('load', () => {
-        setTimeout(() => {
-          const s1 = document.createElement('script');
-          s1.src = '/_vercel/insights/script.js';
-          document.body.appendChild(s1);
-          
-          const s2 = document.createElement('script');
-          s2.src = '/_vercel/speed-insights/script.js';
-          document.body.appendChild(s2);
-        }, 3000);
       });
     </script>
   </body>

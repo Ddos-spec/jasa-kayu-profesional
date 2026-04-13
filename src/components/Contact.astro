@@ -1,9 +1,13 @@
 ---
+const whatsappNumber = '6281283135295';
+const whatsappDisplayNumber = '+62 812-8313-5295';
+const defaultWhatsAppText = 'Halo Jasa Kayu Profesional, saya ingin konsultasi proyek kayu.';
+
 const contactMethods = [
   {
     label: 'WhatsApp (24/7 Fast Response)',
-    value: '+62 812-3456-7890',
-    href: 'https://wa.me/6281283135295?text=Halo%20Jasa%20Kayu%20Profesional%2C%20saya%20ingin%20konsultasi%20proyek%20kayu.'
+    value: whatsappDisplayNumber,
+    href: `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(defaultWhatsAppText)}`
   },
   {
     label: 'Email',
@@ -11,6 +15,61 @@ const contactMethods = [
     href: 'mailto:info@jasakayuprofesional.com'
   }
 ];
+const formScript = `
+  const form = document.getElementById('contact-form');
+  const successMessage = document.getElementById('form-success');
+  const whatsappNumber = ${JSON.stringify(whatsappNumber)};
+
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    let isValid = true;
+
+    form.querySelectorAll('input, select, textarea').forEach((field) => {
+      const errorEl = form.querySelector(\`[data-error="\${field.id}"]\`);
+      if (field instanceof HTMLInputElement || field instanceof HTMLTextAreaElement || field instanceof HTMLSelectElement) {
+        if (!field.checkValidity() || field.value.trim() === '') {
+          field.classList.add('border-red-500');
+          if (errorEl) {
+            errorEl.classList.remove('hidden');
+          }
+          isValid = false;
+        } else {
+          field.classList.remove('border-red-500');
+          if (errorEl) {
+            errorEl.classList.add('hidden');
+          }
+        }
+      }
+    });
+
+    if (isValid) {
+      successMessage?.classList.remove('hidden');
+
+      const formData = new FormData(form);
+      const lines = [
+        'Halo Jasa Kayu Profesional, saya ingin konsultasi proyek kayu.',
+        '',
+        \`Nama: \${formData.get('nama')}\`,
+        \`WhatsApp: \${formData.get('whatsapp')}\`,
+        \`Layanan: \${formData.get('layanan')}\`,
+        \`Lokasi: \${formData.get('lokasi')}\`,
+        \`Budget: \${formData.get('budget')}\`,
+        \`Deskripsi: \${formData.get('deskripsi')}\`
+      ];
+      const whatsappUrl = \`https://wa.me/\${whatsappNumber}?text=\${encodeURIComponent(lines.join('\\n'))}\`;
+      const whatsappWindow = window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+
+      if (!whatsappWindow) {
+        window.location.href = whatsappUrl;
+      }
+
+      setTimeout(() => {
+        successMessage?.classList.add('hidden');
+      }, 6000);
+      form.reset();
+    }
+  });
+`;
 ---
 <section id="kontak" class="section-anchor bg-[#FFF8DC] py-20 md:py-28">
   <div class="mx-auto max-w-6xl px-4 md:px-8">
@@ -106,44 +165,10 @@ const contactMethods = [
             <p class="mt-1 hidden text-xs text-red-600" data-error="deskripsi">Deskripsi kebutuhan wajib diisi.</p>
           </div>
           <button type="submit" class="btn-primary w-full justify-center">Kirim Permintaan Konsultasi</button>
-          <p id="form-success" class="hidden rounded-2xl bg-green-100 px-4 py-3 text-sm font-medium text-green-700">Terima kasih! Tim kami akan menghubungi Anda dalam 5 menit melalui WhatsApp.</p>
+          <p id="form-success" class="hidden rounded-2xl bg-green-100 px-4 py-3 text-sm font-medium text-green-700">Data siap dikirim. Anda akan diarahkan ke WhatsApp untuk melanjutkan konsultasi.</p>
         </form>
       </div>
     </div>
   </div>
-  <script type="module">
-    const form = document.getElementById('contact-form');
-    const successMessage = document.getElementById('form-success');
-
-    form?.addEventListener('submit', (event) => {
-      event.preventDefault();
-      let isValid = true;
-
-      form.querySelectorAll('input, select, textarea').forEach((field) => {
-        const errorEl = form.querySelector(`[data-error="${field.id}"]`);
-        if (field instanceof HTMLInputElement || field instanceof HTMLTextAreaElement || field instanceof HTMLSelectElement) {
-          if (!field.checkValidity() || field.value.trim() === '') {
-            field.classList.add('border-red-500');
-            if (errorEl) {
-              errorEl.classList.remove('hidden');
-            }
-            isValid = false;
-          } else {
-            field.classList.remove('border-red-500');
-            if (errorEl) {
-              errorEl.classList.add('hidden');
-            }
-          }
-        }
-      });
-
-      if (isValid) {
-        successMessage?.classList.remove('hidden');
-        form.reset();
-        setTimeout(() => {
-          successMessage?.classList.add('hidden');
-        }, 6000);
-      }
-    });
-  </script>
+  <script type="module" is:inline set:html={formScript} />
 </section>

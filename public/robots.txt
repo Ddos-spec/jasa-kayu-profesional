@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jasakayuprofesional.com/sitemap-index.xml
+Sitemap: https://www.jasakayuprofesional.com/sitemap-index.xml
 
 # Blokir akses ke file-file sensitif
 Disallow: /admin/
