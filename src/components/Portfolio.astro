@@ -9,34 +9,50 @@ const categories = [
   { id: 'custom', label: 'Custom Projects' }
 ];
 
-const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/portfolio/*.{jpeg,jpg,png,gif,svg}');
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/portfolio/**/*.{jpeg,jpg,png,gif,svg}');
 
 const allProjects = await getCollection('portfolio');
-const projects = await Promise.all(allProjects.map(async (item, index) => {
-  // Map specific images for slugs that don't directly match a single .jpg file
-  const overrideImages: Record<string, string> = {
-    'rumah-wagub-dki-jakarta': '/src/assets/images/portfolio/rumah-wagub-dki-1.jpg',
-    'art-installation-parametric-wall': '/src/assets/images/portfolio/portfolio-1.svg',
-    'cafe-artisan-jakarta-decking-outdoor': '/src/assets/images/portfolio/portfolio-2.svg',
-    'hotel-boutique-bandung-lobby-ceiling': '/src/assets/images/portfolio/portfolio-3.svg',
-    'penthouse-scbd-spiral-staircase': '/src/assets/images/portfolio/portfolio-4.svg',
-    'townhouse-jakarta-wall-panel-walnut': '/src/assets/images/portfolio/portfolio-5.svg',
-    'villa-puncak-lantai-jati-solid': '/src/assets/images/portfolio/portfolio-6.svg'
-  };
+const fallbackPaths = [
+  '/src/assets/images/portfolio/portfolio-1.svg',
+  '/src/assets/images/portfolio/portfolio-2.svg',
+  '/src/assets/images/portfolio/portfolio-3.svg',
+  '/src/assets/images/portfolio/portfolio-4.svg',
+  '/src/assets/images/portfolio/portfolio-5.svg',
+  '/src/assets/images/portfolio/portfolio-6.svg'
+];
 
-  const imagePath = item.data.image || overrideImages[item.slug] || `/src/assets/images/portfolio/${item.slug}.jpg`;
-  const image = images[imagePath] ? (await images[imagePath]()).default : (await images['/src/assets/images/portfolio/portfolio-1.svg']()).default;
-  
-  // Rotating fallback SVG array for image errors
-  const fallbackPaths = [
-    '/src/assets/images/portfolio/portfolio-1.svg',
-    '/src/assets/images/portfolio/portfolio-2.svg',
-    '/src/assets/images/portfolio/portfolio-3.svg',
-    '/src/assets/images/portfolio/portfolio-4.svg',
-    '/src/assets/images/portfolio/portfolio-5.svg',
-    '/src/assets/images/portfolio/portfolio-6.svg'
-  ];
+const toAssetImagePath = (imagePath?: string, slug?: string) => {
+  if (!imagePath) {
+    return slug ? `/src/assets/images/portfolio/${slug}.jpg` : undefined;
+  }
+
+  if (imagePath.startsWith('/src/assets/images/portfolio/')) {
+    return imagePath;
+  }
+
+  if (imagePath.startsWith('/images/portfolio/')) {
+    return `/src/assets${imagePath}`;
+  }
+
+  return imagePath;
+};
+
+const projects = await Promise.all([...allProjects]
+  .sort((a, b) => {
+    const featuredDelta = Number(b.data.featured ?? false) - Number(a.data.featured ?? false);
+    if (featuredDelta !== 0) return featuredDelta;
+
+    const yearDelta = (b.data.year ?? 0) - (a.data.year ?? 0);
+    if (yearDelta !== 0) return yearDelta;
+
+    return a.data.title.localeCompare(b.data.title, 'id');
+  })
+  .map(async (item, index) => {
+  const imagePath = toAssetImagePath(item.data.image, item.slug);
   const fallbackPath = fallbackPaths[index % fallbackPaths.length];
+  const image = imagePath && images[imagePath]
+    ? (await images[imagePath]()).default
+    : (await images[fallbackPath]()).default;
   const fallback = (await images[fallbackPath]()).default;
 
   return {

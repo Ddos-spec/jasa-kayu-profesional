@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
-import Picture from '../../components/common/Picture.astro';
+import ImageGallery from '../../components/ImageGallery.astro';
 
 // Get all portfolio entries
 const allPortfolios = await getCollection('portfolio');
@@ -16,22 +16,51 @@ export async function getStaticPaths() {
 }
 
 const { portfolio } = Astro.props;
+const { Content } = await portfolio.render();
 
-const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/portfolio/*.{jpeg,jpg,png,gif,svg}');
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/portfolio/**/*.{jpeg,jpg,png,gif,svg}');
 
-// Map specific images for slugs that don't directly match a single .jpg file as fallback mechanism
-const overrideImages: Record<string, string> = {
-  'rumah-wagub-dki-jakarta': '/src/assets/images/portfolio/rumah-wagub-dki-1.jpg',
-  'art-installation-parametric-wall': '/src/assets/images/portfolio/portfolio-1.svg',
-  'cafe-artisan-jakarta-decking-outdoor': '/src/assets/images/portfolio/portfolio-2.svg',
-  'hotel-boutique-bandung-lobby-ceiling': '/src/assets/images/portfolio/portfolio-3.svg',
-  'penthouse-scbd-spiral-staircase': '/src/assets/images/portfolio/portfolio-4.svg',
-  'townhouse-jakarta-wall-panel-walnut': '/src/assets/images/portfolio/portfolio-5.svg',
-  'villa-puncak-lantai-jati-solid': '/src/assets/images/portfolio/portfolio-6.svg'
+const fallbackPaths = [
+  '/src/assets/images/portfolio/portfolio-1.svg',
+  '/src/assets/images/portfolio/portfolio-2.svg',
+  '/src/assets/images/portfolio/portfolio-3.svg',
+  '/src/assets/images/portfolio/portfolio-4.svg',
+  '/src/assets/images/portfolio/portfolio-5.svg',
+  '/src/assets/images/portfolio/portfolio-6.svg'
+];
+
+const toAssetImagePath = (imagePath?: string, slug?: string) => {
+  if (!imagePath) {
+    return slug ? `/src/assets/images/portfolio/${slug}.jpg` : undefined;
+  }
+
+  if (imagePath.startsWith('/src/assets/images/portfolio/')) {
+    return imagePath;
+  }
+
+  if (imagePath.startsWith('/images/portfolio/')) {
+    return `/src/assets${imagePath}`;
+  }
+
+  return imagePath;
 };
 
-const imagePath = portfolio.data.image || overrideImages[portfolio.slug] || `/src/assets/images/portfolio/${portfolio.slug}.jpg`;
-const mainImage = images[imagePath] ? (await images[imagePath]()).default : (await images['/src/assets/images/portfolio/portfolio-1.svg']()).default;
+const resolveImageMetadata = async (imagePath?: string, fallbackPath = fallbackPaths[0]) => {
+  if (imagePath && images[imagePath]) {
+    return (await images[imagePath]()).default;
+  }
+
+  return (await images[fallbackPath]()).default;
+};
+
+const imagePath = toAssetImagePath(portfolio.data.image, portfolio.slug);
+const mainImage = await resolveImageMetadata(imagePath);
+const galleryImages = await Promise.all((portfolio.data.gallery ?? []).map(async (path, index) => ({
+  src: await resolveImageMetadata(toAssetImagePath(path), fallbackPaths[(index + 1) % fallbackPaths.length]),
+  alt: `${portfolio.data.title} - dokumentasi proyek ${index + 2}`,
+  caption: `Dokumentasi proyek ${index + 2}`
+})));
+const allPortfolioImages = [portfolio.data.image, ...(portfolio.data.gallery ?? [])].filter(Boolean);
 
 // Set SEO variables
 const seoTitle = portfolio.data.seoTitle || `${portfolio.data.title} | Portfolio | Jasa Kayu Profesional`;
@@ -46,14 +75,14 @@ const otherProjects = await Promise.all(
     .filter(p => p.slug !== portfolio.slug)
     .slice(0, 2)
     .map(async (p, i) => {
-      const pImagePath = p.data.image || overrideImages[p.slug] || `/src/assets/images/portfolio/${p.slug}.jpg`;
-      const pImage = images[pImagePath] ? (await images[pImagePath]()).default : (await images[`/src/assets/images/portfolio/portfolio-${(i % 6) + 1}.svg`]()).default;
+      const pImagePath = toAssetImagePath(p.data.image, p.slug);
+      const pImage = await resolveImageMetadata(pImagePath, fallbackPaths[i % fallbackPaths.length]);
       return { ...p, pImage };
     })
 );
 ---
 
-<Layout title={seoTitle} description={seoDescription}>
+<Layout title={seoTitle} description={seoDescription} canonical={canonical}>
 
 <!-- Schema Markup for the specific portfolio item -->
 <script type="application/ld+json">
@@ -82,14 +111,12 @@ const otherProjects = await Promise.all(
         "addressCountry": "ID"
       }
     },
-    "image": imagePath,
+    "image": allPortfolioImages,
     "keywords": keywords,
-    "hasPart": [
-      {
-        "@type": "ImageObject",
-        "contentUrl": imagePath
-      }
-    ]
+    "hasPart": allPortfolioImages.map((image) => ({
+      "@type": "ImageObject",
+      "contentUrl": image
+    }))
   })}
 </script>
 
@@ -123,11 +150,52 @@ const otherProjects = await Promise.all(
         <div class="mt-4 flex flex-wrap gap-2">
           {portfolio.data.year && <span class="text-sm bg-wood-brown-100 text-wood-brown-800 px-3 py-1 rounded-full">Tahun: {portfolio.data.year}</span>}
           <span class="text-sm bg-wood-brown-100 text-wood-brown-800 px-3 py-1 rounded-full">Kategori: {portfolio.data.displayCategory}</span>
+          {portfolio.data.location && <span class="text-sm bg-wood-brown-100 text-wood-brown-800 px-3 py-1 rounded-full">Lokasi: {portfolio.data.location}</span>}
         </div>
       </div>
-      
-      <div class="prose prose-wood-brown max-w-none">
-        <slot />
+
+      {(portfolio.data.location || portfolio.data.address) && (
+        <div class="grid gap-4 rounded-2xl border border-wood-brown-100 bg-[#FFFBF2] p-6 md:grid-cols-2">
+          {portfolio.data.location && (
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-wood-brown-500">Area Proyek</p>
+              <p class="mt-2 text-sm leading-relaxed text-[#4A4A4A]">{portfolio.data.location}</p>
+            </div>
+          )}
+          {portfolio.data.address && (
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-wood-brown-500">Alamat Ringkas</p>
+              <p class="mt-2 text-sm leading-relaxed text-[#4A4A4A]">{portfolio.data.address}</p>
+            </div>
+          )}
+        </div>
+      )}
+
+      <div class="prose prose-wood-brown mt-8 max-w-none">
+        <Content />
+      </div>
+
+      {galleryImages.length > 0 && (
+        <div class="mt-10">
+          <h2 class="font-serif text-2xl font-semibold text-wood-brown-800">Galeri Proyek</h2>
+          <p class="mt-3 text-sm leading-relaxed text-[#4A4A4A]">
+            Dokumentasi lapangan membantu calon klien melihat proporsi, struktur, dan hasil finishing proyek secara lebih nyata.
+          </p>
+          <ImageGallery images={galleryImages} columns={2} spacing="md" />
+        </div>
+      )}
+
+      <div class="mt-10 rounded-3xl bg-wood-brown-800 px-6 py-8 text-white">
+        <h2 class="font-serif text-2xl font-semibold">Punya Kebutuhan Kayu Serupa?</h2>
+        <p class="mt-3 max-w-2xl text-sm leading-relaxed text-wood-brown-50/90">
+          Kirim foto area, ukuran kasar, dan kebutuhan utama Anda lewat WhatsApp. Tim kami bantu arahkan material, scope kerja, dan langkah awal yang paling masuk akal.
+        </p>
+        <a
+          href="/#kontak"
+          class="mt-5 inline-flex items-center rounded-full bg-white px-5 py-3 text-sm font-semibold text-wood-brown-800 transition hover:bg-wood-brown-50"
+        >
+          Konsultasi via WhatsApp
+        </a>
       </div>
       
       <div class="mt-10 pt-8 border-t border-wood-brown-100">
@@ -157,20 +225,5 @@ const otherProjects = await Promise.all(
     </div>
   </article>
 </div>
-
-<script is:inline>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Handle image fallback for portfolio detail page
-    const detailImages = document.querySelectorAll('.portfolio-detail-image');
-    detailImages.forEach(img => {
-      img.addEventListener('error', function() {
-        const fallback = this.getAttribute('data-fallback');
-        if (fallback && !this.src.endsWith(fallback)) {
-          this.src = fallback;
-        }
-      });
-    });
-  });
-</script>
 
 </Layout>

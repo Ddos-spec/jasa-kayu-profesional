@@ -16,8 +16,14 @@ const portfolioCollection = defineCollection({
     displayCategory: z.string(),
     description: z.string(),
     image: z.string().optional(),
+    gallery: z.array(z.string()).optional(),
     featured: z.boolean().optional().default(false),
     year: z.number().optional(),
+    location: z.string().optional(),
+    address: z.string().optional(),
+    seoTitle: z.string().optional(),
+    seoDescription: z.string().optional(),
+    keywords: z.string().optional(),
   }),
 });
 
