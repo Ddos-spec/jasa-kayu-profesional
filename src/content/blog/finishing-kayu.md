@@ -26,4 +26,4 @@ HPL terdiri dari beberapa lapisan kertas yang dipadatkan di bawah tekanan dan su
 *   Gunakan **Melamine** untuk proyek dengan anggaran terbatas atau untuk bagian-bagian yang tidak sering tersentuh, seperti bagian dalam lemari.
 *   Gunakan **HPL** untuk area dengan penggunaan tinggi seperti kitchen set, meja kerja, atau pintu.
 
-[Jasa Kayu Profesional](/blog) menyediakan kedua opsi finishing ini. [Hubungi kami](#kontak) untuk mendiskusikan pilihan terbaik untuk [proyek custom furniture](#layanan) Anda.
+[Jasa Kayu Profesional](/blog) menyediakan kedua opsi finishing ini. [Hubungi kami](/#kontak) untuk mendiskusikan pilihan terbaik untuk [proyek custom furniture](/#layanan) Anda.

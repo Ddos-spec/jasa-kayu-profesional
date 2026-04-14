@@ -23,4 +23,4 @@ Sebagai aksen, kayu berwarna gelap seperti walnut atau merbau yang di-finishing 
 
 Finishing yang menonjolkan tekstur alami kayu, seperti *wire-brushed* atau *live edge*, semakin populer. Ini memberikan karakter dan keunikan pada setiap potongan furniture.
 
-Apapun tren yang Anda pilih, [Jasa Kayu Profesional](/blog) siap membantu Anda mewujudkannya. Kami menyediakan layanan [custom furniture](#layanan) yang dapat disesuaikan dengan gaya desain impian Anda.
+Apapun tren yang Anda pilih, [Jasa Kayu Profesional](/blog) siap membantu Anda mewujudkannya. Kami menyediakan layanan [custom furniture](/#layanan) yang dapat disesuaikan dengan gaya desain impian Anda.

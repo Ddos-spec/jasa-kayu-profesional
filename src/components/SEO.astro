@@ -26,22 +26,19 @@ const localBusinessSchema = {
   '@type': 'LocalBusiness',
   name: 'Jasa Kayu Profesional',
   description:
-    'Spesialis lantai kayu jati solid, kayu merbau solid, sungkai, decking ulin, decking bengkirai, lambersering jati, dan pemasangan genteng sirap ulin profesional.',
+    'Jasa kayu profesional untuk lantai kayu, decking, tangga, ceiling, wall panel, dan pekerjaan custom di Jabodetabek.',
   image: socialImageURL.href,
   telephone: '+6281283135295',
-  areaServed: 'Jakarta, Bogor, Depok, Tangerang, Bekasi, Karawang, Sukabumi',
+  areaServed: ['Jakarta', 'Bogor', 'Depok', 'Tangerang', 'Bekasi', 'BSD', 'Karawang', 'Sukabumi'],
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Jakarta',
     addressRegion: 'DKI Jakarta',
     addressCountry: 'ID',
   },
-  openingHours: 'Mo-Su 00:00-23:59',
+  openingHours: 'Mo-Su 08:00-22:00',
   url: Astro.site,
-  sameAs: [
-    'https://www.instagram.com/jasakayuprofesional',
-    'https://www.facebook.com/jasakayuprofesional',
-  ],
+  sameAs: ['https://wa.me/6281283135295'],
 };
 
 const serviceSchema = {
@@ -54,7 +51,7 @@ const serviceSchema = {
   },
   areaServed: {
     '@type': 'AdministrativeArea',
-    name: 'Jabodetabek',
+    name: 'Jabodetabek dan sekitarnya',
   },
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
@@ -120,7 +117,7 @@ const articleSchema =
 <meta name="description" content={description} />
 <meta
   name="keywords"
-  content="lantai kayu jati solid, kayu merbau solid, kayu sungkai, decking ulin, decking bengkirai, lambersering jati, pemasangan genteng sirap ulin, jasa lantai kayu profesional, tukang kayu spesialis"
+  content="jasa kayu profesional, lantai kayu, decking outdoor, tangga kayu, wall panel kayu, plafon kayu, jasa kayu jakarta, jasa kayu tangerang, jasa kayu bekasi"
 />
 <meta name="author" content="Jasa Kayu Profesional" />
 <link rel="canonical" href={canonicalURL} />

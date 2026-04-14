@@ -2,33 +2,37 @@
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import Services from '../components/Services.astro';
+import ServiceAreas from '../components/ServiceAreas.astro';
 import WhyChooseUs from '../components/WhyChooseUs.astro';
 import Portfolio from '../components/Portfolio.astro';
 import Testimonials from '../components/Testimonials.astro';
+import FAQSection from '../components/FAQSection.astro';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
 import SchemaMarkup from '../components/common/SchemaMarkup.astro';
 ---
-<Layout title="Jasa Kayu Profesional | Spesialis Lantai Kayu Jati Solid & Decking" description="Pakar pengerjaan lantai kayu jati solid, kayu merbau solid, kayu sungkai, decking ulin, decking bengkirai, lambersering jati, & pemasangan genteng sirap ulin." canonical="https://www.jasakayuprofesional.com/">
+<Layout title="Jasa Kayu Profesional | Lantai Kayu, Decking, Tangga, dan Wall Panel" description="Jasa kayu profesional untuk lantai kayu, decking, tangga, ceiling, wall panel, dan pekerjaan custom di Jabodetabek. Konsultasi cepat via WhatsApp dan survei sesuai kebutuhan proyek." canonical="https://www.jasakayuprofesional.com/">
   <SchemaMarkup
     type="Organization"
     name="Jasa Kayu Profesional"
     url="https://www.jasakayuprofesional.com/"
-    description="Pakar pengerjaan lantai kayu jati solid, kayu merbau solid, kayu sungkai, decking ulin, decking bengkirai, lambersering jati, & pemasangan genteng sirap ulin."
+    description="Jasa kayu profesional untuk lantai kayu, decking, tangga, ceiling, wall panel, dan pekerjaan custom di Jabodetabek."
     logo="/icons/logo.svg"
   />
   <SchemaMarkup
     type="LocalBusiness"
     name="Jasa Kayu Profesional"
     url="https://www.jasakayuprofesional.com/"
-    description="Pakar pengerjaan lantai kayu jati solid, kayu merbau solid, kayu sungkai, decking ulin, decking bengkirai, lambersering jati, & pemasangan genteng sirap ulin."
+    description="Jasa kayu profesional untuk lantai kayu, decking, tangga, ceiling, wall panel, dan pekerjaan custom di Jabodetabek."
     logo="/icons/logo.svg"
   />
   <Hero />
   <Services />
+  <ServiceAreas />
   <WhyChooseUs />
   <Portfolio />
   <Testimonials />
+  <FAQSection />
   <Contact />
   <Footer slot="footer" />
 </Layout>

@@ -22,12 +22,7 @@ switch(type) {
       "@type": "WebSite",
       "name": name,
       "url": url,
-      "description": description,
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": `${url}/search/?q={search_term_string}`,
-        "query-input": "required name=search_term_string"
-      }
+      "description": description
     };
     break;
     
@@ -55,43 +50,27 @@ switch(type) {
   case 'LocalBusiness':
     schema = {
       "@context": "https://schema.org",
-      "@type": "HomeAndConstructionBusiness", // More specific type for construction business
-      "name": "Jasa Kayu Profesional - Jasa Kayu Profesional",
-      "legalName": "Jasa Kayu Profesional",
+      "@type": "HomeAndConstructionBusiness",
+      "name": "Jasa Kayu Profesional",
       "image": logo,
       "@id": url,
       "url": url,
       "email": "info@jasakayuprofesional.com",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Area Jabodetabek",
         "addressLocality": "Jakarta",
-        "addressRegion": "DKI",
-        "postalCode": "10000",
+        "addressRegion": "DKI Jakarta",
         "addressCountry": "ID"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": -6.2088,
-        "longitude": 106.8456
       },
       "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",
         "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
         "opens": "08:00",
-        "closes": "17:00"
+        "closes": "22:00"
       },
       "telephone": "+6281283135295",
-      "priceRange": "$$$",
-      "description": "Pakar pengerjaan lantai kayu jati solid, kayu merbau solid, kayu sungkai, decking ulin, decking bengkirai, lambersering jati, & pemasangan genteng sirap ulin.",
-      "areaServed": ["Jakarta", "Bogor", "Depok", "Tangerang", "Bekasi", "Karawang", "Sukabumi", "Bandung", "Cirebon"],
-      "paymentAccepted": ["Cash", "Bank Transfer", "QRIS"],
-      "founder": {
-        "@type": "Person",
-        "name": "Jasa Kayu Profesional Team",
-        "jobTitle": "Professional Wood Craftsmen"
-      },
-      "foundingDate": "1990",
+      "description": "Jasa kayu profesional untuk lantai kayu, decking, tangga, ceiling, wall panel, dan pekerjaan custom di Jabodetabek.",
+      "areaServed": ["Jakarta", "Bogor", "Depok", "Tangerang", "Bekasi", "BSD", "Karawang", "Sukabumi", "Puncak"],
       "makesOffer": [
         {
           "@type": "Offer",
@@ -122,7 +101,7 @@ switch(type) {
             },
             {
               "@type": "Service",
-              "name": "Pemasangan Genteng Sirap Ulin"
+              "name": "Genteng Sirap Ulin"
             }
           ]
         }

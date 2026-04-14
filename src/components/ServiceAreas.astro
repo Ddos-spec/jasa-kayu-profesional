@@ -1,0 +1,72 @@
+---
+const areas = [
+  {
+    title: 'Jakarta Selatan & Pusat',
+    description: 'Area yang sering masuk untuk lantai kayu, tangga, wall panel, dan detail custom pada hunian premium maupun proyek renovasi bertahap.',
+    projects: [
+      { label: 'Patimura', href: '/portfolio/jln-patimura-jaksel' },
+      { label: 'Pondok Indah', href: '/portfolio/pondok-indah-sekolah-duta-jaksel' },
+      { label: 'Kuningan', href: '/portfolio/jln-besakih-kuningan-jaksel' }
+    ]
+  },
+  {
+    title: 'Jakarta Barat & Utara',
+    description: 'Cocok untuk area rumah tinggal, cluster, hingga kebutuhan decking dan area transisi indoor-outdoor yang butuh material lebih tahan cuaca.',
+    projects: [
+      { label: 'Kebon Jeruk', href: '/portfolio/komplek-kebon-jeruk-jakbar' },
+      { label: 'PIK', href: '/portfolio/golf-mediterania-pik-jakut' },
+      { label: 'Townhouse Jakarta', href: '/portfolio/townhouse-jakarta-wall-panel-walnut' }
+    ]
+  },
+  {
+    title: 'Tangerang, BSD, dan Sekitar',
+    description: 'Sering dipilih untuk proyek tangga, built-in kayu, dan finishing area keluarga yang ingin terlihat lebih hangat tanpa terasa berat.',
+    projects: [
+      { label: 'Tangga Modern BSD', href: '/portfolio/tangga-modern-bsd' },
+      { label: 'Wall Panel Walnut', href: '/portfolio/townhouse-jakarta-wall-panel-walnut' }
+    ]
+  },
+  {
+    title: 'Bogor, Puncak, dan Area Survey Luar Kota',
+    description: 'Untuk proyek villa, area resort, atau kebutuhan kayu outdoor, jadwal survei menyesuaikan slot tim dan kompleksitas pengerjaan.',
+    projects: [
+      { label: 'Villa Puncak', href: '/portfolio/villa-puncak-lantai-jati-solid' },
+      { label: 'Hotel Boutique Bandung', href: '/portfolio/hotel-boutique-bandung-lobby-ceiling' }
+    ]
+  }
+];
+---
+<section id="area-layanan" class="section-anchor bg-[#F5F5DC] py-20 md:py-28">
+  <div class="mx-auto max-w-6xl px-4 md:px-8">
+    <div class="flex flex-col items-center text-center">
+      <span class="badge bg-wood-brown-200 text-wood-brown-800">Area Layanan</span>
+      <h2 class="mt-5 font-serif text-4xl font-semibold text-wood-brown-800 md:text-5xl">Fokus Pengerjaan di Titik yang Paling Sering Masuk</h2>
+      <p class="mt-4 max-w-3xl text-lg leading-relaxed text-[#4A4A4A]">
+        Kami paling sering mengerjakan proyek di Jakarta, BSD, Tangerang, Bekasi, Bogor, dan area sekitarnya. Beberapa lokasi di bawah ini sudah punya dokumentasi proyek sehingga calon klien bisa lihat konteks pekerjaan yang lebih dekat dengan kebutuhannya.
+      </p>
+    </div>
+    <div class="mt-14 grid gap-8 md:grid-cols-2">
+      {areas.map((area) => (
+        <article class="rounded-3xl border border-wood-brown-100 bg-[#FFFBF2] p-8 shadow-sm">
+          <h3 class="font-serif text-2xl font-semibold text-wood-brown-800">{area.title}</h3>
+          <p class="mt-4 text-base leading-relaxed text-[#4A4A4A]">{area.description}</p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            {area.projects.map((project) => (
+              <a
+                href={project.href}
+                class="rounded-full border border-wood-brown-200 bg-white px-4 py-2 text-sm font-semibold text-wood-brown-700 transition hover:border-wood-brown-300 hover:bg-wood-brown-50"
+              >
+                {project.label}
+              </a>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+    <div class="mt-10 rounded-3xl border border-wood-brown-100 bg-white p-6 text-center shadow-sm">
+      <p class="text-base leading-relaxed text-[#4A4A4A]">
+        Lokasi Anda belum ada di daftar? Tetap kirim brief dulu. Selama jadwal dan scope proyek masuk, tim kami bisa bantu cek kemungkinan survei dan pengerjaan.
+      </p>
+    </div>
+  </div>
+</section>

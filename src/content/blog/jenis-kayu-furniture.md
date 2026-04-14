@@ -27,4 +27,4 @@ Sungkai memiliki warna terang dan serat yang indah. Cocok untuk furniture bergay
 
 Kayu Mindi memiliki serat yang mirip dengan Jati, namun dengan harga yang lebih ekonomis. Kayu ini cukup tahan terhadap rayap dan cocok untuk berbagai jenis furniture indoor.
 
-Memilih kayu yang tepat akan memastikan furniture Anda tidak hanya indah, tetapi juga awet hingga puluhan tahun. Hubungi [tim kami](#kontak) untuk konsultasi gratis mengenai proyek Anda.
+Memilih kayu yang tepat akan memastikan furniture Anda tidak hanya indah, tetapi juga awet hingga puluhan tahun. Hubungi [tim kami](/#kontak) untuk konsultasi gratis mengenai proyek Anda.

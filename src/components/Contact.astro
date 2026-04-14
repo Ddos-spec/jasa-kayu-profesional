@@ -5,7 +5,7 @@ const defaultWhatsAppText = 'Halo Jasa Kayu Profesional, saya ingin konsultasi p
 
 const contactMethods = [
   {
-    label: 'WhatsApp (24/7 Fast Response)',
+    label: 'WhatsApp (Respons Cepat)',
     value: whatsappDisplayNumber,
     href: `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(defaultWhatsAppText)}`
   },
@@ -107,6 +107,9 @@ const formScript = `
           <h3 class="font-serif text-2xl font-semibold text-wood-brown-800">Area Layanan</h3>
           <p class="mt-3 text-sm leading-relaxed text-[#4A4A4A]">
             Melayani Seluruh Jabodetabek & Sekitarnya: Jakarta, Bogor, Depok, Tangerang, Bekasi, Karawang, Sukabumi.
+          </p>
+          <p class="mt-2 text-sm leading-relaxed text-[#4A4A4A]">
+            Kirim lokasi proyek, foto area, dan kebutuhan utama Anda agar tim kami bisa bantu arahkan langkah berikutnya dengan lebih cepat.
           </p>
           <ul class="mt-4 space-y-2 text-sm text-[#4A4A4A]">
             {contactMethods.map((method) => (

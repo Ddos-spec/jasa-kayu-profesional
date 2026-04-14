@@ -23,4 +23,4 @@ Meskipun bukan kayu asli, lantai vinyl modern mampu meniru tampilan kayu dengan 
 
 Pilihan ekonomis yang terbuat dari papan serat kayu dengan lapisan foto motif kayu. Pemasangannya mudah, namun tidak tahan air.
 
-Setiap jenis memiliki kelebihan dan kekurangan. Pertimbangkan faktor seperti lokasi pemasangan, lalu lintas, dan anggaran. Lihat [portofolio](#portofolio) kami untuk inspirasi pemasangan lantai kayu, atau [hubungi kami](#kontak) untuk informasi lebih lanjut.
+Setiap jenis memiliki kelebihan dan kekurangan. Pertimbangkan faktor seperti lokasi pemasangan, lalu lintas, dan anggaran. Lihat [portofolio](/#portofolio) kami untuk inspirasi pemasangan lantai kayu, atau [hubungi kami](/#kontak) untuk informasi lebih lanjut.

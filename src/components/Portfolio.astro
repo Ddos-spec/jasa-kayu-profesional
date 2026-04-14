@@ -81,6 +81,7 @@ const projects = await Promise.all(allProjects.map(async (item, index) => {
             height={600}
             format="webp"
             loading="lazy"
+            data-fallback={project.fallback.src}
           />
           <figcaption class="flex flex-col gap-3 p-6">
             <span class="text-xs font-semibold uppercase tracking-wide text-wood-brown-500">{project.displayCategory}</span>

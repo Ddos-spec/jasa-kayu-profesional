@@ -19,4 +19,4 @@ Proyek outdoor seperti pergola, decking, atau furniture taman memerlukan kayu ya
 *   **Kayu Bengkirai:** Alternatif yang lebih terjangkau dari Ulin, namun tetap memiliki daya tahan yang sangat baik.
 *   **Kayu Merbau:** Selain kuat, Merbau memiliki warna eksotis yang akan semakin matang seiring waktu.
 
-Di [Jasa Kayu Profesional](/), kami menyediakan berbagai pilihan [layanan kayu outdoor](#layanan) yang sesuai dengan kebutuhan dan anggaran Anda. Jangan ragu untuk [berkonsultasi](#kontak) dengan kami.
+Di [Jasa Kayu Profesional](/), kami menyediakan berbagai pilihan [layanan kayu outdoor](/#layanan) yang sesuai dengan kebutuhan dan anggaran Anda. Jangan ragu untuk [berkonsultasi](/#kontak) dengan kami.

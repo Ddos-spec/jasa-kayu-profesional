@@ -102,11 +102,18 @@ const services = [
             variant="secondary"
             size="md"
             class="mt-6 self-start"
-            href={`#kontak`}
-            aria-label={`Konsultasi layanan ${service.title}`}
+            href={`/layanan/${service.slug}`}
+            aria-label={`Lihat detail layanan ${service.title}`}
           >
-            Konsultasi {service.title}
+            Lihat Detail Layanan
           </LinkButton>
+          <a
+            href="/#kontak"
+            class="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-wood-brown-700 transition hover:text-wood-brown-900"
+          >
+            Konsultasi layanan ini
+            <span aria-hidden="true">→</span>
+          </a>
         </article>
       ))}
     </div>
