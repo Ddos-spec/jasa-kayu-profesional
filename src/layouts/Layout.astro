@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import SEO from '../components/SEO.astro';
 import GoogleAnalytics from '../components/analytics/GoogleAnalytics.astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
 
 const { title = 'Jasa Kayu Profesional | Lantai Kayu, Decking, Tangga, dan Wall Panel', description = 'Jasa kayu profesional untuk lantai kayu, decking, tangga, ceiling, wall panel, dan pekerjaan custom di Jabodetabek.', canonical } = Astro.props;
 ---
@@ -27,6 +28,7 @@ const { title = 'Jasa Kayu Profesional | Lantai Kayu, Decking, Tangga, dan Wall 
     <GoogleAnalytics />
   </head>
   <body class="min-h-screen bg-[#FFF8DC] text-[#2F2F2F]">
+    <SpeedInsights />
     <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-wood-brown-800 focus:text-white focus:px-4 focus:py-2 focus:rounded-md">Skip to main content</a>
     <header class="sticky top-0 z-40 bg-[#FFF8DC]/90 backdrop-blur-lg shadow-sm">
       <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 md:px-8">
