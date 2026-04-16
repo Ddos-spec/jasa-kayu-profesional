@@ -3,6 +3,9 @@ node_modules/
 .vercel/
 .DS_Store
 .env
+.gsc/oauth-client.json
+.gsc/token.json
+.gsc/*.local.json
 
 .qwen/
 gha-creds-*.json
