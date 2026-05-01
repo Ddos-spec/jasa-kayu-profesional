@@ -2,7 +2,7 @@
 title: 'Memahami Perbedaan Finishing Kayu: Melamine vs HPL'
 description: 'Melamine atau HPL? Pahami perbedaan mendasar antara dua jenis finishing kayu populer ini untuk memilih yang paling sesuai dengan kebutuhan proyek Anda.'
 pubDate: 2023-11-25
-image: '/images/blog/blog-1.jpg'
+image: 'https://images.unsplash.com/photo-1540574163026-643ea20ade25?q=80&w=800&auto=format&fit=crop'
 ---
 
 Finishing adalah lapisan akhir yang melindungi kayu dan memberikan tampilan estetika. Dua jenis finishing yang sangat populer untuk furniture modern adalah Melamine dan High-Pressure Laminate (HPL).

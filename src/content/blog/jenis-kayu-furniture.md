@@ -2,7 +2,7 @@
 title: '5 Jenis Kayu Terbaik untuk Furniture Tahan Lama'
 description: 'Pilih kayu yang tepat untuk furniture Anda. Kenali karakteristik 5 jenis kayu terbaik yang terkenal kuat, awet, and indah untuk investasi jangka panjang.'
 pubDate: 2023-11-01
-image: '/images/blog/blog-2.jpg'
+image: 'https://images.unsplash.com/photo-1533090161767-e6ffed986c88?q=80&w=800&auto=format&fit=crop'
 ---
 
 Memilih material untuk furniture adalah keputusan penting. Kayu yang tepat tidak hanya menentukan tampilan, tetapi juga daya tahan dan nilai investasi furniture Anda. Di [Jasa Kayu Profesional](/), kami sering merekomendasikan beberapa jenis kayu yang sudah terbukti kualitasnya.

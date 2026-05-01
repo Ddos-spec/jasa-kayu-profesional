@@ -2,7 +2,7 @@
 title: 'Panduan Memilih Kayu untuk Proyek Outdoor'
 description: 'Proyek outdoor butuh kayu tahan cuaca. Pelajari cara memilih kayu yang tepat untuk pergola, decking, atau furniture taman agar awet dan indah.'
 pubDate: 2023-11-05
-image: '/images/blog/blog-4.jpg'
+image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=800&auto=format&fit=crop'
 ---
 
 Proyek outdoor seperti pergola, decking, atau furniture taman memerlukan kayu yang mampu bertahan di bawah terik matahari dan guyuran hujan. Kesalahan memilih material bisa berakibat pada kerusakan dini dan biaya perbaikan yang mahal.

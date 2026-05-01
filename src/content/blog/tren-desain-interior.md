@@ -2,7 +2,7 @@
 title: 'Tren Desain Interior Kayu 2024: Natural & Modern'
 description: 'Lihat tren desain interior kayu terbaru di tahun 2024. Dari Japandi hingga Biophilic, temukan inspirasi untuk menciptakan ruang yang hangat dan modern.'
 pubDate: 2023-11-20
-image: '/images/blog/blog-2.jpg'
+image: 'https://images.unsplash.com/photo-1505691938895-1758d7feb511?q=80&w=800&auto=format&fit=crop'
 ---
 
 Elemen kayu tidak pernah lekang oleh waktu dalam desain interior. Di tahun 2024, trennya mengarah pada penggunaan kayu yang lebih natural, berkelanjutan, dan terintegrasi dengan gaya hidup modern.
