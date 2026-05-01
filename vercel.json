@@ -18,7 +18,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self' https://www.googletagmanager.com https://www.google-analytics.com;"
+          "value": "default-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: blob: https://images.unsplash.com https://plus.unsplash.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com https://frontend-cdn.perplexity.ai; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com;"
         },
         {
           "key": "X-Content-Type-Options",
