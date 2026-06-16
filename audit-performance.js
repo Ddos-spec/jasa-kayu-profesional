@@ -3,7 +3,7 @@ import * as chromeLauncher from 'chrome-launcher';
 import fs from 'fs';
 
 async function runAudit() {
-  const url = 'https://www.jasakayuprofesional.com';
+  const url = 'https://jasa-kayu-profesional-cbklia0bx-donspablos-projects-1d6b7e49.vercel.app';
   console.log(`🚀 Sedang melakukan audit Lighthouse untuk: ${url} ...`);
   
   const chrome = await chromeLauncher.launch({chromeFlags: ['--headless', '--no-sandbox']});

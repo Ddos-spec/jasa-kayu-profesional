@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import Picture from '../../components/common/Picture.astro';
+import { Picture } from 'astro:assets';
+import heroBg from '../../assets/images/portfolio/townhouse-jakarta-wall-panel-walnut.jpg';
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -45,10 +46,14 @@ const faqSchema = {
   <section class="relative bg-wood-brown-900 py-20 text-white md:py-32">
     <div class="absolute inset-0 overflow-hidden">
       <Picture
-        src="/images/portfolio/townhouse-jakarta-wall-panel-walnut.jpg"
+        src={heroBg}
         alt="Wall panel kayu walnut mewah di ruang keluarga"
+        widths={[400, 800, 1200, 1600]}
+        sizes="(max-width: 800px) 100vw, 1600px"
+        formats={['avif', 'webp']}
         class="h-full w-full object-cover opacity-25"
         loading="eager"
+        fetchpriority="high"
       />
     </div>
     <div class="relative mx-auto max-w-6xl px-4 md:px-8">
