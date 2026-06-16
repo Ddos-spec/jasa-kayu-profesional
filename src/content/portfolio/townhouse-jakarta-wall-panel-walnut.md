@@ -5,7 +5,7 @@ displayCategory: 'Residential'
 description: 'Panel dinding walnut minimalis dengan pencahayaan indirect LED untuk ruang keluarga modern.'
 featured: true
 year: 2024
-image: '/images/portfolio/portfolio-5.svg'
+image: '/images/portfolio/townhouse-jakarta-wall-panel-walnut.jpg'
 ---
 
 Proyek ini menampilkan keahlian kami dalam pemasangan wall panel kayu walnut di ruang keluarga sebuah townhouse modern di Jakarta. Desain minimalis dengan pencahayaan indirect LED menciptakan suasana hangat dan elegan.
