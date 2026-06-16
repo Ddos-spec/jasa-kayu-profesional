@@ -1,39 +1,196 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Picture from '../../components/common/Picture.astro';
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Berapa ongkos jasa pasang decking outdoor per meter?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ongkos jasa pasang decking ulin berkisar antara Rp 250.000 hingga Rp 350.000 per meter persegi. Untuk decking bengkirai berkisar antara Rp 220.000 hingga Rp 280.000 per meter persegi. Harga ini mencakup pemasangan rangka dudukan kayu/metal anti karat dan coating khusus eksterior."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kenapa kayu Ulin dan Bengkirai direkomendasikan untuk outdoor?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Kayu ulin (kayu besi) adalah material legendaris yang memiliki ketahanan alami luar biasa terhadap air hujan, panas ekstrem, dan serangan hama. Bengkirai adalah alternatif yang sangat kuat dengan tingkat kekerasan tinggi namun dengan harga yang lebih terjangkau."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Berapa lama garansi pemasangan decking outdoor?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Kami memberikan garansi pengerjaan struktur rangka dan presisi decking hingga 5 tahun, memastikan investasi outdoor Anda tetap kokoh dan aman."
+      }
+    }
+  ]
+};
 ---
+
 <Layout
-  title="Jasa Pergola & Decking Outdoor di Jabodetabek"
-  description="Kami menyediakan jasa pembuatan pergola dan decking outdoor premium di Jakarta, Bogor, Depok, Tangerang, dan Bekasi. Garansi 5 tahun."
+  title="Jasa Pembuatan Pergola & Pasang Decking Outdoor | Jasa Kayu Profesional"
+  description="Spesialis pembuatan pergola kayu & decking kolam renang (Ulin, Bengkirai, Merbau) di Jabodetabek. Struktur kokoh, finishing tahan cuaca ekstrem, garansi 5 tahun."
   canonical="https://www.jasakayuprofesional.com/layanan/pergola-decking-outdoor"
 >
-  <div class="mx-auto max-w-4xl px-4 py-16 md:px-8 md:py-24">
-    <h1 class="font-serif text-4xl font-semibold text-wood-brown-800 md:text-5xl">
-      Layanan Pembuatan Pergola & Decking Outdoor
-    </h1>
-    <p class="mt-4 text-lg leading-relaxed text-[#4A4A4A]">
-      Kami adalah spesialis pembuatan pergola dan decking outdoor untuk area Jabodetabek. Tim kami berpengalaman dalam menangani berbagai jenis kayu, mulai dari jati, merbau, hingga bengkirai.
-    </p>
-    <div class="prose mt-8 max-w-none text-base leading-relaxed text-[#4A4A4A]">
-      <p>
-        Setiap proyek pergola dan decking yang kami kerjakan selalu dimulai dengan survei lokasi untuk memastikan kondisi area outdoor ideal. Kami menggunakan rangka berkualitas tinggi untuk meredam suara dan mencegah kelembapan. Proses instalasi dilakukan dengan teknik modern untuk hasil yang presisi dan tahan lama.
-      </p>
-      <h2 class="font-serif text-2xl font-semibold text-wood-brown-800 md:text-3xl">
-        Keunggulan Pergola & Decking Kami
-      </h2>
-      <ul>
-        <li>
-          <strong>Material Pilihan:</strong> Kami hanya menggunakan kayu dari supplier terpercaya yang telah melalui proses kiln dry sempurna.
-        </li>
-        <li>
-          <strong>Finishing Tahan Lama:</strong> Pergola dan decking kami dilapisi dengan UV coating anti gores dan anti rayap.
-        </li>
-        <li>
-          <strong>Garansi Pemasangan:</strong> Kami memberikan garansi hingga 5 tahun untuk setiap proyek pembuatan pergola dan decking.
-        </li>
-      </ul>
-      <p>
-        Hubungi kami untuk konsultasi gratis dan dapatkan penawaran terbaik untuk proyek pergola dan decking Anda di Jakarta, Bogor, Depok, Tangerang, atau Bekasi.
-      </p>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero Section -->
+  <section class="relative bg-wood-brown-900 py-20 text-white md:py-32">
+    <div class="absolute inset-0 overflow-hidden">
+      <Picture
+        src="/images/portfolio/deck-ulin-rancamaya-bogor/deck-ulin-rancamaya-bogor-1.jpg"
+        alt="Pemasangan decking ulin premium di halaman luar rumah tinggal"
+        class="h-full w-full object-cover opacity-25"
+        loading="eager"
+      />
     </div>
-  </div>
+    <div class="relative mx-auto max-w-6xl px-4 md:px-8">
+      <span class="inline-block rounded-full bg-white/10 px-4 py-1.5 text-sm font-semibold text-wood-brown-100 backdrop-blur-sm">
+        Best Seller Outdoor Service
+      </span>
+      <h1 class="mt-6 font-serif text-4xl font-bold leading-tight md:text-6xl">
+        Decking Ulin & Bengkirai <br/>Tahan Cuaca Ekstrem
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg text-white/80 md:text-xl">
+        Hadirkan kemewahan resor bintang lima di rumah Anda dengan decking outdoor area kolam renang, balkon, serta pembuatan pergola kayu estetik yang teduh.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a href="https://wa.me/6281283135295?text=Halo%20Jasa%20Kayu%20Profesional,%20saya%20tertarik%20pembuatan%20pergola%20decking%20outdoor." class="rounded-full bg-[#25D366] px-8 py-3 font-semibold text-white shadow-lg transition hover:bg-[#128C7E]">
+          Konsultasi via WhatsApp
+        </a>
+        <a href="#detail-layanan" class="rounded-full border border-white/30 bg-white/5 px-8 py-3 font-semibold text-white backdrop-blur-sm transition hover:bg-white/20">
+          Pelajari Selengkapnya
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="detail-layanan" class="py-20 md:py-28">
+    <div class="mx-auto max-w-4xl px-4 md:px-8">
+      
+      <!-- Value Proposition -->
+      <div class="prose prose-lg prose-stone max-w-none">
+        <h2 class="font-serif text-3xl font-bold text-wood-brown-800">Spesialis Konstruksi Outdoor Kayu Besi</h2>
+        <p>
+          Area luar ruang menghadapi tantangan terberat: hujan deras tropis, sinar matahari langsung yang menyengat, kelembapan tanah, hingga serangan rayap. Oleh karena itu, pengerjaan decking dan pergola membutuhkan keahlian sipil khusus dan pemilihan jenis kayu yang tepat.
+        </p>
+        <p>
+          Kami mendesain konstruksi decking dengan sistem rangka (sub-frame) yang terangkat, menggunakan sekrup stainless anti karat, serta memberikan celah air (drainage gap) yang presisi untuk menghindari genangan air di bawah deck. Proses finishing eksterior menggunakan pelapis khusus anti-UV agar warna kayu ulin atau bengkirai tetap cerah alami.
+        </p>
+      </div>
+
+      <!-- Wood Options -->
+      <div class="mt-12">
+        <h3 class="font-serif text-2xl font-bold text-wood-brown-800 mb-6">Material Unggulan Luar Ruang</h3>
+        <div class="grid gap-6 md:grid-cols-2">
+          <div class="rounded-2xl border border-wood-brown-100 bg-white p-6 shadow-sm">
+            <h4 class="font-serif text-xl font-bold text-wood-brown-850">1. Kayu Ulin Kalimantan (Ironwood)</h4>
+            <p class="mt-2 text-sm text-[#555]">Kayu terkuat di Indonesia untuk keperluan outdoor. Semakin sering terkena air, struktur kayu ulin justru akan semakin padat dan kokoh. Memiliki ketahanan alami seumur hidup tanpa pelapukan.</p>
+          </div>
+          <div class="rounded-2xl border border-wood-brown-100 bg-white p-6 shadow-sm">
+            <h4 class="font-serif text-xl font-bold text-wood-brown-850">2. Kayu Bengkirai</h4>
+            <p class="mt-2 text-sm text-[#555]">Sangat populer karena tingkat kekerasannya yang optimal serta harganya yang lebih bersahabat dibanding Ulin. Memiliki warna kuning kecoklatan yang natural dan sangat pas untuk area teras/balkon.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pricing Table Section -->
+      <div class="mt-20">
+        <h3 class="font-serif text-2xl font-bold text-wood-brown-800">Estimasi Ongkos Jasa Pasang Decking & Pergola</h3>
+        <p class="mt-2 text-sm text-[#666]">Berikut perkiraan tarif jasa pasang decking luar ruang dan pergola di area Jabodetabek (belum termasuk material utama):</p>
+        <div class="mt-6 overflow-x-auto rounded-xl border border-wood-brown-200 bg-white shadow-sm">
+          <table class="w-full min-w-[500px] text-left text-sm text-[#4A4A4A]">
+            <thead class="bg-wood-brown-50 text-wood-brown-900">
+              <tr>
+                <th class="px-6 py-4 font-bold">Layanan Konstruksi</th>
+                <th class="px-6 py-4 font-bold">Spesifikasi Pengerjaan</th>
+                <th class="px-6 py-4 font-bold">Kisaran Tarif (per m²)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-wood-brown-100">
+              <tr>
+                <td class="px-6 py-4 font-medium">Jasa Pasang Decking Ulin</td>
+                <td class="px-6 py-4">Pemasangan sub-frame kayu/besi & coating eksterior</td>
+                <td class="px-6 py-4">Rp 250.000 - Rp 350.000</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 font-medium">Jasa Pasang Decking Bengkirai</td>
+                <td class="px-6 py-4">Pemasangan sub-frame kayu/besi & coating eksterior</td>
+                <td class="px-6 py-4">Rp 220.000 - Rp 280.000</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 font-medium">Jasa Pembuatan Pergola Kayu</td>
+                <td class="px-6 py-4">Konstruksi tiang & kisi-kisi atas (belum termasuk atap kaca/polycarbonate)</td>
+                <td class="px-6 py-4">Rp 300.000 - Rp 450.000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-3 text-xs text-stone-500 italic">*Catatan: Tarif di atas dipengaruhi oleh ketinggian area pasang (misal balkon lantai atas) dan jenis kerangka dasar penopang.</p>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="mt-20 rounded-3xl bg-wood-brown-50 p-8 md:p-12">
+        <h3 class="font-serif text-2xl font-bold text-wood-brown-800">Pertanyaan Umum (FAQ)</h3>
+        <div class="mt-6 space-y-6">
+          <details class="group">
+            <summary class="flex cursor-pointer items-center justify-between font-medium text-wood-brown-900 focus:outline-none">
+              <span>Berapa lama proses pembuatan decking outdoor?</span>
+              <span class="transition group-open:rotate-180">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" /></svg>
+              </span>
+            </summary>
+            <p class="mt-3 text-[#4A4A4A]">Pemasangan decking ulin untuk area kolam renang seluas 30m² memakan waktu berkisar antara 4-6 hari kerja, meliputi leveling rangka dasar, perakitan decking, sekrup stainless, dan coating 2 lapis.</p>
+          </details>
+          <div class="h-px bg-wood-brown-200"></div>
+          <details class="group">
+            <summary class="flex cursor-pointer items-center justify-between font-medium text-wood-brown-900 focus:outline-none">
+              <span>Bagaimana perawatan rutin decking outdoor kayu?</span>
+              <span class="transition group-open:rotate-180">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" /></svg>
+              </span>
+            </summary>
+            <p class="mt-3 text-[#4A4A4A]">Secara rutin cukup disemprot air bersih untuk menghilangkan debu dan kotoran. Setiap 1-2 tahun sekali, direkomendasikan untuk melakukan pelapisan ulang (re-coating) agar warna cerah alami kayu tetap terjaga prima.</p>
+          </details>
+        </div>
+      </div>
+
+      <!-- Internal Links -->
+      <div class="mt-16 border-t border-wood-brown-200 pt-12">
+        <p class="mb-6 font-serif text-xl font-bold text-wood-brown-800">Layanan Terkait Lainnya:</p>
+        <div class="grid gap-4 md:grid-cols-2">
+          <a href="/layanan/lantai-kayu-premium" class="group block rounded-xl border border-wood-brown-100 bg-white p-4 transition hover:border-wood-brown-300 hover:shadow-md">
+            <span class="font-bold text-wood-brown-800 group-hover:text-wood-brown-600">Lantai Kayu Solid Premium &rarr;</span>
+            <p class="mt-1 text-sm text-[#666]">Lengkapi kemewahan transisi area luar kolam renang dengan lantai kayu jati mewah untuk area dalam kamar tidur atau ruang utama.</p>
+          </a>
+          <a href="/layanan/genteng-sirap-ulin" class="group block rounded-xl border border-wood-brown-100 bg-white p-4 transition hover:border-wood-brown-300 hover:shadow-md">
+            <span class="font-bold text-wood-brown-800 group-hover:text-wood-brown-600">Genteng Sirap Ulin &rarr;</span>
+            <p class="mt-1 text-sm text-[#666]">Padukan atap sirap kayu ulin khas tropis dengan decking ulin kolam renang untuk vila tropis seutuhnya.</p>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-wood-brown-800 py-16 text-center text-white">
+    <div class="mx-auto max-w-4xl px-4">
+      <h2 class="font-serif text-3xl font-bold md:text-4xl">Siap Mewujudkan Area Outdoor Impian?</h2>
+      <p class="mt-4 text-lg text-wood-brown-100">Hubungi kami hari ini untuk konsultasi, penjadwalan survei gratis, dan penawaran estimasi harga transparan.</p>
+      <div class="mt-8 flex justify-center gap-4">
+        <a href="https://wa.me/6281283135295?text=Halo%20Jasa%20Kayu%20Profesional,%20saya%20mau%20request%20survei%20decking%20kolam%20renang." class="rounded-full bg-[#25D366] px-8 py-3 font-semibold text-white shadow-lg transition hover:bg-[#128C7E]">
+          Minta Penawaran via WhatsApp
+        </a>
+      </div>
+      <p class="mt-4 text-sm text-wood-brown-300">*Jasa pemasangan melayani wilayah Jakarta, Bogor, Depok, Tangerang, dan Bekasi</p>
+    </div>
+  </section>
 </Layout>

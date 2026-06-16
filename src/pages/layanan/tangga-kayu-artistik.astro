@@ -1,39 +1,205 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Picture from '../../components/common/Picture.astro';
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Berapa biaya pasang tangga kayu per trap (anak tangga)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ongkos jasa pasang trap tangga kayu solid berkisar antara Rp 200.000 hingga Rp 250.000 per trap (anak tangga) untuk kayu Jati, dan Rp 180.000 hingga Rp 220.000 per trap untuk kayu Merbau. Harga mencakup pemasangan kayu trap utama, perapihan sudut, lem epoksi berkekuatan tinggi, and finishing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kenapa tangga kayu Jati atau Merbau lebih direkomendasikan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tangga adalah area dengan lalu lintas tinggi dan menerima beban hentakan kaki yang kuat. Kayu Jati dan Merbau solid memiliki kepadatan serat sangat tinggi, tahan gesekan, serta tidak mudah melengkung/retak seiring waktu."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Bisa membuat tangga layang (floating staircase) kayu?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ya, kami berpengalaman dalam pengerjaan tangga layang kayu dengan struktur rangka besi tersembunyi yang ditanam kokoh ke dalam dinding beton, dibungkus kayu jati atau merbau solid tebal."
+      }
+    }
+  ]
+};
 ---
+
 <Layout
-  title="Jasa Tangga Kayu Artistik di Jabodetabek"
-  description="Kami menyediakan jasa pembuatan tangga kayu artistik premium di Jakarta, Bogor, Depok, Tangerang, dan Bekasi. Garansi 5 tahun."
+  title="Jasa Pemasangan Tangga Kayu Artistik & Trap Tangga Solid | Jasa Kayu Profesional"
+  description="Layanan pasang trap tangga kayu jati & merbau solid, tangga spiral, dan tangga layang (floating) di Jabodetabek. Pengerjaan presisi tinggi & bergaransi 5 tahun."
   canonical="https://www.jasakayuprofesional.com/layanan/tangga-kayu-artistik"
 >
-  <div class="mx-auto max-w-4xl px-4 py-16 md:px-8 md:py-24">
-    <h1 class="font-serif text-4xl font-semibold text-wood-brown-800 md:text-5xl">
-      Layanan Pembuatan Tangga Kayu Artistik
-    </h1>
-    <p class="mt-4 text-lg leading-relaxed text-[#4A4A4A]">
-      Kami adalah spesialis pembuatan tangga kayu artistik untuk area Jabodetabek. Tim kami berpengalaman dalam menangani berbagai jenis kayu, mulai dari jati, merbau, hingga bengkirai.
-    </p>
-    <div class="prose mt-8 max-w-none text-base leading-relaxed text-[#4A4A4A]">
-      <p>
-        Setiap proyek tangga kayu yang kami kerjakan selalu dimulai dengan survei lokasi untuk memastikan kondisi struktur ideal. Kami menggunakan rangka berkualitas tinggi untuk meredam suara dan mencegah kelembapan. Proses instalasi dilakukan dengan teknik modern untuk hasil yang presisi dan tahan lama.
-      </p>
-      <h2 class="font-serif text-2xl font-semibold text-wood-brown-800 md:text-3xl">
-        Keunggulan Tangga Kayu Kami
-      </h2>
-      <ul>
-        <li>
-          <strong>Material Pilihan:</strong> Kami hanya menggunakan kayu dari supplier terpercaya yang telah melalui proses kiln dry sempurna.
-        </li>
-        <li>
-          <strong>Finishing Tahan Lama:</strong> Tangga kayu kami dilapisi dengan UV coating anti gores dan anti rayap.
-        </li>
-        <li>
-          <strong>Garansi Pemasangan:</strong> Kami memberikan garansi hingga 5 tahun untuk setiap proyek pembuatan tangga kayu.
-        </li>
-      </ul>
-      <p>
-        Hubungi kami untuk konsultasi gratis dan dapatkan penawaran terbaik untuk proyek tangga kayu Anda di Jakarta, Bogor, Depok, Tangerang, atau Bekasi.
-      </p>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero Section -->
+  <section class="relative bg-wood-brown-900 py-20 text-white md:py-32">
+    <div class="absolute inset-0 overflow-hidden">
+      <Picture
+        src="/images/portfolio/penthouse-scbd-spiral-staircase.jpg"
+        alt="Tangga spiral kayu walnut mewah di penthouse SCBD"
+        class="h-full w-full object-cover opacity-25"
+        loading="eager"
+      />
     </div>
-  </div>
+    <div class="relative mx-auto max-w-6xl px-4 md:px-8">
+      <span class="inline-block rounded-full bg-white/10 px-4 py-1.5 text-sm font-semibold text-wood-brown-100 backdrop-blur-sm">
+        Premium Wood Joinery
+      </span>
+      <h1 class="mt-6 font-serif text-4xl font-bold leading-tight md:text-6xl">
+        Tangga Kayu Solid Artistik <br/>& Presisi Tinggi
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg text-white/80 md:text-xl">
+        Hadirkan kemewahan arsitektur modern pada tangga rumah Anda dengan pemasangan trap tangga kayu solid, tangga spiral, dan tangga layang custom.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a href="https://wa.me/6281283135295?text=Halo%20Jasa%20Kayu%20Profesional,%20saya%20tertarik%20pemasangan%20tangga%20kayu%20solid." class="rounded-full bg-[#25D366] px-8 py-3 font-semibold text-white shadow-lg transition hover:bg-[#128C7E]">
+          Konsultasi via WhatsApp
+        </a>
+        <a href="#detail-layanan" class="rounded-full border border-white/30 bg-white/5 px-8 py-3 font-semibold text-white backdrop-blur-sm transition hover:bg-white/20">
+          Pelajari Selengkapnya
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="detail-layanan" class="py-20 md:py-28">
+    <div class="mx-auto max-w-4xl px-4 md:px-8">
+      
+      <!-- Value Proposition -->
+      <div class="prose prose-lg prose-stone max-w-none">
+        <h2 class="font-serif text-3xl font-bold text-wood-brown-800">Sentuhan Kehangatan Kayu Pada Setiap Langkah Anda</h2>
+        <p>
+          Tangga bukan sekadar jalur penghubung antar lantai, tetapi merupakan salah satu focal point terpenting dalam arsitektur hunian. Pemasangan trap tangga kayu memerlukan akurasi milimeter agar setiap trap memiliki ketinggian yang sama dan tidak menimbulkan bunyi berdecit saat dipijak.
+        </p>
+        <p>
+          Kami menggunakan lem epoksi poliuretan kekuatan tinggi untuk merekatkan kayu solid ke beton tangga, disusul dengan pemasangan sekrup tersembunyi yang ditutup dengan sumbat kayu (wood plug) yang senada dengan serat kayu, sehingga hasil akhir tangga tampak bersih sempurna tanpa cacat paku.
+        </p>
+      </div>
+
+      <!-- Stair Styles -->
+      <div class="mt-12">
+        <h3 class="font-serif text-2xl font-bold text-wood-brown-800 mb-6">Gaya Tangga Kayu yang Kami Kerjakan</h3>
+        <div class="grid gap-6 md:grid-cols-3">
+          <div class="rounded-2xl border border-wood-brown-100 bg-white p-6 shadow-sm">
+            <h4 class="font-bold text-wood-brown-900">Standard Solid Trap</h4>
+            <p class="mt-2 text-sm text-[#555]">Pelapisan anak tangga beton dengan papan kayu jati atau merbau solid utuh pada bagian tapak (tread) dan tegakan (riser) untuk tampilan hangat klasik.</p>
+          </div>
+          <div class="rounded-2xl border border-wood-brown-100 bg-white p-6 shadow-sm">
+            <h4 class="font-bold text-wood-brown-900">Tangga Layang (Floating)</h4>
+            <p class="mt-2 text-sm text-[#555]">Desain anak tangga yang tampak melayang di udara, ditopang oleh rangka besi baja yang ditanam ke dinding beton kokoh, lalu dibungkus kayu tebal.</p>
+          </div>
+          <div class="rounded-2xl border border-wood-brown-100 bg-white p-6 shadow-sm">
+            <h4 class="font-bold text-wood-brown-900">Spiral & Custom Stair</h4>
+            <p class="mt-2 text-sm text-[#555]">Pembuatan tangga melingkar/spiral dengan pilar utama besi dibungkus kayu jati solid, lengkap dengan handrail melengkung hasil ukiran tangan presisi.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pricing Table Section -->
+      <div class="mt-20">
+        <h3 class="font-serif text-2xl font-bold text-wood-brown-800">Estimasi Ongkos Jasa Pasang Tangga Kayu</h3>
+        <p class="mt-2 text-sm text-[#666]">Berikut adalah estimasi biaya jasa pasang trap tangga kayu solid per anak tangga (belum termasuk harga papan kayu utama):</p>
+        <div class="mt-6 overflow-x-auto rounded-xl border border-wood-brown-200 bg-white shadow-sm">
+          <table class="w-full min-w-[500px] text-left text-sm text-[#4A4A4A]">
+            <thead class="bg-wood-brown-50 text-wood-brown-900">
+              <tr>
+                <th class="px-6 py-4 font-bold">Jenis Pemasangan</th>
+                <th class="px-6 py-4 font-bold">Detail Pekerjaan</th>
+                <th class="px-6 py-4 font-bold">Kisaran Tarif (per trap/anak tangga)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-wood-brown-100">
+              <tr>
+                <td class="px-6 py-4 font-medium">Jasa Pasang Trap Jati Solid</td>
+                <td class="px-6 py-4">Pemasangan tapak (tread) kayu jati & finishing</td>
+                <td class="px-6 py-4">Rp 200.000 - Rp 250.000</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 font-medium">Jasa Pasang Trap Merbau Solid</td>
+                <td class="px-6 py-4">Pemasangan tapak (tread) kayu merbau & finishing</td>
+                <td class="px-6 py-4">Rp 180.000 - Rp 220.000</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 font-medium">Jasa Pasang Riser (Tegakan)</td>
+                <td class="px-6 py-4">Pemasangan bidang tegak anak tangga kayu jati/merbau</td>
+                <td class="px-6 py-4">Rp 120.000 - Rp 150.000</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 font-medium">Jasa Pasang Handrail & Railing</td>
+                <td class="px-6 py-4">Pegangan tangan kayu solid lurus (per meter lari/m¹)</td>
+                <td class="px-6 py-4">Rp 150.000 - Rp 180.050</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-3 text-xs text-stone-500 italic">*Catatan: Tarif tangga layang (floating) dan tangga melengkung custom dihitung per proyek berdasarkan detail desain dari arsitek.</p>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="mt-20 rounded-3xl bg-wood-brown-50 p-8 md:p-12">
+        <h3 class="font-serif text-2xl font-bold text-wood-brown-800">Pertanyaan Umum (FAQ)</h3>
+        <div class="mt-6 space-y-6">
+          <details class="group">
+            <summary class="flex cursor-pointer items-center justify-between font-medium text-wood-brown-900 focus:outline-none">
+              <span>Apakah tangga beton yang miring atau tidak rata bisa dipasang tangga kayu?</span>
+              <span class="transition group-open:rotate-180">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" /></svg>
+              </span>
+            </summary>
+            <p class="mt-3 text-[#4A4A4A]">Bisa. Sebelum dipasang, tim kami akan meratakan permukaan cor beton menggunakan mortar leveling khusus untuk memastikan setiap anak tangga memiliki ketinggian langkah (riser) yang sama dan aman secara ergonomi.</p>
+          </details>
+          <div class="h-px bg-wood-brown-200"></div>
+          <details class="group">
+            <summary class="flex cursor-pointer items-center justify-between font-medium text-wood-brown-900 focus:outline-none">
+              <span>Berapa tebal ideal untuk papan kayu trap tangga solid?</span>
+              <span class="transition group-open:rotate-180">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" /></svg>
+              </span>
+            </summary>
+            <p class="mt-3 text-[#4A4A4A]">Untuk tangga beton berlapis kayu, tebal bersih kayu minimal adalah 2,5 cm hingga 3 cm. Untuk tangga layang (floating) tanpa beton penopang bawah, tebal bersih kayu minimal adalah 4 cm hingga 5 cm.</p>
+          </details>
+        </div>
+      </div>
+
+      <!-- Internal Links -->
+      <div class="mt-16 border-t border-wood-brown-200 pt-12">
+        <p class="mb-6 font-serif text-xl font-bold text-wood-brown-800">Layanan Terkait Lainnya:</p>
+        <div class="grid gap-4 md:grid-cols-2">
+          <a href="/layanan/lantai-kayu-premium" class="group block rounded-xl border border-wood-brown-100 bg-white p-4 transition hover:border-wood-brown-300 hover:shadow-md">
+            <span class="font-bold text-wood-brown-800 group-hover:text-wood-brown-600">Lantai Kayu Solid Premium &rarr;</span>
+            <p class="mt-1 text-sm text-[#666]">Selaraskan keindahan trap tangga kayu dengan lantai parket jati/merbau solid di seluruh koridor dan lantai atas hunian Anda.</p>
+          </a>
+          <a href="/layanan/dinding-kayu-dan-wall-cladding" class="group block rounded-xl border border-wood-brown-100 bg-white p-4 transition hover:border-wood-brown-300 hover:shadow-md">
+            <span class="font-bold text-wood-brown-800 group-hover:text-wood-brown-600">Dinding Kayu & Wall Cladding &rarr;</span>
+            <p class="mt-1 text-sm text-[#666]">Hadirkan wall cladding kayu yang memanjang vertikal di sisi dinding tangga untuk menegaskan kesan megah dan artistik.</p>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-wood-brown-800 py-16 text-center text-white">
+    <div class="mx-auto max-w-4xl px-4">
+      <h2 class="font-serif text-3xl font-bold md:text-4xl">Hadirkan Kemewahan Tangga Kayu Solid</h2>
+      <p class="mt-4 text-lg text-wood-brown-100">Konsultasikan kebutuhan tangga impian Anda secara gratis dan dapatkan penjadwalan survei lokasi presisi.</p>
+      <div class="mt-8 flex justify-center gap-4">
+        <a href="https://wa.me/6281283135295?text=Halo%20Jasa%20Kayu%20Profesional,%20saya%20mau%20konsultasi%20pemasangan%20tangga%20kayu%20solid." class="rounded-full bg-[#25D366] px-8 py-3 font-semibold text-white shadow-lg transition hover:bg-[#128C7E]">
+          Mulai Konsultasi via WhatsApp
+        </a>
+      </div>
+      <p class="mt-4 text-sm text-wood-brown-300">*Area layanan: Jakarta, Bogor, Depok, Tangerang, Bekasi</p>
+    </div>
+  </section>
 </Layout>

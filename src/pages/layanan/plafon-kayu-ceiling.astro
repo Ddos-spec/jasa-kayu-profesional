@@ -1,39 +1,200 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Picture from '../../components/common/Picture.astro';
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Berapa harga pasang plafon kayu lambersering per meter?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ongkos jasa pasang plafon lambersering kayu berkisar antara Rp 180.000 hingga Rp 230.000 per meter persegi untuk kayu Jati, dan Rp 160.000 hingga Rp 200.000 per meter persegi untuk kayu Merbau atau Sungkai. Harga mencakup pemasangan rangka hollow/kayu, perakitan lambersering, and finishing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Apa keunggulan menggunakan plafon kayu solid?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Plafon kayu solid (lambersering) memberikan tampilan hangat yang sangat mewah, meredam gema suara secara optimal (fungsi akustik), serta bertindak sebagai insulasi suhu alami yang membuat ruangan terasa lebih sejuk dibanding plafon gypsum biasa."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Apakah plafon kayu lambersering rawan rayap?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Kami menggunakan kayu Jati dan Merbau solid pilihan yang memiliki ketahanan alami sangat baik terhadap rayap. Sebelum dipasang, seluruh bagian belakang kayu dan rangka tetap kami semprot cairan anti-rayap sebagai proteksi ganda."
+      }
+    }
+  ]
+};
 ---
+
 <Layout
-  title="Jasa Plafon Kayu & Ceiling di Jabodetabek"
-  description="Kami menyediakan jasa pemasangan plafon kayu dan ceiling premium di Jakarta, Bogor, Depok, Tangerang, dan Bekasi. Garansi 5 tahun."
+  title="Jasa Pasang Plafon Kayu Lambersering & Ceiling Solid | Jasa Kayu Profesional"
+  description="Layanan pemasangan plafon kayu jati, merbau, sungkai solid (lambersering) di Jabodetabek. Desain rapi, presisi tinggi, meningkatkan akustik ruangan. Garansi 5 tahun."
   canonical="https://www.jasakayuprofesional.com/layanan/plafon-kayu-ceiling"
 >
-  <div class="mx-auto max-w-4xl px-4 py-16 md:px-8 md:py-24">
-    <h1 class="font-serif text-4xl font-semibold text-wood-brown-800 md:text-5xl">
-      Layanan Pemasangan Plafon Kayu & Ceiling
-    </h1>
-    <p class="mt-4 text-lg leading-relaxed text-[#4A4A4A]">
-      Kami adalah spesialis pemasangan plafon kayu dan ceiling untuk area Jabodetabek. Tim kami berpengalaman dalam menangani berbagai jenis kayu, mulai dari jati, merbau, hingga bengkirai.
-    </p>
-    <div class="prose mt-8 max-w-none text-base leading-relaxed text-[#4A4A4A]">
-      <p>
-        Setiap proyek plafon kayu yang kami kerjakan selalu dimulai dengan survei lokasi untuk memastikan kondisi struktur ideal. Kami menggunakan rangka berkualitas tinggi untuk meredam suara dan mencegah kelembapan. Proses instalasi dilakukan dengan teknik modern untuk hasil yang presisi dan tahan lama.
-      </p>
-      <h2 class="font-serif text-2xl font-semibold text-wood-brown-800 md:text-3xl">
-        Keunggulan Plafon Kayu Kami
-      </h2>
-      <ul>
-        <li>
-          <strong>Material Pilihan:</strong> Kami hanya menggunakan kayu dari supplier terpercaya yang telah melalui proses kiln dry sempurna.
-        </li>
-        <li>
-          <strong>Finishing Tahan Lama:</strong> Plafon kayu kami dilapisi dengan UV coating anti gores dan anti rayap.
-        </li>
-        <li>
-          <strong>Garansi Pemasangan:</strong> Kami memberikan garansi hingga 5 tahun untuk setiap proyek pemasangan plafon kayu.
-        </li>
-      </ul>
-      <p>
-        Hubungi kami untuk konsultasi gratis dan dapatkan penawaran terbaik untuk proyek plafon kayu Anda di Jakarta, Bogor, Depok, Tangerang, atau Bekasi.
-      </p>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero Section -->
+  <section class="relative bg-wood-brown-900 py-20 text-white md:py-32">
+    <div class="absolute inset-0 overflow-hidden">
+      <Picture
+        src="/images/portfolio/hotel-boutique-bandung-lobby-ceiling.jpg"
+        alt="Plafon lambersering kayu jati mewah di lobby hotel boutique"
+        class="h-full w-full object-cover opacity-25"
+        loading="eager"
+      />
     </div>
-  </div>
+    <div class="relative mx-auto max-w-6xl px-4 md:px-8">
+      <span class="inline-block rounded-full bg-white/10 px-4 py-1.5 text-sm font-semibold text-wood-brown-100 backdrop-blur-sm">
+        Ceiling & Acoustic Service
+      </span>
+      <h1 class="mt-6 font-serif text-4xl font-bold leading-tight md:text-6xl">
+        Plafon Kayu Lambersering <br/>Mewah & Kedap Suara
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg text-white/80 md:text-xl">
+        Tingkatkan estetika atap interior Anda dengan plafon kayu solid premium (Jati, Merbau, Sungkai) yang dirancang presisi untuk rumah tinggal mewah, lobby kantor, atau ruang ibadah.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a href="https://wa.me/6281283135295?text=Halo%20Jasa%20Kayu%20Profesional,%20saya%20tertarik%20pemasangan%20plafon%20kayu%20lambersering%20ceiling." class="rounded-full bg-[#25D366] px-8 py-3 font-semibold text-white shadow-lg transition hover:bg-[#128C7E]">
+          Konsultasi via WhatsApp
+        </a>
+        <a href="#detail-layanan" class="rounded-full border border-white/30 bg-white/5 px-8 py-3 font-semibold text-white backdrop-blur-sm transition hover:bg-white/20">
+          Pelajari Selengkapnya
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="detail-layanan" class="py-20 md:py-28">
+    <div class="mx-auto max-w-4xl px-4 md:px-8">
+      
+      <!-- Value Proposition -->
+      <div class="prose prose-lg prose-stone max-w-none">
+        <h2 class="font-serif text-3xl font-bold text-wood-brown-800">Keindahan dan Kenyamanan Akustik Atap Rumah Anda</h2>
+        <p>
+          Banyak pemilik properti tidak menyadari bahwa gema dan suhu panas dalam ruangan seringkali bersumber dari desain atap/plafon yang tidak tepat. Plafon kayu lambersering adalah solusi terbaik yang memadukan keindahan visual dengan performa akustik mumpuni.
+        </p>
+        <p>
+          Kami memastikan setiap kepingan lambersering kayu solid dipasang menggunakan sistem sambungan tersembunyi (blind nailing) pada rangka hollow galvanis atau kaso kayu kering, menghasilkan permukaan plafon yang rata sempurna, tanpa sekrup yang terlihat dari bawah, dan kokoh untuk puluhan tahun.
+        </p>
+      </div>
+
+      <!-- Wood Types -->
+      <div class="mt-12">
+        <h3 class="font-serif text-2xl font-bold text-wood-brown-800 mb-6">Pilihan Material Plafon Terbaik</h3>
+        <div class="grid gap-6 md:grid-cols-3">
+          <div class="rounded-2xl border border-wood-brown-100 bg-white p-6 shadow-sm">
+            <h4 class="font-bold text-wood-brown-900">Lambersering Jati</h4>
+            <p class="mt-2 text-sm text-[#555]">Kualitas ekspor terbaik dari Perhutani. Memiliki serat emas yang memukau, tahan rayap secara alami, dan memancarkan wibawa eksklusif pada ruangan.</p>
+          </div>
+          <div class="rounded-2xl border border-wood-brown-100 bg-white p-6 shadow-sm">
+            <h4 class="font-bold text-wood-brown-900">Lambersering Merbau</h4>
+            <p class="mt-2 text-sm text-[#555]">Sangat keras, stabil, dan berwarna merah kecoklatan matang. Sempurna untuk dipasang di area plafon teras semi-outdoor atau ruang tengah luas.</p>
+          </div>
+          <div class="rounded-2xl border border-wood-brown-100 bg-white p-6 shadow-sm">
+            <h4 class="font-bold text-wood-brown-900">Lambersering Sungkai</h4>
+            <p class="mt-2 text-sm text-[#555]">Memiliki warna putih-kuning cerah dengan serat kayu lurus yang bersih. Sangat direkomendasikan untuk desain interior minimalis moderen dan Japandi.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pricing Table Section -->
+      <div class="mt-20">
+        <h3 class="font-serif text-2xl font-bold text-wood-brown-800">Estimasi Ongkos Jasa Pasang Plafon Kayu</h3>
+        <p class="mt-2 text-sm text-[#666]">Berikut adalah rincian estimasi biaya jasa pemasangan lambersering plafon kayu per meter persegi (belum termasuk material kayu utama):</p>
+        <div class="mt-6 overflow-x-auto rounded-xl border border-wood-brown-200 bg-white shadow-sm">
+          <table class="w-full min-w-[500px] text-left text-sm text-[#4A4A4A]">
+            <thead class="bg-wood-brown-50 text-wood-brown-900">
+              <tr>
+                <th class="px-6 py-4 font-bold">Jenis Kayu Plafon</th>
+                <th class="px-6 py-4 font-bold">Spesifikasi Pengerjaan</th>
+                <th class="px-6 py-4 font-bold">Kisaran Tarif (per m²)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-wood-brown-100">
+              <tr>
+                <td class="px-6 py-4 font-medium">Plafon Lambersering Jati Solid</td>
+                <td class="px-6 py-4">Pasang rangka hollow/kaso, perakitan, dan finishing</td>
+                <td class="px-6 py-4">Rp 180.000 - Rp 230.000</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 font-medium">Plafon Lambersering Merbau Solid</td>
+                <td class="px-6 py-4">Pasang rangka hollow/kaso, perakitan, dan finishing</td>
+                <td class="px-6 py-4">Rp 160.000 - Rp 200.000</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 font-medium">Plafon Lambersering Sungkai Solid</td>
+                <td class="px-6 py-4">Pasang rangka hollow/kaso, perakitan, dan finishing</td>
+                <td class="px-6 py-4">Rp 160.000 - Rp 200.000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-3 text-xs text-stone-500 italic">*Catatan: Tarif final disesuaikan dengan tingkat kesulitan area langit-langit (ketinggian atap) dan kebutuhan scaffolding di lokasi.</p>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="mt-20 rounded-3xl bg-wood-brown-50 p-8 md:p-12">
+        <h3 class="font-serif text-2xl font-bold text-wood-brown-800">Pertanyaan Umum (FAQ)</h3>
+        <div class="mt-6 space-y-6">
+          <details class="group">
+            <summary class="flex cursor-pointer items-center justify-between font-medium text-wood-brown-900 focus:outline-none">
+              <span>Berapa kemiringan atap ideal untuk plafon luar semi-outdoor?</span>
+              <span class="transition group-open:rotate-180">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" /></svg>
+              </span>
+            </summary>
+            <p class="mt-3 text-[#4A4A4A]">Plafon luar tidak memiliki syarat kemiringan khusus, tetapi atap di atasnya harus dipastikan 100% bebas dari kebocoran rembesan air karena air adalah musuh utama kayu solid jangka panjang.</p>
+          </details>
+          <div class="h-px bg-wood-brown-200"></div>
+          <details class="group">
+            <summary class="flex cursor-pointer items-center justify-between font-medium text-wood-brown-900 focus:outline-none">
+              <span>Apakah ada minimal luasan pengerjaan plafon kayu?</span>
+              <span class="transition group-open:rotate-180">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" /></svg>
+              </span>
+            </summary>
+            <p class="mt-3 text-[#4A4A4A]">Ya, untuk area di bawah 15 meter persegi, kami biasanya memberlakukan tarif minimum borongan proyek untuk mencakup mobilisasi tukang dan material penunjang.</p>
+          </details>
+        </div>
+      </div>
+
+      <!-- Internal Links -->
+      <div class="mt-16 border-t border-wood-brown-200 pt-12">
+        <p class="mb-6 font-serif text-xl font-bold text-wood-brown-800">Layanan Terkait Lainnya:</p>
+        <div class="grid gap-4 md:grid-cols-2">
+          <a href="/layanan/dinding-kayu-dan-wall-cladding" class="group block rounded-xl border border-wood-brown-100 bg-white p-4 transition hover:border-wood-brown-300 hover:shadow-md">
+            <span class="font-bold text-wood-brown-800 group-hover:text-wood-brown-600">Dinding Kayu & Wall Cladding &rarr;</span>
+            <p class="mt-1 text-sm text-[#666]">Gabungkan keindahan plafon dengan pelapis dinding kayu untuk menciptakan nuansa ruang yang hangat dan natural secara menyeluruh.</p>
+          </a>
+          <a href="/layanan/lantai-kayu-premium" class="group block rounded-xl border border-wood-brown-100 bg-white p-4 transition hover:border-wood-brown-300 hover:shadow-md">
+            <span class="font-bold text-wood-brown-800 group-hover:text-wood-brown-600">Lantai Kayu Jati Premium &rarr;</span>
+            <p class="mt-1 text-sm text-[#666]">Lantai kayu solid jati premium untuk melengkapi aura kemewahan dari atap hingga lantai hunian Anda.</p>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-wood-brown-800 py-16 text-center text-white">
+    <div class="mx-auto max-w-4xl px-4">
+      <h2 class="font-serif text-3xl font-bold md:text-4xl">Hadirkan Kemewahan Alami Atap Rumah Anda</h2>
+      <p class="mt-4 text-lg text-wood-brown-100">Jadwalkan survei gratis hari ini untuk tim kami melakukan pengukuran di lokasi proyek Anda.</p>
+      <div class="mt-8 flex justify-center gap-4">
+        <a href="https://wa.me/6281283135295?text=Halo%20Jasa%20Kayu%20Profesional,%20saya%20ingin%20request%20survei%20pemasangan%20plafon%20kayu%20lambersering." class="rounded-full bg-[#25D366] px-8 py-3 font-semibold text-white shadow-lg transition hover:bg-[#128C7E]">
+          Hubungi Kami via WhatsApp
+        </a>
+      </div>
+      <p class="mt-4 text-sm text-wood-brown-300">*Melayani area Jakarta, Bogor, Depok, Tangerang, dan Bekasi</p>
+    </div>
+  </section>
 </Layout>
