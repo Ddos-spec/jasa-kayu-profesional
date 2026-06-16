@@ -1,15 +1,18 @@
 import { defineCollection, z } from 'astro:content';
+import { glob } from 'astro/loaders';
 
 const blogCollection = defineCollection({
+  loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: './src/content/blog' }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    pubDate: z.date(),
+    pubDate: z.coerce.date(),
     image: z.string().optional(),
   }),
 });
 
 const portfolioCollection = defineCollection({
+  loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: './src/content/portfolio' }),
   schema: z.object({
     title: z.string(),
     category: z.enum(['residential', 'commercial', 'custom']),
@@ -28,13 +31,14 @@ const portfolioCollection = defineCollection({
 });
 
 const testimonialCollection = defineCollection({
+  loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: './src/content/testimonial' }),
   schema: z.object({
     name: z.string(),
     role: z.string().optional(),
     company: z.string().optional(),
     rating: z.number().min(1).max(5),
     content: z.string(),
-    date: z.date().optional(),
+    date: z.coerce.date().optional(),
     featured: z.boolean().optional().default(false),
   }),
 });

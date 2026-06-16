@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import { Image } from 'astro:assets';
 import ImageGallery from '../../components/ImageGallery.astro';
 
@@ -10,13 +10,13 @@ const allPortfolios = await getCollection('portfolio');
 export async function getStaticPaths() {
   const portfolios = await getCollection('portfolio');
   return portfolios.map((portfolio) => ({
-    params: { slug: portfolio.slug },
+    params: { slug: portfolio.id },
     props: { portfolio },
   }));
 }
 
 const { portfolio } = Astro.props;
-const { Content } = await portfolio.render();
+const { Content } = await render(portfolio);
 
 const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/portfolio/**/*.{jpeg,jpg,png,gif,svg}');
 
@@ -53,7 +53,7 @@ const resolveImageMetadata = async (imagePath?: string, fallbackPath = fallbackP
   return (await images[fallbackPath]()).default;
 };
 
-const imagePath = toAssetImagePath(portfolio.data.image, portfolio.slug);
+const imagePath = toAssetImagePath(portfolio.data.image, portfolio.id);
 const mainImage = await resolveImageMetadata(imagePath);
 const galleryImages = await Promise.all((portfolio.data.gallery ?? []).map(async (path, index) => ({
   src: await resolveImageMetadata(toAssetImagePath(path), fallbackPaths[(index + 1) % fallbackPaths.length]),
@@ -68,14 +68,14 @@ const seoDescription = portfolio.data.seoDescription || portfolio.data.descripti
 const keywords = portfolio.data.keywords || 'finishing kayu, portfolio, proyek kayu, lantai kayu, dinding kayu';
 
 // Set canonical URL
-const canonical = `https://www.jasakayuprofesional.com/portfolio/${portfolio.slug}`;
+const canonical = `https://www.jasakayuprofesional.com/portfolio/${portfolio.id}`;
 
 const otherProjects = await Promise.all(
   allPortfolios
-    .filter(p => p.slug !== portfolio.slug)
+    .filter(p => p.id !== portfolio.id)
     .slice(0, 2)
     .map(async (p, i) => {
-      const pImagePath = toAssetImagePath(p.data.image, p.slug);
+      const pImagePath = toAssetImagePath(p.data.image, p.id);
       const pImage = await resolveImageMetadata(pImagePath, fallbackPaths[i % fallbackPaths.length]);
       return { ...p, pImage };
     })
@@ -203,7 +203,7 @@ const otherProjects = await Promise.all(
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           {otherProjects.map((p) => (
               <a 
-                href={`/portfolio/${p.slug}`} 
+                href={`/portfolio/${p.id}`} 
                 class="block group"
               >
                 <div class="overflow-hidden rounded-xl">

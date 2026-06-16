@@ -48,7 +48,7 @@ const projects = await Promise.all([...allProjects]
     return a.data.title.localeCompare(b.data.title, 'id');
   })
   .map(async (item, index) => {
-  const imagePath = toAssetImagePath(item.data.image, item.slug);
+  const imagePath = toAssetImagePath(item.data.image, item.id);
   const fallbackPath = fallbackPaths[index % fallbackPaths.length];
   const image = imagePath && images[imagePath]
     ? (await images[imagePath]()).default
@@ -62,7 +62,7 @@ const projects = await Promise.all([...allProjects]
     image,
     fallback,
     description: item.data.description,
-    slug: item.slug
+    slug: item.id
   };
 }));
 ---

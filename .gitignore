@@ -13,4 +13,5 @@ gha-creds-*.json
 # Playwright test artifacts
 playwright-report/
 test-results/
+dist/
 
