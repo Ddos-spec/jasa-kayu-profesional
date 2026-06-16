@@ -7,6 +7,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://www.jasakayuprofesional.com',
   output: 'static',
+  prefetch: true,
   adapter: vercel({
     webAnalytics: { enabled: true },
     speedInsights: { enabled: true }
