@@ -80,7 +80,8 @@ const projects = await Promise.all([...allProjects]
         <button
           class={`filter-button rounded-full border border-wood-brown-200 px-5 py-2.5 text-sm font-semibold transition ${category.id === 'all' ? 'bg-wood-brown-700 text-white' : 'bg-white text-wood-brown-700 hover:bg-wood-brown-100'}`}
           data-filter={category.id}
-          aria-pressed={category.id === 'all' ? 'true' : 'false'}
+          role="tab"
+          aria-selected={category.id === 'all' ? 'true' : 'false'}
         >
           {category.label}
         </button>
@@ -92,7 +93,7 @@ const projects = await Promise.all([...allProjects]
           <Image
             src={project.image}
             alt={project.title}
-            class="h-64 w-full object-cover transition duration-500 group-hover:scale-105 portfolio-image"
+            class="w-full aspect-[4/3] object-cover transition duration-500 group-hover:scale-105 portfolio-image"
             width={800}
             height={600}
             format="webp"
@@ -100,7 +101,7 @@ const projects = await Promise.all([...allProjects]
             data-fallback={project.fallback.src}
           />
           <figcaption class="flex flex-col gap-3 p-6">
-            <span class="text-xs font-semibold uppercase tracking-wide text-wood-brown-500">{project.displayCategory}</span>
+            <span class="text-xs font-semibold uppercase tracking-wide text-wood-brown-700">{project.displayCategory}</span>
             <h3 class="font-serif text-2xl font-semibold text-wood-brown-800">{project.title}</h3>
             <p class="text-sm leading-relaxed text-[#4A4A4A]">{project.description}</p>
             <a
@@ -127,6 +128,37 @@ const projects = await Promise.all([...allProjects]
           if (!this.src.endsWith(this.getAttribute('data-fallback'))) {
             this.src = this.getAttribute('data-fallback');
           }
+        });
+      });
+
+      // Filter functionality
+      const filterButtons = document.querySelectorAll('.filter-button');
+      const portfolioCards = document.querySelectorAll('.portfolio-card');
+
+      filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const filter = this.getAttribute('data-filter');
+          
+          // Update active states
+          filterButtons.forEach(btn => {
+            btn.classList.remove('bg-wood-brown-700', 'text-white');
+            btn.classList.add('bg-white', 'text-wood-brown-700', 'hover:bg-wood-brown-100');
+            btn.setAttribute('aria-selected', 'false');
+          });
+          
+          this.classList.add('bg-wood-brown-700', 'text-white');
+          this.classList.remove('bg-white', 'text-wood-brown-700', 'hover:bg-wood-brown-100');
+          this.setAttribute('aria-selected', 'true');
+
+          // Filter cards
+          portfolioCards.forEach(card => {
+            const category = card.getAttribute('data-category');
+            if (filter === 'all' || category === filter) {
+              card.classList.remove('hidden');
+            } else {
+              card.classList.add('hidden');
+            }
+          });
         });
       });
     });

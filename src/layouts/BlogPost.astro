@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import { type CollectionEntry } from 'astro:content';
 import Layout from './Layout.astro';
 
@@ -8,6 +9,13 @@ interface Props {
 
 const { post } = Astro.props;
 const { Content } = await post.render();
+
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/blog/**/*.{jpeg,jpg,png,gif,svg}');
+const rawPath = post.data.image ?? '/images/blog/blog-1.jpg';
+const imagePath = rawPath.replace(/^\/images\/blog\//, '/src/assets/images/blog/');
+const resolvedImage = images[imagePath] 
+  ? (await images[imagePath]()).default 
+  : (await images['/src/assets/images/blog/blog-1.jpg']()).default;
 ---
 
 <Layout title={post.data.title} description={post.data.description} canonical={`https://www.jasakayuprofesional.com/blog/${post.slug}/`}>
@@ -28,13 +36,14 @@ const { Content } = await post.render();
         })}
       </time>
     </p>
-    <img
-      src={post.data.image ?? '/images/blog/blog-1.jpg'}
+    <Image
+      src={resolvedImage}
       alt={post.data.title}
       class="mt-8 h-80 w-full rounded-lg object-cover"
-      width="800"
-      height="400"
+      width={800}
+      height={400}
       loading="eager"
+      format="webp"
     />
     <div class="prose mt-8 max-w-none">
       <Content />

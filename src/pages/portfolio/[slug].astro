@@ -144,7 +144,7 @@ const otherProjects = await Promise.all(
     
     <div class="p-8">
       <div class="mb-6">
-        <span class="text-xs font-semibold uppercase tracking-wide text-wood-brown-500">{portfolio.data.displayCategory}</span>
+        <span class="text-xs font-semibold uppercase tracking-wide text-wood-brown-700">{portfolio.data.displayCategory}</span>
         <h1 class="font-serif text-3xl md:text-4xl font-bold text-wood-brown-800 mt-2">{portfolio.data.title}</h1>
         <p class="text-wood-brown-600 mt-3">{portfolio.data.description}</p>
         <div class="mt-4 flex flex-wrap gap-2">
@@ -158,13 +158,13 @@ const otherProjects = await Promise.all(
         <div class="grid gap-4 rounded-2xl border border-wood-brown-100 bg-[#FFFBF2] p-6 md:grid-cols-2">
           {portfolio.data.location && (
             <div>
-              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-wood-brown-500">Area Proyek</p>
+              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-wood-brown-700">Area Proyek</p>
               <p class="mt-2 text-sm leading-relaxed text-[#4A4A4A]">{portfolio.data.location}</p>
             </div>
           )}
           {portfolio.data.address && (
             <div>
-              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-wood-brown-500">Alamat Ringkas</p>
+              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-wood-brown-700">Alamat Ringkas</p>
               <p class="mt-2 text-sm leading-relaxed text-[#4A4A4A]">{portfolio.data.address}</p>
             </div>
           )}
