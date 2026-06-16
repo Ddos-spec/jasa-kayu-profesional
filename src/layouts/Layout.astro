@@ -20,10 +20,11 @@ const { title = 'Jasa Kayu Profesional | Lantai Kayu, Decking, Tangga, dan Wall 
     <link rel="preconnect" href="https://www.googletagmanager.com" />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     
-    <!-- Preload the Hero Image to fix LCP -->
-    <link rel="preload" as="image" href="/images/portfolio/rumah-wagub-dki-1.jpg" fetchpriority="high" />
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <!-- Google Fonts Async Loading -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    </noscript>
 
     <GoogleAnalytics />
   </head>
@@ -33,7 +34,7 @@ const { title = 'Jasa Kayu Profesional | Lantai Kayu, Decking, Tangga, dan Wall 
     <header class="sticky top-0 z-40 bg-[#FFF8DC]/90 backdrop-blur-lg shadow-sm">
       <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 md:px-8">
         <a href="#hero" class="flex items-center gap-3" aria-label="Jasa Kayu Profesional Beranda">
-          <img src="/icons/wmremove-transformed.png" alt="Logo Jasa Kayu Profesional" class="h-10 w-10" width="40" height="40" />
+          <img src="/icons/logo.svg" alt="Logo Jasa Kayu Profesional" class="h-10 w-10" width="40" height="40" />
           <div class="flex flex-col">
             <span class="font-serif text-xl font-semibold text-wood-brown-800">Jasa Kayu Profesional</span>
             <span class="text-sm text-[#666666]">Premium Wood Crafting</span>

@@ -26,7 +26,7 @@ export default defineConfig({
     }
   },
   image: {
-    domains: ['picsum.photos'],
+    domains: ['picsum.photos', 'images.unsplash.com'],
     service: {
       entrypoint: 'astro/assets/services/sharp'
     },
