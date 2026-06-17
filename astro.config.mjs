@@ -8,6 +8,9 @@ export default defineConfig({
   site: 'https://www.jasakayuprofesional.com',
   output: 'static',
   prefetch: true,
+  build: {
+    inlineStylesheets: 'always'
+  },
   adapter: vercel({
     webAnalytics: { enabled: true },
     speedInsights: { enabled: true }

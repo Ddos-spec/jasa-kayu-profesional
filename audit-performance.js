@@ -3,7 +3,7 @@ import * as chromeLauncher from 'chrome-launcher';
 import fs from 'fs';
 
 async function runAudit() {
-  const url = 'https://jasa-kayu-profesional-cbklia0bx-donspablos-projects-1d6b7e49.vercel.app';
+  const url = 'https://www.jasakayuprofesional.com/';
   console.log(`🚀 Sedang melakukan audit Lighthouse untuk: ${url} ...`);
   
   const chrome = await chromeLauncher.launch({chromeFlags: ['--headless', '--no-sandbox']});
@@ -18,6 +18,7 @@ async function runAudit() {
   const runnerResult = await lighthouse(url, options);
   
   const reportJson = JSON.parse(runnerResult.report);
+  fs.writeFileSync('lighthouse-report.json', JSON.stringify(reportJson, null, 2));
   const categories = reportJson.categories;
   
   console.log('\n--- SKOR LIGHTHOUSE TERBARU ---');
