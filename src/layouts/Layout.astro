@@ -3,24 +3,14 @@ import '../styles/global.css';
 import SEO from '../components/SEO.astro';
 import GoogleAnalytics from '../components/analytics/GoogleAnalytics.astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
-import { getImage } from 'astro:assets';
-import heroBg from '../assets/images/portfolio/rumah-wagub-dki-1.jpg';
 
 const { title = 'Jasa Kayu Profesional | Lantai Kayu, Decking, Tangga, dan Wall Panel', description = 'Jasa kayu profesional untuk lantai kayu, decking, tangga, ceiling, wall panel, dan pekerjaan custom di Jabodetabek.', canonical } = Astro.props;
-
-const isHome = Astro.url.pathname === '/';
-const mobileHeroBg = isHome ? await getImage({
-  src: heroBg,
-  format: 'avif',
-  width: 400
-}) : null;
 ---
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    {isHome && mobileHeroBg && <link rel="preload" as="image" href={mobileHeroBg.src} type="image/avif" fetchpriority="high" />}
 
     <SEO title={title} description={description} canonical={canonical} />
 
