@@ -15,10 +15,15 @@ gallery:
   - '/images/portfolio/deck-ulin-rancamaya-bogor/deck-ulin-rancamaya-bogor-2.jpg'
 ---
 
-Proyek ini menunjukkan pengerjaan deck kayu ulin untuk area outdoor rumah tinggal di kawasan Rancamaya, Bogor. Area deck dibuat menyatu dengan halaman dan tepian kolam supaya sirkulasi tetap nyaman, tampilan lebih hangat, dan pijakan terasa lebih rapi untuk aktivitas harian.
+Pemasangan **deck kayu Ulin Kalimantan (Eusideroxylon zwageri)** eksklusif untuk area lanskap outdoor dan *poolside* di hunian premium Komplek Rancamaya, Bogor. Proyek ini mendemonstrasikan integrasi sempurna antara elemen arsitektur kayu dengan lingkungan hijau, memberikan transisi yang mulus antara interior rumah dan area relaksasi luar ruang.
 
-Di proyek ini, bentuk deck juga menyesuaikan elemen taman yang sudah ada, termasuk area pohon di tengah bidang deck. Detail seperti ini penting supaya hasil akhirnya tidak terasa tempelan, tetapi benar-benar menyatu dengan lanskap rumah dan tetap enak dipakai untuk jalur jalan, area duduk santai, maupun tepian kolam.
+Sebagai spesialis **jasa lantai kayu dan decking profesional**, kami merancang struktur deck ini untuk mengakomodasi tata letak taman yang sudah ada, termasuk teknik *custom cutout* presisi untuk mempertahankan pepohonan di tengah area deck. Hasilnya adalah instalasi yang tidak terlihat seperti tambahan (add-on), melainkan bagian organik dari lanskap arsitektural properti.
 
-Kayu ulin dipilih karena karakternya memang cocok untuk kebutuhan luar ruang yang sering terkena air, panas, dan perubahan cuaca. Untuk pekerjaan seperti ini, fokus kami bukan hanya pada tampilan akhir, tetapi juga pada susunan rangka, kerapian sambungan, dan alur pemasangan supaya deck tetap terasa kokoh saat dipakai dalam jangka panjang.
+### Mengapa Memilih Kayu Ulin untuk Decking Outdoor?
 
-Portofolio ini cocok jadi gambaran awal untuk calon klien yang sedang mencari jasa deck kayu ulin di Bogor, terutama untuk area taman, tepian kolam, teras belakang, atau halaman rumah yang ingin terlihat lebih bersih dan siap dipakai setiap hari.
+Kayu Ulin (Ironwood) adalah material *grade A* untuk instalasi luar ruang. Ketahanannya terhadap cuaca ekstrem, kelembaban, rayap, dan paparan sinar matahari menjadikannya pilihan investasi seumur hidup. Pada proyek Rancamaya ini, kami menerapkan:
+- **Konstruksi Rangka Presisi Tinggi:** Menggunakan sistem rangka solid yang menjamin deck tidak melengkung (warping) walau terkena fluktuasi suhu basah dan kering setiap harinya.
+- **Finishing Anti-Slip & Weatherproof:** Dilapisi *coating outdoor* kelas industri yang memunculkan urat kayu alami sekaligus melindungi permukaan dari pelapukan air kolam renang.
+- **Seamless Joint System:** Sambungan antar papan dieksekusi dengan *gap* mikroskopis yang seragam untuk mengantisipasi pemuaian kayu tanpa mengorbankan estetika visual.
+
+Bagi Anda yang berdomisili di Bogor, Jakarta, dan sekitarnya, portofolio ini adalah bukti nyata komitmen kami. Jika Anda mencari kontraktor **jasa pasang deck kayu, lantai kayu, atau pengerjaan kayu custom** yang mengutamakan durabilitas dan nilai seni tinggi, Jasa Kayu Profesional siap mewujudkan visi lanskap hunian mewah Anda. Hubungi tim ahli kami untuk konsultasi teknis dan estimasi biaya proyek.
