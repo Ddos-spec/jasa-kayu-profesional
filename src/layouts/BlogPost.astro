@@ -6,7 +6,10 @@ import Layout from './Layout.astro';
 interface Props { post: CollectionEntry<'blog'>; }
 const { post } = Astro.props;
 const { Content } = await render(post);
-const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/**/*.{jpeg,jpg,png,gif,svg,webp}');
+const images = {
+  ...import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/blog/**/*.{jpeg,jpg,png,gif,svg,webp}'),
+  ...import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/portfolio/**/*.{jpeg,jpg,png,gif,svg,webp}'),
+};
 const rawPath = post.data.image ?? '/images/blog/blog-1.jpg';
 const imagePath = rawPath.replace(/^\/images\//, '/src/assets/images/');
 const resolvedImage = images[imagePath] ? (await images[imagePath]()).default : (await images['/src/assets/images/blog/blog-1.jpg']()).default;

@@ -2,7 +2,7 @@
 const areas = [
   ['Jakarta Selatan', 'Dharmawangsa, Patimura, Pondok Indah, Kuningan, Pejaten'],
   ['Jakarta Barat & Utara', 'Kebon Jeruk, PIK, townhouse dan area hunian sekitarnya'],
-  ['Tangerang & BSD', 'Rumah tinggal, cluster, serta proyek detail interior'],
+  ['Tangerang Selatan & BSD', 'BSD, Serpong, Bintaro, Pamulang, Ciputat, Pondok Aren, dan area sekitar'],
   ['Bogor & Puncak', 'Villa, area resort, dan kebutuhan outdoor sesuai jadwal survei'],
 ];
 ---
@@ -10,11 +10,11 @@ const areas = [
   <div class="section-shell grid gap-10 lg:grid-cols-[.72fr_1.28fr] lg:items-end">
     <div class="reveal">
       <p class="section-kicker">Area kerja</p>
-      <h2 class="display-title mt-5 text-5xl text-[#17231d] sm:text-6xl">Berangkat dari Jakarta,<br /><em>mengikuti proyek.</em></h2>
+      <h2 class="display-title mt-5 text-5xl text-[#17231d] sm:text-6xl">Berangkat dari Jakarta,<br /><em>mengikuti proyek.</em></h2><a href="/layanan/jasa-kayu-jabodetabek" class="mt-6 inline-flex text-[.65rem] font-extrabold uppercase tracking-[.13em] text-[#315443] hover:text-[#17231d]">Lihat cakupan Jabodetabek ↗</a>
     </div>
     <div class="reveal grid gap-px overflow-hidden border border-[#17231d]/15 bg-[#17231d]/15 sm:grid-cols-2">
       {areas.map(([area, description]) => (
-        <div class="bg-[#f4f2eb] p-6 sm:p-7"><h3 class="font-serif text-2xl font-semibold tracking-[-.025em] text-[#17231d]">{area}</h3><p class="mt-2 text-sm leading-6 text-[#58645c]">{description}</p></div>
+        <div class="bg-[#f4f2eb] p-6 sm:p-7"><h3 class="font-serif text-2xl font-semibold tracking-[-.025em] text-[#17231d]">{area === 'Tangerang Selatan & BSD' ? <a href="/layanan/jasa-kayu-tangsel" class="transition hover:text-[#315443]">{area} ↗</a> : area}</h3><p class="mt-2 text-sm leading-6 text-[#58645c]">{description}</p></div>
       ))}
     </div>
   </div>
