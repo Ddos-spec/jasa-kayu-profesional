@@ -4,7 +4,7 @@ description: 'Deck outdoor akan berubah karena cuaca. Pelajari perawatan sederha
 pubDate: 2026-07-14
 updatedDate: 2026-07-14
 category: 'Perawatan kayu'
-image: '/images/blog/memilih-kayu-berkualitas.jpg'
+image: '/images/portfolio/decking-bengkirai-cafe-artisan-jakarta/decking-bengkirai-cafe-artisan-jakarta-4.jpg'
 ---
 
 Deck kayu outdoor hidup bersama lingkungan. Matahari, hujan, debu, daun, dan kelembapan akan meninggalkan jejak pada permukaannya. Perubahan warna alami bukan selalu tanda kegagalan, tetapi genangan air dan kotoran yang dibiarkan terlalu lama dapat mempercepat masalah yang sebenarnya bisa dicegah.

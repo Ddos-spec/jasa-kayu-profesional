@@ -4,7 +4,7 @@ description: 'Pilih lantai apartemen berdasarkan kondisi ruang, aturan gedung, d
 pubDate: 2026-07-12
 updatedDate: 2026-07-12
 category: 'Lantai kayu'
-image: '/images/blog/jenis-lantai-kayu.jpg'
+image: '/images/blog/blog-3.jpg'
 ---
 
 Pemilihan lantai untuk apartemen sering dimulai dari tampilan, padahal kenyamanan jangka panjang lebih banyak ditentukan oleh kondisi unit. Ada aturan gedung, kemungkinan perubahan kelembapan dari AC, kebutuhan akustik, kondisi lantai eksisting, hingga cara material dibawa melalui lift. Karena itu, “yang paling bagus” selalu bergantung pada konteks.

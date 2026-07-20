@@ -4,7 +4,7 @@ description: 'Decking yang rapi bukan berarti tanpa celah. Pahami peran jarak an
 pubDate: 2026-07-10
 updatedDate: 2026-07-10
 category: 'Teknik decking'
-image: '/images/blog/blog-2.jpg'
+image: '/images/portfolio/deck-ulin-rancamaya-bogor/deck-ulin-rancamaya-bogor-2.jpg'
 ---
 
 Salah satu salah paham yang paling umum pada decking adalah menganggap bidang yang paling rapat selalu terlihat paling premium. Pada area outdoor, celah antarpapan justru merupakan bagian penting dari sistem. Ia memberi ruang untuk pergerakan material, aliran air, serta pembersihan kotoran kecil yang tidak mungkin dihindari.

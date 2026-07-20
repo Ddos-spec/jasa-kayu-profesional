@@ -4,7 +4,7 @@ description: 'Tidak perlu menunggu gambar kerja sempurna untuk memulai. Ini chec
 pubDate: 2026-07-16
 updatedDate: 2026-07-16
 category: 'Panduan proyek'
-image: '/images/blog/blog-4.jpg'
+image: '/images/portfolio/kanopi-kayu-bengkirai-pejaten-barat/kanopi-kayu-bengkirai-pejaten-barat-2.jpg'
 ---
 
 Banyak proyek terlambat dibahas bukan karena idenya kurang matang, melainkan karena informasi dasar belum tersusun. Padahal untuk konsultasi awal, Anda tidak perlu membawa gambar kerja lengkap. Foto yang benar, ukuran kasar, dan beberapa keputusan konteks sudah cukup untuk mempersempit pilihan.

@@ -176,6 +176,16 @@ img {
   transform: translateY(0);
 }
 
+/* WebMCP keeps agent-assisted form work visible and reviewable for the person. */
+#contact-form:tool-form-active {
+  outline: 2px solid #e6c88f;
+  outline-offset: 5px;
+}
+
+#contact-form button:tool-submit-active {
+  box-shadow: 0 0 0 3px rgba(230, 200, 143, 0.45);
+}
+
 .prose {
   color: #435047;
   font-size: 1.0625rem;

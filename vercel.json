@@ -25,6 +25,14 @@
           "value": "nosniff"
         },
         {
+          "key": "Permissions-Policy",
+          "value": "tools=(self)"
+        },
+        {
+          "key": "Origin-Agent-Cluster",
+          "value": "?1"
+        },
+        {
           "key": "X-Frame-Options",
           "value": "DENY"
         },

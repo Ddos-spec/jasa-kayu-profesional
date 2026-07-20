@@ -4,7 +4,7 @@ description: 'Balkon apartemen punya batasan berbeda dari teras rumah. Kenali 7 
 pubDate: 2026-07-20
 updatedDate: 2026-07-20
 category: 'Decking & apartemen'
-image: '/images/blog/memilih-kayu-untuk-outdoor.jpg'
+image: '/images/portfolio/deck-apartemen-dharmawangsa.webp'
 ---
 
 Deck kayu bisa mengubah balkon apartemen yang terasa dingin menjadi area duduk yang lebih hangat. Tetapi balkon bukan sekadar “teras kecil”. Area ini punya batasan akses, sistem drainase bangunan, paparan panas, dan aturan pengelola yang perlu dihormati. Keputusan yang terlihat kecil di awal bisa memengaruhi keamanan serta perawatan di kemudian hari.

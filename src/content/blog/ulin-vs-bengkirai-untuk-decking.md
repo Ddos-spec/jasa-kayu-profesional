@@ -4,7 +4,7 @@ description: 'Ulin dan bengkirai sama-sama populer untuk decking. Pahami perbeda
 pubDate: 2026-07-18
 updatedDate: 2026-07-18
 category: 'Material outdoor'
-image: '/images/blog/blog-3.jpg'
+image: '/images/portfolio/decking-bengkirai-cafe-artisan-jakarta/decking-bengkirai-cafe-artisan-jakarta-2.jpg'
 ---
 
 Ulin dan bengkirai sering muncul dalam pembahasan decking, pergola, serta area transisi indoor-outdoor. Keduanya bukan material yang bisa dibandingkan hanya dari harga per meter. Lokasi, paparan cuaca, struktur rangka, warna yang diinginkan, dan kesiapan perawatan akan menentukan apakah salah satunya lebih cocok untuk proyek Anda.
