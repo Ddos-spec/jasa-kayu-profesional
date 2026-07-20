@@ -1,133 +1,46 @@
 ---
-import LinkButton from '../components/common/LinkButton.astro';
 import { Image } from 'astro:assets';
+import flooringImage from '../assets/images/portfolio/villa-puncak-lantai-jati-solid.jpg';
+import wallImage from '../assets/images/portfolio/townhouse-jakarta-wall-panel-walnut.jpg';
+import deckingImage from '../assets/images/portfolio/deck-ulin-rancamaya-bogor/deck-ulin-rancamaya-bogor-1.jpg';
+import ceilingImage from '../assets/images/portfolio/hotel-boutique-bandung-lobby-ceiling.jpg';
+import stairsImage from '../assets/images/portfolio/penthouse-scbd-spiral-staircase.jpg';
+import customImage from '../assets/images/portfolio/rumah-wagub-dki-1.jpg';
 
 const services = [
-  {
-    title: 'Lantai Kayu Jati & Merbau Solid',
-    slug: 'lantai-kayu-premium',
-    icon: '/icons/flooring.svg',
-    image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=600&auto=format&fit=crop',
-    description:
-      'Spesialis pemasangan lantai kayu jati solid dan merbau solid dengan standar presisi tinggi. Kami memastikan setiap bilah kayu melewati proses kiln dry yang sempurna sehingga bebas dari muai-susut berlebih. Kayu jati menawarkan keindahan serat yang tak tertandingi dan ketahanan luar biasa, sementara kayu merbau dikenal dengan kekerasan dan warna kemerahan yang eksotis. Teknik pemasangan profesional kami memastikan hasil akhir yang rapat, rata, dan elegan untuk hunian mewah Anda.',
-    highlights: [
-      'Lantai kayu jati solid grade A untuk keindahan natural',
-      'Kayu merbau solid dengan ketahanan dan tingkat kekerasan tinggi',
-      'Pemasangan presisi anti-muai dan susut',
-      'Finishing premium tahan gores dan anti rayap'
-    ]
-  },
-  {
-    title: 'Kayu Sungkai Interior',
-    slug: 'dinding-kayu-dan-wall-cladding',
-    icon: '/icons/wall.svg',
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=600&auto=format&fit=crop',
-    description:
-      'Kayu sungkai sangat diminati untuk gaya interior cerah, minimalis, dan kontemporer. Kami menyediakan panel kayu sungkai untuk kebutuhan lantai, dinding, maupun elemen arsitektural lainnya. Serat kayu sungkai yang tegas dan warnanya yang terang memberikan ilusi ruang yang lebih luas dan bersih. Pengerjaan dilakukan oleh tukang spesialis untuk menjaga tekstur alami kayu sungkai tetap menonjol dengan finishing natural yang sempurna.',
-    highlights: [
-      'Pilihan utama untuk desain interior minimalis dan Japandi',
-      'Serat kayu eksotis dengan warna cerah yang elegan',
-      'Pemasangan panel dinding dan elemen interior',
-      'Finishing natural atau white-wash'
-    ]
-  },
-  {
-    title: 'Decking Ulin & Bengkirai',
-    slug: 'pergola-decking-outdoor',
-    icon: '/icons/pergola.svg',
-    image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=600&auto=format&fit=crop',
-    description:
-      'Solusi terbaik untuk area outdoor, kolam renang, dan teras menggunakan decking ulin dan decking bengkirai. Kayu ulin (kayu besi) adalah material legendaris yang semakin kuat saat terkena air, sementara bengkirai menawarkan daya tahan cuaca ekstrem dengan harga yang sangat sepadan. Instalasi decking kami menggunakan sistem rangka yang kuat, anti lapuk, dan finishing outdoor khusus yang melindunginya dari sinar UV dan hujan tropis.',
-    highlights: [
-      'Decking kayu ulin (kayu besi) untuk area kolam kolam renang dan outdoor',
-      'Decking bengkirai tahan cuaca dengan ketahanan jangka panjang',
-      'Instalasi dengan sekrup khusus anti karat',
-      'Coating khusus eksterior tahan sinar UV dan air'
-    ]
-  },
-  {
-    title: 'Lambersering Jati (Plafon & Dinding)',
-    slug: 'plafon-kayu-ceiling',
-    icon: '/icons/ceiling.svg',
-    image: 'https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=600&auto=format&fit=crop',
-    description:
-      'Hadirkan kemewahan klasik dan nuansa hangat melalui pemasangan lambersering jati untuk plafon (ceiling) dan pelapis dinding. Lambersering dari kayu jati solid tidak hanya menaikkan nilai estetika ruangan tetapi juga memberikan fungsi insulasi akustik dan termal yang baik. Kami sangat memperhatikan detail sambungan dan kerataan permukaan untuk menciptakan focal point ruangan yang memukau.',
-    highlights: [
-      'Plafon lambersering jati solid kualitas ekspor',
-      'Pelapis dinding elegan penambah nilai estetika',
-      'Insulasi suhu dan suara alami untuk ruangan',
-      'Pemilihan serat kayu senada untuk hasil akhir yang harmonis'
-    ]
-  },
-  {
-    title: 'Pemasangan Genteng Sirap Ulin',
-    slug: 'genteng-sirap-ulin',
-    icon: '/icons/furniture.svg',
-    image: 'https://images.unsplash.com/photo-1513161455079-7dc1de15ef3e?q=80&w=600&auto=format&fit=crop',
-    description:
-      'Kami melayani jasa pemasangan genteng sirap dari kayu ulin asli. Atap sirap ulin memberikan karakter arsitektur tropis yang unik, sejuk, dan menyatu dengan alam. Dengan sifat kayu ulin yang sangat kuat terhadap air dan perubahan cuaca, atap sirap mampu bertahan hingga puluhan tahun. Pemasangan dilakukan dengan teknik tumpang tindih presisi tinggi untuk memastikan atap 100% anti bocor.',
-    highlights: [
-      'Atap sirap kayu ulin asli Kalimantan',
-      'Daya tahan puluhan tahun terhadap cuaca tropis',
-      'Teknik pemasangan anti bocor dan rapi',
-      'Tampilan arsitektur tropis eksotis dan eksklusif'
-    ]
-  }
+  { number: '01', label: 'Interior', title: 'Lantai kayu', description: 'Material, pola, dan level pemasangan dipikirkan sebagai satu sistem agar hasilnya rapi dari sudut mana pun.', href: '/layanan/lantai-kayu-premium', image: flooringImage },
+  { number: '02', label: 'Interior', title: 'Wall panel & ceiling', description: 'Bidang dinding dan plafon dengan proporsi, sambungan, serta permainan cahaya yang membuat ruang terasa selesai.', href: '/layanan/dinding-kayu-dan-wall-cladding', image: wallImage },
+  { number: '03', label: 'Outdoor', title: 'Decking & pergola', description: 'Area luar yang hangat, memiliki drainase yang terukur, serta siap menghadapi ritme cuaca tropis.', href: '/layanan/pergola-decking-outdoor', image: deckingImage },
+  { number: '04', label: 'Detail', title: 'Tangga kayu', description: 'Setiap pijakan dibuat untuk terasa mantap, proporsional, dan menyatu dengan bahasa arsitektur rumah.', href: '/layanan/tangga-kayu-artistik', image: stairsImage },
+  { number: '05', label: 'Interior', title: 'Lambersering', description: 'Ceiling dan pelapis bidang yang mengangkat tekstur kayu tanpa membuat ruang terasa berat.', href: '/layanan/plafon-kayu-ceiling', image: ceilingImage },
+  { number: '06', label: 'Custom', title: 'Pengerjaan spesifik', description: 'Untuk detail yang tidak bisa diselesaikan produk jadi: konsultasi material sampai eksekusi di lapangan.', href: '#kontak', image: customImage },
 ];
 ---
-<section id="layanan" class="section-anchor bg-[#FFF8DC] py-20 md:py-28">
-  <div class="mx-auto max-w-6xl px-4 md:px-8">
-    <div class="flex flex-col items-center text-center">
-      <span class="badge bg-wood-brown-100 text-wood-brown-800">Spesialisasi Kami</span>
-      <h2 class="mt-5 font-serif text-4xl font-semibold text-wood-brown-800 md:text-5xl">Keahlian Jasa Kayu Profesional</h2>
-      <p class="mt-4 max-w-3xl text-lg leading-relaxed text-[#4A4A4A]">
-        Kami adalah pakar yang berfokus pada pengerjaan kayu kualitas atas. Spesialisasi kami meliputi instalasi lantai kayu jati solid, kayu merbau solid, kayu sungkai, decking ulin, decking bengkirai, lambersering jati, hingga pemasangan genteng sirap ulin. Tim kami menjamin hasil yang sempurna, awet, dan bernilai seni tinggi.
-      </p>
+<section id="layanan" class="section-anchor bg-[#f4f2eb] py-24 sm:py-32">
+  <div class="section-shell">
+    <div class="grid gap-10 border-b border-[#17231d]/15 pb-12 lg:grid-cols-[1fr_.8fr] lg:items-end">
+      <div class="reveal">
+        <p class="section-kicker">Lingkup kerja</p>
+        <h2 class="display-title text-balance mt-5 max-w-3xl text-5xl text-[#17231d] sm:text-6xl lg:text-7xl">Dikerjakan dengan detail,<br /><em>dibuat untuk dipakai.</em></h2>
+      </div>
+      <p class="reveal max-w-xl text-base leading-7 text-[#566158] sm:text-lg">Setiap proyek dimulai dari fungsi ruang, karakter material, dan kondisi lapangan. Bukan memilih kayu dulu lalu mencari alasan untuk memakainya.</p>
     </div>
-    <div class="mt-16 grid gap-8 md:grid-cols-2">
-      {services.map((service) => (
-        <article class="card-hover flex h-full flex-col rounded-3xl border border-wood-brown-100 bg-[#FFFAF0] p-8 shadow-elegant">
-          
-          {service.image && (
-            <div class="mb-6 -mx-8 -mt-8 overflow-hidden rounded-t-3xl">
-              <Image src={service.image} alt={service.title} width={600} height={400} format="webp" class="w-full aspect-[3/2] object-cover transition-transform duration-500 hover:scale-105" loading="lazy" />
+    <div class="grid divide-y divide-[#17231d]/15 lg:grid-cols-2 lg:divide-x lg:divide-y-0">
+      {services.map((service, index) => (
+        <a href={service.href} class={`group relative block overflow-hidden py-7 ${index % 2 === 0 ? 'lg:pr-8' : 'lg:pl-8'} ${index > 1 ? 'lg:border-t lg:border-[#17231d]/15 lg:pt-8' : ''}`}>
+          <div class="grid gap-5 sm:grid-cols-[9.5rem_1fr] sm:items-center">
+            <div class="image-zoom relative aspect-[4/3] overflow-hidden bg-[#ded6c7] sm:aspect-square">
+              <Image src={service.image} alt={`Pekerjaan ${service.title} oleh Jasa Kayu Profesional`} width={420} height={420} format="webp" loading="lazy" class="h-full w-full object-cover" />
+              <span class="absolute left-3 top-3 rounded-full bg-[#f4f2eb]/90 px-2.5 py-1 text-[0.56rem] font-extrabold tracking-[.13em] text-[#17231d] backdrop-blur-sm">{service.number}</span>
             </div>
-          )}
-          <div class="flex items-center gap-4">
-
-            <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-wood-brown-100">
-              <img src={service.icon} alt={`Ikon ${service.title}`} class="h-8 w-8" loading="lazy" />
+            <div>
+              <p class="text-[0.62rem] font-extrabold uppercase tracking-[.14em] text-[#6c766d]">{service.label}</p>
+              <h3 class="mt-2 font-serif text-3xl font-semibold tracking-[-.035em] text-[#17231d] sm:text-[2.1rem]">{service.title}</h3>
+              <p class="mt-3 max-w-md text-sm leading-6 text-[#59645b]">{service.description}</p>
+              <span class="mt-5 inline-flex items-center gap-2 text-[0.67rem] font-extrabold uppercase tracking-[.12em] text-[#315443]">Lihat pendekatan <span class="transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">→</span></span>
             </div>
-            <h3 class="font-serif text-2xl font-semibold text-wood-brown-800">{service.title}</h3>
           </div>
-          <p class="mt-6 flex-1 text-base leading-relaxed text-[#4A4A4A]">
-            {service.description}
-          </p>
-          <ul class="mt-6 space-y-3 text-sm text-[#4A4A4A]">
-            {service.highlights.map((item, index) => (
-              <li class="flex items-start gap-3" key={`${service.title}-${index}`}>
-                <span class="mt-1 inline-flex h-2.5 w-2.5 rounded-full bg-wood-brown-700"></span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-          <LinkButton
-            variant="secondary"
-            size="md"
-            class="mt-6 self-start"
-            href={`/layanan/${service.slug}`}
-            aria-label={`Lihat detail layanan ${service.title}`}
-          >
-            Lihat Detail Layanan
-          </LinkButton>
-          <a
-            href="/#kontak"
-            class="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-wood-brown-700 transition hover:text-wood-brown-900"
-          >
-            Konsultasi layanan ini
-            <span aria-hidden="true">→</span>
-          </a>
-        </article>
+        </a>
       ))}
     </div>
   </div>

@@ -41,6 +41,15 @@ const localBusinessSchema = {
   sameAs: ['https://wa.me/6281283135295'],
 };
 
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Jasa Kayu Profesional',
+  url: Astro.site,
+  inLanguage: 'id-ID',
+  description: 'Studio pengerjaan kayu untuk lantai, decking, tangga, ceiling, wall panel, dan detail custom di Jabodetabek.',
+};
+
 const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
@@ -90,13 +99,17 @@ const breadcrumbList = {
 
 const articleSchema =
   type === 'article' && publishDate
-    ? {
+      ? {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: title,
         datePublished: publishDate.toISOString(),
         description: description,
         image: socialImageURL.href,
+        mainEntityOfPage: {
+          '@type': 'WebPage',
+          '@id': canonicalURL.href,
+        },
         author: {
           '@type': 'Organization',
           name: 'Jasa Kayu Profesional',
@@ -120,6 +133,7 @@ const articleSchema =
   content="jasa kayu profesional, lantai kayu, decking outdoor, tangga kayu, wall panel kayu, plafon kayu, jasa kayu jakarta, jasa kayu tangerang, jasa kayu bekasi"
 />
 <meta name="author" content="Jasa Kayu Profesional" />
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
 <link rel="canonical" href={canonicalURL} />
 
 <!-- Open Graph -->
@@ -141,6 +155,7 @@ const articleSchema =
   <>
     <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
   </>
 ) : (
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbList)} />

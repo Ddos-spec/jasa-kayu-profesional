@@ -1,6 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { Image } from 'astro:assets';
+import heroImage from '../../assets/images/portfolio/tangga-modern-bsd.jpg';
+import detailImage from '../../assets/images/portfolio/townhouse-jakarta-wall-panel-walnut.jpg';
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -44,7 +46,7 @@ const faqSchema = {
   <section class="relative bg-wood-brown-900 py-20 text-white md:py-32">
     <div class="absolute inset-0 overflow-hidden">
       <Image
-        src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=1600&auto=format&fit=crop"
+        src={heroImage}
         alt="Desain lemari bawah tangga minimalis modern dengan finishing HPL kayu"
         class="h-full w-full object-cover opacity-30"
         width={1600}
@@ -87,7 +89,7 @@ const faqSchema = {
         </ul>
 
         <Image 
-          src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=1200&auto=format&fit=crop" 
+          src={detailImage}
           alt="Contoh pengerjaan lemari bawah tangga laci tarik (drawers) fungsional" 
           class="my-8 w-full rounded-xl shadow-lg"
           width={1200}

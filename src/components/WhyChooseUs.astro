@@ -1,83 +1,29 @@
 ---
-import Badge from '../components/common/Badge.astro';
-
-const advantages = [
-  {
-    title: 'Rekomendasi Material Lebih Kontekstual',
-    description:
-      'Kami tidak asal dorong satu jenis kayu untuk semua proyek. Pilihan material disesuaikan dengan area pemasangan, paparan cuaca, ritme pemakaian, dan hasil visual yang diinginkan.',
-    detail:
-      'Untuk area indoor kami bantu bedakan opsi yang cocok untuk kesan hangat, area traffic tinggi, atau perawatan yang lebih ringan. Untuk outdoor kami prioritaskan struktur, ketahanan cuaca, dan detail finishing yang realistis untuk penggunaan harian.'
-  },
-  {
-    title: 'Proses Kerja Lebih Rapi dari Awal',
-    description:
-      'Setelah brief awal, tim kami bantu petakan prioritas proyek, area kerja, dan urutan pengerjaan supaya renovasi atau instalasi tidak bentrok dengan aktivitas rumah maupun bisnis.',
-    detail:
-      'Tahap kerja kami biasanya dimulai dari review foto dan kebutuhan, lanjut survei lokasi bila diperlukan, lalu breakdown material dan scope per area. Pola ini membantu klien lebih cepat ambil keputusan tanpa harus menebak-nebak biaya dan urutan kerja.'
-  },
-  {
-    title: 'Portofolio Nyata di Beberapa Titik Jabodetabek',
-    description:
-      'Beberapa proyek terdokumentasi kami berada di Jakarta Selatan, Jakarta Barat, Jakarta Utara, BSD, hingga area villa seperti Puncak. Ini membantu calon klien melihat gaya kerja kami secara lebih konkret.',
-    detail:
-      'Dokumentasi proyek memberi gambaran soal jenis pekerjaan yang sering kami tangani: lantai kayu, tangga, wall panel, ceiling, decking outdoor, dan pengerjaan custom yang butuh detail finishing rapi.'
-  },
-  {
-    title: 'Komunikasi Cepat untuk Closing yang Lebih Ringan',
-    description:
-      'Banyak calon klien sebenarnya cuma butuh satu hal di awal: jawaban cepat apakah proyeknya masuk, butuh material apa, dan langkah berikutnya apa. Kami susun alur kontak untuk menjawab itu lebih cepat.',
-    detail:
-      'Dari formulir singkat, WhatsApp, sampai link ke halaman layanan dan portofolio, visitor bisa langsung pindah dari tahap lihat-lihat ke tahap konsultasi tanpa harus bingung cari jalur kontak yang tepat.'
-  }
+const principles = [
+  ['01', 'Mulai dari konteks', 'Area basah atau kering, paparan matahari, sirkulasi, hingga kebiasaan penghuni menentukan pilihan material dan sistem pemasangan.'],
+  ['02', 'Detail sebelum eksekusi', 'Kami memetakan sambungan, elevasi, arah serat, dan transisi agar keputusan penting tidak muncul di menit terakhir.'],
+  ['03', 'Komunikasi yang bisa diikuti', 'Brief awal, referensi, dan pembahasan scope dibuat sejelas mungkin supaya klien tahu apa yang sedang diputuskan.'],
+  ['04', 'Hasil yang tetap relevan', 'Kami mengejar karakter material dan proporsi yang matang, bukan tren visual yang cepat terasa usang.'],
 ];
 ---
-<section id="mengapa" class="section-anchor bg-[#F5F5DC] py-20 md:py-28">
-  <div class="mx-auto max-w-6xl px-4 md:px-8">
-    <div class="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
-      <div>
-        <Badge variant="primary" class="bg-wood-brown-200 text-wood-brown-800">Mengapa Klien Memilih Kami</Badge>
-        <h2 class="mt-5 font-serif text-4xl font-semibold text-wood-brown-800 md:text-5xl">
-          Alasan Klien Nyaman Mulai Konsultasi dari Sini
-        </h2>
-        <p class="mt-4 text-lg leading-relaxed text-[#4A4A4A]">
-          Pekerjaan kayu yang bagus bukan cuma soal hasil akhir, tapi juga soal cara tim membaca kebutuhan proyek sejak awal. Karena itu kami fokus pada rekomendasi material yang relevan, alur kerja yang jelas, dan komunikasi yang enak diikuti.
-        </p>
-        <div class="mt-10 grid gap-6 text-sm text-[#4A4A4A]">
-          <div class="flex items-center gap-3">
-            <div class="flex h-10 w-10 items-center justify-center rounded-full bg-wood-brown-700 text-white">
-              <span class="font-semibold">01</span>
-            </div>
-            <p>Review kebutuhan awal lewat foto, ukuran, dan lokasi proyek supaya diskusi lebih efisien.</p>
-          </div>
-          <div class="flex items-center gap-3">
-            <div class="flex h-10 w-10 items-center justify-center rounded-full bg-wood-brown-100 text-wood-brown-800">
-              <span class="font-semibold">02</span>
-            </div>
-            <p>Pilihan layanan jelas: lantai, tangga, wall panel, ceiling, decking, dan custom kayu.</p>
-          </div>
-          <div class="flex items-center gap-3">
-            <div class="flex h-10 w-10 items-center justify-center rounded-full bg-[#25D366] text-[#075E54]">
-              <span class="font-semibold">03</span>
-            </div>
-            <p>Link ke portofolio dan halaman layanan membantu visitor cepat masuk ke konteks yang tepat.</p>
-          </div>
-        </div>
+<section id="mengapa" class="section-anchor paper-grid bg-[#e7dfd0] py-24 sm:py-32">
+  <div class="section-shell">
+    <div class="grid gap-12 lg:grid-cols-[.82fr_1.18fr] lg:gap-20">
+      <div class="reveal lg:sticky lg:top-32 lg:self-start">
+        <p class="section-kicker">Cara kami bekerja</p>
+        <h2 class="display-title text-balance mt-5 text-5xl text-[#17231d] sm:text-6xl lg:text-7xl">Tidak ada material bagus yang bisa menyelamatkan keputusan yang <em>terburu-buru.</em></h2>
+        <p class="mt-7 max-w-md text-base leading-7 text-[#566158]">Pekerjaan kayu yang awet berangkat dari keputusan kecil yang tepat: jenis kayu, kondisi bidang, detail drainase, toleransi sambungan, hingga cara ruang itu digunakan setiap hari.</p>
+        <a href="#kontak" class="btn-wood mt-8">Kirim brief proyek <span aria-hidden="true">↗</span></a>
       </div>
-      <div class="grid gap-6">
-        {advantages.map((item, index) => (
-          <article class="card-hover rounded-3xl border border-wood-brown-100 bg-[#FFFBF2] p-8 shadow-lg" key={item.title}>
-            <div class="flex items-start justify-between">
-              <div>
-                <h3 class="font-serif text-2xl font-semibold text-wood-brown-800">{item.title}</h3>
-                <p class="mt-3 text-base text-[#4A4A4A]">{item.description}</p>
-              </div>
-              <span class="text-4xl font-semibold text-wood-brown-400" aria-hidden="true">0{index + 1}</span>
-            </div>
-            <p class="mt-6 text-sm leading-relaxed text-[#4A4A4A]">{item.detail}</p>
-          </article>
+      <ol class="border-t border-[#17231d]/15">
+        {principles.map(([number, title, description]) => (
+          <li class="reveal grid gap-4 border-b border-[#17231d]/15 py-8 sm:grid-cols-[4rem_1fr_auto] sm:items-start sm:gap-6">
+            <span class="font-serif text-3xl text-[#987755]">{number}</span>
+            <div><h3 class="font-serif text-3xl font-semibold tracking-[-.035em] text-[#17231d]">{title}</h3><p class="mt-3 max-w-xl text-sm leading-7 text-[#566158]">{description}</p></div>
+            <span class="hidden text-2xl text-[#315443] sm:block" aria-hidden="true">↗</span>
+          </li>
         ))}
-      </div>
+      </ol>
     </div>
   </div>
 </section>

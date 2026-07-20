@@ -4,77 +4,22 @@ import { Image } from 'astro:assets';
 import Layout from '../../layouts/Layout.astro';
 
 const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/blog/**/*.{jpeg,jpg,png,gif,svg}');
-
-const posts = await Promise.all(
-  (await getCollection('blog'))
-    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-    .map(async (post) => {
-      const rawPath = post.data.image ?? '/images/blog/blog-1.jpg';
-      const imagePath = rawPath.replace(/^\/images\/blog\//, '/src/assets/images/blog/');
-      const resolvedImage = images[imagePath]
-        ? (await images[imagePath]()).default
-        : (await images['/src/assets/images/blog/blog-1.jpg']()).default;
-      return {
-        ...post,
-        resolvedImage
-      };
-    })
-);
+const posts = await Promise.all((await getCollection('blog'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .map(async (post) => {
+    const path = (post.data.image ?? '/images/blog/blog-1.jpg').replace(/^\/images\/blog\//, '/src/assets/images/blog/');
+    const image = images[path] ? (await images[path]()).default : (await images['/src/assets/images/blog/blog-1.jpg']()).default;
+    return { ...post, image };
+  }));
+const featured = posts[0];
+const remaining = posts.slice(1);
+const date = (value: Date) => new Intl.DateTimeFormat('id-ID', { year: 'numeric', month: 'short', day: 'numeric' }).format(value);
 ---
-
-<Layout title="Blog | Jasa Kayu Profesional" description="Tips, trik, dan inspirasi seputar dunia perkayuan dari Jasa Kayu Profesional.">
-  <section class="mx-auto max-w-4xl px-4 py-16 md:px-8">
-    <h1 class="font-serif text-5xl font-semibold text-wood-brown-800">Blog Jasa Kayu Profesional</h1>
-    <p class="mt-4 text-lg text-gray-600">
-      Temukan wawasan terbaru seputar perawatan kayu, tren desain interior, dan panduan memilih material terbaik untuk proyek Anda.
-    </p>
-    <ul class="mt-12 space-y-10">
-      {posts.map((post) => (
-        <li class="group">
-          <a href={`/blog/${post.id}/`}>
-            <div class="flex flex-col gap-4 sm:flex-row sm:items-center">
-              <Image
-                src={post.resolvedImage}
-                alt={post.data.title}
-                class="h-48 w-full rounded-lg object-cover sm:h-32 sm:w-48"
-                width={300}
-                height={200}
-                loading="lazy"
-                format="webp"
-              />
-              <div>
-                <p class="text-sm text-gray-500">
-                  <time datetime={post.data.pubDate.toISOString()}>
-                    {new Date(post.data.pubDate).toLocaleDateString('id-ID', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric',
-                    })}
-                  </time>
-                </p>
-                <h2 class="mt-2 font-serif text-2xl font-semibold text-wood-brown-800 transition group-hover:text-wood-brown-600">
-                  {post.data.title}
-                </h2>
-                <p class="mt-2 text-gray-600">{post.data.description}</p>
-              </div>
-            </div>
-          </a>
-        </li>
-      ))}
-    </ul>
-    <div class="mt-16 rounded-3xl border border-wood-brown-100 bg-white p-8 text-center shadow-sm">
-      <h2 class="font-serif text-3xl font-semibold text-wood-brown-800">Punya Proyek yang Ingin Didiskusikan?</h2>
-      <p class="mt-3 text-base leading-relaxed text-[#4A4A4A]">
-        Kalau Anda sudah punya foto area, ukuran kasar, atau referensi material, kirim langsung lewat WhatsApp agar tim kami bantu arahkan layanan yang paling pas.
-      </p>
-      <div class="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
-        <a href="/#layanan" class="rounded-full border border-wood-brown-200 px-6 py-3 text-sm font-semibold text-wood-brown-700 transition hover:bg-wood-brown-50">
-          Lihat Layanan
-        </a>
-        <a href="https://wa.me/6281283135295?text=Halo%20Jasa%20Kayu%20Profesional%2C%20saya%20ingin%20konsultasi%20proyek%20kayu." class="rounded-full bg-wood-brown-700 px-6 py-3 text-sm font-semibold text-white transition hover:bg-wood-brown-800" target="_blank" rel="noopener noreferrer">
-          Konsultasi via WhatsApp
-        </a>
-      </div>
+<Layout title="Jurnal Material & Ruang | Jasa Kayu Profesional" description="Panduan praktis seputar kayu, decking, lantai, perawatan, dan persiapan proyek dari Jasa Kayu Profesional." canonical="https://www.jasakayuprofesional.com/blog/">
+  <section class="bg-[#f4f2eb] pb-24 pt-32 sm:pt-40">
+    <div class="section-shell"><div class="grid gap-8 border-b border-[#17231d]/15 pb-10 lg:grid-cols-[.75fr_1.25fr] lg:items-end"><div><p class="section-kicker">Jurnal material</p></div><div><h1 class="display-title text-balance text-5xl text-[#17231d] sm:text-6xl lg:text-7xl">Catatan untuk membuat keputusan ruang yang lebih <em>baik.</em></h1><p class="mt-6 max-w-2xl text-base leading-7 text-[#566158]">Panduan yang membahas kondisi nyata di lapangan: material, perawatan, detail instalasi, dan persiapan proyek sebelum pengerjaan dimulai.</p></div></div>
+      {featured && <article class="mt-12 grid overflow-hidden border border-[#17231d]/15 bg-[#e7dfd0] lg:grid-cols-[1.1fr_.9fr]"><a href={`/blog/${featured.id}/`} class="image-zoom block aspect-[5/3] bg-[#d1c6b3] lg:aspect-auto"><Image src={featured.image} alt={featured.data.title} width={1000} height={700} format="webp" loading="eager" fetchpriority="high" class="h-full w-full object-cover" /></a><div class="flex flex-col justify-between p-7 sm:p-10"><div><p class="text-[.62rem] font-extrabold uppercase tracking-[.14em] text-[#315443]">{featured.data.category ?? 'Jurnal material'} · {date(featured.data.pubDate)}</p><h2 class="mt-4 font-serif text-4xl font-semibold leading-[.95] tracking-[-.045em] text-[#17231d] sm:text-5xl">{featured.data.title}</h2><p class="mt-5 text-sm leading-7 text-[#566158]">{featured.data.description}</p></div><a href={`/blog/${featured.id}/`} class="mt-8 inline-flex items-center gap-3 text-[.67rem] font-extrabold uppercase tracking-[.13em] text-[#315443]">Baca panduan <span class="text-lg" aria-hidden="true">↗</span></a></div></article>}
+      <div class="mt-14 grid gap-x-5 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">{remaining.map((post) => <article class="group"><a href={`/blog/${post.id}/`} class="image-zoom block aspect-[4/3] bg-[#d1c6b3]"><Image src={post.image} alt={post.data.title} width={640} height={480} format="webp" loading="lazy" class="h-full w-full object-cover" /></a><p class="mt-4 text-[.6rem] font-extrabold uppercase tracking-[.14em] text-[#315443]">{post.data.category ?? 'Jurnal material'} · {date(post.data.pubDate)}</p><a href={`/blog/${post.id}/`} class="mt-2 block font-serif text-3xl font-semibold leading-[.98] tracking-[-.04em] text-[#17231d] transition group-hover:text-[#315443]">{post.data.title}</a><p class="mt-3 text-sm leading-6 text-[#59645b]">{post.data.description}</p></article>)}</div>
     </div>
   </section>
 </Layout>

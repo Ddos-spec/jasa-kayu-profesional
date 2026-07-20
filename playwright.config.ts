@@ -18,7 +18,7 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'npm run dev',
+    command: 'ASTRO_TELEMETRY_DISABLED=1 npm run build && npx serve dist -l 4321',
     url: 'http://localhost:4321',
     reuseExistingServer: !process.env.CI,
   },

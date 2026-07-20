@@ -9,5 +9,14 @@ Disallow: /cgi-bin/
 Disallow: /tmp/
 Disallow: /private/
 
-# Batasi crawl rate (opsional)
-Crawl-delay: 5
+# Crawler AI yang diizinkan mengakses konten publik.
+# GPTBot dapat menggunakan konten publik untuk peningkatan model;
+# OAI-SearchBot dan ChatGPT-User mendukung pengalaman pencarian/perambanan ChatGPT.
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /

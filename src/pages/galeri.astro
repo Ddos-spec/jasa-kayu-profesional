@@ -1,83 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ImageGallery from '../components/ImageGallery.astro';
-import ImageSlider from '../components/ImageSlider.astro';
-import Picture from '../components/common/Picture.astro';
-
-// Contoh gambar dari direktori public (kamu bisa ganti dengan gambar dari assets setelah menambahkannya)
-// Saat kamu menambahkan gambar ke src/assets/images/, import seperti ini:
-// import namaGambar from '../assets/images/kategori/nama-gambar.jpg';
----
-
-<Layout 
-  title="Galeri Produk & Portofolio | Jasa Kayu Profesional" 
-  description="Lihat koleksi produk dan portofolio proyek kayu premium kami di Jabodetabek"
-  canonical="https://www.jasakayuprofesional.com/galeri"
->
-  <section class="py-16 bg-[#FFF8DC]">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <div class="text-center mb-12">
-        <h1 class="font-serif text-4xl font-bold text-wood-brown-800">Galeri Produk & Portofolio</h1>
-        <p class="mt-4 text-lg text-[#4A4A4A]">Temukan inspirasi dari proyek-proyek kayu premium kami</p>
-      </div>
-      
-      <!-- Petunjuk penggunaan -->
-      <div class="bg-white p-6 rounded-xl shadow-lg mb-12">
-        <h2 class="font-serif text-2xl font-semibold text-wood-brown-800 mb-4">Cara Menggunakan Gambar di Project Ini</h2>
-        <ol class="list-decimal list-inside space-y-2 text-[#4A4A4A]">
-          <li>Simpan gambar di direktori <code class="bg-gray-100 px-1 rounded">src/assets/images/</code> dalam subfolder yang sesuai</li>
-          <li>Import gambar di komponen Astro: <code class="bg-gray-100 px-1 rounded">import namaGambar from '../assets/images/kategori/nama-gambar.jpg';</code></li>
-          <li>Gunakan komponen <code class="bg-gray-100 px-1 rounded">Picture</code> atau <code class="bg-gray-100 px-1 rounded">Image</code> untuk otomatisasi konversi ke WebP</li>
-          <li>Saat build, semua gambar akan dikonversi ke WebP untuk performa terbaik</li>
-        </ol>
-      </div>
-      
-      <!-- Keunggulan format WebP -->
-      <div class="mt-8">
-        <div class="bg-white p-6 rounded-xl shadow-lg max-w-2xl mx-auto">
-          <h3 class="font-serif text-xl font-semibold text-wood-brown-800 mb-4">Keunggulan Format WebP</h3>
-          <ul class="mt-4 space-y-2 text-[#4A4A4A]">
-            <li class="flex items-start gap-2">
-              <span class="text-wood-brown-700">•</span>
-              <span>Ukuran file lebih kecil (biasanya 25-35% lebih kecil dari JPEG)</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-wood-brown-700">•</span>
-              <span>Dukungan transparansi (seperti PNG)</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-wood-brown-700">•</span>
-              <span>Kualitas gambar tetap tinggi</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-wood-brown-700">•</span>
-              <span>Performa loading halaman lebih cepat</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-      
-      <!-- Contoh struktur untuk galeri (akan aktif setelah menambahkan gambar) -->
-      <div class="mt-16 bg-white p-6 rounded-xl shadow-lg">
-        <h3 class="font-serif text-xl font-semibold text-wood-brown-800 mb-4">Struktur Galeri (Contoh)</h3>
-        <p class="text-[#4A4A4A] mb-4">Berikut adalah contoh struktur yang akan digunakan saat kamu menambahkan gambar:</p>
-        <pre class="bg-gray-100 p-4 rounded-lg text-sm overflow-x-auto">
-{`---
+import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
-import contohGambar from '../assets/images/portfolio/nama-gambar.jpg';
 
-const galleryImages = [
-  { src: contohGambar, alt: "Deskripsi gambar", caption: "Caption opsional" }
-];
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/portfolio/**/*.{jpeg,jpg,png,gif,svg,webp}');
+const portfolio = await Promise.all((await getCollection('portfolio')).sort((a, b) => (b.data.year ?? 0) - (a.data.year ?? 0)).map(async (item) => {
+  const path = item.data.image?.startsWith('/images/portfolio/') ? `/src/assets${item.data.image}` : item.data.image;
+  const image = path && images[path] ? (await images[path]()).default : (await images['/src/assets/images/portfolio/portfolio-1.svg']()).default;
+  return { ...item, image };
+}));
 ---
-
-<ImageGallery 
-  images={galleryImages}
-  columns={3}
-  spacing="md"
-/>`}
-        </pre>
-      </div>
-    </div>
-  </section>
+<Layout title="Galeri Karya | Jasa Kayu Profesional" description="Dokumentasi proyek lantai kayu, decking, tangga, ceiling, wall panel, dan detail custom oleh Jasa Kayu Profesional." canonical="https://www.jasakayuprofesional.com/galeri">
+  <section class="bg-[#f4f2eb] pb-24 pt-32 sm:pt-40"><div class="section-shell"><div class="grid gap-8 border-b border-[#17231d]/15 pb-10 lg:grid-cols-[.75fr_1.25fr] lg:items-end"><div><p class="section-kicker">Galeri karya</p></div><div><h1 class="display-title text-balance text-5xl text-[#17231d] sm:text-6xl lg:text-7xl">Material yang terasa lebih hidup saat masuk ke <em>ruang.</em></h1><p class="mt-6 max-w-2xl text-base leading-7 text-[#566158]">Pilihan dokumentasi proyek untuk memberi gambaran tentang karakter material, komposisi, dan detail pengerjaan.</p></div></div><div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{portfolio.map((item) => <a href={`/portfolio/${item.id}`} class="group"><div class="image-zoom aspect-[4/3] bg-[#ded6c7]"><Image src={item.image} alt={item.data.title} width={720} height={540} loading="lazy" format="webp" class="h-full w-full object-cover" /></div><p class="mt-4 text-[.6rem] font-extrabold uppercase tracking-[.14em] text-[#315443]">{item.data.displayCategory}</p><h2 class="mt-2 font-serif text-3xl font-semibold leading-[.96] tracking-[-.04em] text-[#17231d] group-hover:text-[#315443]">{item.data.title}</h2></a>)}</div></div></section>
 </Layout>

@@ -3,164 +3,92 @@ import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 
 const categories = [
-  { id: 'all', label: 'Semua Proyek' },
-  { id: 'residential', label: 'Residential' },
-  { id: 'commercial', label: 'Commercial' },
-  { id: 'custom', label: 'Custom Projects' }
+  { id: 'all', label: 'Semua' },
+  { id: 'residential', label: 'Hunian' },
+  { id: 'commercial', label: 'Komersial' },
+  { id: 'custom', label: 'Custom' }
 ];
 
-const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/portfolio/**/*.{jpeg,jpg,png,gif,svg}');
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/portfolio/**/*.{jpeg,jpg,png,gif,svg,webp}');
+const fallbackPath = '/src/assets/images/portfolio/portfolio-1.svg';
+const toAssetImagePath = (path?: string, slug?: string) => path?.startsWith('/images/portfolio/') ? `/src/assets${path}` : path || (slug ? `/src/assets/images/portfolio/${slug}.jpg` : undefined);
 
-const allProjects = await getCollection('portfolio');
-const fallbackPaths = [
-  '/src/assets/images/portfolio/portfolio-1.svg',
-  '/src/assets/images/portfolio/portfolio-2.svg',
-  '/src/assets/images/portfolio/portfolio-3.svg',
-  '/src/assets/images/portfolio/portfolio-4.svg',
-  '/src/assets/images/portfolio/portfolio-5.svg',
-  '/src/assets/images/portfolio/portfolio-6.svg'
-];
+const projects = await Promise.all((await getCollection('portfolio'))
+  .sort((a, b) => Number(b.data.featured) - Number(a.data.featured) || (b.data.year ?? 0) - (a.data.year ?? 0))
+  .map(async (item) => {
+    const source = toAssetImagePath(item.data.image, item.id);
+    const image = source && images[source] ? (await images[source]()).default : (await images[fallbackPath]()).default;
+    return { ...item, image };
+  }));
 
-const toAssetImagePath = (imagePath?: string, slug?: string) => {
-  if (!imagePath) {
-    return slug ? `/src/assets/images/portfolio/${slug}.jpg` : undefined;
-  }
-
-  if (imagePath.startsWith('/src/assets/images/portfolio/')) {
-    return imagePath;
-  }
-
-  if (imagePath.startsWith('/images/portfolio/')) {
-    return `/src/assets${imagePath}`;
-  }
-
-  return imagePath;
-};
-
-const projects = await Promise.all([...allProjects]
-  .sort((a, b) => {
-    const featuredDelta = Number(b.data.featured ?? false) - Number(a.data.featured ?? false);
-    if (featuredDelta !== 0) return featuredDelta;
-
-    const yearDelta = (b.data.year ?? 0) - (a.data.year ?? 0);
-    if (yearDelta !== 0) return yearDelta;
-
-    return a.data.title.localeCompare(b.data.title, 'id');
-  })
-  .map(async (item, index) => {
-  const imagePath = toAssetImagePath(item.data.image, item.id);
-  const fallbackPath = fallbackPaths[index % fallbackPaths.length];
-  const image = imagePath && images[imagePath]
-    ? (await images[imagePath]()).default
-    : (await images[fallbackPath]()).default;
-  const fallback = (await images[fallbackPath]()).default;
-
-  return {
-    title: item.data.title,
-    category: item.data.category,
-    displayCategory: item.data.displayCategory,
-    image,
-    fallback,
-    description: item.data.description,
-    slug: item.id
-  };
-}));
+const featuredProject = projects[0];
+const galleryProjects = projects.slice(1);
 ---
-<section id="portofolio" class="section-anchor bg-[#FFF8DC] py-20 md:py-28">
-  <div class="mx-auto max-w-6xl px-4 md:px-8">
-    <div class="flex flex-col items-center text-center">
-      <span class="badge bg-wood-brown-100 text-wood-brown-800">Portofolio Unggulan</span>
-      <h2 class="mt-5 font-serif text-4xl font-semibold text-wood-brown-800 md:text-5xl">Portofolio Jasa Kayu Profesional</h2>
-      <p class="mt-4 max-w-3xl text-lg leading-relaxed text-[#4A4A4A]">
-        Jasa kayu profesional terbaik di Jabodetabek. Tim kami mengerjakan proyek residential, commercial, hingga instalasi custom art. Setiap karya dirancang sesuai kebutuhan gaya hidup dan citra brand klien, dengan dokumentasi lengkap mulai dari desain hingga finishing.
-      </p>
+<section id="portofolio" class="section-anchor overflow-hidden bg-[#17352a] py-24 text-[#fffdf7] sm:py-32">
+  <div class="section-shell">
+    <div class="grid gap-10 lg:grid-cols-[.75fr_1fr] lg:items-end">
+      <div class="reveal">
+        <p class="section-kicker text-[#e6c88f]">Pilihan karya</p>
+        <h2 class="display-title text-balance mt-5 text-5xl sm:text-6xl lg:text-7xl">Bukti kerja,<br /><em>bukan janji.</em></h2>
+      </div>
+      <p class="reveal max-w-xl text-base leading-7 text-white/70 sm:text-lg">Dokumentasi proyek memberi Anda bahan untuk menilai sendiri: arah serat, proporsi bidang, kesesuaian material, sampai cara kami menuntaskan detail di lokasi.</p>
     </div>
-    <div class="mt-12 flex flex-wrap justify-center gap-3" role="tablist" aria-label="Filter Portofolio">
+
+    {featuredProject && (
+      <article class="portfolio-card reveal mt-14 grid overflow-hidden border border-white/20 bg-white/5 lg:grid-cols-[1.3fr_.7fr]" data-category={featuredProject.data.category}>
+        <a href={`/portfolio/${featuredProject.id}`} class="image-zoom relative block aspect-[5/4] overflow-hidden bg-black/20 lg:aspect-auto">
+          <Image src={featuredProject.image} alt={featuredProject.data.title} width={1200} height={900} format="webp" loading="eager" fetchpriority="high" class="h-full w-full object-cover" />
+          <span class="absolute left-5 top-5 bg-[#f4f2eb] px-3 py-1.5 text-[0.6rem] font-extrabold uppercase tracking-[.14em] text-[#17231d]">Karya terbaru</span>
+        </a>
+        <div class="flex flex-col justify-between p-7 sm:p-10 lg:p-12">
+          <div>
+            <p class="text-[0.65rem] font-extrabold uppercase tracking-[.15em] text-[#e6c88f]">{featuredProject.data.displayCategory} · {featuredProject.data.location ?? 'Jabodetabek'}</p>
+            <h3 class="mt-4 font-serif text-4xl font-semibold tracking-[-.04em] sm:text-5xl">{featuredProject.data.title}</h3>
+            <p class="mt-5 max-w-md text-sm leading-7 text-white/72">{featuredProject.data.description}</p>
+          </div>
+          <a href={`/portfolio/${featuredProject.id}`} class="mt-10 inline-flex items-center gap-3 text-[0.67rem] font-extrabold uppercase tracking-[.13em] text-white">Baca cerita proyek <span class="text-xl leading-none" aria-hidden="true">↗</span></a>
+        </div>
+      </article>
+    )}
+
+    <div class="mt-14 flex flex-wrap gap-2" role="tablist" aria-label="Filter karya">
       {categories.map((category) => (
-        <button
-          class={`filter-button rounded-full border border-wood-brown-200 px-5 py-2.5 text-sm font-semibold transition ${category.id === 'all' ? 'bg-wood-brown-700 text-white' : 'bg-white text-wood-brown-700 hover:bg-wood-brown-100'}`}
-          data-filter={category.id}
-          role="tab"
-          aria-selected={category.id === 'all' ? 'true' : 'false'}
-        >
-          {category.label}
-        </button>
+        <button class={`portfolio-filter rounded-full border px-4 py-2 text-[0.65rem] font-extrabold uppercase tracking-[.12em] transition ${category.id === 'all' ? 'border-[#e6c88f] bg-[#e6c88f] text-[#17231d]' : 'border-white/25 text-white/75 hover:border-white hover:text-white'}`} data-filter={category.id} role="tab" aria-selected={category.id === 'all' ? 'true' : 'false'}>{category.label}</button>
       ))}
     </div>
-    <div class="mt-14 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-      {projects.map((project) => (
-        <figure class="portfolio-card card-hover group relative overflow-hidden rounded-3xl bg-white shadow-elegant" data-category={project.category} key={project.title}>
-          <Image
-            src={project.image}
-            alt={project.title}
-            class="w-full aspect-[4/3] object-cover transition duration-500 group-hover:scale-105 portfolio-image"
-            width={800}
-            height={600}
-            format="webp"
-            loading="lazy"
-            data-fallback={project.fallback.src}
-          />
-          <figcaption class="flex flex-col gap-3 p-6">
-            <span class="text-xs font-semibold uppercase tracking-wide text-wood-brown-700">{project.displayCategory}</span>
-            <h3 class="font-serif text-2xl font-semibold text-wood-brown-800">{project.title}</h3>
-            <p class="text-sm leading-relaxed text-[#4A4A4A]">{project.description}</p>
-            <a
-              href={`/portfolio/${project.slug}`}
-              class="mt-2 inline-flex items-center gap-2 self-start text-sm font-semibold text-wood-brown-700 hover:text-wood-brown-900"
-            >
-              Lihat Detail
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4" aria-hidden="true">
-                <path fill="currentColor" d="M5 12a1 1 0 0 1 1-1h10.586l-3.293-3.293a1 1 0 0 1 1.414-1.414l5 5a1 1 0 0 1 0 1.414l-5 5a1 1 0 0 1-1.414-1.414L16.586 13H6a1 1 0 0 1-1-1Z" />
-              </svg>
-            </a>
-          </figcaption>
-        </figure>
+    <div class="mt-7 grid gap-x-5 gap-y-9 sm:grid-cols-2 lg:grid-cols-3">
+      {galleryProjects.map((project) => (
+        <article class="portfolio-card group" data-category={project.data.category}>
+          <a href={`/portfolio/${project.id}`} class="image-zoom block aspect-[4/3] bg-black/20">
+            <Image src={project.image} alt={project.data.title} width={720} height={540} format="webp" loading="lazy" class="h-full w-full object-cover" />
+          </a>
+          <div class="pt-4">
+            <p class="text-[0.6rem] font-extrabold uppercase tracking-[.14em] text-[#e6c88f]">{project.data.displayCategory}</p>
+            <a href={`/portfolio/${project.id}`} class="mt-2 flex items-start justify-between gap-3 font-serif text-2xl font-semibold tracking-[-.03em] text-white transition group-hover:text-[#e6c88f]"><span>{project.data.title}</span><span class="mt-1 text-lg" aria-hidden="true">↗</span></a>
+            <p class="mt-2 text-sm leading-6 text-white/65">{project.data.location ?? project.data.description}</p>
+          </div>
+        </article>
       ))}
     </div>
+    <p class="mt-12 text-center text-sm leading-6 text-white/60">Punya kebutuhan yang mirip? <a href="#kontak" class="font-bold text-[#e6c88f] underline underline-offset-4">Mulai dari foto area dan brief singkat.</a></p>
   </div>
-
   <script is:inline>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Handle image fallbacks
-      const portfolioImages = document.querySelectorAll('.portfolio-image');
-      portfolioImages.forEach(img => {
-        img.addEventListener('error', function() {
-          if (!this.src.endsWith(this.getAttribute('data-fallback'))) {
-            this.src = this.getAttribute('data-fallback');
-          }
+    document.addEventListener('DOMContentLoaded', () => {
+      const filters = document.querySelectorAll('.portfolio-filter');
+      const cards = document.querySelectorAll('.portfolio-card');
+      filters.forEach((button) => button.addEventListener('click', () => {
+        const filter = button.getAttribute('data-filter');
+        filters.forEach((item) => {
+          const active = item === button;
+          item.setAttribute('aria-selected', String(active));
+          item.classList.toggle('border-[#e6c88f]', active);
+          item.classList.toggle('bg-[#e6c88f]', active);
+          item.classList.toggle('text-[#17231d]', active);
+          item.classList.toggle('border-white/25', !active);
+          item.classList.toggle('text-white/75', !active);
         });
-      });
-
-      // Filter functionality
-      const filterButtons = document.querySelectorAll('.filter-button');
-      const portfolioCards = document.querySelectorAll('.portfolio-card');
-
-      filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
-          const filter = this.getAttribute('data-filter');
-          
-          // Update active states
-          filterButtons.forEach(btn => {
-            btn.classList.remove('bg-wood-brown-700', 'text-white');
-            btn.classList.add('bg-white', 'text-wood-brown-700', 'hover:bg-wood-brown-100');
-            btn.setAttribute('aria-selected', 'false');
-          });
-          
-          this.classList.add('bg-wood-brown-700', 'text-white');
-          this.classList.remove('bg-white', 'text-wood-brown-700', 'hover:bg-wood-brown-100');
-          this.setAttribute('aria-selected', 'true');
-
-          // Filter cards
-          portfolioCards.forEach(card => {
-            const category = card.getAttribute('data-category');
-            if (filter === 'all' || category === filter) {
-              card.classList.remove('hidden');
-            } else {
-              card.classList.add('hidden');
-            }
-          });
-        });
-      });
+        cards.forEach((card) => card.classList.toggle('hidden', filter !== 'all' && card.getAttribute('data-category') !== filter));
+      }));
     });
   </script>
 </section>

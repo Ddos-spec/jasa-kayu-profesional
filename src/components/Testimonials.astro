@@ -1,48 +1,18 @@
 ---
 import { getCollection } from 'astro:content';
-
-const allTestimonials = await getCollection('testimonial', ({ data }) => {
-  return data.featured === true; // Only show featured testimonials
-});
-
-const testimonials = allTestimonials.map(item => ({
-  name: item.data.name,
-  project: item.data.role || 'Proyek Terdahulu',
-  review: item.data.content,
-  rating: item.data.rating,
-  location: item.data.company || 'Lokasi Proyek',
-}));
+const testimonials = (await getCollection('testimonial')).filter(({ data }) => data.featured).slice(0, 3);
 ---
-<section id="testimoni" class="section-anchor bg-[#F5F5DC] py-20 md:py-28">
-  <div class="mx-auto max-w-6xl px-4 md:px-8">
-    <div class="flex flex-col items-center text-center">
-      <span class="badge bg-wood-brown-100 text-wood-brown-800">Apa Kata Klien Kami</span>
-      <h2 class="mt-5 font-serif text-4xl font-semibold text-wood-brown-800 md:text-5xl">Cerita Kepercayaan dari Jabodetabek</h2>
-      <p class="mt-4 max-w-3xl text-lg leading-relaxed text-[#4A4A4A]">
-        Kepercayaan klien adalah aset terbesar kami. Testimoni berikut menggambarkan bagaimana tim kami membantu mewujudkan ruang impian dengan kualitas dan ketepatan waktu yang dapat diandalkan.
-      </p>
+<section id="testimoni" class="section-anchor bg-[#f4f2eb] py-24 sm:py-32">
+  <div class="section-shell">
+    <div class="flex flex-col justify-between gap-6 border-b border-[#17231d]/15 pb-10 sm:flex-row sm:items-end">
+      <div class="reveal"><p class="section-kicker">Dari klien</p><h2 class="display-title mt-5 text-5xl text-[#17231d] sm:text-6xl">Ruang jadi lebih terasa<br /><em>seperti milik sendiri.</em></h2></div>
+      <p class="reveal max-w-sm text-sm leading-6 text-[#566158]">Cerita nyata dari proyek yang membutuhkan ketelitian, komunikasi, dan hasil yang pantas dirawat.</p>
     </div>
-    <div class="mt-14 grid gap-8 md:grid-cols-3">
-      {testimonials.map((item) => (
-        <article class="card-hover flex h-full flex-col rounded-3xl border border-wood-brown-100 bg-[#FFFAF0] p-8 shadow-elegant" key={item.name}>
-          <div class="flex items-center gap-3">
-            <div class="flex h-12 w-12 items-center justify-center rounded-full bg-wood-brown-700 text-lg font-semibold text-white">
-              {item.name.split(' ')[0][0]}
-            </div>
-            <div class="text-left">
-              <p class="font-serif text-xl font-semibold text-wood-brown-800">{item.name}</p>
-              <p class="text-sm text-[#666666]">{item.location}</p>
-            </div>
-          </div>
-          <p class="mt-5 text-sm font-semibold uppercase tracking-wide text-wood-brown-700">{item.project}</p>
-          <p class="mt-4 flex-1 text-base leading-relaxed text-[#4A4A4A]">" {item.review} "</p>
-          <div class="mt-6 flex items-center gap-1 text-wood-brown-600">
-            {Array.from({ length: item.rating }).map((_, index) => (
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5" aria-hidden="true" key={index}>
-                <path fill="currentColor" d="m12 2.5 2.472 5.186 5.72.437-4.328 3.778 1.296 5.612L12 14.87l-5.16 2.643 1.296-5.612-4.328-3.778 5.72-.437z" />
-              </svg>
-            ))}
-          </div>
+    <div class="mt-10 grid gap-5 lg:grid-cols-3">
+      {testimonials.map((item, index) => (
+        <article class="reveal art-card flex min-h-[18rem] flex-col justify-between p-7 sm:p-8">
+          <p class="font-serif text-3xl leading-[1.06] tracking-[-.035em] text-[#17231d]">“{item.data.content}”</p>
+          <div class="mt-8 flex items-end justify-between gap-4 border-t border-[#17231d]/15 pt-4"><div><p class="text-sm font-extrabold text-[#17231d]">{item.data.name}</p><p class="mt-1 text-xs text-[#647067]">{item.data.role ?? item.data.company ?? 'Klien Jasa Kayu Profesional'}</p></div><span class="font-serif text-3xl text-[#987755]">0{index + 1}</span></div>
         </article>
       ))}
     </div>
