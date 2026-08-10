@@ -4,12 +4,81 @@ import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 
 const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/portfolio/**/*.{jpeg,jpg,png,gif,svg,webp}');
-const portfolio = await Promise.all((await getCollection('portfolio')).sort((a, b) => (b.data.year ?? 0) - (a.data.year ?? 0)).map(async (item) => {
+const knownDuplicateVisuals = new Set(['jln-patimura-jaksel', 'pondok-indah-sekolah-duta-jaksel']);
+const rawPortfolio = (await getCollection('portfolio'))
+  .filter((item) => !knownDuplicateVisuals.has(item.id))
+  .sort((a, b) => (b.data.year ?? 0) - (a.data.year ?? 0));
+
+const portfolio = (await Promise.all(rawPortfolio.map(async (item) => {
   const path = item.data.image?.startsWith('/images/portfolio/') ? `/src/assets${item.data.image}` : item.data.image;
-  const image = path && images[path] ? (await images[path]()).default : (await images['/src/assets/images/portfolio/portfolio-1.svg']()).default;
+  if (!path || !images[path]) return null;
+  const image = (await images[path]()).default;
   return { ...item, image };
-}));
+}))).filter(Boolean);
+
+const categories = [...new Set(portfolio.map((item) => item.data.category).filter(Boolean))];
+const spanClasses = [
+  'lg:col-span-7',
+  'lg:col-span-5 lg:pt-28',
+  'lg:col-span-5 lg:col-start-2',
+  'lg:col-span-6 lg:col-start-7 lg:pt-24',
+  'lg:col-span-8',
+  'lg:col-span-4 lg:pt-32',
+];
+const aspectClasses = ['aspect-[16/10]', 'aspect-[4/5]', 'aspect-[4/5]', 'aspect-[5/4]', 'aspect-[16/9]', 'aspect-[3/4]'];
 ---
 <Layout title="Galeri Karya | Jasa Kayu Profesional" description="Dokumentasi proyek lantai kayu, decking, tangga, ceiling, wall panel, dan detail custom oleh Jasa Kayu Profesional." canonical="https://www.jasakayuprofesional.com/galeri">
-  <section class="bg-[#f4f2eb] pb-24 pt-32 sm:pt-40"><div class="section-shell"><div class="grid gap-8 border-b border-[#17231d]/15 pb-10 lg:grid-cols-[.75fr_1.25fr] lg:items-end"><div><p class="section-kicker">Galeri karya</p></div><div><h1 class="display-title text-balance text-5xl text-[#17231d] sm:text-6xl lg:text-7xl">Material yang terasa lebih hidup saat masuk ke <em>ruang.</em></h1><p class="mt-6 max-w-2xl text-base leading-7 text-[#566158]">Pilihan dokumentasi proyek untuk memberi gambaran tentang karakter material, komposisi, dan detail pengerjaan.</p></div></div><div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{portfolio.map((item) => <a href={`/portfolio/${item.id}`} class="group"><div class="image-zoom aspect-[4/3] bg-[#ded6c7]"><Image src={item.image} alt={item.data.title} width={720} height={540} loading="lazy" format="webp" class="h-full w-full object-cover" /></div><p class="mt-4 text-[.6rem] font-extrabold uppercase tracking-[.14em] text-[#315443]">{item.data.displayCategory}</p><h2 class="mt-2 font-serif text-3xl font-semibold leading-[.96] tracking-[-.04em] text-[#17231d] group-hover:text-[#315443]">{item.data.title}</h2></a>)}</div></div></section>
+  <section class="bg-[#f4f2eb] pb-28 pt-32 sm:pt-40 lg:pb-40 lg:pt-48">
+    <div class="section-shell">
+      <header class="grid gap-8 border-b border-[#17231d]/15 pb-12 lg:grid-cols-[.55fr_1.45fr] lg:items-end">
+        <div class="reveal"><p class="section-kicker">Selected works</p><p class="mt-5 text-[.62rem] font-extrabold uppercase tracking-[.15em] text-[#7b847c]">Archive / 1990—{new Date().getFullYear()}</p></div>
+        <div class="reveal"><h1 class="display-title text-balance max-w-5xl text-6xl text-[#17231d] sm:text-7xl lg:text-[8rem]">Material menjadi berarti saat ia masuk ke <em>ruang.</em></h1><p class="mt-7 max-w-2xl text-base leading-7 text-[#566158] sm:text-lg">Arsip ini menampilkan proyek dengan dokumentasi yang layak ditinjau sebagai karya: konteks, skala, material, dan detail yang benar-benar dikerjakan.</p></div>
+      </header>
+
+      <div class="mt-8 flex flex-wrap items-center gap-2 border-b border-[#17231d]/15 pb-8" role="tablist" aria-label="Filter karya">
+        <button class="gallery-filter rounded-full border border-[#17231d] bg-[#17231d] px-4 py-2 text-[.62rem] font-extrabold uppercase tracking-[.13em] text-white" data-filter="all" role="tab" aria-selected="true">Semua</button>
+        {categories.map((category) => <button class="gallery-filter rounded-full border border-[#17231d]/20 px-4 py-2 text-[.62rem] font-extrabold uppercase tracking-[.13em] text-[#526057] transition hover:border-[#17231d] hover:text-[#17231d]" data-filter={category} role="tab" aria-selected="false">{category}</button>)}
+      </div>
+
+      <div class="mt-12 grid gap-x-6 gap-y-16 lg:grid-cols-12 lg:gap-y-24">
+        {portfolio.map((item, index) => (
+          <article class={`gallery-item reveal group ${spanClasses[index % spanClasses.length]}`} data-category={item.data.category}>
+            <a href={`/portfolio/${item.id}`} class="block">
+              <div class={`image-zoom relative overflow-hidden bg-[#d7c9b3] ${aspectClasses[index % aspectClasses.length]}`}>
+                <Image src={item.image} alt={item.data.title} width={1200} height={1000} loading={index < 2 ? 'eager' : 'lazy'} fetchpriority={index === 0 ? 'high' : undefined} format="webp" class="h-full w-full object-cover" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent opacity-0 transition duration-500 group-hover:opacity-100"></div>
+                <span class="absolute bottom-4 right-4 flex h-12 w-12 items-center justify-center rounded-full border border-white/40 bg-black/10 text-xl text-white opacity-0 backdrop-blur-sm transition duration-300 group-hover:opacity-100" aria-hidden="true">↗</span>
+              </div>
+              <div class="mt-4 grid grid-cols-[3rem_1fr] gap-3 border-t border-[#17231d]/15 pt-4">
+                <span class="text-[.58rem] font-extrabold uppercase tracking-[.15em] text-[#315443]">{String(index + 1).padStart(2, '0')}</span>
+                <div><p class="text-[.58rem] font-extrabold uppercase tracking-[.14em] text-[#727b73]">{item.data.displayCategory} · {item.data.location ?? 'Jabodetabek'} {item.data.year ? `· ${item.data.year}` : ''}</p><h2 class="mt-2 font-serif text-[clamp(2rem,3.6vw,3.8rem)] font-semibold leading-[.88] tracking-[-.05em] text-[#17231d] transition-colors group-hover:text-[#315443]">{item.data.title}</h2></div>
+              </div>
+            </a>
+          </article>
+        ))}
+      </div>
+
+      <div class="mt-28 grid gap-8 border-t border-[#17231d]/15 pt-8 sm:grid-cols-[1fr_auto] sm:items-end"><p class="max-w-3xl font-serif text-3xl font-semibold leading-[1] tracking-[-.035em] text-[#17231d] sm:text-4xl">Punya area dengan kebutuhan serupa? Kirim konteksnya, bukan sekadar minta daftar harga.</p><a href="/#kontak" class="btn-wood">Mulai dari brief <span aria-hidden="true">↗</span></a></div>
+    </div>
+  </section>
+
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const filters = document.querySelectorAll('.gallery-filter');
+      const items = document.querySelectorAll('.gallery-item');
+      filters.forEach((button) => button.addEventListener('click', () => {
+        const filter = button.getAttribute('data-filter');
+        filters.forEach((item) => {
+          const active = item === button;
+          item.setAttribute('aria-selected', String(active));
+          item.classList.toggle('bg-[#17231d]', active);
+          item.classList.toggle('text-white', active);
+          item.classList.toggle('border-[#17231d]', active);
+          item.classList.toggle('text-[#526057]', !active);
+          item.classList.toggle('border-[#17231d]/20', !active);
+        });
+        items.forEach((item) => item.classList.toggle('hidden', filter !== 'all' && item.getAttribute('data-category') !== filter));
+      }));
+    });
+  </script>
 </Layout>
