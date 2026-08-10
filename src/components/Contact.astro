@@ -8,6 +8,8 @@ const formScript = `
     wall_panel_ceiling: 'Wall panel atau ceiling',
     decking_pergola: 'Decking atau pergola',
     tangga_kayu: 'Tangga kayu',
+    sirap_ulin: 'Genteng sirap ulin',
+    built_in: 'Built-in atau storage custom',
     detail_custom: 'Detail custom'
   };
   const activateForm = ({ service, location, projectSummary } = {}) => {
@@ -48,7 +50,7 @@ const formScript = `
       field.classList.toggle('border-red-500', !validField);
       valid &&= Boolean(validField);
     });
-    if (!valid) { feedback.textContent = 'Mohon lengkapi kolom yang ditandai sebelum melanjutkan.'; feedback.className = 'mt-4 text-sm text-red-700'; return; }
+    if (!valid) { feedback.textContent = 'Mohon lengkapi kolom yang ditandai sebelum melanjutkan.'; feedback.className = 'mt-4 text-sm text-red-300'; return; }
     const data = new FormData(form);
     const message = [
       'Halo Jasa Kayu Profesional, saya ingin konsultasi proyek.', '',
@@ -59,21 +61,34 @@ const formScript = `
       'Catatan: ' + (data.get('deskripsi') || '-')
     ].join('\\n');
     feedback.textContent = 'Mengarahkan Anda ke WhatsApp dengan brief proyek yang sudah terisi.';
-    feedback.className = 'mt-4 text-sm text-[#315443]';
+    feedback.className = 'mt-4 text-sm text-[#e6c88f]';
     const url = 'https://wa.me/${whatsappNumber}?text=' + encodeURIComponent(message);
     window.open(url, '_blank', 'noopener,noreferrer') || (window.location.href = url);
   });
 `;
 ---
-<section id="kontak" class="section-anchor bg-[#17231d] py-24 text-[#fffdf7] sm:py-32">
-  <div class="section-shell grid gap-12 lg:grid-cols-[.78fr_1.22fr] lg:gap-20">
-    <div class="reveal"><p class="section-kicker text-[#e6c88f]">Mari mulai</p><h2 class="display-title mt-5 text-5xl sm:text-6xl lg:text-7xl">Bawa ide Anda.<br /><em>Kita rapikan arahnya.</em></h2><p class="mt-7 max-w-md text-base leading-7 text-white/70">Kirim brief singkat dulu. Foto area dan ukuran kasar sering kali sudah cukup untuk memulai percakapan yang tepat.</p><div class="mt-10 space-y-4 border-t border-white/20 pt-6 text-sm"><a href="https://wa.me/6281283135295" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between border-b border-white/15 pb-4 font-bold hover:text-[#e6c88f]"><span>WhatsApp</span><span>+62 812 8313 5295 ↗</span></a><a href="mailto:info@jasakayuprofesional.com" class="flex items-center justify-between border-b border-white/15 pb-4 font-bold hover:text-[#e6c88f]"><span>Email</span><span>info@jasakayuprofesional.com ↗</span></a></div></div>
-    <form id="contact-form" class="reveal border border-white/20 bg-white/[.06] p-6 backdrop-blur-sm sm:p-10" novalidate toolname="requestWoodworkConsultation" tooldescription="Prepare a visible, non-binding consultation brief for a woodwork project. The user reviews the form and manually opens WhatsApp; no booking, quote, or message is sent automatically.">
-      <div class="grid gap-5 sm:grid-cols-2"><label class="text-sm font-bold">Nama<input id="nama" name="nama" required maxlength="80" autocomplete="name" toolparamdescription="Full name of the person requesting a consultation." placeholder="Nama Anda" class="mt-2 w-full border-b border-white/30 bg-transparent px-0 py-3 text-white placeholder:text-white/45 focus:border-[#e6c88f] focus:outline-none" /></label><label class="text-sm font-bold">WhatsApp<input id="whatsapp" name="whatsapp" required maxlength="24" type="tel" inputmode="tel" autocomplete="tel" toolparamdescription="WhatsApp number for the user to continue the visible consultation." placeholder="08xxxxxxxxxx" class="mt-2 w-full border-b border-white/30 bg-transparent px-0 py-3 text-white placeholder:text-white/45 focus:border-[#e6c88f] focus:outline-none" /></label></div>
-      <div class="mt-7 grid gap-5 sm:grid-cols-2"><label class="text-sm font-bold">Kebutuhan<select id="layanan" name="layanan" required toolparamdescription="The woodwork service the user wants to discuss." class="mt-2 w-full border-b border-white/30 bg-[#17231d] px-0 py-3 text-white focus:border-[#e6c88f] focus:outline-none"><option value="">Pilih kebutuhan</option><option>Lantai kayu</option><option>Wall panel atau ceiling</option><option>Decking atau pergola</option><option>Tangga kayu</option><option>Detail custom</option></select></label><label class="text-sm font-bold">Lokasi proyek<input id="lokasi" name="lokasi" required maxlength="80" toolparamdescription="Project city or area, for example Jakarta Selatan." placeholder="Contoh: Jakarta Selatan" class="mt-2 w-full border-b border-white/30 bg-transparent px-0 py-3 text-white placeholder:text-white/45 focus:border-[#e6c88f] focus:outline-none" /></label></div>
-      <label class="mt-7 block text-sm font-bold">Ceritakan singkat kebutuhan Anda<textarea id="deskripsi" name="deskripsi" rows="4" maxlength="500" toolparamdescription="Optional short description of the scope, rough dimensions, or material preference. Do not include sensitive personal information." placeholder="Contoh: decking balkon apartemen, ukuran kira-kira 12 m²" class="mt-2 w-full resize-none border-b border-white/30 bg-transparent px-0 py-3 text-white placeholder:text-white/45 focus:border-[#e6c88f] focus:outline-none"></textarea></label>
-      <button type="submit" class="btn-wood mt-8 w-full !bg-[#e6c88f] !text-[#17231d] hover:!bg-[#fffdf7]">Kirim brief lewat WhatsApp <span aria-hidden="true">↗</span></button><p id="form-feedback" class="mt-4 text-sm text-white/65" aria-live="polite">Tidak ada komitmen. Anda akan melanjutkan langsung ke WhatsApp.</p>
-    </form>
+<section id="kontak" class="section-anchor overflow-hidden bg-[#10271e] py-24 text-[#fffdf7] sm:py-32 lg:py-40">
+  <div class="section-shell">
+    <div class="grid gap-10 border-b border-white/15 pb-10 lg:grid-cols-[.52fr_1.48fr] lg:items-end">
+      <div class="reveal"><p class="section-kicker text-[#e6c88f]">Start a conversation</p></div>
+      <div class="reveal"><h2 class="display-title max-w-6xl text-5xl sm:text-6xl lg:text-8xl">Bawa kondisi ruang.<br /><em>Kita rapikan keputusan.</em></h2><p class="mt-7 max-w-2xl text-base leading-7 text-white/65 sm:text-lg">Tidak perlu datang dengan spesifikasi lengkap. Konteks yang jujur jauh lebih berguna untuk diskusi awal.</p></div>
+    </div>
+
+    <div class="mt-12 grid gap-12 lg:grid-cols-[.68fr_1.32fr] lg:gap-16">
+      <div class="reveal lg:sticky lg:top-28 lg:self-start">
+        <p class="text-[.6rem] font-extrabold uppercase tracking-[.15em] text-white/45">Brief minimum</p>
+        <ol class="mt-5 border-t border-white/15">{[['01','Foto area','Ambil beberapa sudut termasuk titik pertemuan dengan lantai, dinding, pintu, atau struktur.'],['02','Ukuran kasar','Tidak perlu presisi survei; cukup memberi gambaran skala.'],['03','Lokasi','Kota atau area untuk membaca akses dan kebutuhan koordinasi.'],['04','Prioritas','Apa yang ingin diselesaikan: fungsi, kerusakan, material, atau tampilan.']].map(([n,h,t]) => <li class="grid grid-cols-[3rem_1fr] gap-3 border-b border-white/15 py-4"><span class="text-[.56rem] font-extrabold uppercase tracking-[.14em] text-[#e6c88f]">{n}</span><div><p class="text-sm font-extrabold text-white">{h}</p><p class="mt-1 text-xs leading-5 text-white/48">{t}</p></div></li>)}</ol>
+        <div class="mt-7 space-y-3 text-sm"><a href="https://wa.me/6281283135295" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-between border-b border-white/15 pb-3 font-bold text-white/75 transition hover:text-[#e6c88f]"><span>WhatsApp</span><span class="transition-transform group-hover:translate-x-1">+62 812 8313 5295 ↗</span></a><a href="mailto:info@jasakayuprofesional.com" class="group flex items-center justify-between gap-5 border-b border-white/15 pb-3 font-bold text-white/75 transition hover:text-[#e6c88f]"><span>Email</span><span class="break-all text-right transition-transform group-hover:translate-x-1">info@jasakayuprofesional.com ↗</span></a></div>
+      </div>
+
+      <form id="contact-form" class="reveal border border-white/18 bg-white/[.045] p-6 backdrop-blur-sm sm:p-9 lg:p-12" novalidate toolname="requestWoodworkConsultation" tooldescription="Prepare a visible, non-binding consultation brief for a woodwork project. The user reviews the form and manually opens WhatsApp; no booking, quote, or message is sent automatically.">
+        <div class="flex items-end justify-between gap-4 border-b border-white/15 pb-5"><div><p class="text-[.58rem] font-extrabold uppercase tracking-[.15em] text-[#e6c88f]">Project brief</p><p class="mt-2 font-serif text-3xl font-semibold tracking-[-.04em]">Ceritakan kondisi awal.</p></div><span class="hidden text-[.56rem] font-bold uppercase tracking-[.13em] text-white/35 sm:block">No commitment</span></div>
+        <div class="mt-7 grid gap-6 sm:grid-cols-2"><label class="text-[.65rem] font-extrabold uppercase tracking-[.1em] text-white/70">Nama<input id="nama" name="nama" required maxlength="80" autocomplete="name" toolparamdescription="Full name of the person requesting a consultation." placeholder="Nama Anda" class="mt-2 w-full border-b border-white/30 bg-transparent px-0 py-3 text-base font-medium normal-case tracking-normal text-white placeholder:text-white/35 focus:border-[#e6c88f] focus:outline-none" /></label><label class="text-[.65rem] font-extrabold uppercase tracking-[.1em] text-white/70">WhatsApp<input id="whatsapp" name="whatsapp" required maxlength="24" type="tel" inputmode="tel" autocomplete="tel" toolparamdescription="WhatsApp number for the user to continue the visible consultation." placeholder="08xxxxxxxxxx" class="mt-2 w-full border-b border-white/30 bg-transparent px-0 py-3 text-base font-medium normal-case tracking-normal text-white placeholder:text-white/35 focus:border-[#e6c88f] focus:outline-none" /></label></div>
+        <div class="mt-7 grid gap-6 sm:grid-cols-2"><label class="text-[.65rem] font-extrabold uppercase tracking-[.1em] text-white/70">Kebutuhan<select id="layanan" name="layanan" required toolparamdescription="The woodwork service the user wants to discuss." class="mt-2 w-full border-b border-white/30 bg-[#10271e] px-0 py-3 text-base font-medium normal-case tracking-normal text-white focus:border-[#e6c88f] focus:outline-none"><option value="">Pilih kebutuhan</option><option>Lantai kayu</option><option>Wall panel atau ceiling</option><option>Decking atau pergola</option><option>Tangga kayu</option><option>Genteng sirap ulin</option><option>Built-in atau storage custom</option><option>Detail custom</option></select></label><label class="text-[.65rem] font-extrabold uppercase tracking-[.1em] text-white/70">Lokasi proyek<input id="lokasi" name="lokasi" required maxlength="80" toolparamdescription="Project city or area, for example Jakarta Selatan." placeholder="Contoh: Jakarta Selatan" class="mt-2 w-full border-b border-white/30 bg-transparent px-0 py-3 text-base font-medium normal-case tracking-normal text-white placeholder:text-white/35 focus:border-[#e6c88f] focus:outline-none" /></label></div>
+        <label class="mt-7 block text-[.65rem] font-extrabold uppercase tracking-[.1em] text-white/70">Kondisi & kebutuhan<textarea id="deskripsi" name="deskripsi" rows="5" maxlength="500" toolparamdescription="Optional short description of the scope, rough dimensions, or material preference. Do not include sensitive personal information." placeholder="Contoh: decking balkon ±12 m², existing keramik, terkena hujan samping, ingin tone kayu natural" class="mt-2 w-full resize-none border-b border-white/30 bg-transparent px-0 py-3 text-base font-medium normal-case leading-7 tracking-normal text-white placeholder:text-white/35 focus:border-[#e6c88f] focus:outline-none"></textarea></label>
+        <div class="mt-8 grid gap-4 sm:grid-cols-[1fr_auto] sm:items-center"><p id="form-feedback" class="text-xs leading-5 text-white/48" aria-live="polite">Form ini hanya menyiapkan brief. Anda tetap meninjau dan mengirimnya sendiri lewat WhatsApp.</p><button type="submit" class="btn-wood !bg-[#e6c88f] !text-[#17231d] hover:!bg-[#fffdf7]">Buka brief di WhatsApp <span aria-hidden="true">↗</span></button></div>
+      </form>
+    </div>
   </div>
   <script type="module" is:inline set:html={formScript} />
 </section>
