@@ -43,11 +43,35 @@ const serviceSchema = {
       { name: 'Merbau', note: 'Tone lebih dalam dan karakter solid; perlu diseimbangkan dengan pencahayaan serta material railing atau lantai sekitar.' },
       { name: 'Timber + steel', note: 'Kombinasi umum untuk floating atau sculptural stair. Toleransi antara struktur baja dan skin kayu harus direncanakan sejak fabrikasi.' },
     ]}
+    planningChecks={[
+      { title: 'Rise & run', text: 'Tinggi antar lantai, jumlah anak tangga, tread depth, riser height, landing, headroom, dan garis awal-akhir diperiksa sebagai satu urutan.' },
+      { title: 'Structural tolerance', text: 'Beton atau baja existing jarang benar-benar identik antar anak tangga. Toleransi perlu dibaca sebelum kayu diproduksi agar ketebalan akhir tidak berubah-ubah.' },
+      { title: 'Railing points', text: 'Posisi anchor railing, kaca, handrail, side plate, atau baluster harus selesai di gambar sebelum cladding kayu menutup titik struktur.' },
+      { title: 'Transition detail', text: 'Pertemuan tread terakhir dengan lantai atas, skirting, dinding, landing, dan lantai bawah menentukan apakah tangga terasa menyatu atau seperti ditempel.' },
+    ]}
     process={[
       { title: 'Measure the run', text: 'Cek dimensi aktual, level antar lantai, headroom, lebar tangga, kondisi struktur, serta titik pertemuan dengan lantai atas dan bawah.' },
       { title: 'Resolve the detail', text: 'Tread, riser, nosing, edge, cladding, fixing, railing, dan finishing diputuskan sebelum produksi.' },
       { title: 'Fit & align', text: 'Pemasangan mengontrol level, ritme anak tangga, joint, bunyi, dan pertemuan dengan struktur maupun dinding.' },
       { title: 'Finish for touch', text: 'Permukaan dan tepi diselesaikan untuk kontak harian, termasuk tekstur, kilap, grip, serta kemudahan perawatan.' },
+    ]}
+    estimateFactors={[
+      { title: 'Bentuk tangga', text: 'Straight flight, L, U, winding, spiral, curved, atau floating memiliki kebutuhan templating, fabrikasi, dan pemasangan yang sangat berbeda.' },
+      { title: 'Scope kayu', text: 'Tread saja, tread+riser, cladding side, stringer cover, handrail, wall cap, atau full package akan menghasilkan jumlah detail yang berbeda.' },
+      { title: 'Kondisi struktur', text: 'Ketidakrataan beton, toleransi baja, kebutuhan levelling, backing, welding tambahan, atau perbaikan anchor dapat menambah pekerjaan sebelum kayu terpasang.' },
+      { title: 'Nosing & finishing', text: 'Profil tepi, anti-slip approach, stain, coating, radius, sambungan panjang, dan integrasi railing ikut membentuk tingkat pengerjaan.' },
+    ]}
+    aftercare={[
+      { title: 'Protect the nosing', text: 'Tepi depan menerima benturan paling sering. Hindari memukul atau menyeret barang berat langsung pada nosing saat pindahan atau renovasi berikutnya.' },
+      { title: 'Keep it dry', text: 'Pembersihan sebaiknya tidak meninggalkan air di sudut tread-riser atau sambungan railing karena area itu lebih sulit mengering.' },
+      { title: 'Watch movement', text: 'Bunyi, joint terbuka, atau perubahan level yang muncul tiba-tiba perlu diperiksa apakah berasal dari kayu, fixing, atau struktur dasarnya.' },
+      { title: 'Maintain grip', text: 'Finishing yang terlalu licin atau terlalu aus dapat memengaruhi kenyamanan. Evaluasi ulang permukaan ketika pola traffic mulai terlihat jelas.' },
+    ]}
+    faqs={[
+      { question: 'Bisa melapisi tangga beton existing dengan kayu?', answer: 'Bisa jika struktur dasar stabil dan dimensinya memungkinkan. Setiap tread/riser perlu diukur karena toleransi beton sering berbeda antar anak tangga.' },
+      { question: 'Bisa untuk floating staircase?', answer: 'Bisa sebagai bagian dari sistem yang sudah memiliki struktur utama yang tepat. Kayu dan struktur baja/beton harus dikoordinasikan, terutama pada titik fixing, ketebalan, dan railing.' },
+      { question: 'Jati atau Merbau untuk tangga?', answer: 'Keduanya dapat digunakan. Pilihan lebih baik ditentukan dari tone ruang, detail finishing, dimensi komponen, availability material, dan karakter pemakaian.' },
+      { question: 'Apa yang perlu dikirim untuk estimasi?', answer: 'Foto tangga dari beberapa sudut, tinggi antar lantai bila diketahui, jumlah anak tangga, lokasi, kondisi struktur, serta referensi desain cukup untuk pembahasan awal.' },
     ]}
   >
     <section class="bg-[#fffdf7] py-24 sm:py-32 lg:py-40">
