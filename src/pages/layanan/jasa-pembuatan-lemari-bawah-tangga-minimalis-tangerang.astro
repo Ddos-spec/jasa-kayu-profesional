@@ -1,150 +1,54 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { Image } from 'astro:assets';
+import Contact from '../../components/Contact.astro';
+import Footer from '../../components/Footer.astro';
 import heroImage from '../../assets/images/portfolio/tangga-modern-bsd.jpg';
-import detailImage from '../../assets/images/portfolio/townhouse-jakarta-wall-panel-walnut.jpg';
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Berapa harga pembuatan lemari bawah tangga di Tangerang?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Harga custom lemari bawah tangga mulai dari Rp 1.800.000 per meter lari (m¹), tergantung material (Blockboard/Multiplek) dan finishing (HPL/Duco). Hubungi kami untuk estimasi gratis."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Berapa lama proses pengerjaan lemari bawah tangga?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Proses produksi di workshop kami memakan waktu 7-14 hari kerja, dan pemasangan di lokasi (Tangerang & sekitarnya) hanya butuh 1-2 hari agar tidak mengganggu aktivitas rumah."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Apakah bisa desain custom sesuai bentuk tangga yang miring?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Tentu. Tim kami akan melakukan pengukuran presisi (survey lokasi) untuk memastikan setiap milimeter ruang bawah tangga Anda termanfaatkan, baik untuk rak sepatu, gudang, atau display TV."
-      }
-    }
-  ]
+const title = 'Jasa Lemari Bawah Tangga Custom Tangerang, BSD & Serpong | Jasa Kayu Profesional';
+const description = 'Desain dan pembuatan storage bawah tangga custom untuk Tangerang, BSD, Serpong, Bintaro, dan sekitarnya. Layout, ukuran, fungsi, akses, material, hardware, dan finishing disesuaikan dengan geometri tangga serta kebutuhan rumah.';
+const canonical = 'https://www.jasakayuprofesional.com/layanan/jasa-pembuatan-lemari-bawah-tangga-minimalis-tangerang';
+const faqs = [
+  ['Bisa dibuat mengikuti kemiringan tangga?', 'Bisa. Geometri area diukur mengikuti underside tangga, kolom, skirting, bukaan, dan titik lain yang membatasi volume agar modul storage tidak dipaksakan ke bentuk standar.'],
+  ['Fungsinya bisa dicampur dalam satu bidang?', 'Bisa. Rak sepatu, drawer, kabinet tertutup, display, utility storage, atau niche terbuka dapat dikombinasikan berdasarkan prioritas penggunaan dan kedalaman area.'],
+  ['Apa yang perlu disiapkan untuk diskusi awal?', 'Foto tangga dari depan dan samping, perkiraan lebar area, tinggi maksimal, lokasi proyek, serta daftar barang atau fungsi yang ingin ditampung sudah cukup untuk tahap awal.'],
+];
+const schema = {
+  '@context': 'https://schema.org', '@graph': [
+    { '@type': 'Service', name: 'Jasa Lemari Bawah Tangga Custom Tangerang', serviceType: 'Pembuatan built-in storage bawah tangga', description, provider: { '@type': 'Organization', name: 'Jasa Kayu Profesional', url: 'https://www.jasakayuprofesional.com/' }, areaServed: ['Tangerang','Tangerang Selatan'].map((name) => ({ '@type': 'City', name })), url: canonical },
+    { '@type': 'FAQPage', mainEntity: faqs.map(([question, answer]) => ({ '@type': 'Question', name: question, acceptedAnswer: { '@type': 'Answer', text: answer } })) },
+  ],
 };
+const configurations = [
+  ['01','Shoe wall','Rak sepatu, ventilasi, drawer kecil, dan area barang harian dekat pintu masuk.'],
+  ['02','Closed storage','Kabinet tertutup untuk barang musiman, alat rumah tangga, koper, atau kebutuhan yang tidak perlu terlihat.'],
+  ['03','Display niche','Kombinasi storage dan bidang terbuka untuk buku, objek, lighting, atau focal point ruang.'],
+  ['04','Utility zone','Area servis yang tetap mudah diakses tanpa membuat bawah tangga terlihat seperti gudang terbuka.'],
+  ['05','Mixed program','Beberapa fungsi digabung berdasarkan tinggi efektif, kedalaman, frekuensi akses, dan posisi pengguna.'],
+];
 ---
+<Layout title={title} description={description} canonical={canonical} image="/images/portfolio/tangga-modern-bsd.jpg">
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 
-<Layout
-  title="Jasa Pembuatan Lemari Bawah Tangga Minimalis Tangerang | Jasa Kayu Profesional"
-  description="Spesialis lemari bawah tangga custom di Tangerang, BSD, & Gading Serpong. Desain minimalis modern, material anti rayap, finishing HPL/Duco rapi. Harga kompetitif."
-  canonical="https://www.jasakayuprofesional.com/layanan/jasa-pembuatan-lemari-bawah-tangga-minimalis-tangerang"
->
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
-
-  <section class="relative bg-wood-brown-900 py-20 text-white md:py-32">
-    <div class="absolute inset-0 overflow-hidden">
-      <Image
-        src={heroImage}
-        alt="Desain lemari bawah tangga minimalis modern dengan finishing HPL kayu"
-        class="h-full w-full object-cover opacity-30"
-        width={1600}
-        height={900}
-        loading="eager"
-        format="webp"
-      />
-    </div>
-    <div class="relative mx-auto max-w-6xl px-4 md:px-8">
-      <span class="inline-block rounded-full bg-white/10 px-4 py-1.5 text-sm font-semibold text-wood-brown-100 backdrop-blur-sm">
-        Area Layanan: Tangerang, BSD, Gading Serpong, Alsut
-      </span>
-      <h1 class="mt-6 font-serif text-3xl font-bold leading-tight md:text-5xl">
-        Jasa Pembuatan Lemari <br/>Bawah Tangga Minimalis
-      </h1>
-      <p class="mt-6 max-w-2xl text-lg text-white/80 md:text-xl">
-        Ubah area mati di bawah tangga menjadi ruang penyimpanan fungsional dan estetik. Solusi cerdas untuk rumah minimalis Anda di Tangerang.
-      </p>
-      <div class="mt-8 flex flex-wrap gap-4">
-        <a href="https://wa.me/6281283135295?text=Halo,%20saya%20mau%20tanya%20harga%20lemari%20bawah%20tangga%20di%20Tangerang." class="rounded-full bg-[#25D366] px-8 py-3 font-semibold text-white shadow-lg transition hover:bg-[#128C7E]">
-          Cek Harga via WhatsApp
-        </a>
-      </div>
+  <section class="relative min-h-[50rem] overflow-hidden bg-[#10271e] text-white lg:min-h-[90vh]">
+    <Image src={heroImage} alt="Tangga modern pada hunian BSD sebagai konteks area bawah tangga" width={1700} height={1100} loading="eager" fetchpriority="high" format="webp" class="absolute inset-0 h-full w-full object-cover opacity-55" />
+    <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(9,25,18,.96)_0%,rgba(9,25,18,.76)_48%,rgba(9,25,18,.24)_100%)]"></div><div class="grid-lines absolute inset-0 opacity-25"></div>
+    <div class="section-shell relative flex min-h-[50rem] flex-col justify-end pb-10 pt-36 lg:min-h-[90vh] lg:pb-14">
+      <p class="reveal section-kicker text-[#e6c88f]">Built-in · Tangerang / BSD</p>
+      <h1 class="reveal display-title mt-6 max-w-6xl text-[clamp(4.3rem,10vw,9.2rem)]">Ruang sisa di bawah tangga bisa bekerja <em>lebih keras.</em></h1>
+      <div class="reveal mt-8 grid gap-8 border-t border-white/25 pt-6 lg:grid-cols-[1.25fr_.75fr] lg:items-end"><p class="max-w-2xl text-base leading-7 text-white/70 sm:text-lg sm:leading-8">Alih-alih memasukkan kabinet standar ke bidang miring, kami membaca volume efektif, kebutuhan akses, barang yang disimpan, dan garis tangga supaya built-in terasa seperti bagian arsitektur rumah.</p><a href="#kontak" class="group flex items-center justify-between border-b border-white/30 pb-3 text-[.66rem] font-extrabold uppercase tracking-[.13em] text-[#e6c88f] lg:justify-self-end lg:min-w-[15rem]">Kirim foto tangga <span class="text-xl transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" aria-hidden="true">↗</span></a></div>
+      <div class="reveal mt-10 grid gap-px border border-white/15 bg-white/15 sm:grid-cols-2 lg:grid-cols-4">{[['Area','Tangerang / Tangsel'],['Format','Closed / Open / Mixed'],['Function','Storage / Display / Utility'],['Method','Measure / Design / Build / Install']].map(([a,b]) => <div class="bg-[#10271e]/70 p-4 backdrop-blur-sm"><p class="text-[.55rem] font-extrabold uppercase tracking-[.15em] text-white/40">{a}</p><p class="mt-2 text-sm font-bold text-white/90">{b}</p></div>)}</div>
     </div>
   </section>
 
-  <section class="py-16 md:py-24">
-    <div class="mx-auto max-w-4xl px-4 md:px-8">
-      
-      <div class="prose prose-lg prose-stone max-w-none">
-        <h2 class="font-serif text-3xl font-bold text-wood-brown-800">Mengapa Membiarkan Bawah Tangga Kosong?</h2>
-        <p>
-          Di banyak rumah tipe minimalis di Tangerang (BSD, Citra Raya, Gading Serpong), area bawah tangga seringkali menjadi "gudang tak bertuan" yang berantakan. Padahal, dengan desain yang tepat, area ini bisa menjadi:
-        </p>
-        <ul class="marker:text-wood-brown-600">
-          <li><strong>Rak Sepatu Tertutup:</strong> Menampung puluhan pasang sepatu agar foyer tetap rapi.</li>
-          <li><strong>Dry Kitchen / Pantry:</strong> Memaksimalkan fungsi dapur bersih.</li>
-          <li><strong>Display TV & Dekorasi:</strong> Menjadi focal point ruang keluarga.</li>
-          <li><strong>Gudang Tersembunyi:</strong> Menyimpan koper, alat pel, dan barang jarang pakai.</li>
-        </ul>
+  <section class="bg-[#f4f2eb] py-24 sm:py-32 lg:py-40"><div class="section-shell grid gap-12 lg:grid-cols-[.52fr_1.48fr]"><div class="reveal sticky-copy self-start"><p class="section-kicker">Program the void</p><p class="mt-6 max-w-xs text-sm leading-7 text-[#68736a]">Sebelum memilih warna HPL atau handle, tentukan dulu apa yang benar-benar perlu disimpan dan seberapa sering harus diakses.</p></div><div><p class="reveal font-serif text-[clamp(3rem,6vw,6.4rem)] font-semibold leading-[.9] tracking-[-.055em] text-[#17231d]">Bentuk miring bukan masalah desain. Ia hanya berarti setiap sentimeter punya <em>nilai berbeda.</em></p><div class="reveal-stagger mt-12 border-t border-[#17231d]/15">{configurations.map(([n,h,t]) => <div class="grid gap-4 border-b border-[#17231d]/15 py-6 sm:grid-cols-[3rem_.7fr_1.3fr]"><span class="text-[.58rem] font-extrabold uppercase tracking-[.15em] text-[#315443]">{n}</span><h2 class="font-serif text-3xl font-semibold leading-none tracking-[-.04em] text-[#17231d] sm:text-4xl">{h}</h2><p class="max-w-2xl text-sm leading-7 text-[#59645b]">{t}</p></div>)}</div></div></div></section>
 
-        <Image 
-          src={detailImage}
-          alt="Contoh pengerjaan lemari bawah tangga laci tarik (drawers) fungsional" 
-          class="my-8 w-full rounded-xl shadow-lg"
-          width={1200}
-          height={800}
-          loading="lazy"
-          format="webp"
-        />
+  <section class="bg-[#e7dfd0] py-24 sm:py-32 lg:py-40"><div class="section-shell"><div class="grid gap-10 border-b border-[#17231d]/15 pb-10 lg:grid-cols-[.52fr_1.48fr] lg:items-end"><p class="reveal section-kicker">Measure what matters</p><div class="reveal"><h2 class="display-title text-5xl text-[#17231d] sm:text-6xl lg:text-8xl">Yang diukur bukan cuma <em>lebar × tinggi.</em></h2><p class="mt-6 max-w-2xl text-sm leading-7 text-[#59645b]">Built-in bawah tangga perlu membaca geometri underside, ketebalan skirting, posisi saklar, kolom, kedalaman nyaman, arah bukaan, dan jalur sirkulasi orang di depannya.</p></div></div><div class="reveal-stagger mt-10 grid gap-px border border-[#17231d]/15 bg-[#17231d]/15 sm:grid-cols-2 lg:grid-cols-4">{[['01','Geometry','Slope, tinggi efektif, kolom, dan underside tangga.'],['02','Access','Arah pintu, drawer travel, clearance, dan frekuensi pemakaian.'],['03','Contents','Ukuran barang nyata: sepatu, koper, vacuum, box, buku, atau utility.'],['04','Finish','Tone, handle, shadow gap, plinth, serta pertemuan dengan lantai dan dinding.']].map(([n,h,t]) => <div class="bg-[#e7dfd0] p-7"><p class="text-[.58rem] font-extrabold uppercase tracking-[.15em] text-[#315443]">{n}</p><h3 class="mt-6 font-serif text-4xl font-semibold tracking-[-.045em] text-[#17231d]">{h}</h3><p class="mt-5 text-sm leading-7 text-[#59645b]">{t}</p></div>)}</div></div></section>
 
-        <h3 class="mt-12 font-serif text-2xl font-bold text-wood-brown-800">Spesifikasi Material Premium (Anti Rayap)</h3>
-        <p>Kami tidak menggunakan serbuk kayu (particle board) murah yang mudah hancur terkena air pel. Standar kami untuk klien Tangerang:</p>
-      </div>
+  <section class="bg-[#10271e] py-24 text-white sm:py-32 lg:py-40"><div class="section-shell"><div class="grid gap-10 border-b border-white/15 pb-10 lg:grid-cols-[.52fr_1.48fr] lg:items-end"><p class="reveal section-kicker text-[#e6c88f]">Workflow</p><h2 class="reveal display-title text-5xl sm:text-6xl lg:text-8xl">Dari foto area sampai built-in yang terasa <em>menyatu.</em></h2></div><ol class="reveal-stagger mt-4">{[['01','Brief','Foto tangga, ukuran kasar, lokasi, serta fungsi yang ingin ditampung.'],['02','Measure','Pengukuran geometri aktual, clearance, existing finish, dan titik yang perlu dihindari.'],['03','Resolve','Pembagian modul, fungsi, hardware, material, finishing, serta detail tepi diputuskan sebelum produksi.'],['04','Build & install','Komponen diproduksi lalu dipasang dengan kontrol garis, gap, alignment, bukaan, dan touch point.']].map(([n,h,t]) => <li class="grid gap-4 border-b border-white/15 py-7 sm:grid-cols-[4rem_.7fr_1.3fr]"><span class="text-[.6rem] font-extrabold uppercase tracking-[.15em] text-[#e6c88f]">{n}</span><h3 class="font-serif text-3xl font-semibold leading-none tracking-[-.04em] sm:text-4xl">{h}</h3><p class="max-w-2xl text-sm leading-7 text-white/60">{t}</p></li>)}</ol></div></section>
 
-      <div class="mt-8 grid gap-6 md:grid-cols-2">
-        <div class="rounded-2xl border border-wood-brown-100 bg-white p-6 shadow-sm">
-          <h4 class="font-bold text-wood-brown-800">1. Bahan Dasar: Blockboard / Multiplek 18mm</h4>
-          <p class="mt-2 text-sm text-[#666]">Kayu lapis utuh yang kuat menahan beban berat, sekrup tidak mudah dol, dan jauh lebih tahan lembap dibanding particle board.</p>
-        </div>
-        <div class="rounded-2xl border border-wood-brown-100 bg-white p-6 shadow-sm">
-          <h4 class="font-bold text-wood-brown-800">2. Finishing: HPL Taco / Duco</h4>
-          <p class="mt-2 text-sm text-[#666]">Pilih ratusan motif HPL (serat kayu, solid color, marmer) yang tahan gores dan panas. Atau cat Duco untuk hasil seamless mewah.</p>
-        </div>
-      </div>
+  <section class="bg-[#f4f2eb] py-24 sm:py-32"><div class="section-shell max-w-5xl"><div class="grid gap-8 border-b border-[#17231d]/15 pb-8 sm:grid-cols-[.55fr_1.45fr] sm:items-end"><p class="reveal section-kicker">FAQ</p><h2 class="reveal display-title text-5xl text-[#17231d] sm:text-6xl">Mulai dari kebutuhan, bukan <em>harga per meter.</em></h2></div><div class="reveal-stagger mt-4 divide-y divide-[#17231d]/15 border-b border-[#17231d]/15">{faqs.map(([question,answer]) => <details class="group py-6"><summary class="flex cursor-pointer list-none items-center justify-between gap-6 font-serif text-2xl font-semibold leading-tight tracking-[-.03em] text-[#17231d] sm:text-3xl"><span>{question}</span><span class="text-3xl font-normal text-[#315443] transition group-open:rotate-45">+</span></summary><p class="mt-4 max-w-2xl text-sm leading-7 text-[#59645b]">{answer}</p></details>)}</div></div></section>
 
-      <div class="prose prose-lg prose-stone mt-12 max-w-none">
-        <h3 class="font-serif text-2xl font-bold text-wood-brown-800">Harga & Cara Pemesanan di Tangerang</h3>
-        <p>
-            Kami melayani seluruh area Kota Tangerang, Tangerang Selatan, dan Kabupaten. Sistem kami transparan:
-        </p>
-        <ol>
-            <li><strong>Konsultasi Awal:</strong> Kirim foto lokasi bawah tangga Anda via WA.</li>
-            <li><strong>Estimasi Kasar:</strong> Kami berikan perkiraan harga berdasarkan ukuran.</li>
-            <li><strong>Survey & Ukur:</strong> Tim ke lokasi (BSD/Serpong/dll) untuk ukur presisi 100%.</li>
-            <li><strong>Desain 3D:</strong> Lihat visualisasi lemari sebelum diproduksi.</li>
-            <li><strong>Produksi & Pasang:</strong> Pengerjaan cepat dan rapi.</li>
-        </ol>
-      </div>
-
-      <!-- FAQ Section -->
-      <div class="mt-16 rounded-3xl bg-wood-brown-50 p-8">
-        <h3 class="font-serif text-2xl font-bold text-wood-brown-800">Pertanyaan Sering Diajukan</h3>
-        <div class="mt-6 space-y-6">
-            {faqSchema.mainEntity.map((faq) => (
-                <details class="group">
-                    <summary class="flex cursor-pointer items-center justify-between font-medium text-wood-brown-900 focus:outline-none">
-                        <span>{faq.name}</span>
-                        <span class="transition group-open:rotate-180">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" /></svg>
-                        </span>
-                    </summary>
-                    <p class="mt-3 text-[#4A4A4A]">{faq.acceptedAnswer.text}</p>
-                </details>
-            ))}
-        </div>
-      </div>
-
-    </div>
-  </section>
+  <Contact />
+  <Footer slot="footer" />
 </Layout>
