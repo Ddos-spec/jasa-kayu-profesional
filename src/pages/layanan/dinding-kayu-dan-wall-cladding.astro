@@ -1,205 +1,64 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { Picture } from 'astro:assets';
-import heroBg from '../../assets/images/portfolio/townhouse-jakarta-wall-panel-walnut.jpg';
+import ServiceEditorial from '../../components/ServiceEditorial.astro';
+import Contact from '../../components/Contact.astro';
+import Footer from '../../components/Footer.astro';
+import heroImage from '../../assets/images/portfolio/townhouse-jakarta-wall-panel-walnut.jpg';
+import detailImage from '../../assets/images/portfolio/art-installation-parametric-wall.jpg';
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Berapa kisaran harga pemasangan wall panel kayu per meter?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Biaya pemasangan berkisar antara Rp 150.000 hingga Rp 210.000 per meter persegi, tergantung jenis pola (cladding datar, kisi-kisi/slat, atau parametric) serta jenis kayu yang digunakan."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Jenis kayu apa saja yang bagus untuk wall cladding interior?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Untuk nuansa cerah/minimalis, kami merekomendasikan Kayu Sungkai. Untuk kemewahan klasik, Kayu Jati atau Walnut adalah pilihan terbaik. Sedangkan untuk nuansa hangat kemerahan, Kayu Merbau sangat direkomendasikan."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Apakah wall cladding kayu ini merusak dinding asli?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Tidak. Kami memasang rangka kayu/hollow (furring strips) terlebih dahulu ke dinding dasar. Panel kayu kemudian direkatkan pada rangka tersebut, sehingga dinding asli tetap aman dan ada celah udara (air gap) untuk sirkulasi."
-      }
-    }
-  ]
+const title = 'Jasa Wall Panel & Dinding Kayu Jabodetabek | Jasa Kayu Profesional';
+const description = 'Perencanaan dan pemasangan wall panel, kisi-kisi, feature wall, serta wall cladding kayu di Jabodetabek dengan perhatian pada modul, sambungan, pencahayaan, dan kondisi dinding.';
+const canonical = 'https://www.jasakayuprofesional.com/layanan/dinding-kayu-dan-wall-cladding';
+const serviceSchema = {
+  '@context': 'https://schema.org', '@type': 'Service', name: 'Jasa Wall Panel dan Dinding Kayu', serviceType: 'Pemasangan wall panel dan wall cladding kayu', description,
+  provider: { '@type': 'Organization', name: 'Jasa Kayu Profesional', url: 'https://www.jasakayuprofesional.com/' },
+  areaServed: ['Jakarta','Bogor','Depok','Tangerang','Bekasi'].map((name) => ({ '@type': 'AdministrativeArea', name })), url: canonical,
 };
 ---
-
-<Layout
-  title="Jasa Pemasangan Dinding Kayu & Wall Cladding Premium | Jasa Kayu Profesional"
-  description="Layanan pemasangan wall panel, kisi-kisi kayu, dan wall cladding solid (Jati, Sungkai, Walnut) di Jabodetabek. Desain presisi, rapi, dan bergaransi 5 tahun."
-  canonical="https://www.jasakayuprofesional.com/layanan/dinding-kayu-dan-wall-cladding"
->
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
-
-  <!-- Hero Section -->
-  <section class="relative bg-wood-brown-900 py-20 text-white md:py-32">
-    <div class="absolute inset-0 overflow-hidden">
-      <Picture
-        src={heroBg}
-        alt="Wall panel kayu walnut mewah di ruang keluarga"
-        widths={[400, 800, 1200, 1600]}
-        sizes="(max-width: 800px) 100vw, 1600px"
-        formats={['avif', 'webp']}
-        class="h-full w-full object-cover opacity-25"
-        loading="eager"
-        fetchpriority="high"
-      />
-    </div>
-    <div class="relative mx-auto max-w-6xl px-4 md:px-8">
-      <span class="inline-block rounded-full bg-white/10 px-4 py-1.5 text-sm font-semibold text-wood-brown-100 backdrop-blur-sm">
-        Layanan Wall Art & Cladding
-      </span>
-      <h1 class="mt-6 font-serif text-4xl font-bold leading-tight md:text-6xl">
-        Ubah Dinding Biasa <br/>Menjadi Karya Seni Kayu
-      </h1>
-      <p class="mt-6 max-w-2xl text-lg text-white/80 md:text-xl">
-        Hadirkan tekstur, kedalaman, dan kemewahan alami pada ruangan Anda dengan wall panel, kisi-kisi (slats), dan wall cladding kayu solid premium.
-      </p>
-      <div class="mt-8 flex flex-wrap gap-4">
-        <a href="https://wa.me/6281283135295?text=Halo%20Jasa%20Kayu%20Profesional,%20saya%20tertarik%20pasang%20dinding%20kayu%20wall%20cladding." class="rounded-full bg-[#25D366] px-8 py-3 font-semibold text-white shadow-lg transition hover:bg-[#128C7E]">
-          Konsultasi via WhatsApp
-        </a>
-        <a href="#detail-layanan" class="rounded-full border border-white/30 bg-white/5 px-8 py-3 font-semibold text-white backdrop-blur-sm transition hover:bg-white/20">
-          Pelajari Selengkapnya
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section id="detail-layanan" class="py-20 md:py-28">
-    <div class="mx-auto max-w-4xl px-4 md:px-8">
-      
-      <!-- Value Proposition -->
-      <div class="prose prose-lg prose-stone max-w-none">
-        <h2 class="font-serif text-3xl font-bold text-wood-brown-800">Estetika Dinding Kayu Tanpa Kompromi</h2>
-        <p>
-          Dinding adalah elemen visual terbesar dalam ruangan Anda. Memasang wall panel kayu berkualitas tinggi tidak hanya menaikkan estetika ruangan, tetapi juga memberikan fungsi insulasi suhu dan akustik alami (meredam gema ruangan).
-        </p>
-        <p>
-          Kami merancang dan memotong setiap bilah kayu dengan presisi tinggi di workshop kami sebelum dipasang di lokasi. Hal ini meminimalkan debu pengerjaan di rumah Anda dan memastikan setiap sudut terpasang rapat dan rapi.
-        </p>
-      </div>
-
-      <!-- Wood Options -->
-      <div class="mt-12">
-        <h3 class="font-serif text-2xl font-bold text-wood-brown-800 mb-6">Pilihan Material Kayu Terfavorit</h3>
-        <div class="grid gap-6 md:grid-cols-3">
-          <div class="rounded-2xl border border-wood-brown-100 bg-white p-6 shadow-sm">
-            <h4 class="font-bold text-wood-brown-900">Kayu Sungkai</h4>
-            <p class="mt-2 text-sm text-[#555]">Sangat diminati untuk gaya interior Japandi, minimalis, dan Skandinavia karena seratnya tegas dan warnanya yang cerah.</p>
-          </div>
-          <div class="rounded-2xl border border-wood-brown-100 bg-white p-6 shadow-sm">
-            <h4 class="font-bold text-wood-brown-900">Kayu Jati (Teak)</h4>
-            <p class="mt-2 text-sm text-[#555]">Memberikan aura kemewahan klasik yang tak tertandingi dengan serat coklat emas alami dan aroma khas kayu jati.</p>
-          </div>
-          <div class="rounded-2xl border border-wood-brown-100 bg-white p-6 shadow-sm">
-            <h4 class="font-bold text-wood-brown-900">Kayu Walnut</h4>
-            <p class="mt-2 text-sm text-[#555]">Memiliki warna coklat gelap eksotis dengan pola serat memukau, sangat cocok untuk aksen dinding ruang keluarga mewah.</p>
-          </div>
+<Layout title={title} description={description} canonical={canonical} image="/images/portfolio/townhouse-jakarta-wall-panel-walnut.jpg">
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  <ServiceEditorial
+    kicker="Wall system · Interior"
+    title="Dinding kayu yang memberi ritme, bukan kebisingan visual."
+    intro="Wall panel yang baik tidak sekadar menutup dinding. Modul, bayangan, arah serat, sambungan sudut, bukaan, stop kontak, dan pencahayaan harus terbaca sebagai satu komposisi."
+    heroImage={heroImage}
+    heroAlt="Wall panel kayu pada interior townhouse"
+    secondaryImage={detailImage}
+    secondaryAlt="Instalasi dinding kayu parametrik"
+    facts={[
+      { label: 'Format', value: 'Panel / Slat / Cladding' },
+      { label: 'Konteks', value: 'Residential / Commercial' },
+      { label: 'Detail', value: 'Corner / Lighting / Opening' },
+      { label: 'Area', value: 'Jabodetabek' },
+    ]}
+    statement="Bidang kayu paling kuat ketika proporsinya terasa, tetapi konstruksinya tidak meminta perhatian."
+    principles={[
+      { title: 'Modul & proporsi', text: 'Lebar panel, jarak slat, garis horizontal atau vertikal, serta titik berhenti harus dibaca terhadap dimensi ruang dan furnitur.' },
+      { title: 'Substrate', text: 'Kondisi dinding dasar, kebutuhan rangka, toleransi kerataan, jalur kabel, dan potensi kelembapan menentukan sistem belakang panel.' },
+      { title: 'Sudut & bukaan', text: 'Pertemuan di sudut, pintu, jendela, skirting, ceiling, saklar, dan built-in adalah tempat kualitas pengerjaan paling mudah terbaca.' },
+      { title: 'Light interaction', text: 'Garis bayangan dan sumber cahaya dapat memperkuat tekstur kayu, tetapi juga bisa menonjolkan ketidakrataan jika detail tidak direncanakan.' },
+    ]}
+    materials={[
+      { name: 'Sungkai', note: 'Tone relatif terang dengan serat yang aktif; cocok untuk ruang yang membutuhkan tekstur tanpa terasa terlalu gelap.' },
+      { name: 'Jati', note: 'Karakter hangat dan kuat secara visual. Perlu dikontrol lewat modul dan finishing agar bidang tetap terasa arsitektural.' },
+      { name: 'Walnut / dark tone', note: 'Pilihan tone gelap untuk komposisi yang lebih dalam. Pencahayaan dan proporsi bidang menjadi penting supaya ruang tidak terasa berat.' },
+    ]}
+    process={[
+      { title: 'Mapping bidang', text: 'Ukur dinding, bukaan, level, titik listrik, built-in, dan garis ceiling untuk menentukan modul yang realistis.' },
+      { title: 'Sample & layout', text: 'Arah serat, jarak, profil, warna finishing, serta garis awal-akhir diuji sebelum produksi penuh.' },
+      { title: 'Substructure', text: 'Rangka atau sistem mounting disiapkan sesuai kondisi dinding, kebutuhan service access, serta toleransi kerataan.' },
+      { title: 'Install & tune', text: 'Panel dipasang sambil mengontrol garis, reveal, sudut, joint, dan pertemuan dengan elemen arsitektur lain.' },
+    ]}
+  >
+    <section class="bg-[#fffdf7] py-24 sm:py-32 lg:py-40">
+      <div class="section-shell grid gap-10 lg:grid-cols-[.55fr_1.45fr]">
+        <div class="reveal sticky-copy self-start"><p class="section-kicker">Three languages</p><p class="mt-6 max-w-xs text-sm leading-7 text-[#68736a]">Satu material bisa menghasilkan karakter yang sangat berbeda tergantung profil, modul, dan bagaimana cahaya bergerak di permukaannya.</p></div>
+        <div class="reveal-stagger grid gap-px border border-[#17231d]/15 bg-[#17231d]/15 sm:grid-cols-3">
+          {[['01','Flat panel','Bidang tenang dengan fokus pada arah serat, joint, dan komposisi besar.'],['02','Slatted','Ritme garis dan bayangan yang lebih kuat, cocok ketika kedalaman visual memang dibutuhkan.'],['03','Sculptural','Modul atau relief tiga dimensi untuk area focal point yang membutuhkan karakter lebih ekspresif.']].map(([n,h,t]) => <div class="bg-[#fffdf7] p-7"><p class="text-[.58rem] font-extrabold uppercase tracking-[.15em] text-[#315443]">{n}</p><h2 class="mt-6 font-serif text-4xl font-semibold leading-[.92] tracking-[-.045em] text-[#17231d]">{h}</h2><p class="mt-5 text-sm leading-7 text-[#59645b]">{t}</p></div>)}
         </div>
       </div>
-
-      <!-- Pricing Table Section -->
-      <div class="mt-20">
-        <h3 class="font-serif text-2xl font-bold text-wood-brown-800">Estimasi Ongkos Jasa Pasang Wall Cladding</h3>
-        <p class="mt-2 text-sm text-[#666]">Berikut adalah perkiraan biaya jasa pasang wall panel kayu per meter persegi (tidak termasuk material kayu utama dan finishing khusus):</p>
-        <div class="mt-6 overflow-x-auto rounded-xl border border-wood-brown-200 bg-white shadow-sm">
-          <table class="w-full min-w-[500px] text-left text-sm text-[#4A4A4A]">
-            <thead class="bg-wood-brown-50 text-wood-brown-900">
-              <tr>
-                <th class="px-6 py-4 font-bold">Jenis Pemasangan</th>
-                <th class="px-6 py-4 font-bold">Detail Pekerjaan</th>
-                <th class="px-6 py-4 font-bold">Kisaran Tarif (per m²)</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-wood-brown-100">
-              <tr>
-                <td class="px-6 py-4 font-medium">Cladding Datar / Lambersering</td>
-                <td class="px-6 py-4">Pemasangan datar (tongue & groove)</td>
-                <td class="px-6 py-4">Rp 150.000 - Rp 180.000</td>
-              </tr>
-              <tr>
-                <td class="px-6 py-4 font-medium">Kisi-Kisi Kayu (Slat Wall)</td>
-                <td class="px-6 py-4">Aksen bilah vertikal/horizontal dengan celah</td>
-                <td class="px-6 py-4">Rp 175.000 - Rp 210.000</td>
-              </tr>
-              <tr>
-                <td class="px-6 py-4 font-medium">Parametric Wall Installation</td>
-                <td class="px-6 py-4">Instalasi seni lekukan 3D custom complex</td>
-                <td class="px-6 py-4">Hubungi WhatsApp (Estimasi Proyek)</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="mt-3 text-xs text-stone-500 italic">*Catatan: Tarif bergantung pada kerumitan desain dan jenis rangka penopang yang digunakan.</p>
-      </div>
-
-      <!-- FAQ Section -->
-      <div class="mt-20 rounded-3xl bg-wood-brown-50 p-8 md:p-12">
-        <h3 class="font-serif text-2xl font-bold text-wood-brown-800">Pertanyaan Umum (FAQ)</h3>
-        <div class="mt-6 space-y-6">
-          <details class="group">
-            <summary class="flex cursor-pointer items-center justify-between font-medium text-wood-brown-900 focus:outline-none">
-              <span>Bagaimana cara membersihkan wall panel kayu?</span>
-              <span class="transition group-open:rotate-180">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" /></svg>
-              </span>
-            </summary>
-            <p class="mt-3 text-[#4A4A4A]">Cukup bersihkan debu menggunakan kemoceng atau kain mikrofiber kering secara berkala. Hindari penggunaan air berlebihan atau bahan kimia abrasif agar lapisan coating tetap terjaga indah.</p>
-          </details>
-          <div class="h-px bg-wood-brown-200"></div>
-          <details class="group">
-            <summary class="flex cursor-pointer items-center justify-between font-medium text-wood-brown-900 focus:outline-none">
-              <span>Apakah cladding kayu ini aman dari serangan rayap?</span>
-              <span class="transition group-open:rotate-180">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" /></svg>
-              </span>
-            </summary>
-            <p class="mt-3 text-[#4A4A4A]">Sebelum dipasang, rangka dan kayu cladding kami telah dilapisi dengan cairan anti-rayap khusus. Untuk hasil maksimal, pastikan dinding dasar Anda tidak lembab atau rembes air.</p>
-          </details>
-        </div>
-      </div>
-
-      <!-- Internal Links -->
-      <div class="mt-16 border-t border-wood-brown-200 pt-12">
-        <p class="mb-6 font-serif text-xl font-bold text-wood-brown-800">Layanan Terkait Lainnya:</p>
-        <div class="grid gap-4 md:grid-cols-2">
-          <a href="/layanan/lantai-kayu-premium" class="group block rounded-xl border border-wood-brown-100 bg-white p-4 transition hover:border-wood-brown-300 hover:shadow-md">
-            <span class="font-bold text-wood-brown-800 group-hover:text-wood-brown-600">Lantai Kayu Solid Premium &rarr;</span>
-            <p class="mt-1 text-sm text-[#666]">Padukan wall panel impian Anda dengan keindahan lantai kayu jati solid di seluruh ruangan.</p>
-          </a>
-          <a href="/layanan/plafon-kayu-ceiling" class="group block rounded-xl border border-wood-brown-100 bg-white p-4 transition hover:border-wood-brown-300 hover:shadow-md">
-            <span class="font-bold text-wood-brown-800 group-hover:text-wood-brown-600">Plafon Kayu / Ceiling &rarr;</span>
-            <p class="mt-1 text-sm text-[#666]">Instalasi plafon lambersering kayu untuk menciptakan ruang yang kohesif, hangat, dan kedap suara.</p>
-          </a>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- CTA Section -->
-  <section class="bg-wood-brown-800 py-16 text-center text-white">
-    <div class="mx-auto max-w-4xl px-4">
-      <h2 class="font-serif text-3xl font-bold md:text-4xl">Dapatkan Aksen Ruangan Mewah Sekarang</h2>
-      <p class="mt-4 text-lg text-wood-brown-100">Konsultasikan kebutuhan desain dinding kayu Anda secara gratis dengan tim ahli kami.</p>
-      <div class="mt-8 flex justify-center gap-4">
-        <a href="https://wa.me/6281283135295?text=Halo%20Jasa%20Kayu%20Profesional,%20saya%20ingin%20request%20survei%20wall%20cladding%20dinding%20kayu." class="rounded-full bg-[#25D366] px-8 py-3 font-semibold text-white shadow-lg transition hover:bg-[#128C7E]">
-          Hubungi Kami via WhatsApp
-        </a>
-      </div>
-      <p class="mt-4 text-sm text-wood-brown-300">*Melayani seluruh wilayah Jakarta, Bogor, Depok, Tangerang, dan Bekasi</p>
-    </div>
-  </section>
+    </section>
+  </ServiceEditorial>
+  <Contact />
+  <Footer slot="footer" />
 </Layout>
