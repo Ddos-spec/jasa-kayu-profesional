@@ -47,7 +47,7 @@ const {
         <a href="#kontak" class="group flex items-center justify-between border-b border-white/30 pb-3 text-[.66rem] font-extrabold uppercase tracking-[.13em] text-[#e6c88f] sm:justify-self-end sm:min-w-[15rem]">Diskusikan proyek <span class="text-lg transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" aria-hidden="true">↗</span></a>
       </div>
     </div>
-    {facts.length > 0 && <div class={`reveal mt-10 grid gap-px border border-white/20 bg-white/20 sm:grid-cols-${Math.min(facts.length, 4)}`}>{facts.map((fact) => <div class="bg-[#10271e]/55 p-4 backdrop-blur-sm"><p class="text-[.55rem] font-extrabold uppercase tracking-[.15em] text-white/45">{fact.label}</p><p class="mt-2 text-sm font-bold text-white/90">{fact.value}</p></div>)}</div>}
+    {facts.length > 0 && <div class="reveal mt-10 grid gap-px border border-white/20 bg-white/20 sm:grid-cols-2 lg:grid-cols-4">{facts.map((fact) => <div class="bg-[#10271e]/55 p-4 backdrop-blur-sm"><p class="text-[.55rem] font-extrabold uppercase tracking-[.15em] text-white/45">{fact.label}</p><p class="mt-2 text-sm font-bold text-white/90">{fact.value}</p></div>)}</div>}
   </div>
 </section>
 
