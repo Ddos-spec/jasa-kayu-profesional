@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import { type CollectionEntry, render } from 'astro:content';
+import { getCollection, type CollectionEntry, render } from 'astro:content';
 import Layout from './Layout.astro';
 
 interface Props { post: CollectionEntry<'blog'>; }
@@ -14,14 +14,26 @@ const rawPath = post.data.image ?? '/images/blog/blog-1.jpg';
 const imagePath = rawPath.replace(/^\/images\//, '/src/assets/images/');
 const resolvedImage = images[imagePath] ? (await images[imagePath]()).default : (await images['/src/assets/images/blog/blog-1.jpg']()).default;
 const formattedDate = new Intl.DateTimeFormat('id-ID', { year: 'numeric', month: 'long', day: 'numeric' }).format(post.data.pubDate);
+const related = (await getCollection('blog')).filter((item) => item.id !== post.id).sort((a,b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).slice(0, 2);
 ---
 <Layout title={`${post.data.title} | Jurnal Jasa Kayu`} description={post.data.description} canonical={`https://www.jasakayuprofesional.com/blog/${post.id}/`} image={rawPath} type="article" publishDate={post.data.pubDate}>
-  <article class="bg-[#f4f2eb] pb-24 pt-32 sm:pt-40">
-    <header class="section-shell grid gap-8 border-b border-[#17231d]/15 pb-10 lg:grid-cols-[.78fr_1.22fr] lg:items-end">
-      <div><a href="/blog" class="section-kicker hover:text-[#17352a]">Kembali ke jurnal</a></div>
-      <div><p class="text-[.65rem] font-extrabold uppercase tracking-[.14em] text-[#315443]">{post.data.category ?? 'Jurnal material'} · <time datetime={post.data.pubDate.toISOString()}>{formattedDate}</time></p><h1 class="display-title text-balance mt-4 text-5xl text-[#17231d] sm:text-6xl lg:text-7xl">{post.data.title}</h1><p class="mt-6 max-w-2xl text-base leading-7 text-[#566158] sm:text-lg">{post.data.description}</p></div>
+  <article class="bg-[#f4f2eb] pb-28 pt-32 sm:pt-40 lg:pb-40 lg:pt-48">
+    <header class="section-shell">
+      <div class="grid gap-8 border-b border-[#17231d]/15 pb-10 lg:grid-cols-[.5fr_1.5fr] lg:items-end">
+        <div class="reveal"><a href="/blog" class="section-kicker hover:text-[#17352a]">Kembali ke jurnal</a><p class="mt-5 text-[.6rem] font-extrabold uppercase tracking-[.15em] text-[#7a837b]">Field note / {post.data.category ?? 'Material'}</p></div>
+        <div class="reveal"><p class="text-[.63rem] font-extrabold uppercase tracking-[.15em] text-[#315443]"><time datetime={post.data.pubDate.toISOString()}>{formattedDate}</time></p><h1 class="display-title text-balance mt-4 max-w-6xl text-6xl text-[#17231d] sm:text-7xl lg:text-[7.5rem]">{post.data.title}</h1><p class="mt-7 max-w-3xl text-base leading-7 text-[#566158] sm:text-lg sm:leading-8">{post.data.description}</p></div>
+      </div>
     </header>
-    <div class="section-shell mt-10 max-w-[66rem]"><Image src={resolvedImage} alt={post.data.title} class="aspect-[16/8] w-full object-cover" width={1400} height={700} loading="eager" fetchpriority="high" format="webp" /></div>
-    <div class="section-shell mt-12 grid gap-10 lg:grid-cols-[10rem_minmax(0,46rem)] lg:justify-center"><aside class="hidden lg:block"><p class="text-[.6rem] font-extrabold uppercase tracking-[.15em] text-[#6c766d]">Bagikan insight</p><a href="#kontak" class="mt-3 inline-flex text-sm font-bold text-[#315443] underline underline-offset-4">Diskusikan proyek ↗</a></aside><div class="prose max-w-none"><Content /><div class="mt-14 border border-[#17231d]/15 bg-[#e7dfd0] p-7 sm:p-9"><p class="section-kicker">Langkah berikutnya</p><h2 class="mt-5 !text-4xl">Punya kondisi proyek yang ingin dicek?</h2><p>Foto area, ukuran kasar, lokasi, dan referensi visual sudah cukup untuk membuka diskusi awal yang lebih terarah.</p><a href="/#kontak" class="btn-wood mt-7 no-underline">Kirim brief proyek <span aria-hidden="true">↗</span></a></div></div></div>
+
+    <div class="section-shell reveal mt-12 max-w-[76rem]"><div class="image-zoom overflow-hidden bg-[#d7c9b3]"><Image src={resolvedImage} alt={post.data.title} class="aspect-[16/10] w-full object-cover sm:aspect-[16/8]" width={1600} height={900} loading="eager" fetchpriority="high" format="webp" /></div></div>
+
+    <div class="section-shell mt-14 grid gap-12 lg:grid-cols-[13rem_minmax(0,48rem)] lg:justify-center lg:gap-16">
+      <aside class="reveal hidden lg:block"><div class="sticky top-28 border-t border-[#17231d]/15 pt-4"><p class="text-[.58rem] font-extrabold uppercase tracking-[.15em] text-[#7a837b]">Reading note</p><p class="mt-4 text-sm leading-6 text-[#59645b]">Gunakan artikel ini sebagai bahan keputusan awal, lalu cek kembali kondisi aktual di lokasi sebelum menentukan material atau metode pemasangan.</p><a href="/#kontak" class="mt-6 inline-flex text-[.63rem] font-extrabold uppercase tracking-[.12em] text-[#315443] underline underline-offset-4">Diskusikan proyek ↗</a></div></aside>
+      <div class="reveal"><div class="prose max-w-none"><Content /></div>
+        <div class="mt-16 grid overflow-hidden bg-[#17352a] text-white sm:grid-cols-[1fr_auto] sm:items-end"><div class="p-7 sm:p-10"><p class="section-kicker text-[#e6c88f]">Dari teori ke kondisi nyata</p><h2 class="mt-6 font-serif text-4xl font-semibold leading-[.94] tracking-[-.045em] sm:text-5xl">Punya area yang perlu dibaca sebelum memilih material?</h2><p class="mt-5 max-w-xl text-sm leading-7 text-white/65">Kirim foto, ukuran kasar, lokasi, serta masalah yang ingin diselesaikan. Diskusi awal seharusnya membantu mempersempit opsi, bukan menambah kebingungan.</p></div><div class="border-t border-white/15 p-7 sm:border-l sm:border-t-0 sm:p-10"><a href="/#kontak" class="btn-wood !bg-[#e6c88f] !text-[#17231d] hover:!bg-white">Kirim brief <span aria-hidden="true">↗</span></a></div></div>
+      </div>
+    </div>
+
+    {related.length > 0 && <section class="section-shell mt-24 border-t border-[#17231d]/15 pt-10 lg:mt-36"><div class="grid gap-8 lg:grid-cols-[.55fr_1.45fr]"><div><p class="section-kicker">Lanjut membaca</p></div><div class="grid gap-8 sm:grid-cols-2">{related.map((item, index) => <a href={`/blog/${item.id}/`} class={`group border-t border-[#17231d]/15 pt-4 ${index === 1 ? 'sm:mt-16' : ''}`}><p class="text-[.58rem] font-extrabold uppercase tracking-[.14em] text-[#315443]">{item.data.category ?? 'Field note'}</p><h2 class="mt-3 font-serif text-3xl font-semibold leading-[.96] tracking-[-.04em] text-[#17231d] transition-colors group-hover:text-[#315443] sm:text-4xl">{item.data.title}</h2><p class="mt-4 text-sm leading-6 text-[#59645b]">{item.data.description}</p><span class="mt-5 inline-flex text-[.62rem] font-extrabold uppercase tracking-[.13em] text-[#315443]">Baca selanjutnya ↗</span></a>)}</div></div></section>}
   </article>
 </Layout>
