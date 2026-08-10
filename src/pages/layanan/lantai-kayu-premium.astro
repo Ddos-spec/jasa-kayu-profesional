@@ -59,11 +59,35 @@ const faqSchema = {
       { name: 'Merbau', note: 'Tone lebih dalam dengan karakter solid. Perlu dibaca bersama pencahayaan, warna dinding, dan material furnitur agar ruang tetap seimbang.' },
       { name: 'Engineered wood', note: 'Opsi ketika stabilitas konstruksi berlapis lebih relevan terhadap kondisi ruang dan sistem pemasangan yang direncanakan.' },
     ]}
+    planningChecks={[
+      { title: 'Moisture & subfloor', text: 'Kondisi lantai dasar, kelembapan, kerataan, retak, dan elevasi diperiksa karena masalah di bawah papan akan muncul kembali di permukaan.' },
+      { title: 'Door & threshold', text: 'Ketebalan akhir perlu dihitung terhadap daun pintu, frame, skirting, batu, kamar mandi, built-in, dan ruang yang memakai material berbeda.' },
+      { title: 'Pattern mock-up', text: 'Untuk herringbone, chevron, atau ruang dengan banyak potongan, garis pusat dan arah pola lebih baik diuji sebelum seluruh area dikerjakan.' },
+      { title: 'Site sequence', text: 'Jadwal pekerjaan basah, painting, built-in, dan traffic pekerja perlu diurutkan supaya lantai kayu tidak menerima kelembapan atau kerusakan sebelum handover.' },
+    ]}
     process={[
       { title: 'Baca kondisi', text: 'Cek area, subfloor, elevasi, kelembapan, akses, serta titik pertemuan dengan pintu, skirting, batu, atau built-in.' },
       { title: 'Tentukan sistem', text: 'Material, dimensi papan, pola, arah pemasangan, adhesive atau metode fixing, serta kebutuhan transisi disepakati sebelum eksekusi.' },
       { title: 'Layout & instalasi', text: 'Pola diuji terhadap dimensi ruang supaya potongan akhir, garis sambungan, dan pusat komposisi tidak terasa kebetulan.' },
       { title: 'Finishing & handover', text: 'Permukaan, tepi, transisi, dan kondisi akhir diperiksa sebelum panduan perawatan diberikan untuk fase penggunaan.' },
+    ]}
+    estimateFactors={[
+      { title: 'Jenis & dimensi kayu', text: 'Species, grade, ketebalan, lebar, panjang, konstruksi solid atau engineered, dan kebutuhan sorting memengaruhi material sekaligus waktu pemasangan.' },
+      { title: 'Pola pemasangan', text: 'Straight plank lebih sederhana daripada herringbone, chevron, border, atau layout custom yang membutuhkan lebih banyak potongan dan kontrol garis.' },
+      { title: 'Kondisi subfloor', text: 'Leveling, perbaikan bidang, moisture barrier, underlayment, atau pekerjaan persiapan lain bisa menjadi bagian penting dari scope.' },
+      { title: 'Finishing & detail tepi', text: 'Jenis coating, staining, skirting, nosing, threshold, transition profile, dan detail pertemuan material ikut membentuk estimasi akhir.' },
+    ]}
+    aftercare={[
+      { title: 'Cleaning', text: 'Gunakan metode pembersihan yang minim air dan hindari genangan. Produk perawatan harus sesuai dengan jenis finishing yang dipakai.' },
+      { title: 'Furniture contact', text: 'Tambahkan pelindung pada kaki furnitur dan perhatikan benda berat atau roda yang bergerak berulang di jalur yang sama.' },
+      { title: 'Humidity changes', text: 'Perubahan kecil pada celah atau tone dapat terjadi seiring kondisi ruang. Yang penting adalah perubahan tetap dalam pola yang wajar dan tidak berasal dari masalah air.' },
+      { title: 'Refresh finish', text: 'Ketika lapisan mulai aus, evaluasi apakah cukup dibersihkan, direcoat, atau perlu refinishing lokal/menyeluruh tergantung kondisi permukaan.' },
+    ]}
+    faqs={[
+      { question: 'Solid atau engineered, mana yang lebih bagus?', answer: 'Tidak ada jawaban tunggal. Solid unggul pada karakter material utuh dan potensi refinishing; engineered bisa lebih masuk akal ketika stabilitas dimensional dan sistem pemasangan tertentu menjadi prioritas.' },
+      { question: 'Apakah lantai lama harus dibongkar?', answer: 'Tergantung material eksisting, elevasi akhir, kerataan, kelembapan, dan sistem pemasangan. Beberapa kondisi memungkinkan overlay, kondisi lain lebih aman dibongkar lebih dulu.' },
+      { question: 'Bisa buat pola herringbone atau chevron?', answer: 'Bisa, selama dimensi area, modul papan, garis pusat, potongan tepi, dan toleransi subfloor memungkinkan pola terlihat konsisten dari awal sampai akhir.' },
+      { question: 'Apa yang perlu dikirim untuk estimasi awal?', answer: 'Foto area, ukuran perkiraan, lokasi, kondisi lantai dasar, referensi material atau warna, dan pola yang diinginkan sudah cukup untuk memulai pembahasan scope.' },
     ]}
   >
     <section class="bg-[#fffdf7] py-24 sm:py-32 lg:py-40">
