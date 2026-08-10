@@ -43,11 +43,35 @@ const serviceSchema = {
       { name: 'Jati', note: 'Karakter hangat dan kuat secara visual. Perlu dikontrol lewat modul dan finishing agar bidang tetap terasa arsitektural.' },
       { name: 'Walnut / dark tone', note: 'Pilihan tone gelap untuk komposisi yang lebih dalam. Pencahayaan dan proporsi bidang menjadi penting supaya ruang tidak terasa berat.' },
     ]}
+    planningChecks={[
+      { title: 'Wall condition', text: 'Kerataan, kelembapan, retak, plester, existing finish, dan posisi struktur/rangka diperiksa sebelum menentukan sistem mounting.' },
+      { title: 'Electrical map', text: 'Saklar, stop kontak, TV point, access panel, speaker, lampu, dan jalur kabel perlu masuk ke modul panel sejak gambar awal.' },
+      { title: 'Edge language', text: 'Reveal, shadow gap, corner return, skirting, ceiling line, jamb pintu, dan pertemuan built-in ditentukan sebagai satu bahasa detail.' },
+      { title: 'Grain & sequencing', text: 'Arah serat, bookmatch jika ada, urutan panel, dan area yang paling dominan di garis pandang ditata sebelum produksi agar tidak terasa acak.' },
+    ]}
     process={[
       { title: 'Mapping bidang', text: 'Ukur dinding, bukaan, level, titik listrik, built-in, dan garis ceiling untuk menentukan modul yang realistis.' },
       { title: 'Sample & layout', text: 'Arah serat, jarak, profil, warna finishing, serta garis awal-akhir diuji sebelum produksi penuh.' },
       { title: 'Substructure', text: 'Rangka atau sistem mounting disiapkan sesuai kondisi dinding, kebutuhan service access, serta toleransi kerataan.' },
       { title: 'Install & tune', text: 'Panel dipasang sambil mengontrol garis, reveal, sudut, joint, dan pertemuan dengan elemen arsitektur lain.' },
+    ]}
+    estimateFactors={[
+      { title: 'Material & veneer direction', text: 'Kayu solid, veneer, panel berlapis, ketebalan, grade, arah serat, dan kebutuhan matching memengaruhi konsumsi material dan waktu produksi.' },
+      { title: 'Modul & relief', text: 'Flat panel, slatted wall, fluted detail, moulding, radius, atau relief tiga dimensi memiliki tingkat fabrikasi dan pemasangan yang berbeda.' },
+      { title: 'Jumlah bukaan', text: 'Pintu, jendela, stop kontak, TV niche, rak, lampu, dan built-in meningkatkan jumlah potongan serta detail tepi yang harus diselesaikan.' },
+      { title: 'Substrate & access', text: 'Dinding yang perlu diluruskan, area tinggi, akses gedung, jam kerja terbatas, dan kebutuhan rangka tambahan ikut membentuk scope akhir.' },
+    ]}
+    aftercare={[
+      { title: 'Dry cleaning', text: 'Debu pada slat, groove, dan relief sebaiknya dibersihkan dengan metode kering atau sedikit lembap agar finishing tidak terus menerima air.' },
+      { title: 'Protect the edges', text: 'Sudut luar, area dekat pintu, dan titik di belakang furnitur bergerak adalah lokasi yang paling mudah menerima benturan.' },
+      { title: 'Control moisture', text: 'Jika ada kebocoran atau kelembapan dinding, sumber masalah perlu ditangani lebih dulu daripada hanya memperbaiki permukaan panel.' },
+      { title: 'Keep access possible', text: 'Access panel dan titik service sebaiknya tetap diketahui pemilik agar maintenance listrik atau utilitas tidak merusak panel secara acak.' },
+    ]}
+    faqs={[
+      { question: 'Wall panel harus pakai kayu solid?', answer: 'Tidak selalu. Pilihan bisa berupa solid timber, veneer, engineered panel, atau kombinasi, tergantung ukuran bidang, stabilitas, detail, budget, dan karakter visual yang dicari.' },
+      { question: 'Bisa sekalian menyembunyikan kabel TV atau lampu?', answer: 'Bisa jika jalur service direncanakan sebelum panel dipasang. Akses untuk maintenance tetap perlu dipikirkan agar panel tidak harus dibongkar besar ketika ada perbaikan.' },
+      { question: 'Apakah dinding harus benar-benar rata?', answer: 'Semakin baik kondisi dasar, semakin mudah menjaga bidang akhir. Jika dinding tidak rata, rangka atau sistem leveling perlu dimasukkan ke scope.' },
+      { question: 'Apa yang perlu dikirim untuk estimasi awal?', answer: 'Foto bidang, ukuran perkiraan, posisi pintu/jendela/TV/saklar, lokasi proyek, serta referensi profil atau tone sudah cukup untuk pembahasan awal.' },
     ]}
   >
     <section class="bg-[#fffdf7] py-24 sm:py-32 lg:py-40">
