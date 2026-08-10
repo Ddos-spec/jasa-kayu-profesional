@@ -1,0 +1,84 @@
+---
+import { Image, type ImageMetadata } from 'astro:assets';
+
+interface Point { title: string; text: string; }
+interface Material { name: string; note: string; }
+interface Process { title: string; text: string; }
+interface Fact { label: string; value: string; }
+interface Props {
+  kicker: string;
+  title: string;
+  intro: string;
+  heroImage: ImageMetadata;
+  heroAlt: string;
+  facts?: Fact[];
+  principles?: Point[];
+  materials?: Material[];
+  process?: Process[];
+  secondaryImage?: ImageMetadata;
+  secondaryAlt?: string;
+  statement?: string;
+}
+const {
+  kicker,
+  title,
+  intro,
+  heroImage,
+  heroAlt,
+  facts = [],
+  principles = [],
+  materials = [],
+  process = [],
+  secondaryImage = heroImage,
+  secondaryAlt = heroAlt,
+  statement = 'Material yang baik tetap membutuhkan keputusan detail yang tepat.',
+} = Astro.props;
+---
+<section class="page-hero">
+  <div class="page-hero-media"><Image src={heroImage} alt={heroAlt} width={1800} height={1100} loading="eager" fetchpriority="high" format="webp" class="h-full w-full object-cover" /></div>
+  <div class="page-hero-overlay"></div>
+  <div class="grid-lines absolute inset-0 opacity-25"></div>
+  <div class="section-shell relative flex min-h-[min(54rem,92vh)] flex-col justify-end pb-9 pt-36 sm:pb-12 lg:pb-14">
+    <div class="max-w-6xl">
+      <p class="reveal section-kicker text-[#e6c88f]">{kicker}</p>
+      <h1 class="reveal display-title text-balance mt-6 text-[clamp(4.2rem,10vw,9.5rem)] text-white">{title}</h1>
+      <div class="reveal mt-8 grid max-w-5xl gap-7 border-t border-white/25 pt-6 sm:grid-cols-[1.2fr_.8fr] sm:items-end">
+        <p class="max-w-2xl text-base leading-7 text-white/72 sm:text-lg sm:leading-8">{intro}</p>
+        <a href="#kontak" class="group flex items-center justify-between border-b border-white/30 pb-3 text-[.66rem] font-extrabold uppercase tracking-[.13em] text-[#e6c88f] sm:justify-self-end sm:min-w-[15rem]">Diskusikan proyek <span class="text-lg transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    {facts.length > 0 && <div class={`reveal mt-10 grid gap-px border border-white/20 bg-white/20 sm:grid-cols-${Math.min(facts.length, 4)}`}>{facts.map((fact) => <div class="bg-[#10271e]/55 p-4 backdrop-blur-sm"><p class="text-[.55rem] font-extrabold uppercase tracking-[.15em] text-white/45">{fact.label}</p><p class="mt-2 text-sm font-bold text-white/90">{fact.value}</p></div>)}</div>}
+  </div>
+</section>
+
+<section class="bg-[#f4f2eb] py-24 sm:py-32 lg:py-40">
+  <div class="section-shell grid gap-12 lg:grid-cols-[.52fr_1.48fr]">
+    <div class="reveal sticky-copy self-start"><p class="section-kicker">Cara membaca layanan</p><p class="mt-6 max-w-xs text-sm leading-7 text-[#68736a]">Kami memisahkan keputusan material, kondisi lapangan, dan bahasa visual agar pilihan yang dibuat bisa dijelaskan, bukan sekadar terasa meyakinkan saat presentasi.</p></div>
+    <div>
+      <p class="reveal font-serif text-[clamp(3rem,6vw,6.5rem)] font-semibold leading-[.9] tracking-[-.055em] text-[#17231d]">{statement}</p>
+      {principles.length > 0 && <div class="reveal-stagger mt-12 grid gap-px border border-[#17231d]/15 bg-[#17231d]/15 sm:grid-cols-2">{principles.map((item, index) => <div class="bg-[#f4f2eb] p-6 sm:p-7"><p class="text-[.58rem] font-extrabold uppercase tracking-[.15em] text-[#315443]">0{index + 1}</p><h2 class="mt-5 font-serif text-3xl font-semibold leading-[.95] tracking-[-.04em] text-[#17231d] sm:text-4xl">{item.title}</h2><p class="mt-4 text-sm leading-7 text-[#59645b]">{item.text}</p></div>)}</div>}
+    </div>
+  </div>
+</section>
+
+<section class="overflow-hidden bg-[#e7dfd0] py-24 sm:py-32 lg:py-40">
+  <div class="section-shell grid gap-12 lg:grid-cols-[1.05fr_.95fr] lg:items-center">
+    <div class="reveal image-zoom overflow-hidden bg-[#d7c9b3]"><Image src={secondaryImage} alt={secondaryAlt} width={1300} height={1050} loading="lazy" format="webp" class="aspect-[4/3] w-full object-cover lg:aspect-[4/5]" /></div>
+    <div class="reveal lg:pl-6">
+      <p class="section-kicker">Material & keputusan</p>
+      <h2 class="display-title mt-6 text-5xl text-[#17231d] sm:text-6xl lg:text-7xl">Pilih berdasarkan <em>kondisi</em>, bukan label.</h2>
+      {materials.length > 0 ? <div class="mt-9 border-t border-[#17231d]/15">{materials.map((material, index) => <div class="grid grid-cols-[3rem_1fr] gap-4 border-b border-[#17231d]/15 py-5"><span class="text-[.58rem] font-extrabold uppercase tracking-[.14em] text-[#315443]">0{index + 1}</span><div><h3 class="font-serif text-3xl font-semibold leading-none tracking-[-.04em] text-[#17231d]">{material.name}</h3><p class="mt-3 text-sm leading-6 text-[#59645b]">{material.note}</p></div></div>)}</div> : <p class="mt-7 max-w-xl text-sm leading-7 text-[#59645b]">Material dipilih setelah konteks area, beban pemakaian, kelembapan, eksposur, dan target visual dibaca bersama.</p>}
+    </div>
+  </div>
+</section>
+
+{process.length > 0 && <section class="bg-[#10271e] py-24 text-white sm:py-32 lg:py-40"><div class="section-shell"><div class="grid gap-10 border-b border-white/15 pb-10 lg:grid-cols-[.55fr_1.45fr] lg:items-end"><p class="reveal section-kicker text-[#e6c88f]">Urutan kerja</p><div class="reveal"><h2 class="display-title text-5xl sm:text-6xl lg:text-8xl">Dari kondisi awal sampai <em>detail terakhir.</em></h2><p class="mt-6 max-w-2xl text-sm leading-7 text-white/60">Urutan ini bisa menyesuaikan kondisi proyek, tetapi prinsipnya sama: keputusan dibuat sebelum pekerjaan ditutup oleh finishing.</p></div></div><ol class="reveal-stagger mt-4">{process.map((step, index) => <li class="grid gap-4 border-b border-white/15 py-7 sm:grid-cols-[4rem_.7fr_1.3fr] sm:items-start"><span class="text-[.6rem] font-extrabold uppercase tracking-[.15em] text-[#e6c88f]">0{index + 1}</span><h3 class="font-serif text-3xl font-semibold leading-none tracking-[-.04em] sm:text-4xl">{step.title}</h3><p class="max-w-2xl text-sm leading-7 text-white/60">{step.text}</p></li>)}</ol></div></section>}
+
+<slot />
+
+<section class="bg-[#f4f2eb] py-20 sm:py-28">
+  <div class="section-shell grid gap-8 border-t border-[#17231d]/15 pt-8 sm:grid-cols-[1fr_auto] sm:items-end">
+    <p class="max-w-4xl font-serif text-[clamp(2.7rem,5vw,5.4rem)] font-semibold leading-[.9] tracking-[-.05em] text-[#17231d]">Kondisi proyek lebih berguna daripada daftar spesifikasi yang panjang.</p>
+    <a href="#kontak" class="btn-wood">Kirim foto & brief <span aria-hidden="true">↗</span></a>
+  </div>
+</section>
