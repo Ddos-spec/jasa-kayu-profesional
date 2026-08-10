@@ -1,34 +1,77 @@
 import { test, expect } from '@playwright/test';
 
-test('homepage presents the premium story and featured Dharmawangsa project', async ({ page }) => {
+test('homepage delivers the editorial studio story and key conversion path', async ({ page }) => {
   await page.goto('/');
   await expect(page).toHaveTitle(/Jasa Kayu Profesional/);
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Ruang yang terasa hidup');
-  await expect(page.getByText('Deck Balkon Apartemen Dharmawangsa')).toBeVisible();
-  await expect(page.locator('img[alt="Deck Balkon Apartemen Dharmawangsa"]')).toBeVisible();
-  await page.screenshot({ path: 'test-results/homepage.png', fullPage: true });
+  await expect(page.locator('#layanan')).toBeVisible();
+  await expect(page.locator('#portofolio')).toBeVisible();
+  await expect(page.getByText('Selected works')).toBeVisible();
+  await expect(page.getByText('Field notes')).toBeVisible();
+  await expect(page.locator('#kontak')).toBeVisible();
+  await expect(page.getByRole('button', { name: /Buka brief di WhatsApp/i })).toBeVisible();
 });
 
-test('portfolio filters and mobile navigation work', async ({ page }) => {
+test('mobile navigation opens as a full-screen menu and routes to gallery', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/');
   const toggle = page.getByRole('button', { name: 'Buka navigasi' });
   await toggle.click();
-  await expect(page.getByRole('navigation', { name: 'Navigasi mobile' })).toBeVisible();
-  await page.getByRole('link', { name: 'Karya' }).last().click();
-  await expect(page.locator('#portofolio')).toBeInViewport();
-  await page.getByRole('tab', { name: 'Komersial' }).click();
-  const hiddenCards = page.locator('.portfolio-card.hidden');
-  await expect(hiddenCards).not.toHaveCount(0);
+  const nav = page.getByRole('navigation', { name: 'Navigasi mobile' });
+  await expect(nav).toBeVisible();
+  await expect(toggle).toHaveAttribute('aria-expanded', 'true');
+  await page.getByRole('link', { name: /Galeri/i }).last().click();
+  await expect(page).toHaveURL(/\/galeri/);
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Material menjadi berarti');
 });
 
-test('blog hub and new Dharmawangsa guide are crawlable', async ({ page }) => {
+test('gallery filtering and project dossier navigation work', async ({ page }) => {
+  await page.goto('/galeri');
+  const filterTabs = page.getByRole('tab');
+  await expect(filterTabs.first()).toHaveText(/Semua/i);
+  const count = await filterTabs.count();
+  if (count > 1) {
+    const second = filterTabs.nth(1);
+    const label = await second.textContent();
+    await second.click();
+    await expect(second).toHaveAttribute('aria-selected', 'true');
+    expect(label?.trim().length).toBeGreaterThan(0);
+  }
+  const firstProject = page.locator('.gallery-item a').first();
+  await expect(firstProject).toBeVisible();
+  await firstProject.click();
+  await expect(page).toHaveURL(/\/portfolio\//);
+  await expect(page.getByText('Project facts')).toBeVisible();
+  await expect(page.getByText('Karya terkait')).toBeVisible();
+});
+
+test('premium service pages render their specialized editorial systems', async ({ page }) => {
+  await page.goto('/layanan/lantai-kayu-premium');
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Lantai kayu yang mengikuti ruang');
+  await expect(page.getByText('Solid vs engineered')).toBeVisible();
+  await expect(page.getByText('Urutan kerja')).toBeVisible();
+
+  await page.goto('/layanan/pergola-decking-outdoor');
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Kayu di luar ruang');
+  await expect(page.getByText('Weather logic')).toBeVisible();
+
+  await page.goto('/layanan/jasa-kayu-tangsel');
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('konteks Tangsel');
+  await expect(page.getByText('Local proof')).toBeVisible();
+  await expect(page.getByRole('link', { name: /Lihat project dossier/i })).toBeVisible();
+});
+
+test('journal hub and article remain crawlable', async ({ page }) => {
   await page.goto('/blog');
-  await expect(page.getByRole('heading', { level: 1 })).toContainText('Catatan untuk membuat keputusan');
-  await expect(page.getByRole('link', { name: /Deck Kayu untuk Balkon Apartemen/i }).first()).toBeVisible();
-  await page.goto('/blog/deck-kayu-balkon-apartemen');
-  await expect(page.getByRole('heading', { level: 1 })).toContainText('Deck Kayu untuk Balkon Apartemen');
-  await expect(page.locator('script[type="application/ld+json"]')).toContainText('BlogPosting');
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Catatan untuk mengambil keputusan');
+  const firstArticle = page.locator('article a[href^="/blog/"]').first();
+  await expect(firstArticle).toBeVisible();
+  const href = await firstArticle.getAttribute('href');
+  expect(href).toBeTruthy();
+  await firstArticle.click();
+  await expect(page).toHaveURL(/\/blog\//);
+  await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
+  await expect(page.locator('script[type="application/ld+json"]')).not.toHaveCount(0);
 });
 
 test('robots, llms guide, and sitemap are publicly available', async ({ request }) => {
@@ -41,5 +84,5 @@ test('robots, llms guide, and sitemap are publicly available', async ({ request 
   await expect(llms).toBeOK();
   await expect(sitemap).toBeOK();
   await expect(robots.text()).resolves.toContain('OAI-SearchBot');
-  await expect(llms.text()).resolves.toContain('Deck balkon Apartemen Dharmawangsa');
+  await expect(llms.text()).resolves.toContain('Jasa Kayu Profesional');
 });
