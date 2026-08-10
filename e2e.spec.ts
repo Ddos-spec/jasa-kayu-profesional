@@ -1,18 +1,19 @@
 import { test, expect } from '@playwright/test';
 
-test('homepage delivers the editorial studio story and key conversion path', async ({ page }) => {
+test('homepage keeps the focused studio story, real logo, and conversion path', async ({ page }) => {
   await page.goto('/');
   await expect(page).toHaveTitle(/Jasa Kayu Profesional/);
   await expect(page.getByRole('heading', { level: 1 })).toContainText(/Ruang yang terasa\s*hidup/);
+  await expect(page.locator('header img[src="/icons/wmremove-transformed.ico"]')).toBeVisible();
   await expect(page.locator('#layanan')).toBeVisible();
   await expect(page.locator('#portofolio')).toBeVisible();
-  await expect(page.locator('#portofolio').getByText('Selected works')).toBeVisible();
+  await expect(page.locator('#portofolio').getByText('Pilihan karya')).toBeVisible();
   await expect(page.getByText('Field notes', { exact: true })).toBeVisible();
   await expect(page.locator('#kontak')).toBeVisible();
   await expect(page.getByRole('button', { name: /Buka brief di WhatsApp/i })).toBeVisible();
 });
 
-test('mobile navigation opens as a full-screen menu and routes to gallery', async ({ page }) => {
+test('mobile navigation opens cleanly and routes to gallery', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/');
   const toggle = page.locator('#mobile-menu-toggle');
@@ -47,7 +48,7 @@ test('gallery filtering and project dossier navigation work', async ({ page }) =
   await expect(page.getByText('Karya terkait')).toBeVisible();
 });
 
-test('premium service pages render their specialized editorial systems', async ({ page }) => {
+test('premium service pages render their specialized systems', async ({ page }) => {
   await page.goto('/layanan/lantai-kayu-premium');
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Lantai kayu yang mengikuti ruang');
   await expect(page.getByText('Solid vs engineered')).toBeVisible();
