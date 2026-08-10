@@ -2,35 +2,65 @@
 import { Picture } from 'astro:assets';
 import heroImage from '../assets/images/portfolio/deck-ulin-rancamaya-bogor/deck-ulin-rancamaya-bogor-1.jpg';
 ---
-<section id="hero" class="relative min-h-[45rem] overflow-hidden bg-[#17231d] text-[#fffdf7] lg:min-h-[48rem]">
+<section id="hero" class="relative min-h-[52rem] overflow-hidden bg-[#10271e] text-[#fffdf7] lg:min-h-screen">
   <Picture
     src={heroImage}
-    alt="Deck kayu outdoor di hunian Jakarta"
-    widths={[640, 960, 1280, 1600]}
+    alt="Deck kayu outdoor pada hunian di Rancamaya, Bogor"
+    widths={[640, 960, 1280, 1600, 1920]}
     sizes="100vw"
     formats={['avif', 'webp']}
-    quality="low"
+    quality="mid"
     loading="eager"
     fetchpriority="high"
-    class="absolute inset-0 h-full w-full object-cover opacity-75"
+    class="absolute inset-0 h-full w-full object-cover object-center opacity-[.78]"
   />
-  <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(10,20,15,.88)_0%,rgba(10,20,15,.56)_45%,rgba(10,20,15,.14)_100%)]"></div>
-  <div class="grid-lines absolute inset-0 opacity-40"></div>
-  <div class="relative section-shell flex min-h-[45rem] flex-col justify-end pb-10 pt-36 lg:min-h-[48rem] lg:pb-14">
-    <div class="max-w-4xl">
-      <p class="section-kicker text-[#e6c88f]">Studio pengerjaan kayu · Jabodetabek</p>
-      <h1 class="display-title text-balance mt-6 max-w-4xl text-[clamp(4rem,10vw,8.4rem)] leading-[.78]">Ruang yang terasa<br /><em class="font-medium">hidup.</em></h1>
-      <p class="mt-8 max-w-xl text-base leading-7 text-white/78 sm:text-lg sm:leading-8">Kami merancang dan memasang elemen kayu yang tidak sekadar terlihat mewah, tetapi masuk akal untuk dipakai, dirawat, dan dinikmati bertahun-tahun.</p>
-      <div class="mt-9 flex flex-col gap-3 sm:flex-row">
-        <a href="#portofolio" class="btn-wood !bg-[#fffdf7] !text-[#17231d] hover:!bg-[#e8dfcf]">Jelajahi karya <span aria-hidden="true">↘</span></a>
-        <a href="#kontak" class="btn-ghost !border-white/35 !text-white hover:!border-white hover:!bg-white hover:!text-[#17231d]">Mulai proyek <span aria-hidden="true">↗</span></a>
+  <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,18,13,.92)_0%,rgba(8,18,13,.66)_44%,rgba(8,18,13,.24)_76%,rgba(8,18,13,.1)_100%)]"></div>
+  <div class="grid-lines absolute inset-0 opacity-30"></div>
+
+  <div class="relative section-shell grid min-h-[52rem] grid-rows-[1fr_auto] pb-8 pt-36 lg:min-h-screen lg:pb-10 lg:pt-40">
+    <div class="flex items-end">
+      <div class="max-w-[74rem]">
+        <div class="reveal flex flex-wrap items-center gap-x-5 gap-y-2 text-[.62rem] font-extrabold uppercase tracking-[.16em] text-white/60">
+          <span class="text-[#e6c88f]">Studio pengerjaan kayu</span>
+          <span aria-hidden="true">/</span>
+          <span>Jabodetabek</span>
+          <span aria-hidden="true">/</span>
+          <span>Interior · Outdoor · Custom</span>
+        </div>
+        <h1 class="reveal display-xl text-balance mt-7 max-w-[70rem]">Ruang yang terasa<br /><em class="font-medium">hidup.</em></h1>
+        <div class="reveal mt-8 grid max-w-5xl gap-7 lg:grid-cols-[1.2fr_.8fr] lg:items-end">
+          <p class="max-w-2xl text-base leading-7 text-white/76 sm:text-lg sm:leading-8">Kami mengerjakan kayu sebagai bagian dari arsitektur: membaca fungsi ruang, perilaku material, proporsi, dan detail instalasi agar hasilnya tetap masuk akal saat dipakai bertahun-tahun.</p>
+          <div class="flex flex-col gap-3 sm:flex-row lg:justify-end">
+            <a href="#portofolio" class="btn-wood !bg-[#fffdf7] !text-[#17231d] hover:!bg-[#e8dfcf]">Lihat karya <span aria-hidden="true">↘</span></a>
+            <a href="#kontak" class="btn-ghost !border-white/35 !text-white hover:!border-white hover:!bg-white hover:!text-[#17231d]">Mulai proyek <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="mt-14 grid max-w-3xl grid-cols-3 border-t border-white/25 pt-5 text-white/85 sm:gap-12">
-      <div><p class="font-serif text-3xl leading-none sm:text-4xl">35+</p><p class="mt-2 text-[0.58rem] font-bold uppercase tracking-[.13em] text-white/60">Tahun pengalaman</p></div>
-      <div><p class="font-serif text-3xl leading-none sm:text-4xl">JKT</p><p class="mt-2 text-[0.58rem] font-bold uppercase tracking-[.13em] text-white/60">Berbasis di Jakarta</p></div>
-      <div><p class="font-serif text-3xl leading-none sm:text-4xl">1:1</p><p class="mt-2 text-[0.58rem] font-bold uppercase tracking-[.13em] text-white/60">Konsultasi per proyek</p></div>
+
+    <div class="reveal mt-14 grid border-t border-white/25 pt-5 sm:grid-cols-[1fr_1fr_1fr_auto] sm:items-end sm:gap-10">
+      <div class="py-3 sm:py-0"><p class="font-serif text-4xl leading-none sm:text-5xl">35+</p><p class="mt-2 text-[0.58rem] font-bold uppercase tracking-[.13em] text-white/55">Tahun pengalaman</p></div>
+      <div class="border-t border-white/15 py-3 sm:border-0 sm:py-0"><p class="font-serif text-4xl leading-none sm:text-5xl">JKT</p><p class="mt-2 text-[0.58rem] font-bold uppercase tracking-[.13em] text-white/55">Berbasis di Jakarta</p></div>
+      <div class="border-t border-white/15 py-3 sm:border-0 sm:py-0"><p class="font-serif text-4xl leading-none sm:text-5xl">1:1</p><p class="mt-2 text-[0.58rem] font-bold uppercase tracking-[.13em] text-white/55">Konsultasi per proyek</p></div>
+      <a href="#layanan" class="group mt-5 hidden h-24 w-24 items-center justify-center rounded-full border border-white/30 text-center text-[0.58rem] font-extrabold uppercase tracking-[.13em] text-white/90 transition duration-500 hover:rotate-12 hover:bg-white hover:text-[#17231d] lg:flex">Explore<br /><span class="mt-1 text-base transition-transform group-hover:translate-y-1" aria-hidden="true">↓</span></a>
     </div>
   </div>
-  <a href="#layanan" class="absolute bottom-10 right-5 hidden h-24 w-24 items-center justify-center rounded-full border border-white/30 text-center text-[0.58rem] font-extrabold uppercase tracking-[.13em] text-white/90 transition hover:rotate-12 hover:bg-white hover:text-[#17231d] lg:flex">scroll<br />to explore</a>
+
+  <div class="pointer-events-none absolute bottom-7 right-7 hidden text-right text-[.58rem] font-bold uppercase tracking-[.15em] text-white/45 xl:block">
+    <p>Rancamaya House</p>
+    <p class="mt-1">Bogor · Timber decking</p>
+  </div>
+</section>
+
+<section class="bg-[#f4f2eb] py-20 sm:py-28 lg:py-36">
+  <div class="section-shell grid gap-10 lg:grid-cols-[.55fr_1.45fr] lg:items-start">
+    <p class="reveal section-kicker">Pendekatan studio</p>
+    <div class="reveal">
+      <p class="font-serif text-[clamp(2.9rem,6vw,6.6rem)] font-semibold leading-[.9] tracking-[-.055em] text-[#17231d]">Kayu bukan lapisan dekoratif. Ia adalah bagian dari bagaimana sebuah ruang <em>dipakai, terasa, dan menua.</em></p>
+      <div class="mt-9 grid gap-6 border-t border-[#17231d]/15 pt-7 sm:grid-cols-2">
+        <p class="max-w-xl text-sm leading-7 text-[#59645b]">Karena itu kami tidak memulai dari katalog. Kami mulai dari kondisi ruang, paparan cuaca, ritme pemakaian, arah visual, dan bagaimana detail sambungan akan bertahan setelah proyek selesai.</p>
+        <a href="#layanan" class="group flex items-end justify-between border-b border-[#17231d]/20 pb-3 text-[.68rem] font-extrabold uppercase tracking-[.13em] text-[#315443] sm:justify-self-end sm:min-w-[14rem]">Lihat keahlian <span class="text-lg transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </div>
 </section>
