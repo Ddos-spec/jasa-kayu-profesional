@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 test('homepage delivers the editorial studio story and key conversion path', async ({ page }) => {
   await page.goto('/');
   await expect(page).toHaveTitle(/Jasa Kayu Profesional/);
-  await expect(page.getByRole('heading', { level: 1 })).toContainText('Ruang yang terasa hidup');
+  await expect(page.getByRole('heading', { level: 1 })).toContainText(/Ruang yang terasa\s*hidup/);
   await expect(page.locator('#layanan')).toBeVisible();
   await expect(page.locator('#portofolio')).toBeVisible();
   await expect(page.getByText('Selected works')).toBeVisible();
@@ -15,11 +15,13 @@ test('homepage delivers the editorial studio story and key conversion path', asy
 test('mobile navigation opens as a full-screen menu and routes to gallery', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/');
-  const toggle = page.getByRole('button', { name: 'Buka navigasi' });
+  const toggle = page.locator('#mobile-menu-toggle');
+  await expect(toggle).toHaveAttribute('aria-expanded', 'false');
   await toggle.click();
   const nav = page.getByRole('navigation', { name: 'Navigasi mobile' });
   await expect(nav).toBeVisible();
   await expect(toggle).toHaveAttribute('aria-expanded', 'true');
+  await expect(toggle).toHaveAttribute('aria-label', 'Tutup navigasi');
   await page.getByRole('link', { name: /Galeri/i }).last().click();
   await expect(page).toHaveURL(/\/galeri/);
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Material menjadi berarti');
