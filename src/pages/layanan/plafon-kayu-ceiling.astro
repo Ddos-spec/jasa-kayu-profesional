@@ -40,11 +40,35 @@ const serviceSchema = {
       { name: 'Slatted ceiling', note: 'Memberi kedalaman bayangan dan bisa membantu menyamarkan service tertentu jika koordinasinya direncanakan sejak awal.' },
       { name: 'Panel timber', note: 'Bidang lebih tenang dan monolitik; detail joint dan perubahan arah serat menjadi kunci kualitas visual.' },
     ]}
+    planningChecks={[
+      { title: 'Ceiling services', text: 'Lampu, AC, sprinkler, speaker, smoke detector, curtain pocket, CCTV, dan access panel dimapping sebelum modul kayu dikunci.' },
+      { title: 'Level & support', text: 'Ketinggian bersih, beam, slab, rangka existing, titik gantung, dan toleransi level menentukan seberapa presisi garis panjang bisa dijaga.' },
+      { title: 'Module alignment', text: 'Arah bilah atau panel sebaiknya berhubungan dengan sumbu ruang, pintu, furniture utama, lighting, dan bidang ceiling lain.' },
+      { title: 'Maintenance access', text: 'Area yang perlu servis berkala harus tetap dapat dibuka tanpa membuat ceiling penuh hatch yang terlihat seperti tambalan.' },
+    ]}
     process={[
       { title: 'Map the ceiling', text: 'Cek level, struktur atas, posisi lighting, HVAC, speaker, sprinkler, curtain pocket, dan kebutuhan access panel.' },
       { title: 'Set the rhythm', text: 'Modul bilah atau panel, arah, reveal, border, serta titik berhenti disusun terhadap geometri ruang.' },
       { title: 'Build the frame', text: 'Rangka dibuat pada level yang terkontrol dengan toleransi yang cukup untuk service dan pergerakan material.' },
       { title: 'Install & align', text: 'Pemasangan dilakukan sambil mengecek garis pandang panjang, joint, sudut, bukaan lampu, serta finishing akhir.' },
+    ]}
+    estimateFactors={[
+      { title: 'Ketinggian & akses kerja', text: 'Ceiling rendah pada rumah dan ceiling tinggi di lobby atau void membutuhkan akses, scaffold, sequencing, serta waktu kerja yang berbeda.' },
+      { title: 'Jenis profil & modul', text: 'Lambersering, slat custom, panel besar, radius, border, dan perubahan arah memiliki kebutuhan fabrikasi serta waste yang berbeda.' },
+      { title: 'Jumlah service', text: 'Semakin banyak lampu, diffuser, sprinkler, speaker, sensor, atau access hatch, semakin banyak koordinasi dan detail potongan yang dibutuhkan.' },
+      { title: 'Rangka & finishing', text: 'Kondisi support, kebutuhan leveling, backing, treatment, stain, coating, dan detail edge ikut membentuk scope akhir.' },
+    ]}
+    aftercare={[
+      { title: 'Dust control', text: 'Bilah dan groove ceiling mengumpulkan debu. Pembersihan berkala dengan alat yang tidak membasahi kayu membantu warna tetap konsisten.' },
+      { title: 'Leak response', text: 'Jika ada kebocoran dari atap, AC, atau plumbing, sumber air harus dihentikan lebih dulu dan panel terdampak dikeringkan sebelum evaluasi finishing.' },
+      { title: 'Service discipline', text: 'Pekerjaan listrik atau HVAC berikutnya sebaiknya memakai access point yang sudah disiapkan, bukan memotong ceiling pada titik baru tanpa koordinasi.' },
+      { title: 'Finish touch-up', text: 'Area tertentu dapat berubah karena panas lampu atau kelembapan. Touch-up lebih rapi bila sistem finishing awal terdokumentasi dengan jelas.' },
+    ]}
+    faqs={[
+      { question: 'Ceiling kayu bikin ruangan terasa lebih rendah?', answer: 'Bisa jika modul, tone, dan elevasinya tidak tepat. Karena itu arah bilah, ukuran profil, warna, dan jarak visual terhadap dinding perlu dibaca bersama tinggi ruang.' },
+      { question: 'Bisa digabung dengan lampu linear dan AC?', answer: 'Bisa. Justru hasil paling rapi terjadi ketika posisi lighting dan HVAC ditentukan bersama modul kayu sejak awal, bukan dilubangi setelah pemasangan selesai.' },
+      { question: 'Apakah perlu rangka baru?', answer: 'Tergantung kondisi ceiling/slab existing, level, bentang, profil yang dipakai, dan kebutuhan service. Rangka baru kadang diperlukan untuk mendapatkan bidang yang stabil dan lurus.' },
+      { question: 'Apa yang perlu dikirim untuk estimasi?', answer: 'Foto ceiling, ukuran ruang, tinggi, lokasi, posisi lampu/AC jika sudah ada, serta referensi profil atau tone cukup untuk diskusi awal.' },
     ]}
   >
     <section class="bg-[#fffdf7] py-24 sm:py-32 lg:py-40">
