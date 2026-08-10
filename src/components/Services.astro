@@ -8,40 +8,73 @@ import stairsImage from '../assets/images/portfolio/penthouse-scbd-spiral-stairc
 import customImage from '../assets/images/portfolio/rumah-wagub-dki-1.jpg';
 
 const services = [
-  { number: '01', label: 'Interior', title: 'Lantai kayu', description: 'Material, pola, dan level pemasangan dipikirkan sebagai satu sistem agar hasilnya rapi dari sudut mana pun.', href: '/layanan/lantai-kayu-premium', image: flooringImage },
-  { number: '02', label: 'Interior', title: 'Wall panel & ceiling', description: 'Bidang dinding dan plafon dengan proporsi, sambungan, serta permainan cahaya yang membuat ruang terasa selesai.', href: '/layanan/dinding-kayu-dan-wall-cladding', image: wallImage },
-  { number: '03', label: 'Outdoor', title: 'Decking & pergola', description: 'Area luar yang hangat, memiliki drainase yang terukur, serta siap menghadapi ritme cuaca tropis.', href: '/layanan/pergola-decking-outdoor', image: deckingImage },
-  { number: '04', label: 'Detail', title: 'Tangga kayu', description: 'Setiap pijakan dibuat untuk terasa mantap, proporsional, dan menyatu dengan bahasa arsitektur rumah.', href: '/layanan/tangga-kayu-artistik', image: stairsImage },
-  { number: '05', label: 'Interior', title: 'Lambersering', description: 'Ceiling dan pelapis bidang yang mengangkat tekstur kayu tanpa membuat ruang terasa berat.', href: '/layanan/plafon-kayu-ceiling', image: ceilingImage },
-  { number: '06', label: 'Custom', title: 'Pengerjaan spesifik', description: 'Untuk detail yang tidak bisa diselesaikan produk jadi: konsultasi material sampai eksekusi di lapangan.', href: '#kontak', image: customImage },
+  { number: '01', label: 'Interior', title: 'Lantai kayu', description: 'Solid, engineered, pola plank hingga herringbone; dibaca sebagai sistem material, subfloor, sambungan, dan finishing.', href: '/layanan/lantai-kayu-premium', image: flooringImage },
+  { number: '02', label: 'Interior', title: 'Wall panel', description: 'Bidang kayu yang memberi ritme, kedalaman, dan proporsi tanpa mengubah ruang menjadi sekadar dekorasi.', href: '/layanan/dinding-kayu-dan-wall-cladding', image: wallImage },
+  { number: '03', label: 'Outdoor', title: 'Decking & pergola', description: 'Material, drainase, fixing, dan finishing untuk area luar yang harus menghadapi panas, hujan, dan kelembapan tropis.', href: '/layanan/pergola-decking-outdoor', image: deckingImage },
+  { number: '04', label: 'Detail', title: 'Tangga kayu', description: 'Pijakan, nosing, railing, dan pertemuan material diselesaikan sebagai satu elemen arsitektur yang utuh.', href: '/layanan/tangga-kayu-artistik', image: stairsImage },
+  { number: '05', label: 'Interior', title: 'Ceiling & lambersering', description: 'Arah bilah, bayangan, modul, dan pertemuan dengan pencahayaan dipikirkan sejak komposisi awal.', href: '/layanan/plafon-kayu-ceiling', image: ceilingImage },
+  { number: '06', label: 'Custom', title: 'Detail spesifik', description: 'Pengerjaan yang tidak selesai dengan produk jadi: built-in, feature element, dan kebutuhan custom di lapangan.', href: '#kontak', image: customImage },
 ];
 ---
-<section id="layanan" class="section-anchor bg-[#f4f2eb] py-24 sm:py-32">
+<section id="layanan" class="section-anchor overflow-hidden bg-[#e7dfd0] py-24 sm:py-32 lg:py-40">
   <div class="section-shell">
-    <div class="grid gap-10 border-b border-[#17231d]/15 pb-12 lg:grid-cols-[1fr_.8fr] lg:items-end">
+    <div class="grid gap-10 border-b border-[#17231d]/15 pb-12 lg:grid-cols-[.72fr_1.28fr] lg:items-end">
+      <div class="reveal"><p class="section-kicker">Keahlian</p></div>
       <div class="reveal">
-        <p class="section-kicker">Lingkup kerja</p>
-        <h2 class="display-title text-balance mt-5 max-w-3xl text-5xl text-[#17231d] sm:text-6xl lg:text-7xl">Dikerjakan dengan detail,<br /><em>dibuat untuk dipakai.</em></h2>
+        <h2 class="display-title text-balance max-w-4xl text-5xl text-[#17231d] sm:text-6xl lg:text-8xl">Material yang tepat.<br /><em>Detail yang tenang.</em></h2>
+        <p class="mt-7 max-w-2xl text-base leading-7 text-[#566158] sm:text-lg">Kami memilih sistem berdasarkan konteks proyek, bukan memaksa satu material untuk menyelesaikan semua masalah.</p>
       </div>
-      <p class="reveal max-w-xl text-base leading-7 text-[#566158] sm:text-lg">Setiap proyek dimulai dari fungsi ruang, karakter material, dan kondisi lapangan. Bukan memilih kayu dulu lalu mencari alasan untuk memakainya.</p>
     </div>
-    <div class="grid divide-y divide-[#17231d]/15 lg:grid-cols-2 lg:divide-x lg:divide-y-0">
-      {services.map((service, index) => (
-        <a href={service.href} class={`group relative block overflow-hidden py-7 ${index % 2 === 0 ? 'lg:pr-8' : 'lg:pl-8'} ${index > 1 ? 'lg:border-t lg:border-[#17231d]/15 lg:pt-8' : ''}`}>
-          <div class="grid gap-5 sm:grid-cols-[9.5rem_1fr] sm:items-center">
-            <div class="image-zoom relative aspect-[4/3] overflow-hidden bg-[#ded6c7] sm:aspect-square">
-              <Image src={service.image} alt={`Pekerjaan ${service.title} oleh Jasa Kayu Profesional`} width={420} height={420} format="webp" loading="lazy" class="h-full w-full object-cover" />
-              <span class="absolute left-3 top-3 rounded-full bg-[#f4f2eb]/90 px-2.5 py-1 text-[0.56rem] font-extrabold tracking-[.13em] text-[#17231d] backdrop-blur-sm">{service.number}</span>
-            </div>
+
+    <div class="mt-12 grid gap-10 lg:grid-cols-[1.05fr_.95fr] lg:gap-16">
+      <div class="reveal-stagger border-t border-[#17231d]/15">
+        {services.map((service, index) => (
+          <a href={service.href} class="service-row group grid gap-4 border-b border-[#17231d]/15 py-6 sm:grid-cols-[3.25rem_1fr_auto] sm:items-start sm:py-7" data-service={index}>
+            <span class="pt-1 text-[.62rem] font-extrabold uppercase tracking-[.15em] text-[#315443]">{service.number}</span>
             <div>
-              <p class="text-[0.62rem] font-extrabold uppercase tracking-[.14em] text-[#6c766d]">{service.label}</p>
-              <h3 class="mt-2 font-serif text-3xl font-semibold tracking-[-.035em] text-[#17231d] sm:text-[2.1rem]">{service.title}</h3>
-              <p class="mt-3 max-w-md text-sm leading-6 text-[#59645b]">{service.description}</p>
-              <span class="mt-5 inline-flex items-center gap-2 text-[0.67rem] font-extrabold uppercase tracking-[.12em] text-[#315443]">Lihat pendekatan <span class="transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">→</span></span>
+              <p class="text-[.6rem] font-extrabold uppercase tracking-[.14em] text-[#737c74]">{service.label}</p>
+              <h3 class="mt-2 font-serif text-[clamp(2rem,4vw,3.65rem)] font-semibold leading-[.9] tracking-[-.045em] text-[#17231d] transition-colors duration-300 group-hover:text-[#315443]">{service.title}</h3>
+              <p class="mt-3 max-w-xl text-sm leading-6 text-[#59645b] sm:pr-5">{service.description}</p>
+              <div class="mt-5 overflow-hidden lg:hidden"><Image src={service.image} alt={`Contoh pekerjaan ${service.title}`} width={900} height={620} format="webp" loading="lazy" class="aspect-[4/3] w-full object-cover" /></div>
             </div>
-          </div>
-        </a>
-      ))}
+            <span class="hidden pt-6 text-xl text-[#315443] transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 sm:block" aria-hidden="true">↗</span>
+          </a>
+        ))}
+      </div>
+
+      <div class="relative hidden min-h-[40rem] lg:block">
+        <div class="sticky top-28 h-[min(68vh,46rem)] overflow-hidden bg-[#d7c9b3]">
+          {services.map((service, index) => (
+            <div class={`service-preview absolute inset-0 transition duration-700 ${index === 0 ? 'opacity-100' : 'pointer-events-none opacity-0'}`} data-service-preview={index}>
+              <Image src={service.image} alt={`Detail ${service.title}`} width={1200} height={1500} format="webp" loading={index === 0 ? 'eager' : 'lazy'} class="h-full w-full object-cover" />
+              <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#0f1c16]/85 to-transparent p-7 pt-24 text-white">
+                <div class="flex items-end justify-between gap-4 border-t border-white/30 pt-4">
+                  <div><p class="text-[.58rem] font-extrabold uppercase tracking-[.15em] text-[#e6c88f]">{service.label}</p><p class="mt-2 font-serif text-3xl font-semibold tracking-[-.04em]">{service.title}</p></div>
+                  <span class="text-[.58rem] font-extrabold uppercase tracking-[.14em] text-white/55">Jasa Kayu / {service.number}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   </div>
+
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const rows = document.querySelectorAll('.service-row');
+      const previews = document.querySelectorAll('.service-preview');
+      const activate = (index) => previews.forEach((preview) => {
+        const active = preview.getAttribute('data-service-preview') === index;
+        preview.classList.toggle('opacity-100', active);
+        preview.classList.toggle('opacity-0', !active);
+        preview.classList.toggle('pointer-events-none', !active);
+      });
+      rows.forEach((row) => {
+        const index = row.getAttribute('data-service');
+        row.addEventListener('mouseenter', () => activate(index));
+        row.addEventListener('focusin', () => activate(index));
+      });
+    });
+  </script>
 </section>
