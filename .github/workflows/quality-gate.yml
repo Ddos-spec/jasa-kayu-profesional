@@ -13,9 +13,9 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  build-and-smoke:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -28,3 +28,7 @@ jobs:
         run: npm ci
       - name: Build Astro site
         run: npm run build
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Run end-to-end smoke tests
+        run: npx playwright test --project=chromium
