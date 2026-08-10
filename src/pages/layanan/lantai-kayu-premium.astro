@@ -1,299 +1,82 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import Picture from '../../components/common/Picture.astro';
+import ServiceEditorial from '../../components/ServiceEditorial.astro';
+import Contact from '../../components/Contact.astro';
+import Footer from '../../components/Footer.astro';
+import heroImage from '../../assets/images/portfolio/villa-puncak-lantai-jati-solid.jpg';
+import detailImage from '../../assets/images/portfolio/lantai-kayu-merbau-vila-palma-kemang/lantai-kayu-merbau-vila-palma-kemang-1.jpg';
 
+const title = 'Jasa Pasang Lantai Kayu Jati & Merbau Jabodetabek | Jasa Kayu Profesional';
+const description = 'Perencanaan dan pemasangan lantai kayu solid maupun engineered di Jabodetabek. Pemilihan material, pola, subfloor, sambungan, dan finishing dibahas sebagai satu sistem.';
+const canonical = 'https://www.jasakayuprofesional.com/layanan/lantai-kayu-premium';
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Jasa Pasang Lantai Kayu',
+  serviceType: 'Pemasangan lantai kayu solid dan engineered',
+  description,
+  provider: { '@type': 'Organization', name: 'Jasa Kayu Profesional', url: 'https://www.jasakayuprofesional.com/' },
+  areaServed: ['Jakarta', 'Bogor', 'Depok', 'Tangerang', 'Bekasi'].map((name) => ({ '@type': 'AdministrativeArea', name })),
+  url: canonical,
+};
 const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Berapa lama ketahanan lantai kayu solid?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Lantai kayu solid jati atau merbau yang dirawat dengan benar dapat bertahan lebih dari 20 tahun, bahkan seumur hidup. Kami memberikan garansi struktur dan finishing hingga 5 tahun."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Apakah lantai kayu bisa dipasang di area lembab?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Untuk area semi-outdoor atau lembab, kami merekomendasikan kayu Bengkirai atau Ulin yang memiliki ketahanan alami terhadap air. Untuk kamar mandi kering, Jati dengan finishing khusus juga bisa menjadi opsi."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Berapa biaya pemasangan lantai kayu per meter?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Biaya bervariasi tergantung jenis kayu (Jati/Merbau/Bengkirai) dan pola pemasangan (Herringbone/Chevron/Plank). Hubungi kami untuk survei dan estimasi gratis."
-      }
-    }
-  ]
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'Apa beda lantai kayu solid dan engineered?', acceptedAnswer: { '@type': 'Answer', text: 'Lantai solid menggunakan kayu utuh pada ketebalan papan, sedangkan engineered memakai lapisan kayu pada konstruksi berlapis. Pilihan terbaik bergantung pada kondisi subfloor, stabilitas ruang, pola pemasangan, dan kebutuhan perawatan.' } },
+    { '@type': 'Question', name: 'Apa yang perlu disiapkan sebelum meminta estimasi?', acceptedAnswer: { '@type': 'Answer', text: 'Foto area, ukuran kasar, lokasi proyek, kondisi lantai dasar, jenis ruang, serta referensi pola sudah cukup untuk diskusi awal. Estimasi final mengikuti scope dan kondisi aktual.' } },
+    { '@type': 'Question', name: 'Apakah semua ruang cocok memakai lantai kayu?', acceptedAnswer: { '@type': 'Answer', text: 'Tidak selalu. Tingkat kelembapan, risiko air, kondisi subfloor, dan pola pemakaian perlu diperiksa lebih dulu sebelum menentukan material maupun metode pemasangan.' } },
+  ],
 };
 ---
-
-<Layout
-  title="Jasa Pasang Lantai Kayu Jati & Merbau Premium Jabodetabek | Jasa Kayu Profesional"
-  description="Spesialis lantai kayu solid & engineered terbaik di Jakarta & sekitarnya. Garansi 5 tahun, anti rayap, finishing UV coating. Tersedia Jati, Merbau, Sonokeling."
-  canonical="https://www.jasakayuprofesional.com/layanan/lantai-kayu-premium"
->
+<Layout title={title} description={description} canonical={canonical} image="/images/portfolio/villa-puncak-lantai-jati-solid.jpg">
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
-  <section class="relative bg-wood-brown-900 py-20 text-white md:py-32">
-    <div class="absolute inset-0 overflow-hidden">
-      <Picture
-        src="/images/portfolio/portfolio-1.svg"
-        alt="Lantai kayu jati premium terpasang di ruang tamu mewah"
-        class="h-full w-full object-cover opacity-20"
-        loading="eager"
-      />
-    </div>
-    <div class="relative mx-auto max-w-6xl px-4 md:px-8">
-      <span class="inline-block rounded-full bg-white/10 px-4 py-1.5 text-sm font-semibold text-wood-brown-100 backdrop-blur-sm">
-        Best Seller Service
-      </span>
-      <h1 class="mt-6 font-serif text-4xl font-bold leading-tight md:text-6xl">
-        Investasi Kemewahan <br/>Lantai Kayu Solid
-      </h1>
-      <p class="mt-6 max-w-2xl text-lg text-white/80 md:text-xl">
-        Kami membantu Anda memilih material, pola pemasangan, dan detail finishing lantai kayu yang paling cocok untuk ritme penggunaan ruang, tampilan visual, dan budget proyek.
-      </p>
-      <div class="mt-8 flex flex-wrap gap-4">
-        <a href="https://wa.me/6281283135295?text=Halo%20Jasa%20Kayu%20Profesional,%20saya%20tertarik%20pasang%20lantai%20kayu." class="rounded-full bg-[#25D366] px-8 py-3 font-semibold text-white shadow-lg transition hover:bg-[#128C7E]">
-          Konsultasi via WhatsApp
-        </a>
-        <a href="#detail-layanan" class="rounded-full border border-white/30 bg-white/5 px-8 py-3 font-semibold text-white backdrop-blur-sm transition hover:bg-white/20">
-          Pelajari Selengkapnya
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section id="detail-layanan" class="py-20 md:py-28">
-    <div class="mx-auto max-w-4xl px-4 md:px-8">
-      
-      <!-- Value Proposition -->
-      <div class="prose prose-lg prose-stone max-w-none">
-        <h2 class="font-serif text-3xl font-bold text-wood-brown-800">Mengapa Lantai Kayu Jasa Kayu Profesional?</h2>
-        <p>
-          Banyak kontraktor menawarkan lantai kayu murah, namun seringkali berakhir dengan masalah: melengkung (warping), celah menganga, hingga serangan rayap dalam hitungan bulan. 
-          <strong>Jasa Kayu Profesional berbeda.</strong> Kami memahami bahwa kayu adalah material hidup yang membutuhkan perlakuan khusus.
-        </p>
-        <p>
-          Kami mengontrol ketat kadar air (MC) setiap papan kayu di angka 10-12% (Kiln Dry) sebelum pemasangan, menggunakan lem standar Eropa yang ramah lingkungan, dan teknik <em>expansion gap</em> yang presisi untuk mengantisipasi perubahan cuaca tropis Indonesia.
-        </p>
-
-        <h3 class="mt-12 font-serif text-2xl font-bold text-wood-brown-800">Pilihan Kayu Premium Kami</h3>
-        <p>Kami menyeleksi hanya kayu Grade A dari perhutani legal:</p>
-      </div>
-
-      <!-- Wood Types Grid -->
-      <div class="mt-8 grid gap-6 md:grid-cols-2">
-        <div class="rounded-2xl border border-wood-brown-100 bg-white p-6 shadow-sm transition hover:shadow-md">
-          <h4 class="font-serif text-xl font-bold text-wood-brown-800">1. Kayu Jati (Teak)</h4>
-          <p class="mt-2 text-sm text-[#666]">Raja segala kayu. Memiliki serat indah berwarna coklat emas dan kandungan minyak alami yang membuatnya sangat tahan terhadap rayap dan pembusukan.</p>
-          <ul class="mt-4 space-y-2 text-sm font-medium text-wood-brown-700">
-            <li class="flex items-center gap-2">✓ Durabilitas: Sangat Tinggi</li>
-            <li class="flex items-center gap-2">✓ Karakter: Mewah & Klasik</li>
-          </ul>
-        </div>
-        <div class="rounded-2xl border border-wood-brown-100 bg-white p-6 shadow-sm transition hover:shadow-md">
-          <h4 class="font-serif text-xl font-bold text-wood-brown-800">2. Kayu Merbau</h4>
-          <p class="mt-2 text-sm text-[#666]">Kayu besi dari Papua. Sangat keras, berwarna coklat kemerahan gelap yang elegan, dan sangat stabil terhadap perubahan suhu.</p>
-          <ul class="mt-4 space-y-2 text-sm font-medium text-wood-brown-700">
-            <li class="flex items-center gap-2">✓ Durabilitas: Ekstrem</li>
-            <li class="flex items-center gap-2">✓ Karakter: Hangat & Solid</li>
-          </ul>
+  <ServiceEditorial
+    kicker="Flooring · Interior"
+    title="Lantai kayu yang mengikuti ruang, bukan tren."
+    intro="Lantai adalah bidang terbesar yang disentuh setiap hari. Karena itu jenis kayu, stabilitas subfloor, arah pola, sambungan perimeter, dan finishing perlu dibaca sebagai satu keputusan, bukan daftar item terpisah."
+    heroImage={heroImage}
+    heroAlt="Lantai kayu solid pada interior vila"
+    secondaryImage={detailImage}
+    secondaryAlt="Detail lantai kayu Merbau pada hunian"
+    facts={[
+      { label: 'Format', value: 'Solid / Engineered' },
+      { label: 'Material', value: 'Jati / Merbau / opsi sesuai konteks' },
+      { label: 'Pola', value: 'Plank / Herringbone / custom' },
+      { label: 'Area', value: 'Jabodetabek' },
+    ]}
+    statement="Lantai yang tenang secara visual lahir dari keputusan teknis yang tidak terlihat."
+    principles={[
+      { title: 'Subfloor dulu', text: 'Kerataan, kelembapan, elevasi akhir, dan pertemuan dengan material lain harus dibaca sebelum menentukan sistem pemasangan.' },
+      { title: 'Arah papan', text: 'Arah serat dan modul papan memengaruhi persepsi panjang ruang, titik potong, serta bagaimana pola bertemu pintu dan built-in.' },
+      { title: 'Movement gap', text: 'Kayu merespons perubahan kelembapan. Detail perimeter dan sambungan perlu memberi ruang bagi pergerakan material.' },
+      { title: 'Finishing sebagai sistem', text: 'Warna bukan satu-satunya pertimbangan. Kilap, tekstur, reparability, dan ritme maintenance ikut menentukan pilihan akhir.' },
+    ]}
+    materials={[
+      { name: 'Jati', note: 'Karakter hangat dan serat yang kuat secara visual. Cocok ketika material lantai memang ingin menjadi bagian utama dari identitas ruang.' },
+      { name: 'Merbau', note: 'Tone lebih dalam dengan karakter solid. Perlu dibaca bersama pencahayaan, warna dinding, dan material furnitur agar ruang tetap seimbang.' },
+      { name: 'Engineered wood', note: 'Opsi ketika stabilitas konstruksi berlapis lebih relevan terhadap kondisi ruang dan sistem pemasangan yang direncanakan.' },
+    ]}
+    process={[
+      { title: 'Baca kondisi', text: 'Cek area, subfloor, elevasi, kelembapan, akses, serta titik pertemuan dengan pintu, skirting, batu, atau built-in.' },
+      { title: 'Tentukan sistem', text: 'Material, dimensi papan, pola, arah pemasangan, adhesive atau metode fixing, serta kebutuhan transisi disepakati sebelum eksekusi.' },
+      { title: 'Layout & instalasi', text: 'Pola diuji terhadap dimensi ruang supaya potongan akhir, garis sambungan, dan pusat komposisi tidak terasa kebetulan.' },
+      { title: 'Finishing & handover', text: 'Permukaan, tepi, transisi, dan kondisi akhir diperiksa sebelum panduan perawatan diberikan untuk fase penggunaan.' },
+    ]}
+  >
+    <section class="bg-[#fffdf7] py-24 sm:py-32 lg:py-40">
+      <div class="section-shell">
+        <div class="grid gap-10 border-b border-[#17231d]/15 pb-10 lg:grid-cols-[.55fr_1.45fr] lg:items-end"><p class="reveal section-kicker">Solid vs engineered</p><div class="reveal"><h2 class="display-title text-5xl text-[#17231d] sm:text-6xl lg:text-8xl">Bukan soal mana yang lebih <em>mahal.</em></h2><p class="mt-6 max-w-2xl text-sm leading-7 text-[#59645b]">Pertanyaan yang lebih berguna adalah: konstruksi mana yang paling masuk akal untuk kondisi ruang, ekspektasi pemakaian, dan cara proyek akan dirawat.</p></div></div>
+        <div class="reveal-stagger mt-10 grid gap-px border border-[#17231d]/15 bg-[#17231d]/15 lg:grid-cols-2">
+          <div class="bg-[#fffdf7] p-7 sm:p-10"><p class="text-[.6rem] font-extrabold uppercase tracking-[.15em] text-[#315443]">01 / Solid timber</p><h3 class="mt-6 font-serif text-5xl font-semibold leading-[.9] tracking-[-.05em] text-[#17231d]">Material utuh, karakter kuat.</h3><ul class="mt-8 space-y-4 text-sm leading-7 text-[#59645b]"><li class="border-t border-[#17231d]/15 pt-4">Cocok ketika karakter kayu asli menjadi fokus utama ruang.</li><li class="border-t border-[#17231d]/15 pt-4">Memerlukan perhatian serius pada kadar air, subfloor, ekspansi, dan maintenance.</li><li class="border-t border-[#17231d]/15 pt-4">Pola dan dimensi papan perlu direncanakan terhadap proporsi ruang.</li></ul></div>
+          <div class="bg-[#e7dfd0] p-7 sm:p-10"><p class="text-[.6rem] font-extrabold uppercase tracking-[.15em] text-[#315443]">02 / Engineered</p><h3 class="mt-6 font-serif text-5xl font-semibold leading-[.9] tracking-[-.05em] text-[#17231d]">Konstruksi berlapis, konteks berbeda.</h3><ul class="mt-8 space-y-4 text-sm leading-7 text-[#59645b]"><li class="border-t border-[#17231d]/15 pt-4">Layak dipertimbangkan ketika stabilitas dimensional menjadi prioritas.</li><li class="border-t border-[#17231d]/15 pt-4">Kualitas tetap bergantung pada konstruksi produk, wear layer, subfloor, dan instalasi.</li><li class="border-t border-[#17231d]/15 pt-4">Visual akhirnya tetap harus dibaca bersama pencahayaan dan material lain.</li></ul></div>
         </div>
       </div>
+    </section>
+  </ServiceEditorial>
 
-      <!-- Comparison Table -->
-      <div class="mt-16 overflow-x-auto rounded-xl border border-wood-brown-200 bg-white shadow-sm">
-        <table class="w-full min-w-[600px] text-left text-sm text-[#4A4A4A]">
-          <thead class="bg-wood-brown-50 text-wood-brown-900">
-            <tr>
-              <th class="px-6 py-4 font-bold">Fitur</th>
-              <th class="px-6 py-4 font-bold">Lantai Kayu Solid</th>
-              <th class="px-6 py-4 font-bold">Lantai Kayu Engineered</th>
-              <th class="px-6 py-4 font-bold">Lantai Vinyl/Laminate</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-wood-brown-100">
-            <tr>
-              <td class="px-6 py-4 font-medium">Keaslian</td>
-              <td class="px-6 py-4">100% Kayu Asli</td>
-              <td class="px-6 py-4">Lapisan Atas Asli</td>
-              <td class="px-6 py-4">Plastik/Serbuk Kayu</td>
-            </tr>
-            <tr>
-              <td class="px-6 py-4 font-medium">Ketahanan</td>
-              <td class="px-6 py-4">20+ Tahun (Bisa di-refinish)</td>
-              <td class="px-6 py-4">10-15 Tahun</td>
-              <td class="px-6 py-4">5-10 Tahun</td>
-            </tr>
-            <tr>
-              <td class="px-6 py-4 font-medium">Kesan</td>
-              <td class="px-6 py-4">Sangat Mewah & Natural</td>
-              <td class="px-6 py-4">Mewah</td>
-              <td class="px-6 py-4">Buatan</td>
-            </tr>
-             <tr>
-              <td class="px-6 py-4 font-medium">Investasi</td>
-              <td class="px-6 py-4">Meningkatkan Nilai Properti</td>
-              <td class="px-6 py-4">Baik</td>
-              <td class="px-6 py-4">Standar</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- Pricing Table Section -->
-      <div class="mt-20">
-        <h3 class="font-serif text-2xl font-bold text-wood-brown-800">Estimasi Ongkos Jasa Pasang Lantai Kayu</h3>
-        <p class="mt-2 text-sm text-[#666]">Berikut adalah perkiraan tarif jasa pasang lantai kayu parket (tidak termasuk material kayu bantu, lem, dan finishing jika belum disepakati):</p>
-        <div class="mt-6 overflow-x-auto rounded-xl border border-wood-brown-200 bg-white shadow-sm">
-          <table class="w-full min-w-[500px] text-left text-sm text-[#4A4A4A]">
-            <thead class="bg-wood-brown-50 text-wood-brown-900">
-              <tr>
-                <th class="px-6 py-4 font-bold">Layanan Pemasangan</th>
-                <th class="px-6 py-4 font-bold">Pola Pasang</th>
-                <th class="px-6 py-4 font-bold">Kisaran Tarif (per m²)</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-wood-brown-100">
-              <tr>
-                <td class="px-6 py-4 font-medium">Lantai Kayu Jati / Merbau Solid</td>
-                <td class="px-6 py-4">Standard / Susun Bata</td>
-                <td class="px-6 py-4">Rp 170.000 - Rp 200.000</td>
-              </tr>
-              <tr>
-                <td class="px-6 py-4 font-medium">Lantai Kayu Jati / Merbau Solid</td>
-                <td class="px-6 py-4">Herringbone / Mozaik</td>
-                <td class="px-6 py-4">Rp 200.000 - Rp 240.000</td>
-              </tr>
-              <tr>
-                <td class="px-6 py-4 font-medium">Lantai Kayu Jati / Merbau Solid</td>
-                <td class="px-6 py-4">Chevron Premium</td>
-                <td class="px-6 py-4">Rp 250.000 - Rp 300.000</td>
-              </tr>
-              <tr>
-                <td class="px-6 py-4 font-medium">Lantai Kayu Engineered</td>
-                <td class="px-6 py-4">Standard</td>
-                <td class="px-6 py-4">Rp 50.000 - Rp 70.000</td>
-              </tr>
-              <tr>
-                <td class="px-6 py-4 font-medium">Lantai Vinyl / Laminate</td>
-                <td class="px-6 py-4">Standard (include underlayment)</td>
-                <td class="px-6 py-4">Rp 30.000 - Rp 45.000</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="mt-3 text-xs text-stone-500 italic">*Catatan: Harga di atas merupakan estimasi pengerjaan standar. Harga final bergantung pada survei kerataan subfloor di lokasi proyek.</p>
-      </div>
-
-      <!-- Process Section -->
-      <div class="mt-20">
-        <h3 class="font-serif text-2xl font-bold text-wood-brown-800">Standar Pemasangan Kami</h3>
-        <div class="mt-8 space-y-8">
-          <div class="flex gap-4">
-            <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-wood-brown-800 font-bold text-white">1</span>
-            <div>
-              <h4 class="font-bold text-wood-brown-900">Moisture Check & Aklimatisasi</h4>
-              <p class="mt-1 text-[#4A4A4A]">Kami tidak langsung pasang. Kayu didiamkan di lokasi selama 3-7 hari untuk menyesuaikan suhu ruangan, mencegah penyusutan ekstrem pasca-pasang.</p>
-            </div>
-          </div>
-          <div class="flex gap-4">
-            <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-wood-brown-800 font-bold text-white">2</span>
-            <div>
-              <h4 class="font-bold text-wood-brown-900">Leveling Subfloor</h4>
-              <p class="mt-1 text-[#4A4A4A]">Lantai dasar diratakan dengan self-leveling cement jika perlu. Subfloor yang tidak rata adalah penyebab utama lantai bunyi 'krek-krek'.</p>
-            </div>
-          </div>
-          <div class="flex gap-4">
-            <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-wood-brown-800 font-bold text-white">3</span>
-            <div>
-              <h4 class="font-bold text-wood-brown-900">Underlayment & Instalasi</h4>
-              <p class="mt-1 text-[#4A4A4A]">Pemasangan foam/rubber underlayment untuk akustik, diikuti pemasangan kayu dengan sistem Tongue & Groove yang presisi.</p>
-            </div>
-          </div>
-          <div class="flex gap-4">
-            <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-wood-brown-800 font-bold text-white">4</span>
-            <div>
-              <h4 class="font-bold text-wood-brown-900">Finishing UV Coating</h4>
-              <p class="mt-1 text-[#4A4A4A]">Pengamplasan multi-tahap dan pelapisan UV Coating (Doff/Gloss) untuk perlindungan maksimal terhadap goresan.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- FAQ Section -->
-      <div class="mt-20 rounded-3xl bg-wood-brown-50 p-8 md:p-12">
-        <h3 class="font-serif text-2xl font-bold text-wood-brown-800">Pertanyaan Umum (FAQ)</h3>
-        <div class="mt-6 space-y-6">
-          <details class="group">
-            <summary class="flex cursor-pointer items-center justify-between font-medium text-wood-brown-900 focus:outline-none">
-              <span>Berapa lama proses pemasangan lantai kayu?</span>
-              <span class="transition group-open:rotate-180">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" /></svg>
-              </span>
-            </summary>
-            <p class="mt-3 text-[#4A4A4A]">Untuk area seluas 50m², proses biasanya memakan waktu 5-7 hari kerja, termasuk persiapan, pemasangan, dan finishing (jika unfinish). Kayu pre-finished bisa lebih cepat.</p>
-          </details>
-          <div class="h-px bg-wood-brown-200"></div>
-          <details class="group">
-            <summary class="flex cursor-pointer items-center justify-between font-medium text-wood-brown-900 focus:outline-none">
-              <span>Apakah lantai kayu aman untuk anak-anak dan hewan peliharaan?</span>
-              <span class="transition group-open:rotate-180">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" /></svg>
-              </span>
-            </summary>
-            <p class="mt-3 text-[#4A4A4A]">Sangat aman. Kami menggunakan finishing water-based atau UV coating yang low-VOC (tidak berbau tajam) dan ramah kesehatan. Kayu juga lebih hangat dan tidak sekeras keramik jika anak terjatuh.</p>
-          </details>
-           <div class="h-px bg-wood-brown-200"></div>
-          <details class="group">
-            <summary class="flex cursor-pointer items-center justify-between font-medium text-wood-brown-900 focus:outline-none">
-              <span>Bagaimana perawatannya? Susahkah?</span>
-              <span class="transition group-open:rotate-180">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" /></svg>
-              </span>
-            </summary>
-            <p class="mt-3 text-[#4A4A4A]">Cukup sapu atau vacuum rutin. Pel dengan kain mikrofiber lembab (jangan basah kuyup). Hindari bahan kimia keras. Kami juga menyediakan layanan maintenance tahunan.</p>
-          </details>
-        </div>
-      </div>
-
-      <!-- Related Services & Internal Linking -->
-      <div class="mt-16 border-t border-wood-brown-200 pt-12">
-        <p class="mb-6 font-serif text-xl font-bold text-wood-brown-800">Lengkapi Kemewahan Rumah Anda:</p>
-        <div class="grid gap-4 md:grid-cols-2">
-          <a href="/layanan/dinding-kayu-dan-wall-cladding" class="group block rounded-xl border border-wood-brown-100 bg-white p-4 transition hover:border-wood-brown-300 hover:shadow-md">
-            <span class="font-bold text-wood-brown-800 group-hover:text-wood-brown-600">Dinding Kayu & Wall Cladding &rarr;</span>
-            <p class="mt-1 text-sm text-[#666]">Harmonisasi lantai dengan dinding kayu untuk nuansa studio akustik atau ruang keluarga hangat.</p>
-          </a>
-          <a href="/layanan/tangga-kayu-artistik" class="group block rounded-xl border border-wood-brown-100 bg-white p-4 transition hover:border-wood-brown-300 hover:shadow-md">
-            <span class="font-bold text-wood-brown-800 group-hover:text-wood-brown-600">Tangga Kayu Solid &rarr;</span>
-            <p class="mt-1 text-sm text-[#666]">Sambungkan lantai atas dan bawah dengan tangga kayu Jati yang senada dengan lantai Anda.</p>
-          </a>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- CTA Section -->
-  <section class="bg-wood-brown-800 py-16 text-center text-white">
-    <div class="mx-auto max-w-4xl px-4">
-      <h2 class="font-serif text-3xl font-bold md:text-4xl">Siap Mewujudkan Lantai Impian?</h2>
-      <p class="mt-4 text-lg text-wood-brown-100">Dapatkan survei lokasi GRATIS dan sampel kayu asli diantar ke rumah Anda.</p>
-      <div class="mt-8 flex justify-center gap-4">
-        <a href="https://wa.me/6281283135295?text=Halo%20Jasa%20Kayu%20Profesional,%20saya%20mau%20request%20survei%20lantai%20kayu." class="rounded-full bg-[#25D366] px-8 py-3 font-semibold text-white shadow-lg transition hover:bg-[#128C7E]">
-          Jadwalkan Survei Sekarang
-        </a>
-      </div>
-      <p class="mt-4 text-sm text-wood-brown-300">*Area layanan: Jakarta, Bogor, Depok, Tangerang, Bekasi</p>
-    </div>
-  </section>
+  <Contact />
+  <Footer slot="footer" />
 </Layout>
