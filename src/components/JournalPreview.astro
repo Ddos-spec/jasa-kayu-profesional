@@ -1,0 +1,30 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+
+const images = {
+  ...import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/blog/**/*.{jpeg,jpg,png,gif,svg,webp}'),
+  ...import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/portfolio/**/*.{jpeg,jpg,png,gif,svg,webp}'),
+};
+const posts = (await getCollection('blog')).sort((a,b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).slice(0, 4);
+const featured = posts[0];
+const remaining = posts.slice(1);
+let featuredImage: ImageMetadata | undefined;
+if (featured) {
+  const path = (featured.data.image ?? '/images/blog/blog-1.jpg').replace(/^\/images\//, '/src/assets/images/');
+  featuredImage = images[path] ? (await images[path]()).default : (await images['/src/assets/images/blog/blog-1.jpg']()).default;
+}
+const date = (value: Date) => new Intl.DateTimeFormat('id-ID', { year: 'numeric', month: 'short' }).format(value);
+---
+{featured && featuredImage && (
+  <section class="bg-[#e7dfd0] py-24 sm:py-32 lg:py-40">
+    <div class="section-shell">
+      <div class="grid gap-10 border-b border-[#17231d]/15 pb-10 lg:grid-cols-[.52fr_1.48fr] lg:items-end"><div class="reveal"><p class="section-kicker">Field notes</p></div><div class="reveal"><h2 class="display-title text-5xl text-[#17231d] sm:text-6xl lg:text-8xl">Pengetahuan yang berguna sebelum material <em>dipesan.</em></h2><div class="mt-7 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between"><p class="max-w-2xl text-sm leading-7 text-[#59645b]">Catatan soal material, instalasi, maintenance, dan keputusan lapangan yang sering lebih penting daripada sekadar memilih warna kayu.</p><a href="/blog" class="group inline-flex shrink-0 items-center gap-3 text-[.65rem] font-extrabold uppercase tracking-[.13em] text-[#315443]">Semua field notes <span class="text-lg transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" aria-hidden="true">↗</span></a></div></div></div>
+
+      <div class="mt-12 grid gap-10 lg:grid-cols-[1.05fr_.95fr] lg:gap-14">
+        <article class="reveal group"><a href={`/blog/${featured.id}/`} class="block"><div class="image-zoom overflow-hidden bg-[#d7c9b3]"><Image src={featuredImage} alt={featured.data.title} width={1200} height={850} format="webp" loading="lazy" class="aspect-[16/10] w-full object-cover" /></div><div class="mt-4 grid grid-cols-[3rem_1fr] gap-3 border-t border-[#17231d]/15 pt-4"><span class="text-[.58rem] font-extrabold uppercase tracking-[.15em] text-[#315443]">01</span><div><p class="text-[.58rem] font-extrabold uppercase tracking-[.14em] text-[#717b73]">{featured.data.category ?? 'Field note'} · {date(featured.data.pubDate)}</p><h3 class="mt-2 font-serif text-[clamp(2.5rem,4.8vw,5rem)] font-semibold leading-[.88] tracking-[-.05em] text-[#17231d] transition-colors group-hover:text-[#315443]">{featured.data.title}</h3><p class="mt-4 max-w-xl text-sm leading-7 text-[#59645b]">{featured.data.description}</p></div></div></a></article>
+        <div class="reveal-stagger border-t border-[#17231d]/15">{remaining.map((post,index) => <article class="group border-b border-[#17231d]/15 py-6"><a href={`/blog/${post.id}/`} class="grid grid-cols-[3rem_1fr_auto] gap-3"><span class="text-[.58rem] font-extrabold uppercase tracking-[.15em] text-[#315443]">0{index+2}</span><div><p class="text-[.57rem] font-extrabold uppercase tracking-[.14em] text-[#717b73]">{post.data.category ?? 'Field note'} · {date(post.data.pubDate)}</p><h3 class="mt-3 font-serif text-3xl font-semibold leading-[.95] tracking-[-.04em] text-[#17231d] transition-colors group-hover:text-[#315443] sm:text-4xl">{post.data.title}</h3><p class="mt-3 text-sm leading-6 text-[#59645b]">{post.data.description}</p></div><span class="text-xl text-[#315443] transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" aria-hidden="true">↗</span></a></article>)}</div>
+      </div>
+    </div>
+  </section>
+)}
