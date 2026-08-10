@@ -43,11 +43,35 @@ const serviceSchema = {
       { name: 'Bengkirai', note: 'Opsi outdoor dengan karakter serat dan tone hangat. Seleksi material, kadar air, serta finishing perlu disesuaikan dengan tingkat eksposur.' },
       { name: 'Supporting structure', note: 'Bukan hanya papan permukaan. Joist, dudukan, spacer, fixing, dan pertemuan dengan beton atau baja menentukan performa sistem.' },
     ]}
+    planningChecks={[
+      { title: 'Water path', text: 'Kami baca arah slope, posisi drain, area yang rawan menahan air, elevasi pintu, pertemuan dengan taman, serta kemungkinan air datang dari bidang lain.' },
+      { title: 'Base & clearance', text: 'Jarak antara decking dan slab/tanah, tinggi joist, ventilasi bawah, serta ruang untuk inspeksi perlu cukup sejak awal.' },
+      { title: 'Board module', text: 'Lebar papan, panjang, arah pemasangan, sambungan, border, dan titik potong ditentukan terhadap geometri area supaya pola tidak pecah di ujung.' },
+      { title: 'Metal interface', text: 'Pertemuan dengan baja, railing, planter, pintu, kaca, atau facade perlu diselesaikan tanpa memerangkap air dan tanpa membuat kayu sulit diganti saat maintenance.' },
+    ]}
     process={[
       { title: 'Read the water', text: 'Cek kemiringan, drain, titik rawan genangan, arah limpasan, elevasi pintu, dan kondisi struktur eksisting.' },
       { title: 'Set the module', text: 'Dimensi papan, arah layout, jarak joist, gap, border detail, serta pola sambungan ditentukan sebelum pemasangan.' },
       { title: 'Build the base', text: 'Substructure disiapkan dengan elevasi dan spacing yang konsisten agar permukaan akhir stabil sekaligus tetap memiliki sirkulasi.' },
       { title: 'Install & weatherproof', text: 'Papan dipasang dengan gap dan fixing terkontrol, lalu finishing serta detail tepi diselesaikan sesuai tingkat eksposur.' },
+    ]}
+    estimateFactors={[
+      { title: 'Jenis kayu & ukuran papan', text: 'Species, dimensi, panjang efektif, sorting, serta kebutuhan cadangan untuk potongan akan memengaruhi material dan ritme instalasi.' },
+      { title: 'Kondisi struktur bawah', text: 'Slab rata, existing frame, elevated deck, area taman, atau kebutuhan rangka baru menghasilkan scope substructure yang berbeda.' },
+      { title: 'Geometri & detail', text: 'Kurva, planter, kolom, hatch, border, step, trapdoor, railing, serta pola diagonal membutuhkan lebih banyak kontrol dan potongan.' },
+      { title: 'Akses & finishing', text: 'Akses material, ketinggian kerja, jam kerja gedung, sistem coating, dan jumlah tahap finishing ikut membentuk kebutuhan tenaga serta waktu.' },
+    ]}
+    aftercare={[
+      { title: 'Keep drainage open', text: 'Daun, tanah, dan kotoran yang menutup gap atau drain perlu dibersihkan agar area bawah tetap dapat mengering.' },
+      { title: 'Watch water traps', text: 'Pot, karpet outdoor, furnitur, atau benda yang menempel lama pada permukaan dapat membuat area tertentu selalu lembap dan menua berbeda.' },
+      { title: 'Accept weathering', text: 'Outdoor timber akan berubah tone. Pilihan perawatan ditentukan apakah targetnya mempertahankan warna awal atau menerima patina yang lebih natural.' },
+      { title: 'Inspect fixing', text: 'Pada area dengan traffic tinggi atau paparan berat, sambungan, board edge, dan fixing sebaiknya diperiksa berkala sebelum masalah kecil menjadi kerusakan luas.' },
+    ]}
+    faqs={[
+      { question: 'Ulin atau Bengkirai untuk decking?', answer: 'Keduanya bisa relevan, tetapi keputusan sebaiknya mempertimbangkan eksposur, dimensi papan, supply, target tone, sistem fixing, dan maintenance. Material tidak bekerja sendirian tanpa substructure yang benar.' },
+      { question: 'Apakah decking boleh langsung di atas beton?', answer: 'Tidak selalu langsung. Biasanya perlu detail yang memberi elevasi, jalur air, sirkulasi, dan titik fixing yang stabil. Kondisi slab dan elevasi pintu harus diperiksa lebih dulu.' },
+      { question: 'Bisa pakai hidden fixing?', answer: 'Bisa pada sistem dan profil tertentu. Pilihan hidden fixing harus cocok dengan jenis papan, dimensi, movement, dan kebutuhan penggantian papan di kemudian hari.' },
+      { question: 'Apa yang perlu dikirim untuk estimasi?', answer: 'Foto area, ukuran kasar, lokasi, kondisi permukaan bawah, posisi drain/pintu, dan referensi desain sudah cukup untuk diskusi awal. Detail final mengikuti survei atau gambar teknis.' },
     ]}
   >
     <section class="bg-[#fffdf7] py-24 sm:py-32 lg:py-40">
