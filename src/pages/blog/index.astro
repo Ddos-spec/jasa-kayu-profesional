@@ -16,13 +16,34 @@ const posts = await Promise.all((await getCollection('blog'))
   }));
 const featured = posts[0];
 const remaining = posts.slice(1);
+const categories = [...new Set(posts.map((post) => post.data.category).filter(Boolean))];
 const date = (value: Date) => new Intl.DateTimeFormat('id-ID', { year: 'numeric', month: 'short', day: 'numeric' }).format(value);
 ---
 <Layout title="Jurnal Material & Ruang | Jasa Kayu Profesional" description="Panduan praktis seputar kayu, decking, lantai, perawatan, dan persiapan proyek dari Jasa Kayu Profesional." canonical="https://www.jasakayuprofesional.com/blog/">
-  <section class="bg-[#f4f2eb] pb-24 pt-32 sm:pt-40">
-    <div class="section-shell"><div class="grid gap-8 border-b border-[#17231d]/15 pb-10 lg:grid-cols-[.75fr_1.25fr] lg:items-end"><div><p class="section-kicker">Jurnal material</p></div><div><h1 class="display-title text-balance text-5xl text-[#17231d] sm:text-6xl lg:text-7xl">Catatan untuk membuat keputusan ruang yang lebih <em>baik.</em></h1><p class="mt-6 max-w-2xl text-base leading-7 text-[#566158]">Panduan yang membahas kondisi nyata di lapangan: material, perawatan, detail instalasi, dan persiapan proyek sebelum pengerjaan dimulai.</p></div></div>
-      {featured && <article class="mt-12 grid overflow-hidden border border-[#17231d]/15 bg-[#e7dfd0] lg:grid-cols-[1.1fr_.9fr]"><a href={`/blog/${featured.id}/`} class="image-zoom block aspect-[5/3] bg-[#d1c6b3] lg:aspect-auto"><Image src={featured.image} alt={featured.data.title} width={1000} height={700} format="webp" loading="eager" fetchpriority="high" class="h-full w-full object-cover" /></a><div class="flex flex-col justify-between p-7 sm:p-10"><div><p class="text-[.62rem] font-extrabold uppercase tracking-[.14em] text-[#315443]">{featured.data.category ?? 'Jurnal material'} · {date(featured.data.pubDate)}</p><h2 class="mt-4 font-serif text-4xl font-semibold leading-[.95] tracking-[-.045em] text-[#17231d] sm:text-5xl">{featured.data.title}</h2><p class="mt-5 text-sm leading-7 text-[#566158]">{featured.data.description}</p></div><a href={`/blog/${featured.id}/`} class="mt-8 inline-flex items-center gap-3 text-[.67rem] font-extrabold uppercase tracking-[.13em] text-[#315443]">Baca panduan <span class="text-lg" aria-hidden="true">↗</span></a></div></article>}
-      <div class="mt-14 grid gap-x-5 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">{remaining.map((post) => <article class="group"><a href={`/blog/${post.id}/`} class="image-zoom block aspect-[4/3] bg-[#d1c6b3]"><Image src={post.image} alt={post.data.title} width={640} height={480} format="webp" loading="lazy" class="h-full w-full object-cover" /></a><p class="mt-4 text-[.6rem] font-extrabold uppercase tracking-[.14em] text-[#315443]">{post.data.category ?? 'Jurnal material'} · {date(post.data.pubDate)}</p><a href={`/blog/${post.id}/`} class="mt-2 block font-serif text-3xl font-semibold leading-[.98] tracking-[-.04em] text-[#17231d] transition group-hover:text-[#315443]">{post.data.title}</a><p class="mt-3 text-sm leading-6 text-[#59645b]">{post.data.description}</p></article>)}</div>
+  <section class="bg-[#f4f2eb] pb-28 pt-32 sm:pt-40 lg:pb-40 lg:pt-48">
+    <div class="section-shell">
+      <header class="grid gap-8 border-b border-[#17231d]/15 pb-12 lg:grid-cols-[.55fr_1.45fr] lg:items-end">
+        <div class="reveal"><p class="section-kicker">Field notes</p><p class="mt-5 text-[.6rem] font-extrabold uppercase tracking-[.15em] text-[#7a837b]">Material · Installation · Maintenance</p></div>
+        <div class="reveal"><h1 class="display-title text-balance max-w-5xl text-6xl text-[#17231d] sm:text-7xl lg:text-[8rem]">Catatan untuk mengambil keputusan ruang dengan <em>lebih tenang.</em></h1><p class="mt-7 max-w-2xl text-base leading-7 text-[#566158] sm:text-lg">Bukan artikel demi memenuhi kalender konten. Kami menulis hal yang memang memengaruhi keputusan proyek: material, kelembapan, instalasi, perawatan, dan kondisi lapangan.</p></div>
+      </header>
+
+      <div class="mt-8 flex flex-wrap gap-x-6 gap-y-3 border-b border-[#17231d]/15 pb-8 text-[.61rem] font-extrabold uppercase tracking-[.14em] text-[#68736a]"><span class="text-[#17231d]">Topics</span>{categories.map((category) => <span>{category}</span>)}</div>
+
+      {featured && (
+        <article class="reveal mt-12 grid overflow-hidden border border-[#17231d]/15 bg-[#e7dfd0] lg:grid-cols-[1.15fr_.85fr]">
+          <a href={`/blog/${featured.id}/`} class="image-zoom block aspect-[5/3] bg-[#d1c6b3] lg:aspect-auto"><Image src={featured.image} alt={featured.data.title} width={1200} height={850} format="webp" loading="eager" fetchpriority="high" class="h-full w-full object-cover" /></a>
+          <div class="flex flex-col justify-between p-7 sm:p-10 lg:p-12"><div><p class="text-[.6rem] font-extrabold uppercase tracking-[.15em] text-[#315443]">Featured note · {date(featured.data.pubDate)}</p><h2 class="mt-5 font-serif text-[clamp(2.8rem,5vw,5.6rem)] font-semibold leading-[.84] tracking-[-.055em] text-[#17231d]">{featured.data.title}</h2><p class="mt-6 text-sm leading-7 text-[#566158]">{featured.data.description}</p></div><a href={`/blog/${featured.id}/`} class="group mt-10 flex items-center justify-between border-t border-[#17231d]/20 pt-4 text-[.65rem] font-extrabold uppercase tracking-[.13em] text-[#315443]">Baca field note <span class="text-xl transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" aria-hidden="true">↗</span></a></div>
+        </article>
+      )}
+
+      <div class="mt-16 grid gap-x-6 gap-y-16 lg:grid-cols-12 lg:gap-y-24">
+        {remaining.map((post, index) => (
+          <article class={`reveal group ${index % 4 === 0 ? 'lg:col-span-7' : index % 4 === 1 ? 'lg:col-span-5 lg:pt-24' : index % 4 === 2 ? 'lg:col-span-5 lg:col-start-2' : 'lg:col-span-6 lg:col-start-7 lg:pt-20'}`}>
+            <a href={`/blog/${post.id}/`} class={`image-zoom block bg-[#d1c6b3] ${index % 4 === 1 || index % 4 === 2 ? 'aspect-[4/5]' : 'aspect-[16/10]'}`}><Image src={post.image} alt={post.data.title} width={1000} height={800} format="webp" loading="lazy" class="h-full w-full object-cover" /></a>
+            <div class="mt-4 grid grid-cols-[2.5rem_1fr] gap-3 border-t border-[#17231d]/15 pt-4"><span class="text-[.57rem] font-extrabold uppercase tracking-[.14em] text-[#315443]">{String(index + 2).padStart(2, '0')}</span><div><p class="text-[.57rem] font-extrabold uppercase tracking-[.14em] text-[#7a837b]">{post.data.category ?? 'Field note'} · {date(post.data.pubDate)}</p><a href={`/blog/${post.id}/`} class="mt-2 block font-serif text-[clamp(2rem,3.5vw,3.6rem)] font-semibold leading-[.9] tracking-[-.045em] text-[#17231d] transition group-hover:text-[#315443]">{post.data.title}</a><p class="mt-4 max-w-xl text-sm leading-6 text-[#59645b]">{post.data.description}</p></div></div>
+          </article>
+        ))}
+      </div>
     </div>
   </section>
 </Layout>
