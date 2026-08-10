@@ -6,7 +6,7 @@ test('homepage delivers the editorial studio story and key conversion path', asy
   await expect(page.getByRole('heading', { level: 1 })).toContainText(/Ruang yang terasa\s*hidup/);
   await expect(page.locator('#layanan')).toBeVisible();
   await expect(page.locator('#portofolio')).toBeVisible();
-  await expect(page.getByText('Selected works')).toBeVisible();
+  await expect(page.locator('#portofolio').getByText('Selected works')).toBeVisible();
   await expect(page.getByText('Field notes')).toBeVisible();
   await expect(page.locator('#kontak')).toBeVisible();
   await expect(page.getByRole('button', { name: /Buka brief di WhatsApp/i })).toBeVisible();
