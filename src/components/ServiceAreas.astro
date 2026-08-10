@@ -1,20 +1,26 @@
 ---
 const areas = [
-  ['Jakarta Selatan', 'Dharmawangsa, Patimura, Pondok Indah, Kuningan, Pejaten'],
-  ['Jakarta Barat & Utara', 'Kebon Jeruk, PIK, townhouse dan area hunian sekitarnya'],
-  ['Tangerang Selatan & BSD', 'BSD, Serpong, Bintaro, Pamulang, Ciputat, Pondok Aren, dan area sekitar'],
-  ['Bogor & Puncak', 'Villa, area resort, dan kebutuhan outdoor sesuai jadwal survei'],
+  { number: '01', area: 'Jakarta Selatan', detail: 'Dharmawangsa · Kuningan · Pejaten · Pondok Indah', project: 'Deck Apartemen Dharmawangsa', href: '/portfolio/deck-apartemen-dharmawangsa' },
+  { number: '02', area: 'Jakarta Barat & Utara', detail: 'Kebon Jeruk · PIK · area hunian dan komersial', project: 'Golf Mediterania PIK', href: '/portfolio/golf-mediterania-pik-jakut' },
+  { number: '03', area: 'Tangerang Selatan & BSD', detail: 'BSD · Serpong · Bintaro · Pamulang · Ciputat', project: 'Tangga Modern BSD', href: '/portfolio/tangga-modern-bsd', areaHref: '/layanan/jasa-kayu-tangsel' },
+  { number: '04', area: 'Bogor & Puncak', detail: 'Rancamaya · villa · resort · area outdoor', project: 'Deck Ulin Rancamaya', href: '/portfolio/deck-ulin-rancamaya-bogor' },
 ];
 ---
-<section id="area-layanan" class="section-anchor bg-[#f4f2eb] py-20 sm:py-28">
-  <div class="section-shell grid gap-10 lg:grid-cols-[.72fr_1.28fr] lg:items-end">
-    <div class="reveal">
-      <p class="section-kicker">Area kerja</p>
-      <h2 class="display-title mt-5 text-5xl text-[#17231d] sm:text-6xl">Berangkat dari Jakarta,<br /><em>mengikuti proyek.</em></h2><a href="/layanan/jasa-kayu-jabodetabek" class="mt-6 inline-flex text-[.65rem] font-extrabold uppercase tracking-[.13em] text-[#315443] hover:text-[#17231d]">Lihat cakupan Jabodetabek ↗</a>
+<section id="area-layanan" class="section-anchor bg-[#f4f2eb] py-24 sm:py-32 lg:py-40">
+  <div class="section-shell">
+    <div class="grid gap-10 border-b border-[#17231d]/15 pb-10 lg:grid-cols-[.52fr_1.48fr] lg:items-end">
+      <div class="reveal"><p class="section-kicker">Area kerja</p></div>
+      <div class="reveal"><h2 class="display-title text-5xl text-[#17231d] sm:text-6xl lg:text-8xl">Berangkat dari Jakarta,<br /><em>mengikuti proyek.</em></h2><div class="mt-7 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between"><p class="max-w-2xl text-sm leading-7 text-[#59645b]">Area layanan bukan sekadar daftar kota. Kami menampilkan proyek yang memang memberi konteks tentang bagaimana pekerjaan dibawa ke lokasi berbeda.</p><a href="/layanan/jasa-kayu-jabodetabek" class="group inline-flex shrink-0 items-center gap-3 text-[.65rem] font-extrabold uppercase tracking-[.13em] text-[#315443]">Cakupan Jabodetabek <span class="text-lg transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" aria-hidden="true">↗</span></a></div></div>
     </div>
-    <div class="reveal grid gap-px overflow-hidden border border-[#17231d]/15 bg-[#17231d]/15 sm:grid-cols-2">
-      {areas.map(([area, description]) => (
-        <div class="bg-[#f4f2eb] p-6 sm:p-7"><h3 class="font-serif text-2xl font-semibold tracking-[-.025em] text-[#17231d]">{area === 'Tangerang Selatan & BSD' ? <a href="/layanan/jasa-kayu-tangsel" class="transition hover:text-[#315443]">{area} ↗</a> : area}</h3><p class="mt-2 text-sm leading-6 text-[#58645c]">{description}</p></div>
+
+    <div class="reveal-stagger mt-4 border-t border-[#17231d]/15">
+      {areas.map((item) => (
+        <div class="group grid gap-4 border-b border-[#17231d]/15 py-6 sm:grid-cols-[3.5rem_1fr_1fr_auto] sm:items-center sm:py-7">
+          <span class="text-[.58rem] font-extrabold uppercase tracking-[.15em] text-[#315443]">{item.number}</span>
+          <div><h3 class="font-serif text-3xl font-semibold leading-none tracking-[-.04em] text-[#17231d] sm:text-4xl">{item.areaHref ? <a href={item.areaHref} class="transition-colors hover:text-[#315443]">{item.area}</a> : item.area}</h3><p class="mt-2 text-xs leading-5 text-[#6d776f]">{item.detail}</p></div>
+          <a href={item.href} class="text-sm font-bold text-[#566158] transition group-hover:text-[#17231d]">{item.project}</a>
+          <a href={item.href} class="hidden h-11 w-11 items-center justify-center rounded-full border border-[#17231d]/20 text-lg text-[#315443] transition group-hover:border-[#17231d] group-hover:bg-[#17231d] group-hover:text-white sm:flex" aria-label={`Lihat proyek ${item.project}`}>↗</a>
+        </div>
       ))}
     </div>
   </div>
