@@ -5,6 +5,7 @@ interface Point { title: string; text: string; }
 interface Material { name: string; note: string; }
 interface Process { title: string; text: string; }
 interface Fact { label: string; value: string; }
+interface Faq { question: string; answer: string; }
 interface Props {
   kicker: string;
   title: string;
@@ -15,6 +16,10 @@ interface Props {
   principles?: Point[];
   materials?: Material[];
   process?: Process[];
+  planningChecks?: Point[];
+  estimateFactors?: Point[];
+  aftercare?: Point[];
+  faqs?: Faq[];
   secondaryImage?: ImageMetadata;
   secondaryAlt?: string;
   statement?: string;
@@ -29,6 +34,10 @@ const {
   principles = [],
   materials = [],
   process = [],
+  planningChecks = [],
+  estimateFactors = [],
+  aftercare = [],
+  faqs = [],
   secondaryImage = heroImage,
   secondaryAlt = heroAlt,
   statement = 'Material yang baik tetap membutuhkan keputusan detail yang tepat.',
@@ -72,9 +81,17 @@ const {
   </div>
 </section>
 
+{planningChecks.length > 0 && <section class="bg-[#fffdf7] py-24 sm:py-32 lg:py-40"><div class="section-shell"><div class="grid gap-10 border-b border-[#17231d]/15 pb-10 lg:grid-cols-[.52fr_1.48fr] lg:items-end"><p class="reveal section-kicker">Sebelum eksekusi</p><div class="reveal"><h2 class="display-title text-5xl text-[#17231d] sm:text-6xl lg:text-8xl">Yang dibereskan sebelum material <em>ditutup finishing.</em></h2><p class="mt-6 max-w-2xl text-sm leading-7 text-[#59645b]">Tahap ini yang biasanya membedakan pekerjaan yang sekadar terlihat selesai dengan pekerjaan yang tetap masuk akal setelah dipakai.</p></div></div><div class="reveal-stagger mt-10 grid gap-px border border-[#17231d]/15 bg-[#17231d]/15 sm:grid-cols-2 lg:grid-cols-4">{planningChecks.map((item, index) => <article class="bg-[#fffdf7] p-7 sm:p-8"><p class="text-[.58rem] font-extrabold uppercase tracking-[.15em] text-[#315443]">0{index + 1}</p><h3 class="mt-6 font-serif text-3xl font-semibold leading-[.95] tracking-[-.04em] text-[#17231d] sm:text-4xl">{item.title}</h3><p class="mt-5 text-sm leading-7 text-[#59645b]">{item.text}</p></article>)}</div></div></section>}
+
 {process.length > 0 && <section class="bg-[#10271e] py-24 text-white sm:py-32 lg:py-40"><div class="section-shell"><div class="grid gap-10 border-b border-white/15 pb-10 lg:grid-cols-[.55fr_1.45fr] lg:items-end"><p class="reveal section-kicker text-[#e6c88f]">Urutan kerja</p><div class="reveal"><h2 class="display-title text-5xl sm:text-6xl lg:text-8xl">Dari kondisi awal sampai <em>detail terakhir.</em></h2><p class="mt-6 max-w-2xl text-sm leading-7 text-white/60">Urutan ini bisa menyesuaikan kondisi proyek, tetapi prinsipnya sama: keputusan dibuat sebelum pekerjaan ditutup oleh finishing.</p></div></div><ol class="reveal-stagger mt-4">{process.map((step, index) => <li class="grid gap-4 border-b border-white/15 py-7 sm:grid-cols-[4rem_.7fr_1.3fr] sm:items-start"><span class="text-[.6rem] font-extrabold uppercase tracking-[.15em] text-[#e6c88f]">0{index + 1}</span><h3 class="font-serif text-3xl font-semibold leading-none tracking-[-.04em] sm:text-4xl">{step.title}</h3><p class="max-w-2xl text-sm leading-7 text-white/60">{step.text}</p></li>)}</ol></div></section>}
 
+{estimateFactors.length > 0 && <section class="paper-grid bg-[#f4f2eb] py-24 sm:py-32 lg:py-40"><div class="section-shell grid gap-12 lg:grid-cols-[.52fr_1.48fr]"><div class="reveal sticky-copy self-start"><p class="section-kicker">Faktor estimasi</p><h2 class="display-title mt-6 text-5xl text-[#17231d] sm:text-6xl">Harga bukan cuma <em>meter persegi.</em></h2><p class="mt-6 max-w-xs text-sm leading-7 text-[#68736a]">Dua area dengan luas sama bisa membutuhkan metode, detail, waktu, dan material bantu yang berbeda.</p></div><div class="reveal-stagger grid gap-px border border-[#17231d]/15 bg-[#17231d]/15 sm:grid-cols-2">{estimateFactors.map((item, index) => <article class="bg-[#f4f2eb] p-7 sm:p-9"><div class="flex items-start justify-between gap-5"><p class="text-[.58rem] font-extrabold uppercase tracking-[.15em] text-[#315443]">0{index + 1}</p><span class="font-serif text-3xl text-[#987755]" aria-hidden="true">↘</span></div><h3 class="mt-8 font-serif text-4xl font-semibold leading-[.92] tracking-[-.045em] text-[#17231d]">{item.title}</h3><p class="mt-5 text-sm leading-7 text-[#59645b]">{item.text}</p></article>)}</div></div></section>}
+
 <slot />
+
+{aftercare.length > 0 && <section class="bg-[#e7dfd0] py-24 sm:py-32"><div class="section-shell"><div class="grid gap-10 border-b border-[#17231d]/15 pb-10 lg:grid-cols-[.52fr_1.48fr] lg:items-end"><p class="reveal section-kicker">Setelah terpasang</p><div class="reveal"><h2 class="display-title text-5xl text-[#17231d] sm:text-6xl lg:text-8xl">Pekerjaan selesai ketika cara merawatnya juga <em>jelas.</em></h2><p class="mt-6 max-w-2xl text-sm leading-7 text-[#59645b]">Kayu akan menua, berubah tone, dan berinteraksi dengan pemakaian. Handover yang baik membantu perubahan itu tetap terkendali.</p></div></div><div class="reveal-stagger mt-10 grid gap-px border border-[#17231d]/15 bg-[#17231d]/15 sm:grid-cols-2 lg:grid-cols-4">{aftercare.map((item, index) => <article class="bg-[#e7dfd0] p-7"><p class="text-[.58rem] font-extrabold uppercase tracking-[.15em] text-[#315443]">0{index + 1}</p><h3 class="mt-6 font-serif text-3xl font-semibold leading-[.95] tracking-[-.04em] text-[#17231d]">{item.title}</h3><p class="mt-5 text-sm leading-7 text-[#59645b]">{item.text}</p></article>)}</div></div></section>}
+
+{faqs.length > 0 && <section class="bg-[#fffdf7] py-24 sm:py-32"><div class="section-shell max-w-5xl"><div class="grid gap-8 border-b border-[#17231d]/15 pb-8 sm:grid-cols-[.55fr_1.45fr] sm:items-end"><p class="reveal section-kicker">FAQ</p><h2 class="reveal display-title text-5xl text-[#17231d] sm:text-6xl">Hal yang biasanya perlu jelas <em>sebelum mulai.</em></h2></div><div class="reveal-stagger mt-4 divide-y divide-[#17231d]/15 border-b border-[#17231d]/15">{faqs.map((faq) => <details class="group py-6"><summary class="flex cursor-pointer list-none items-center justify-between gap-6 font-serif text-2xl font-semibold leading-tight tracking-[-.03em] text-[#17231d] sm:text-3xl"><span>{faq.question}</span><span class="text-3xl font-normal text-[#315443] transition group-open:rotate-45">+</span></summary><p class="mt-4 max-w-2xl text-sm leading-7 text-[#59645b]">{faq.answer}</p></details>)}</div></div></section>}
 
 <section class="bg-[#f4f2eb] py-20 sm:py-28">
   <div class="section-shell grid gap-8 border-t border-[#17231d]/15 pt-8 sm:grid-cols-[1fr_auto] sm:items-end">
