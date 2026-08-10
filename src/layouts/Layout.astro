@@ -14,13 +14,6 @@ const {
 } = Astro.props;
 
 const whatsappHref = 'https://wa.me/6281283135295?text=Halo%20Jasa%20Kayu%20Profesional%2C%20saya%20ingin%20konsultasi%20proyek%20kayu.';
-const nav = [
-  ['01', 'Keahlian', '/#layanan'],
-  ['02', 'Karya', '/#portofolio'],
-  ['03', 'Galeri', '/galeri'],
-  ['04', 'Jurnal', '/blog'],
-  ['05', 'Kontak', '/#kontak'],
-];
 ---
 <!doctype html>
 <html lang="id">
@@ -41,57 +34,52 @@ const nav = [
   <body class="min-h-screen">
     <SpeedInsights />
     <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[90] focus:rounded-full focus:bg-[#17352a] focus:px-5 focus:py-3 focus:text-sm focus:font-bold focus:text-white">Lewati ke konten</a>
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:rounded-full focus:bg-[#17352a] focus:px-5 focus:py-3 focus:text-sm focus:font-bold focus:text-white">Lewati ke konten</a>
 
-    <header id="site-header" class="fixed inset-x-0 top-0 z-[60] border-b border-transparent text-[#fffdf7] transition-all duration-300">
+    <header id="site-header" class="fixed inset-x-0 top-0 z-50 border-b border-transparent text-[#fffdf7] transition-colors duration-300">
       <div class="section-shell flex min-h-[5.25rem] items-center justify-between gap-4">
         <a href="/#hero" class="group inline-flex items-center gap-3" aria-label="Jasa Kayu Profesional, ke beranda">
-          <span class="brand-mark flex h-10 w-10 items-center justify-center rounded-full border border-current/35 bg-white/10 text-sm font-extrabold tracking-[-0.08em] backdrop-blur-sm transition-transform duration-300 group-hover:rotate-6">JK</span>
+          <img src="/icons/wmremove-transformed.ico" alt="" width="44" height="44" class="h-11 w-11 shrink-0 object-contain drop-shadow-[0_2px_10px_rgba(0,0,0,.16)]" aria-hidden="true" />
           <span class="leading-none">
             <span class="block font-serif text-[1.35rem] font-semibold tracking-[-0.045em]">Jasa Kayu</span>
             <span class="mt-1 block text-[0.58rem] font-extrabold uppercase tracking-[0.17em] text-current/70">Jakarta · sejak 1990</span>
           </span>
         </a>
 
-        <nav class="hidden items-center gap-7 text-[0.66rem] font-extrabold uppercase tracking-[0.13em] xl:flex" aria-label="Navigasi utama">
-          {nav.map(([, label, href]) => <a href={href} class="hover-line py-2 transition-opacity hover:opacity-70">{label}</a>)}
+        <nav class="hidden items-center gap-7 text-[0.68rem] font-extrabold uppercase tracking-[0.12em] xl:flex" aria-label="Navigasi utama">
+          <a href="/#layanan" class="transition-opacity hover:opacity-65">Keahlian</a>
+          <a href="/#portofolio" class="transition-opacity hover:opacity-65">Karya</a>
+          <a href="/#mengapa" class="transition-opacity hover:opacity-65">Cara Kerja</a>
+          <a href="/galeri" class="transition-opacity hover:opacity-65">Galeri</a>
+          <a href="/blog" class="transition-opacity hover:opacity-65">Jurnal</a>
+          <a href="/#kontak" class="transition-opacity hover:opacity-65">Kontak</a>
         </nav>
 
-        <div class="flex items-center gap-2">
-          <a href={whatsappHref} class="hidden min-h-10 items-center rounded-full border border-current/35 px-4 text-[0.64rem] font-extrabold uppercase tracking-[0.11em] transition hover:bg-white hover:text-[#17352a] lg:inline-flex" target="_blank" rel="noopener noreferrer">Mulai proyek <span aria-hidden="true">↗</span></a>
-          <button id="mobile-menu-toggle" class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-current/35 bg-white/5 transition hover:bg-white hover:text-[#17352a] xl:hidden" aria-label="Buka navigasi" aria-expanded="false" aria-controls="mobile-menu">
-            <span class="sr-only">Buka navigasi</span>
-            <span class="menu-icon relative block h-4 w-5" aria-hidden="true"><span></span><span></span></span>
-          </button>
-        </div>
+        <a href={whatsappHref} class="hidden min-h-10 items-center rounded-full border border-current/35 px-4 text-[0.65rem] font-extrabold uppercase tracking-[0.1em] transition hover:bg-white hover:text-[#17352a] lg:inline-flex" target="_blank" rel="noopener noreferrer">Mulai konsultasi <span aria-hidden="true">↗</span></a>
+        <button id="mobile-menu-toggle" class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-current/35 bg-white/5 transition hover:bg-white hover:text-[#17352a] xl:hidden" aria-label="Buka navigasi" aria-expanded="false" aria-controls="mobile-menu">
+          <span class="sr-only">Buka navigasi</span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="h-5 w-5" aria-hidden="true"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16" /></svg>
+        </button>
+      </div>
+      <div id="mobile-menu" class="invisible absolute inset-x-0 top-full border-y border-[#17231d]/10 bg-[#f4f2eb] px-4 py-5 text-[#17231d] opacity-0 shadow-2xl transition duration-200 xl:hidden">
+        <nav class="section-shell grid gap-1 text-sm font-bold" aria-label="Navigasi mobile">
+          <a href="/#layanan" class="rounded-xl px-4 py-3 hover:bg-[#e7dfd0]">Keahlian</a>
+          <a href="/#portofolio" class="rounded-xl px-4 py-3 hover:bg-[#e7dfd0]">Karya</a>
+          <a href="/#mengapa" class="rounded-xl px-4 py-3 hover:bg-[#e7dfd0]">Cara Kerja</a>
+          <a href="/galeri" class="rounded-xl px-4 py-3 hover:bg-[#e7dfd0]">Galeri</a>
+          <a href="/blog" class="rounded-xl px-4 py-3 hover:bg-[#e7dfd0]">Jurnal</a>
+          <a href="/#kontak" class="rounded-xl px-4 py-3 hover:bg-[#e7dfd0]">Kontak</a>
+          <a href={whatsappHref} class="btn-wood mt-3" target="_blank" rel="noopener noreferrer">Konsultasi via WhatsApp <span aria-hidden="true">↗</span></a>
+        </nav>
       </div>
     </header>
-
-    <div id="mobile-menu" class="invisible fixed inset-0 z-50 flex translate-y-[-1rem] flex-col bg-[#10271e] text-[#fffdf7] opacity-0 transition duration-300 xl:hidden" aria-hidden="true">
-      <div class="section-shell flex flex-1 flex-col justify-end pb-8 pt-32">
-        <p class="section-kicker text-[#e6c88f]">Navigate the studio</p>
-        <nav class="mt-8 border-t border-white/15" aria-label="Navigasi mobile">
-          {nav.map(([number, label, href]) => (
-            <a href={href} class="mobile-nav-link group grid grid-cols-[3rem_1fr_auto] items-center gap-3 border-b border-white/15 py-4 sm:py-5">
-              <span class="text-[.6rem] font-extrabold uppercase tracking-[.15em] text-[#e6c88f]">{number}</span>
-              <span class="font-serif text-[clamp(2.35rem,10vw,4.5rem)] font-semibold leading-[.86] tracking-[-.055em]">{label}</span>
-              <span class="text-2xl transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" aria-hidden="true">↗</span>
-            </a>
-          ))}
-        </nav>
-        <div class="mt-8 grid gap-6 border-t border-white/15 pt-6 text-sm text-white/60 sm:grid-cols-2">
-          <div><p class="text-[.6rem] font-extrabold uppercase tracking-[.15em] text-white/40">Area kerja</p><p class="mt-2">Jakarta · Bogor · Depok · Tangerang · Bekasi</p></div>
-          <div class="sm:text-right"><a href={whatsappHref} class="font-bold text-[#e6c88f] underline underline-offset-4" target="_blank" rel="noopener noreferrer">WhatsApp +62 812 8313 5295 ↗</a></div>
-        </div>
-      </div>
-    </div>
 
     <main id="main-content" class="isolate">
       <slot />
     </main>
     <slot name="footer" />
 
-    <a href={whatsappHref} class="fixed bottom-5 right-5 z-40 inline-flex h-14 w-14 items-center justify-center rounded-full bg-[#1f6045] text-white shadow-[0_10px_30px_rgba(31,96,69,.35)] transition duration-300 hover:-translate-y-1 hover:scale-105 focus-visible:outline-white" target="_blank" rel="noopener noreferrer" aria-label="Konsultasi via WhatsApp">
+    <a href={whatsappHref} class="fixed bottom-5 right-5 z-40 inline-flex h-14 w-14 items-center justify-center rounded-full bg-[#1f6045] text-white shadow-[0_10px_30px_rgba(31,96,69,.35)] transition hover:scale-105 focus-visible:outline-white" target="_blank" rel="noopener noreferrer" aria-label="Konsultasi via WhatsApp">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="h-7 w-7" aria-hidden="true"><path fill="currentColor" d="M16 3C9.4 3 4 8.4 4 15c0 2.4.7 4.7 2 6.7L4 29l7.5-1.9c1.9 1 4 1.6 6.5 1.6 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.9c-2.1 0-4-.6-5.7-1.7l-.4-.3-4.5 1.2 1.2-4.4-.3-.5C5.2 18.1 4.6 16.6 4.6 15c0-6.2 5.1-11.3 11.4-11.3S27.4 8.8 27.4 15 22.2 24.9 16 24.9zm6.2-7.8c-.3-.1-1.8-.9-2.1-1s-.5-.1-.7.1-.8 1-.9 1.1-.3.2-.6.1-1.1-.4-2-1.3c-.7-.7-1.3-1.5-1.4-1.8-.1-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2.1-.4 0-.5s-.7-1.7-.9-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.7.3-.2.2-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.7.1.5-.1 1.8-.7 2.1-1.4.3-.7.3-1.3.2-1.4-.1 0-.3-.1-.6-.2z" /></svg>
     </a>
 
@@ -109,26 +97,22 @@ const nav = [
           progress.style.transform = `scaleX(${ratio})`;
         };
         const closeMenu = () => {
-          menu?.classList.add('invisible', 'opacity-0', 'translate-y-[-1rem]');
-          menu?.setAttribute('aria-hidden', 'true');
+          menu?.classList.add('invisible', 'opacity-0');
           toggle?.setAttribute('aria-expanded', 'false');
           toggle?.setAttribute('aria-label', 'Buka navigasi');
-          document.body.style.overflow = '';
-        };
-        const openMenu = () => {
-          menu?.classList.remove('invisible', 'opacity-0', 'translate-y-[-1rem]');
-          menu?.setAttribute('aria-hidden', 'false');
-          toggle?.setAttribute('aria-expanded', 'true');
-          toggle?.setAttribute('aria-label', 'Tutup navigasi');
-          document.body.style.overflow = 'hidden';
         };
         setHeader();
         setProgress();
         window.addEventListener('scroll', () => { setHeader(); setProgress(); }, { passive: true });
-        toggle?.addEventListener('click', () => toggle.getAttribute('aria-expanded') === 'true' ? closeMenu() : openMenu());
+        toggle?.addEventListener('click', () => {
+          const isClosed = menu?.classList.contains('invisible');
+          menu?.classList.toggle('invisible', !isClosed);
+          menu?.classList.toggle('opacity-0', !isClosed);
+          toggle.setAttribute('aria-expanded', String(Boolean(isClosed)));
+          toggle.setAttribute('aria-label', isClosed ? 'Tutup navigasi' : 'Buka navigasi');
+        });
         menu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
         document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeMenu(); });
-
         const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
           entry.target.classList.add('is-visible');
@@ -142,10 +126,4 @@ const nav = [
 
 <style is:global>
   .site-header-scrolled { color: #17231d; border-color: rgba(23,35,29,.12); background: rgba(244,242,235,.92); backdrop-filter: blur(18px); box-shadow: 0 8px 30px rgba(23,35,29,.04); }
-  .site-header-scrolled .brand-mark { transform: scale(.9); }
-  .menu-icon span { position:absolute; left:0; width:100%; height:1.5px; background:currentColor; transition:transform .25s ease, top .25s ease; }
-  .menu-icon span:first-child { top:4px; }
-  .menu-icon span:last-child { top:11px; }
-  #mobile-menu-toggle[aria-expanded='true'] .menu-icon span:first-child { top:8px; transform:rotate(45deg); }
-  #mobile-menu-toggle[aria-expanded='true'] .menu-icon span:last-child { top:8px; transform:rotate(-45deg); }
 </style>
