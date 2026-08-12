@@ -43,18 +43,6 @@
       ]
     }
   ],
-  "rewrites": [
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
-          "value": "deckulin.jasakayuprofesional.com"
-        }
-      ],
-      "destination": "/deck-ulin"
-    }
-  ],
   "redirects": [
     {
       "source": "www.jasa-kayu-profesional.vercel.app/(.*)",
