@@ -14,83 +14,155 @@ const field = {
 };
 
 const faqs = [
-  ['Apakah ulin cocok untuk area outdoor yang kena hujan?', 'Ulin umum dipilih untuk aplikasi outdoor karena karakter kayunya padat dan tahan terhadap kondisi luar. Namun performa tetap sangat bergantung pada drainase, ventilasi bawah, fixing, jarak antar papan, dan detail pemasangan.'],
-  ['Apa yang perlu dikirim untuk estimasi awal?', 'Foto area dari beberapa sudut, ukuran kasar, lokasi proyek, kondisi lantai atau struktur eksisting, serta informasi apakah area terkena hujan langsung sudah cukup untuk membuka diskusi awal.'],
-  ['Apakah deck harus punya kemiringan?', 'Area outdoor perlu memiliki jalur air yang jelas. Kemiringan, titik drain, elevasi pintu, dan struktur bawah perlu dibaca bersama sebelum pola papan ditentukan.'],
-  ['Apakah warna ulin akan berubah?', 'Kayu outdoor akan mengalami perubahan tone karena cuaca dan paparan matahari. Finishing dan ritme maintenance sebaiknya dipilih berdasarkan tampilan aging yang memang diinginkan.'],
-  ['Bisa untuk balkon, rooftop, atau area dekat kolam?', 'Bisa dibahas, tetapi detail sistemnya tidak selalu sama. Ketinggian pintu, jalur drainase, akses maintenance, kondisi slab, dan risiko genangan perlu dibaca sebelum menentukan struktur bawah dan modul papan.'],
+  ['Apakah kayu ulin cocok untuk area outdoor yang terkena hujan?', 'Ulin sering digunakan untuk area outdoor karena kayunya padat dan tahan terhadap kondisi luar. Hasil pemasangan tetap bergantung pada rangka bawah, jalur air, ventilasi, jarak antar papan, dan sistem pengikat.'],
+  ['Apa yang perlu dikirim untuk estimasi awal?', 'Kirim foto area dari beberapa sudut, ukuran kasar, lokasi proyek, kondisi permukaan saat ini, dan informasi apakah area terkena hujan langsung atau semi outdoor.'],
+  ['Apakah deck perlu dibuat miring?', 'Area outdoor perlu memiliki arah aliran air yang jelas. Kemiringan permukaan, posisi drain, elevasi pintu, dan struktur bawah diperiksa sebelum arah papan ditentukan.'],
+  ['Apakah warna kayu ulin akan berubah?', 'Warna kayu outdoor dapat berubah karena matahari, hujan, dan pemakaian. Finishing dan jadwal perawatan disesuaikan dengan lokasi serta tampilan yang diinginkan.'],
+  ['Bisa dipasang di balkon, rooftop, atau area dekat kolam?', 'Bisa, tetapi detail pemasangannya perlu disesuaikan dengan kondisi slab, tinggi pintu, drainase, akses perawatan, dan risiko genangan di area tersebut.'],
 ];
 
 const schema = {
-  '@context': 'https://schema.org', '@graph': [
-    { '@type': 'Service', name: 'Jasa Decking Kayu Ulin', serviceType: 'Perencanaan dan pemasangan decking kayu ulin', url: 'https://deckulin.jasakayuprofesional.com/', provider: { '@type': 'Organization', name: 'Jasa Kayu Profesional', url: 'https://www.jasakayuprofesional.com/' }, areaServed: ['Jakarta','Bogor','Depok','Tangerang','Tangerang Selatan','Bekasi'].map((name) => ({ '@type': 'AdministrativeArea', name })) },
-    { '@type': 'FAQPage', mainEntity: faqs.map(([question, answer]) => ({ '@type': 'Question', name: question, acceptedAnswer: { '@type': 'Answer', text: answer } })) },
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Service',
+      name: 'Jasa Decking Kayu Ulin',
+      serviceType: 'Perencanaan dan pemasangan decking kayu ulin',
+      url: 'https://deckulin.jasakayuprofesional.com/',
+      provider: {
+        '@type': 'Organization',
+        name: 'Jasa Kayu Profesional',
+        url: 'https://www.jasakayuprofesional.com/',
+      },
+      areaServed: ['Jakarta', 'Bogor', 'Depok', 'Tangerang', 'Tangerang Selatan', 'Bekasi'].map((name) => ({
+        '@type': 'AdministrativeArea',
+        name,
+      })),
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map(([question, answer]) => ({
+        '@type': 'Question',
+        name: question,
+        acceptedAnswer: { '@type': 'Answer', text: answer },
+      })),
+    },
   ],
 };
 ---
+
 <DeckUlinLayout>
   <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 
   <section id="hero" class="relative min-h-[50rem] overflow-hidden bg-[#121a15] text-white lg:min-h-screen">
-    <Image src={heroImage} alt="Decking kayu ulin pada area outdoor di Rancamaya Bogor" width={1800} height={1200} loading="eager" fetchpriority="high" format="webp" class="absolute inset-0 h-full w-full object-cover opacity-72" />
+    <Image src={heroImage} alt="Decking kayu ulin pada area outdoor di Rancamaya Bogor" width={1800} height={1200} loading="eager" fetchpriority="high" format="webp" class="absolute inset-0 h-full w-full object-cover opacity-75" />
     <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(10,17,13,.94)_0%,rgba(10,17,13,.72)_48%,rgba(10,17,13,.24)_100%)]"></div>
     <div class="grid-lines absolute inset-0 opacity-20"></div>
     <div class="section-shell relative flex min-h-[50rem] flex-col justify-end pb-10 pt-32 lg:min-h-screen lg:pb-16">
-      <p class="section-kicker text-[#e6c88f]">Decking kayu ulin · Jabodetabek</p>
-      <h1 class="display-title mt-6 max-w-6xl text-[clamp(3.6rem,11vw,10rem)] text-white">Fokus satu hal:<br /><em>deck ulin.</em></h1>
+      <p class="section-kicker text-[#e6c88f]">Jasa Deck Ulin · Jabodetabek</p>
+      <h1 class="display-title mt-6 max-w-6xl text-[clamp(3.4rem,10vw,9rem)] text-white">Spesialis pemasangan<br /><em>deck kayu ulin.</em></h1>
       <div class="mt-8 grid gap-7 border-t border-white/20 pt-6 lg:grid-cols-[1.2fr_.8fr] lg:items-end">
-        <p class="max-w-2xl text-base leading-7 text-white/72 sm:text-lg sm:leading-8">Untuk balkon, taman, pool deck, villa, rooftop, dan area outdoor yang butuh material kayu dengan karakter kuat serta sistem pemasangan yang benar dari bawah sampai finishing.</p>
-        <div class="flex flex-col gap-3 sm:flex-row lg:justify-end"><a href="#dokumentasi" class="btn-ghost !border-white/30 !text-white hover:!bg-white hover:!text-[#17231d]">Lihat dokumentasi</a><a href={whatsappHref} target="_blank" rel="noopener noreferrer" class="btn-wood !bg-[#e6c88f] !text-[#17231d] hover:!bg-white">Konsultasi deck ulin ↗</a></div>
+        <p class="max-w-2xl text-base leading-7 text-white/72 sm:text-lg sm:leading-8">Pemasangan deck kayu ulin untuk balkon, taman, rooftop, pool deck, villa, dan area outdoor. Pekerjaan dimulai dari pengecekan kondisi lokasi, rangka bawah, drainase, sampai finishing.</p>
+        <div class="flex flex-col gap-3 sm:flex-row lg:justify-end">
+          <a href="#dokumentasi" class="btn-ghost !border-white/30 !text-white hover:!bg-white hover:!text-[#17231d]">Lihat dokumentasi</a>
+          <a href={whatsappHref} target="_blank" rel="noopener noreferrer" class="btn-wood !bg-[#e6c88f] !text-[#17231d] hover:!bg-white">Konsultasi via WhatsApp ↗</a>
+        </div>
       </div>
-      <div class="mt-10 grid gap-px border border-white/15 bg-white/15 sm:grid-cols-2 lg:grid-cols-4">{[['Material','Kayu ulin'],['Konteks','Outdoor'],['Sistem','Deck + substructure'],['Area','Jabodetabek']].map(([a,b]) => <div class="bg-[#152018]/72 p-4 backdrop-blur-sm"><p class="text-[.55rem] font-extrabold uppercase tracking-[.15em] text-white/42">{a}</p><p class="mt-2 text-sm font-bold text-white/92">{b}</p></div>)}</div>
+      <div class="mt-10 grid gap-px border border-white/15 bg-white/15 sm:grid-cols-2 lg:grid-cols-4">
+        {[
+          ['Material', 'Kayu ulin'],
+          ['Pekerjaan', 'Deck outdoor'],
+          ['Cakupan', 'Rangka sampai finishing'],
+          ['Area', 'Jabodetabek'],
+        ].map(([label, value]) => (
+          <div class="bg-[#152018]/72 p-4 backdrop-blur-sm">
+            <p class="text-[.55rem] font-extrabold uppercase tracking-[.15em] text-white/42">{label}</p>
+            <p class="mt-2 text-sm font-bold text-white/92">{value}</p>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 
   <section id="material" class="bg-[#f3f0e7] py-24 sm:py-32 lg:py-40">
     <div class="section-shell grid gap-12 lg:grid-cols-[.52fr_1.48fr]">
-      <div class="lg:sticky lg:top-28 lg:self-start"><p class="section-kicker">Material</p><p class="mt-6 max-w-xs text-sm leading-7 text-[#667068]">Ulin bukan alasan untuk mengabaikan detail. Kayu yang baik tetap bisa gagal kalau air tertahan, ventilasi buruk, atau fixing tidak sesuai.</p></div>
-      <div><h2 class="display-title text-5xl sm:text-6xl lg:text-8xl">Yang dicari bukan cuma kayu <em>keras.</em></h2><div class="mt-10 grid gap-px border border-[#17231d]/15 bg-[#17231d]/15 sm:grid-cols-2">{[
-        ['Stabilitas sistem','Dimensi papan, jarak joist, gap, fixing, dan kondisi struktur bawah dibaca sebagai satu kesatuan.'],
-        ['Jalur air','Slope, drain, arah aliran, elevasi pintu, dan area rawan genangan ditentukan sebelum layout.'],
-        ['Ventilasi bawah','Ruang di bawah deck perlu punya sirkulasi dan akses pengeringan agar kelembapan tidak terjebak terus-menerus.'],
-        ['Aging yang realistis','Warna kayu outdoor akan berubah. Finishing dipilih berdasarkan eksposur dan tampilan aging yang diinginkan.'],
-      ].map(([h,t],i) => <article class="bg-[#fffdf7] p-7 sm:p-9"><p class="text-[.58rem] font-extrabold uppercase tracking-[.15em] text-[#315443]">0{i+1}</p><h3 class="mt-6 font-serif text-4xl font-semibold tracking-[-.045em]">{h}</h3><p class="mt-5 text-sm leading-7 text-[#59645b]">{t}</p></article>)}</div></div>
+      <div class="lg:sticky lg:top-28 lg:self-start">
+        <p class="section-kicker">Material & pemasangan</p>
+        <p class="mt-6 max-w-xs text-sm leading-7 text-[#667068]">Kayu ulin kuat untuk penggunaan outdoor, tetapi pemasangan tetap harus memperhitungkan air, ventilasi, rangka bawah, dan perubahan dimensi kayu.</p>
+      </div>
+      <div>
+        <h2 class="display-title text-5xl sm:text-6xl lg:text-8xl">Deck ulin bukan cuma soal <em>pilih kayu.</em></h2>
+        <div class="mt-10 grid gap-px border border-[#17231d]/15 bg-[#17231d]/15 sm:grid-cols-2">
+          {[
+            ['Rangka bawah', 'Jarak tumpuan, elevasi, dan kondisi struktur diperiksa sebelum papan dipasang.'],
+            ['Drainase', 'Slope, posisi drain, arah aliran air, dan tinggi pintu perlu jelas sejak awal.'],
+            ['Jarak papan', 'Gap antar papan dibuat agar air dapat turun dan perubahan dimensi kayu tetap terakomodasi.'],
+            ['Finishing', 'Jenis finishing disesuaikan dengan paparan matahari, hujan, intensitas pemakaian, dan kebutuhan perawatan.'],
+          ].map(([heading, text], index) => (
+            <article class="bg-[#fffdf7] p-7 sm:p-9">
+              <p class="text-[.58rem] font-extrabold uppercase tracking-[.15em] text-[#315443]">0{index + 1}</p>
+              <h3 class="mt-6 font-serif text-4xl font-semibold tracking-[-.045em]">{heading}</h3>
+              <p class="mt-5 text-sm leading-7 text-[#59645b]">{text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
     </div>
   </section>
 
   <section id="dokumentasi" class="bg-[#151d18] py-24 text-white sm:py-32 lg:py-40">
     <div class="section-shell">
       <div class="grid gap-8 border-b border-white/15 pb-10 lg:grid-cols-[.5fr_1.5fr] lg:items-end">
-        <div><p class="section-kicker text-[#e6c88f]">Dokumentasi lapangan</p><p class="mt-6 max-w-xs text-sm leading-7 text-white/52">Bukan render dan bukan foto kontraktor lain. Di sini proses pemasangan, material, kondisi basah, sampai hasil akhir ditampilkan sebagai bukti kerja.</p></div>
-        <h2 class="display-title text-5xl sm:text-6xl lg:text-8xl">Dari rangka sampai<br /><em>kena hujan.</em></h2>
+        <div>
+          <p class="section-kicker text-[#e6c88f]">Dokumentasi pekerjaan</p>
+          <p class="mt-6 max-w-xs text-sm leading-7 text-white/52">Foto di bawah menunjukkan tahap pemasangan, kondisi material, hasil akhir, dan kondisi deck saat basah.</p>
+        </div>
+        <h2 class="display-title text-5xl sm:text-6xl lg:text-8xl">Proses pemasangan sampai<br /><em>hasil akhir.</em></h2>
       </div>
 
       <div class="mt-8 grid gap-4 lg:grid-cols-12">
         <figure class="overflow-hidden bg-white/5 lg:col-span-7">
-          <img src={field.progress} alt="Proses pemasangan decking dengan struktur bawah masih terlihat" width="337" height="600" loading="lazy" decoding="async" class="aspect-[4/3] w-full object-cover object-center sm:aspect-[16/10]" />
-          <figcaption class="flex items-center justify-between gap-4 border-t border-white/10 px-5 py-4 text-[.58rem] font-extrabold uppercase tracking-[.13em] text-white/48"><span>Proses pemasangan · substructure terbuka</span><span>01</span></figcaption>
+          <img data-deck-image data-fallback={heroImage.src} src={field.progress} alt="Proses pemasangan decking dengan struktur bawah masih terlihat" width="675" height="1200" loading="lazy" decoding="async" class="aspect-[4/3] w-full object-cover object-center sm:aspect-[16/10]" />
+          <figcaption class="flex items-center justify-between gap-4 border-t border-white/10 px-5 py-4 text-[.58rem] font-extrabold uppercase tracking-[.13em] text-white/48"><span>Proses pemasangan · rangka bawah</span><span>01</span></figcaption>
         </figure>
         <figure class="overflow-hidden bg-white/5 lg:col-span-5">
-          <img src={field.module} alt="Detail susunan modul papan decking saat pemasangan" width="450" height="600" loading="lazy" decoding="async" class="aspect-[4/3] w-full object-cover sm:aspect-[16/10] lg:aspect-[5/6]" />
-          <figcaption class="flex items-center justify-between gap-4 border-t border-white/10 px-5 py-4 text-[.58rem] font-extrabold uppercase tracking-[.13em] text-white/48"><span>Modul papan · alignment & gap</span><span>02</span></figcaption>
-        </figure>
-
-        <figure class="overflow-hidden bg-white/5 lg:col-span-4">
-          <img src={field.finished} alt="Hasil pemasangan decking kayu pada area outdoor" width="337" height="600" loading="lazy" decoding="async" class="aspect-[4/5] w-full object-cover" />
-          <figcaption class="px-5 py-4 text-[.58rem] font-extrabold uppercase tracking-[.13em] text-white/48">Hasil akhir · area outdoor</figcaption>
+          <img data-deck-image data-fallback={detailImage.src} src={field.module} alt="Detail susunan modul papan decking saat pemasangan" width="900" height="1200" loading="lazy" decoding="async" class="aspect-[4/3] w-full object-cover sm:aspect-[16/10] lg:aspect-[5/6]" />
+          <figcaption class="flex items-center justify-between gap-4 border-t border-white/10 px-5 py-4 text-[.58rem] font-extrabold uppercase tracking-[.13em] text-white/48"><span>Susunan papan · arah dan gap</span><span>02</span></figcaption>
         </figure>
         <figure class="overflow-hidden bg-white/5 lg:col-span-4">
-          <img src={field.wet} alt="Permukaan decking kayu dalam kondisi basah setelah hujan" width="320" height="480" loading="lazy" decoding="async" class="aspect-[4/5] w-full object-cover" />
+          <img data-deck-image data-fallback={detailImage.src} src={field.finished} alt="Hasil pemasangan decking kayu pada area outdoor" width="720" height="1136" loading="lazy" decoding="async" class="aspect-[4/5] w-full object-cover" />
+          <figcaption class="px-5 py-4 text-[.58rem] font-extrabold uppercase tracking-[.13em] text-white/48">Hasil pemasangan · area outdoor</figcaption>
+        </figure>
+        <figure class="overflow-hidden bg-white/5 lg:col-span-4">
+          <img data-deck-image data-fallback={heroImage.src} src={field.wet} alt="Permukaan decking kayu dalam kondisi basah setelah hujan" width="675" height="1200" loading="lazy" decoding="async" class="aspect-[4/5] w-full object-cover" />
           <figcaption class="px-5 py-4 text-[.58rem] font-extrabold uppercase tracking-[.13em] text-white/48">Kondisi basah · setelah hujan</figcaption>
         </figure>
         <figure class="overflow-hidden bg-white/5 lg:col-span-4">
-          <img src={field.material} alt="Papan kayu mentah sebelum proses machining dan finishing" width="320" height="480" loading="lazy" decoding="async" class="aspect-[4/5] w-full object-cover" />
-          <figcaption class="px-5 py-4 text-[.58rem] font-extrabold uppercase tracking-[.13em] text-white/48">Material stock · sebelum machining</figcaption>
+          <img data-deck-image data-fallback={detailImage.src} src={field.material} alt="Papan kayu sebelum proses pemasangan dan finishing" width="675" height="1200" loading="lazy" decoding="async" class="aspect-[4/5] w-full object-cover" />
+          <figcaption class="px-5 py-4 text-[.58rem] font-extrabold uppercase tracking-[.13em] text-white/48">Material · sebelum pemasangan</figcaption>
         </figure>
 
-        <div class="flex flex-col justify-between border border-white/10 p-7 sm:p-10 lg:col-span-12 lg:grid lg:grid-cols-[.7fr_1.3fr] lg:gap-12">
-          <div><p class="text-[.58rem] font-extrabold uppercase tracking-[.14em] text-[#e6c88f]">Apa yang harus kelihatan sebelum papan menutup semuanya</p><h3 class="mt-6 max-w-3xl font-serif text-4xl font-semibold tracking-[-.045em] sm:text-5xl">Deck yang rapi di atas harus punya keputusan yang rapi di bawah.</h3></div>
-          <div class="mt-10 grid gap-px border border-white/10 bg-white/10 sm:grid-cols-2 lg:mt-0">{[['01','Substructure','Jarak tumpuan dan elevasi bukan elemen tersembunyi yang boleh asal.'],['02','Module','Arah papan, panjang potong, sambungan, dan border ditentukan sebelum pemasangan masif.'],['03','Water path','Deck outdoor harus membiarkan air pergi, bukan menyembunyikan genangan di bawah papan.'],['04','Finish','Finishing dibaca bersama paparan matahari, hujan, traffic, dan maintenance.']].map(([n,h,t]) => <div class="bg-[#172019] p-5"><p class="text-[.55rem] font-extrabold uppercase tracking-[.14em] text-[#e6c88f]">{n}</p><p class="mt-4 font-serif text-2xl font-semibold">{h}</p><p class="mt-3 text-xs leading-6 text-white/48">{t}</p></div>)}</div>
+        <div class="border border-white/10 p-7 sm:p-10 lg:col-span-12">
+          <div class="grid gap-10 lg:grid-cols-[.7fr_1.3fr]">
+            <div>
+              <p class="text-[.58rem] font-extrabold uppercase tracking-[.14em] text-[#e6c88f]">Poin yang diperiksa sebelum pemasangan</p>
+              <h3 class="mt-6 max-w-3xl font-serif text-4xl font-semibold tracking-[-.045em] sm:text-5xl">Rangka, elevasi, arah papan, dan jalur air harus sudah jelas sebelum area ditutup papan deck.</h3>
+            </div>
+            <div class="grid gap-px border border-white/10 bg-white/10 sm:grid-cols-2">
+              {[
+                ['01', 'Rangka', 'Jarak tumpuan dan elevasi dibuat konsisten sesuai kondisi area.'],
+                ['02', 'Layout papan', 'Arah papan, sambungan, border, dan titik potong ditentukan sebelum pemasangan penuh.'],
+                ['03', 'Jalur air', 'Air harus tetap bisa menuju drain tanpa tertahan di bawah deck.'],
+                ['04', 'Finishing', 'Permukaan akhir disesuaikan dengan paparan cuaca dan kebutuhan perawatan.'],
+              ].map(([number, heading, text]) => (
+                <div class="bg-[#172019] p-5">
+                  <p class="text-[.55rem] font-extrabold uppercase tracking-[.14em] text-[#e6c88f]">{number}</p>
+                  <p class="mt-4 font-serif text-2xl font-semibold">{heading}</p>
+                  <p class="mt-3 text-xs leading-6 text-white/48">{text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -98,30 +170,137 @@ const schema = {
 
   <section id="proyek" class="overflow-hidden bg-[#e1d6c3] py-24 sm:py-32 lg:py-40">
     <div class="section-shell grid gap-12 lg:grid-cols-[1.05fr_.95fr] lg:items-center">
-      <div class="overflow-hidden bg-[#cfc0a8]"><Image src={detailImage} alt="Detail deck kayu ulin Rancamaya Bogor" width={1400} height={1100} loading="lazy" format="webp" class="aspect-[4/3] w-full object-cover lg:aspect-[4/5]" /></div>
-      <div class="lg:pl-6"><p class="section-kicker">Project proof</p><p class="mt-6 text-[.6rem] font-extrabold uppercase tracking-[.15em] text-[#727b73]">Rancamaya · Bogor</p><h2 class="display-title mt-4 text-5xl sm:text-6xl lg:text-8xl">Deck ulin untuk area outdoor yang benar-benar <em>dipakai.</em></h2><p class="mt-7 max-w-xl text-sm leading-7 text-[#59645b]">Dokumentasi proyek Rancamaya jadi salah satu acuan utama subdomain ini. Fokusnya bukan katalog kayu, tapi bagaimana material diterjemahkan ke layout, sambungan, struktur bawah, detail tepi, dan kondisi outdoor nyata.</p><a href="https://www.jasakayuprofesional.com/portfolio/deck-ulin-rancamaya-bogor" class="group mt-8 flex max-w-sm items-center justify-between border-b border-[#17231d]/20 pb-3 text-[.66rem] font-extrabold uppercase tracking-[.13em] text-[#315443]">Lihat project dossier <span class="text-xl transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">↗</span></a></div>
+      <div class="overflow-hidden bg-[#cfc0a8]">
+        <Image src={detailImage} alt="Detail deck kayu ulin Rancamaya Bogor" width={1400} height={1100} loading="lazy" format="webp" class="aspect-[4/3] w-full object-cover lg:aspect-[4/5]" />
+      </div>
+      <div class="lg:pl-6">
+        <p class="section-kicker">Proyek Rancamaya</p>
+        <p class="mt-6 text-[.6rem] font-extrabold uppercase tracking-[.15em] text-[#727b73]">Rancamaya · Bogor</p>
+        <h2 class="display-title mt-4 text-5xl sm:text-6xl lg:text-8xl">Contoh pekerjaan <em>deck kayu ulin.</em></h2>
+        <p class="mt-7 max-w-xl text-sm leading-7 text-[#59645b]">Dokumentasi proyek ini menunjukkan bagaimana papan, sambungan, detail tepi, dan struktur bawah diterapkan pada area outdoor yang digunakan sehari-hari.</p>
+        <a href="https://www.jasakayuprofesional.com/portfolio/deck-ulin-rancamaya-bogor" class="group mt-8 flex max-w-sm items-center justify-between border-b border-[#17231d]/20 pb-3 text-[.66rem] font-extrabold uppercase tracking-[.13em] text-[#315443]">Lihat detail proyek <span class="text-xl transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">↗</span></a>
+      </div>
     </div>
   </section>
 
   <section class="bg-[#f3f0e7] py-24 sm:py-32 lg:py-40">
     <div class="section-shell grid gap-10 lg:grid-cols-[.95fr_1.05fr] lg:items-center">
-      <div class="order-2 lg:order-1"><p class="section-kicker">Outdoor berarti basah</p><h2 class="display-title mt-6 text-5xl sm:text-6xl lg:text-8xl">Jangan desain deck seolah-olah <em>hujan tidak ada.</em></h2><p class="mt-7 max-w-xl text-sm leading-7 text-[#59645b]">Dokumentasi kondisi basah justru penting untuk membaca apakah air punya jalur keluar, apakah ada area rawan genangan, dan apakah detail tepi tetap masuk akal setelah hujan. Di Indonesia, ini bukan kondisi ekstrem—ini kondisi kerja normal.</p><div class="mt-8 grid gap-4 sm:grid-cols-3">{[['Slope','Arah aliran air harus jelas.'],['Gap','Jarak papan membantu drainase dan perubahan dimensi.'],['Access','Area tertentu perlu tetap bisa dicek dan dirawat.']].map(([h,t]) => <div class="border-t border-[#17231d]/20 pt-4"><p class="font-serif text-2xl font-semibold">{h}</p><p class="mt-2 text-xs leading-6 text-[#667068]">{t}</p></div>)}</div></div>
-      <figure class="order-1 overflow-hidden bg-[#d7cbb8] lg:order-2"><img src={field.wet} alt="Dokumentasi permukaan deck kayu dalam kondisi basah setelah hujan" width="320" height="480" loading="lazy" decoding="async" class="aspect-[4/3] w-full object-cover lg:aspect-[4/5]" /><figcaption class="px-5 py-4 text-[.55rem] font-extrabold uppercase tracking-[.13em] text-[#677168]">Dokumentasi lapangan · kondisi basah setelah hujan</figcaption></figure>
+      <div class="order-2 lg:order-1">
+        <p class="section-kicker">Drainase outdoor</p>
+        <h2 class="display-title mt-6 text-5xl sm:text-6xl lg:text-8xl">Deck outdoor harus siap <em>terkena hujan.</em></h2>
+        <p class="mt-7 max-w-xl text-sm leading-7 text-[#59645b]">Slope, gap antar papan, posisi drain, dan ventilasi bawah diperiksa supaya air tidak tertahan. Kondisi setelah hujan juga menjadi bagian penting saat mengevaluasi pemasangan deck outdoor.</p>
+        <div class="mt-8 grid gap-4 sm:grid-cols-3">
+          {[
+            ['Slope', 'Arah aliran air dibuat jelas menuju titik pembuangan.'],
+            ['Gap', 'Jarak antar papan membantu air turun dan memberi ruang perubahan dimensi kayu.'],
+            ['Akses', 'Bagian tertentu tetap perlu dapat diperiksa dan dirawat.'],
+          ].map(([heading, text]) => (
+            <div class="border-t border-[#17231d]/20 pt-4">
+              <p class="font-serif text-2xl font-semibold">{heading}</p>
+              <p class="mt-2 text-xs leading-6 text-[#667068]">{text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <figure class="order-1 overflow-hidden bg-[#d7cbb8] lg:order-2">
+        <img data-deck-image data-fallback={heroImage.src} src={field.wet} alt="Dokumentasi permukaan deck kayu dalam kondisi basah setelah hujan" width="675" height="1200" loading="lazy" decoding="async" class="aspect-[4/3] w-full object-cover lg:aspect-[4/5]" />
+        <figcaption class="px-5 py-4 text-[.55rem] font-extrabold uppercase tracking-[.13em] text-[#677168]">Dokumentasi kondisi deck setelah hujan</figcaption>
+      </figure>
     </div>
   </section>
 
   <section id="sistem" class="bg-[#101712] py-24 text-white sm:py-32 lg:py-40">
-    <div class="section-shell"><div class="grid gap-10 border-b border-white/15 pb-10 lg:grid-cols-[.52fr_1.48fr] lg:items-end"><p class="section-kicker text-[#e6c88f]">Sistem deck</p><h2 class="display-title text-5xl sm:text-6xl lg:text-8xl">Yang terlihat cuma papan atas.<br /><em>Yang menentukan umur kerja ada di bawahnya.</em></h2></div><div class="mt-4">{[
-      ['01','Survey area','Cek slope, drain, elevasi, akses, existing finish, struktur, dan titik pertemuan dengan pintu atau dinding.'],
-      ['02','Set module','Tentukan arah papan, panjang modul, gap, border, posisi sambungan, jarak joist, dan detail tepi.'],
-      ['03','Build substructure','Siapkan joist, spacer, elevasi, dan titik tumpu yang konsisten sambil menjaga jalur air serta ventilasi.'],
-      ['04','Install & finish','Papan dipasang dengan fixing terkontrol lalu diperiksa alignment, gap, tepi, permukaan, dan kesiapan maintenance.'],
-    ].map(([n,h,t]) => <div class="grid gap-4 border-b border-white/15 py-7 sm:grid-cols-[4rem_.7fr_1.3fr]"><span class="text-[.6rem] font-extrabold uppercase tracking-[.15em] text-[#e6c88f]">{n}</span><h3 class="font-serif text-3xl font-semibold tracking-[-.04em] sm:text-4xl">{h}</h3><p class="max-w-2xl text-sm leading-7 text-white/58">{t}</p></div>)}</div></div>
+    <div class="section-shell">
+      <div class="grid gap-10 border-b border-white/15 pb-10 lg:grid-cols-[.52fr_1.48fr] lg:items-end">
+        <p class="section-kicker text-[#e6c88f]">Urutan pekerjaan</p>
+        <h2 class="display-title text-5xl sm:text-6xl lg:text-8xl">Pemasangan dimulai dari kondisi lokasi,<br /><em>bukan langsung pasang papan.</em></h2>
+      </div>
+      <div class="mt-4">
+        {[
+          ['01', 'Survey lokasi', 'Periksa slope, drain, elevasi, akses, permukaan existing, struktur, dan pertemuan dengan pintu atau dinding.'],
+          ['02', 'Tentukan layout', 'Tentukan arah papan, panjang modul, gap, border, sambungan, jarak rangka, dan detail tepi.'],
+          ['03', 'Pasang rangka bawah', 'Atur joist, spacer, elevasi, dan titik tumpu sambil mempertahankan jalur air serta ventilasi.'],
+          ['04', 'Pasang papan & finishing', 'Pasang papan, cek alignment dan gap, rapikan tepi, lalu lakukan finishing sesuai kebutuhan area.'],
+        ].map(([number, heading, text]) => (
+          <div class="grid gap-4 border-b border-white/15 py-7 sm:grid-cols-[4rem_.7fr_1.3fr]">
+            <span class="text-[.6rem] font-extrabold uppercase tracking-[.15em] text-[#e6c88f]">{number}</span>
+            <h3 class="font-serif text-3xl font-semibold tracking-[-.04em] sm:text-4xl">{heading}</h3>
+            <p class="max-w-2xl text-sm leading-7 text-white/58">{text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
   </section>
 
-  <section class="bg-[#f3f0e7] py-24 sm:py-32"><div class="section-shell"><div class="grid gap-10 lg:grid-cols-[.52fr_1.48fr]"><div><p class="section-kicker">Sebelum estimasi</p><p class="mt-6 max-w-xs text-sm leading-7 text-[#667068]">Empat data ini bikin diskusi awal jauh lebih cepat.</p></div><div class="grid gap-px border border-[#17231d]/15 bg-[#17231d]/15 sm:grid-cols-2 lg:grid-cols-4">{[['01','Foto area','Beberapa sudut termasuk drain, pintu, dinding, dan existing surface.'],['02','Ukuran kasar','Panjang × lebar atau luasan perkiraan sudah cukup untuk tahap awal.'],['03','Lokasi','Kota/area dan catatan akses proyek bila ada.'],['04','Eksposur','Kena hujan langsung, semi outdoor, rooftop, poolside, atau area teduh.']].map(([n,h,t]) => <div class="bg-[#fffdf7] p-7"><p class="text-[.58rem] font-extrabold uppercase tracking-[.15em] text-[#315443]">{n}</p><h3 class="mt-6 font-serif text-3xl font-semibold tracking-[-.04em]">{h}</h3><p class="mt-4 text-sm leading-7 text-[#59645b]">{t}</p></div>)}</div></div></div></section>
+  <section class="bg-[#f3f0e7] py-24 sm:py-32">
+    <div class="section-shell">
+      <div class="grid gap-10 lg:grid-cols-[.52fr_1.48fr]">
+        <div>
+          <p class="section-kicker">Untuk estimasi awal</p>
+          <p class="mt-6 max-w-xs text-sm leading-7 text-[#667068]">Empat informasi ini sudah cukup untuk memulai pengecekan awal.</p>
+        </div>
+        <div class="grid gap-px border border-[#17231d]/15 bg-[#17231d]/15 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            ['01', 'Foto area', 'Kirim beberapa sudut, termasuk drain, pintu, dinding, dan permukaan yang ada.'],
+            ['02', 'Ukuran kasar', 'Panjang × lebar atau perkiraan luas area.'],
+            ['03', 'Lokasi proyek', 'Sebutkan kota atau area proyek dan kondisi akses bila ada.'],
+            ['04', 'Kondisi area', 'Informasikan apakah area terkena hujan langsung, semi outdoor, rooftop, atau dekat kolam.'],
+          ].map(([number, heading, text]) => (
+            <div class="bg-[#fffdf7] p-7">
+              <p class="text-[.58rem] font-extrabold uppercase tracking-[.15em] text-[#315443]">{number}</p>
+              <h3 class="mt-6 font-serif text-3xl font-semibold tracking-[-.04em]">{heading}</h3>
+              <p class="mt-4 text-sm leading-7 text-[#59645b]">{text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <section id="faq" class="bg-[#fffdf7] py-24 sm:py-32"><div class="section-shell max-w-5xl"><div class="grid gap-8 border-b border-[#17231d]/15 pb-8 sm:grid-cols-[.45fr_1.55fr] sm:items-end"><p class="section-kicker">FAQ</p><h2 class="display-title text-5xl sm:text-6xl">Pertanyaan sebelum bikin <em>deck ulin.</em></h2></div><div class="divide-y divide-[#17231d]/15 border-b border-[#17231d]/15">{faqs.map(([q,a]) => <details class="group py-6"><summary class="flex cursor-pointer list-none items-center justify-between gap-5 font-serif text-2xl font-semibold tracking-[-.03em] sm:text-3xl"><span>{q}</span><span class="text-3xl font-normal text-[#315443] transition group-open:rotate-45">+</span></summary><p class="mt-4 max-w-2xl text-sm leading-7 text-[#59645b]">{a}</p></details>)}</div></div></section>
+  <section id="faq" class="bg-[#fffdf7] py-24 sm:py-32">
+    <div class="section-shell max-w-5xl">
+      <div class="grid gap-8 border-b border-[#17231d]/15 pb-8 sm:grid-cols-[.45fr_1.55fr] sm:items-end">
+        <p class="section-kicker">FAQ</p>
+        <h2 class="display-title text-5xl sm:text-6xl">Pertanyaan tentang <em>deck kayu ulin.</em></h2>
+      </div>
+      <div class="divide-y divide-[#17231d]/15 border-b border-[#17231d]/15">
+        {faqs.map(([question, answer]) => (
+          <details class="group py-6">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-5 font-serif text-2xl font-semibold tracking-[-.03em] sm:text-3xl">
+              <span>{question}</span>
+              <span class="text-3xl font-normal text-[#315443] transition group-open:rotate-45">+</span>
+            </summary>
+            <p class="mt-4 max-w-2xl text-sm leading-7 text-[#59645b]">{answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
 
-  <section class="bg-[#8b613a] py-20 text-white sm:py-28"><div class="section-shell grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end"><div><p class="text-[.62rem] font-extrabold uppercase tracking-[.15em] text-white/55">Mulai dari kondisi proyek</p><h2 class="display-title mt-5 max-w-5xl text-5xl sm:text-6xl lg:text-8xl">Kirim foto area.<br /><em>Kita baca sistem deck-nya.</em></h2><p class="mt-6 max-w-2xl text-sm leading-7 text-white/70">Tidak perlu spesifikasi lengkap. Foto, ukuran kasar, lokasi, dan kondisi eksposur sudah cukup untuk percakapan awal.</p></div><div class="flex flex-col gap-3 sm:flex-row lg:flex-col"><a href={whatsappHref} target="_blank" rel="noopener noreferrer" class="btn-wood !bg-white !text-[#17231d]">WhatsApp ↗</a><a href="mailto:alimruswandi@gmail.com" class="btn-ghost !border-white/35 !text-white hover:!bg-white hover:!text-[#17231d]">Email ↗</a></div></div></section>
+  <section class="bg-[#8b613a] py-20 text-white sm:py-28">
+    <div class="section-shell grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+      <div>
+        <p class="text-[.62rem] font-extrabold uppercase tracking-[.15em] text-white/55">Konsultasi awal</p>
+        <h2 class="display-title mt-5 max-w-5xl text-5xl sm:text-6xl lg:text-8xl">Kirim foto area dan ukuran kasar.<br /><em>Kami cek kebutuhan pemasangannya.</em></h2>
+        <p class="mt-6 max-w-2xl text-sm leading-7 text-white/70">Sertakan lokasi proyek dan kondisi area. Dari informasi tersebut kami bisa memberikan arahan awal sebelum survey atau estimasi lebih lanjut.</p>
+      </div>
+      <div class="flex flex-col gap-3 sm:flex-row lg:flex-col">
+        <a href={whatsappHref} target="_blank" rel="noopener noreferrer" class="btn-wood !bg-white !text-[#17231d]">WhatsApp ↗</a>
+        <a href="mailto:alimruswandi@gmail.com" class="btn-ghost !border-white/35 !text-white hover:!bg-white hover:!text-[#17231d]">Email ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    document.querySelectorAll('[data-deck-image]').forEach((image) => {
+      const fallback = image.getAttribute('data-fallback');
+      const applyFallback = () => {
+        if (fallback && image.getAttribute('src') !== fallback) {
+          image.setAttribute('src', fallback);
+        }
+      };
+      image.addEventListener('error', applyFallback, { once: true });
+      if (image.complete && image.naturalWidth === 0) applyFallback();
+    });
+  </script>
 </DeckUlinLayout>
