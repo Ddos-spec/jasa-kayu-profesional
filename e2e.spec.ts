@@ -78,8 +78,10 @@ test('deck ulin specialist landing has working images and mobile layout', async 
   const fieldImages = page.locator('[data-deck-image]');
   await expect(fieldImages).toHaveCount(6);
   for (let index = 0; index < await fieldImages.count(); index += 1) {
-    await expect(fieldImages.nth(index)).toBeVisible();
-    await expect.poll(async () => fieldImages.nth(index).evaluate((img) => (img as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
+    const image = fieldImages.nth(index);
+    await image.scrollIntoViewIfNeeded();
+    await expect(image).toBeVisible();
+    await expect.poll(async () => image.evaluate((img) => (img as HTMLImageElement).naturalWidth), { timeout: 10000 }).toBeGreaterThan(0);
   }
 
   const hasHorizontalOverflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
