@@ -64,16 +64,26 @@ test('premium service pages render their specialized systems', async ({ page }) 
   await expect(page.getByRole('link', { name: /Lihat project dossier/i })).toBeVisible();
 });
 
-test('deck ulin specialist landing stays focused and mobile usable', async ({ page }) => {
+test('deck ulin specialist landing has working images and mobile layout', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/deck-ulin');
   await expect(page).toHaveTitle(/Deck Ulin/);
-  await expect(page.getByRole('heading', { level: 1 })).toContainText(/Fokus satu hal:\s*deck ulin/i);
+  await expect(page.getByRole('heading', { level: 1 })).toContainText(/Spesialis pemasangan\s*deck kayu ulin/i);
   await expect(page.getByRole('navigation', { name: 'Navigasi Deck Ulin' })).toBeHidden();
-  await expect(page.getByText('Project proof')).toBeVisible();
-  await expect(page.locator('#sistem').getByText('Sistem deck', { exact: true })).toBeVisible();
-  await expect(page.locator('#hero').getByRole('link', { name: /Konsultasi deck ulin/i })).toBeVisible();
+  await expect(page.getByText('Proyek Rancamaya')).toBeVisible();
+  await expect(page.locator('#sistem').getByText('Urutan pekerjaan', { exact: true })).toBeVisible();
+  await expect(page.locator('#hero').getByRole('link', { name: /Konsultasi via WhatsApp/i })).toBeVisible();
   await expect(page.locator('script[type="application/ld+json"]')).not.toHaveCount(0);
+
+  const fieldImages = page.locator('[data-deck-image]');
+  await expect(fieldImages).toHaveCount(6);
+  for (let index = 0; index < await fieldImages.count(); index += 1) {
+    await expect(fieldImages.nth(index)).toBeVisible();
+    await expect.poll(async () => fieldImages.nth(index).evaluate((img) => (img as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
+  }
+
+  const hasHorizontalOverflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
+  expect(hasHorizontalOverflow).toBe(false);
 });
 
 test('journal hub and article remain crawlable', async ({ page }) => {
