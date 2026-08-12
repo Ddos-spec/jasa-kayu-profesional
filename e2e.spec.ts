@@ -64,16 +64,31 @@ test('premium service pages render their specialized systems', async ({ page }) 
   await expect(page.getByRole('link', { name: /Lihat project dossier/i })).toBeVisible();
 });
 
-test('deck ulin specialist landing has visible image pixels and mobile layout', async ({ page }) => {
+test('deck ulin specialist landing has visible images, practical copy, and mobile conversion', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/deck-ulin');
-  await expect(page).toHaveTitle(/Deck Ulin/);
+  await expect(page).toHaveTitle(/Jasa Deck Ulin/);
   await expect(page.getByRole('heading', { level: 1 })).toContainText(/Spesialis pemasangan\s*deck kayu ulin/i);
   await expect(page.getByRole('navigation', { name: 'Navigasi Deck Ulin' })).toBeHidden();
-  await expect(page.getByText('Proyek Rancamaya')).toBeVisible();
+  await expect(page.getByText('Dokumentasi proyek ulin')).toBeVisible();
+  await expect(page.getByText(/Deck Ulin Rancamaya/i).first()).toBeVisible();
   await expect(page.locator('#sistem').getByText('Urutan pekerjaan', { exact: true })).toBeVisible();
-  await expect(page.locator('#hero').getByRole('link', { name: /Konsultasi via WhatsApp/i })).toBeVisible();
+  await expect(page.locator('#estimasi')).toContainText('Kirim empat informasi ini');
+  await expect(page.locator('#hero').getByRole('link', { name: /Kirim foto area/i })).toBeVisible();
+  await expect(page.getByRole('link', { name: /Kirim foto via WA/i })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Telepon' })).toBeVisible();
   await expect(page.locator('script[type="application/ld+json"]')).not.toHaveCount(0);
+
+  const bodyText = (await page.locator('body').innerText()).toLowerCase();
+  const forbiddenPhrases = [
+    'fokus satu hal',
+    'project proof',
+    'lapangan, bukan render',
+    'kita baca sistem',
+    'lebih dari sekadar',
+    'bukan sekadar estetika',
+  ];
+  for (const phrase of forbiddenPhrases) expect(bodyText).not.toContain(phrase);
 
   const deckImages = page.locator('[data-deck-image]');
   await expect(deckImages).toHaveCount(6);
