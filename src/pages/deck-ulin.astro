@@ -11,6 +11,7 @@ const whatsappHref = 'https://wa.me/6281283135295?text=Halo%20Jasa%20Kayu%20Prof
 
 const faqs = [
   ['Apakah kayu ulin cocok untuk area outdoor yang terkena hujan?', 'Ulin sering digunakan untuk area outdoor karena kayunya padat dan tahan terhadap kondisi luar. Hasil pemasangan tetap bergantung pada rangka bawah, jalur air, ventilasi, jarak antar papan, dan sistem pengikat.'],
+  ['Berapa harga pemasangan deck kayu ulin per meter?', 'Kami tidak memakai satu angka untuk semua lokasi. Estimasi dipengaruhi dimensi dan kualitas material, luas area, kebutuhan rangka bawah, kondisi slab, akses proyek, pola pemasangan, detail tepi, serta finishing. Kirim foto, ukuran kasar, dan lokasi untuk estimasi awal yang lebih masuk akal.'],
   ['Apa yang perlu dikirim untuk estimasi awal?', 'Kirim foto area dari beberapa sudut, ukuran kasar, lokasi proyek, kondisi permukaan saat ini, dan informasi apakah area terkena hujan langsung atau semi outdoor.'],
   ['Apakah deck perlu dibuat miring?', 'Area outdoor perlu memiliki arah aliran air yang jelas. Kemiringan permukaan, posisi drain, elevasi pintu, dan struktur bawah diperiksa sebelum arah papan ditentukan.'],
   ['Apakah warna kayu ulin akan berubah?', 'Warna kayu outdoor dapat berubah karena matahari, hujan, dan pemakaian. Finishing dan jadwal perawatan disesuaikan dengan lokasi serta tampilan yang diinginkan.'],
@@ -23,12 +24,15 @@ const schema = {
     {
       '@type': 'Service',
       name: 'Jasa Decking Kayu Ulin',
+      description: 'Survey, perencanaan, pemasangan rangka bawah, decking kayu ulin, finishing, dan pengecekan area outdoor di Jabodetabek.',
       serviceType: 'Perencanaan dan pemasangan decking kayu ulin',
       url: 'https://deckulin.jasakayuprofesional.com/',
       provider: {
         '@type': 'Organization',
         name: 'Jasa Kayu Profesional',
         url: 'https://www.jasakayuprofesional.com/',
+        email: 'alimruswandi@gmail.com',
+        telephone: '+6281283135295',
       },
       areaServed: ['Jakarta', 'Bogor', 'Depok', 'Tangerang', 'Tangerang Selatan', 'Bekasi'].map((name) => ({
         '@type': 'AdministrativeArea',
@@ -67,7 +71,7 @@ const schema = {
           <a href={whatsappHref} target="_blank" rel="noopener noreferrer" class="btn-wood !bg-[#e6c88f] !text-[#17231d] hover:!bg-white">Kirim foto area ↗</a>
         </div>
       </div>
-      <div class="mt-8 grid gap-px border border-white/15 bg-white/15 grid-cols-2 lg:grid-cols-4">
+      <div class="mt-8 grid grid-cols-2 gap-px border border-white/15 bg-white/15 lg:grid-cols-4">
         {[
           ['Material', 'Kayu ulin'],
           ['Pekerjaan', 'Deck outdoor'],
@@ -231,6 +235,29 @@ const schema = {
     </div>
   </section>
 
+  <section id="biaya" class="bg-[#fffdf7] py-20 sm:py-28 lg:py-32">
+    <div class="section-shell grid gap-10 lg:grid-cols-[.48fr_1.52fr]">
+      <div>
+        <p class="section-kicker">Faktor biaya</p>
+        <h2 class="display-title mt-6 max-w-md text-5xl sm:text-6xl">Harga tidak ditentukan dari luas saja.</h2>
+        <p class="mt-6 max-w-sm text-sm leading-7 text-[#667068]">Dua area dengan ukuran sama bisa membutuhkan pekerjaan berbeda. Karena itu estimasi awal perlu melihat kondisi lokasi dan detail pemasangannya.</p>
+      </div>
+      <div class="grid gap-px border border-[#17231d]/15 bg-[#17231d]/15 sm:grid-cols-2">
+        {[
+          ['Material', 'Dimensi papan, pilihan material, jumlah kebutuhan, dan waste dari pola potongan.'],
+          ['Rangka bawah', 'Kebutuhan joist, spacer, leveling, serta kondisi permukaan existing.'],
+          ['Detail area', 'Banyak sudut, border, tangga kecil, drain, pintu, potongan, atau pertemuan dengan dinding.'],
+          ['Akses & finishing', 'Akses angkut material, lokasi kerja, jenis finishing, dan pekerjaan akhir yang dibutuhkan.'],
+        ].map(([heading, text]) => (
+          <div class="bg-[#f3f0e7] p-6 sm:p-8">
+            <h3 class="font-serif text-3xl font-semibold tracking-[-.04em]">{heading}</h3>
+            <p class="mt-4 text-sm leading-7 text-[#59645b]">{text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <section id="estimasi" class="bg-[#e1d6c3] py-20 sm:py-28">
     <div class="section-shell grid gap-10 lg:grid-cols-[.48fr_1.52fr]">
       <div>
@@ -248,6 +275,28 @@ const schema = {
             <p class="text-[.58rem] font-extrabold uppercase tracking-[.15em] text-[#315443]">{number}</p>
             <h3 class="mt-5 font-serif text-3xl font-semibold tracking-[-.04em]">{heading}</h3>
             <p class="mt-4 text-sm leading-7 text-[#59645b]">{text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="perawatan" class="bg-[#f3f0e7] py-20 sm:py-28">
+    <div class="section-shell grid gap-10 lg:grid-cols-[.48fr_1.52fr]">
+      <div>
+        <p class="section-kicker">Setelah terpasang</p>
+        <h2 class="display-title mt-6 max-w-md text-5xl sm:text-6xl">Perawatan deck outdoor tetap perlu.</h2>
+      </div>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {[
+          ['Bersihkan permukaan', 'Buang daun, debu, dan kotoran yang menahan lembap di permukaan atau sela papan.'],
+          ['Jaga drainase', 'Pastikan titik drain dan jalur air tidak tertutup kotoran atau benda lain.'],
+          ['Cek pengikat', 'Periksa area yang terasa bergerak, berbunyi, atau memiliki pengikat yang perlu dirapikan.'],
+          ['Perbarui finishing', 'Waktu recoating mengikuti paparan cuaca, kondisi warna, dan jenis finishing yang digunakan.'],
+        ].map(([heading, text]) => (
+          <div class="border-t border-[#17231d]/20 pt-5">
+            <h3 class="font-serif text-2xl font-semibold">{heading}</h3>
+            <p class="mt-3 text-sm leading-7 text-[#667068]">{text}</p>
           </div>
         ))}
       </div>
