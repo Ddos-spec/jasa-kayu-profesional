@@ -71,7 +71,7 @@ test('deck ulin specialist landing stays focused and mobile usable', async ({ pa
   await expect(page.getByRole('heading', { level: 1 })).toContainText(/Fokus satu hal:\s*deck ulin/i);
   await expect(page.getByRole('navigation', { name: 'Navigasi Deck Ulin' })).toBeHidden();
   await expect(page.getByText('Project proof')).toBeVisible();
-  await expect(page.getByText('Sistem deck')).toBeVisible();
+  await expect(page.locator('#sistem').getByText('Sistem deck', { exact: true })).toBeVisible();
   await expect(page.getByRole('link', { name: /Konsultasi deck ulin/i })).toBeVisible();
   await expect(page.locator('script[type="application/ld+json"]')).not.toHaveCount(0);
 });
