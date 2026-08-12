@@ -3,12 +3,14 @@ import '../styles/global.css';
 import SEO from '../components/SEO.astro';
 import GoogleAnalytics from '../components/analytics/GoogleAnalytics.astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
+import heroSocial from '../assets/images/portfolio/deck-ulin-rancamaya-bogor/deck-ulin-rancamaya-bogor-1.jpg';
 
+const defaultSocialImage = new URL(heroSocial.src, 'https://deckulin.jasakayuprofesional.com').href;
 const {
-  title = 'Deck Ulin Jabodetabek | Jasa Kayu Profesional',
+  title = 'Jasa Deck Ulin Jabodetabek | Jasa Kayu Profesional',
   description = 'Jasa pemasangan deck kayu ulin untuk balkon, taman, rooftop, pool deck, villa, dan area outdoor di Jabodetabek.',
   canonical = 'https://deckulin.jasakayuprofesional.com/',
-  image = '/images/portfolio/deck-ulin-rancamaya-bogor/deck-ulin-rancamaya-bogor-1.jpg',
+  image = defaultSocialImage,
 } = Astro.props;
 
 const whatsappHref = 'https://wa.me/6281283135295?text=Halo%20Jasa%20Kayu%20Profesional%2C%20saya%20ingin%20konsultasi%20deck%20ulin.';
@@ -27,26 +29,28 @@ const whatsappHref = 'https://wa.me/6281283135295?text=Halo%20Jasa%20Kayu%20Prof
     <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" /></noscript>
     <GoogleAnalytics />
   </head>
-  <body class="min-h-screen bg-[#f3f0e7] text-[#17231d]">
+  <body class="min-h-screen bg-[#f3f0e7] pb-20 text-[#17231d] md:pb-0">
     <SpeedInsights />
     <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:bg-white focus:px-4 focus:py-3">Lewati ke konten</a>
 
     <header id="deck-header" class="fixed inset-x-0 top-0 z-50 border-b border-white/15 text-white transition duration-300">
-      <div class="section-shell flex min-h-[4.75rem] items-center justify-between gap-4">
-        <a href="#hero" class="inline-flex items-center gap-3" aria-label="Deck Ulin, ke bagian atas">
-          <img src="/icons/wmremove-transformed.ico" alt="" width="42" height="42" class="h-10 w-10 object-contain" aria-hidden="true" />
-          <span class="leading-none">
-            <span class="block font-serif text-xl font-semibold tracking-[-.04em]">Deck Ulin</span>
-            <span class="mt-1 block text-[.54rem] font-extrabold uppercase tracking-[.16em] text-current/65">Jasa Kayu Profesional</span>
+      <div class="section-shell flex min-h-[4.75rem] items-center justify-between gap-3">
+        <a href="#hero" class="inline-flex min-w-0 items-center gap-3" aria-label="Deck Ulin, ke bagian atas">
+          <img src="/icons/wmremove-transformed.ico" alt="" width="42" height="42" class="h-10 w-10 shrink-0 object-contain" aria-hidden="true" />
+          <span class="min-w-0 leading-none">
+            <span class="block truncate font-serif text-lg font-semibold tracking-[-.04em] sm:text-xl">Deck Ulin</span>
+            <span class="mt-1 hidden text-[.54rem] font-extrabold uppercase tracking-[.16em] text-current/65 sm:block">Jasa Kayu Profesional</span>
           </span>
         </a>
         <nav class="hidden items-center gap-6 text-[.62rem] font-extrabold uppercase tracking-[.12em] md:flex" aria-label="Navigasi Deck Ulin">
-          <a href="#material" class="hover:opacity-65">Material</a>
-          <a href="#dokumentasi" class="hover:opacity-65">Dokumentasi</a>
+          <a href="#material" class="hover:opacity-65">Yang dicek</a>
+          <a href="#proyek" class="hover:opacity-65">Proyek</a>
           <a href="#sistem" class="hover:opacity-65">Proses</a>
           <a href="#faq" class="hover:opacity-65">FAQ</a>
         </nav>
-        <a href={whatsappHref} target="_blank" rel="noopener noreferrer" class="inline-flex min-h-10 items-center rounded-full border border-current/30 px-4 text-[.6rem] font-extrabold uppercase tracking-[.1em] transition hover:bg-white hover:text-[#17231d]">WhatsApp <span class="ml-2" aria-hidden="true">↗</span></a>
+        <a href={whatsappHref} target="_blank" rel="noopener noreferrer" class="inline-flex min-h-10 shrink-0 items-center rounded-full border border-current/30 px-3 text-[.6rem] font-extrabold uppercase tracking-[.1em] transition hover:bg-white hover:text-[#17231d] sm:px-4">
+          <span class="sm:hidden">WA</span><span class="hidden sm:inline">WhatsApp</span><span class="ml-2" aria-hidden="true">↗</span>
+        </a>
       </div>
     </header>
 
@@ -66,7 +70,12 @@ const whatsappHref = 'https://wa.me/6281283135295?text=Halo%20Jasa%20Kayu%20Prof
       <div class="border-t border-white/10"><div class="section-shell py-5 text-[.6rem] font-bold uppercase tracking-[.11em] text-white/35">© {new Date().getFullYear()} Jasa Kayu Profesional · Deck Ulin</div></div>
     </footer>
 
-    <a href={whatsappHref} target="_blank" rel="noopener noreferrer" aria-label="Konsultasi Deck Ulin via WhatsApp" class="fixed bottom-5 right-5 z-40 inline-flex h-14 w-14 items-center justify-center rounded-full bg-[#1f6045] text-white shadow-[0_10px_30px_rgba(0,0,0,.25)] transition hover:scale-105">
+    <div class="fixed inset-x-3 bottom-3 z-40 grid grid-cols-[1.25fr_.75fr] gap-2 md:hidden" aria-label="Kontak cepat Deck Ulin">
+      <a href={whatsappHref} target="_blank" rel="noopener noreferrer" class="inline-flex min-h-14 items-center justify-center rounded-full bg-[#1f6045] px-5 text-[.66rem] font-extrabold uppercase tracking-[.09em] text-white shadow-[0_10px_30px_rgba(0,0,0,.25)]">Kirim foto via WA ↗</a>
+      <a href="tel:+6281283135295" class="inline-flex min-h-14 items-center justify-center rounded-full border border-[#17231d]/15 bg-[#fffdf7] px-4 text-[.66rem] font-extrabold uppercase tracking-[.09em] text-[#17231d] shadow-[0_10px_30px_rgba(0,0,0,.12)]">Telepon</a>
+    </div>
+
+    <a href={whatsappHref} target="_blank" rel="noopener noreferrer" aria-label="Konsultasi Deck Ulin via WhatsApp" class="fixed bottom-5 right-5 z-40 hidden h-14 w-14 items-center justify-center rounded-full bg-[#1f6045] text-white shadow-[0_10px_30px_rgba(0,0,0,.25)] transition hover:scale-105 md:inline-flex">
       <span class="text-[.62rem] font-extrabold uppercase tracking-[.08em]">WA</span>
     </a>
 
