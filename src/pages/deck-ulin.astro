@@ -5,8 +5,13 @@ import heroImage from '../assets/images/portfolio/deck-ulin-rancamaya-bogor/deck
 import detailImage from '../assets/images/portfolio/deck-ulin-rancamaya-bogor/deck-ulin-rancamaya-bogor-2.jpg';
 
 const whatsappHref = 'https://wa.me/6281283135295?text=Halo%20Jasa%20Kayu%20Profesional%2C%20saya%20ingin%20konsultasi%20deck%20ulin.';
-const craftsmanshipReference = 'https://images.pexels.com/photos/8961337/pexels-photo-8961337.jpeg?auto=compress&cs=tinysrgb&w=1400';
-const wetDeckReference = 'https://images.pexels.com/photos/7885253/pexels-photo-7885253.jpeg?auto=compress&cs=tinysrgb&w=1400';
+const field = {
+  progress: '/images/deck-ulin-field/installation-progress.webp',
+  module: '/images/deck-ulin-field/module-detail.webp',
+  finished: '/images/deck-ulin-field/finished-deck.webp',
+  wet: '/images/deck-ulin-field/wet-condition.webp',
+  material: '/images/deck-ulin-field/material-stock.webp',
+};
 
 const faqs = [
   ['Apakah ulin cocok untuk area outdoor yang kena hujan?', 'Ulin umum dipilih untuk aplikasi outdoor karena karakter kayunya padat dan tahan terhadap kondisi luar. Namun performa tetap sangat bergantung pada drainase, ventilasi bawah, fixing, jarak antar papan, dan detail pemasangan.'],
@@ -56,27 +61,36 @@ const schema = {
   <section id="dokumentasi" class="bg-[#151d18] py-24 text-white sm:py-32 lg:py-40">
     <div class="section-shell">
       <div class="grid gap-8 border-b border-white/15 pb-10 lg:grid-cols-[.5fr_1.5fr] lg:items-end">
-        <div><p class="section-kicker text-[#e6c88f]">Dokumentasi lapangan</p><p class="mt-6 max-w-xs text-sm leading-7 text-white/52">Project proof dipisahkan tegas dari gambar referensi. Yang kami sebut proyek adalah dokumentasi pekerjaan sendiri.</p></div>
-        <h2 class="display-title text-5xl sm:text-6xl lg:text-8xl">Lapangan,<br /><em>bukan render.</em></h2>
+        <div><p class="section-kicker text-[#e6c88f]">Dokumentasi lapangan</p><p class="mt-6 max-w-xs text-sm leading-7 text-white/52">Bukan render dan bukan foto kontraktor lain. Di sini proses pemasangan, material, kondisi basah, sampai hasil akhir ditampilkan sebagai bukti kerja.</p></div>
+        <h2 class="display-title text-5xl sm:text-6xl lg:text-8xl">Dari rangka sampai<br /><em>kena hujan.</em></h2>
       </div>
 
       <div class="mt-8 grid gap-4 lg:grid-cols-12">
         <figure class="overflow-hidden bg-white/5 lg:col-span-7">
-          <Image src={heroImage} alt="Dokumentasi proyek decking ulin Rancamaya Bogor" width={1600} height={1100} loading="lazy" format="webp" class="aspect-[4/3] w-full object-cover sm:aspect-[16/10]" />
-          <figcaption class="flex items-center justify-between gap-4 border-t border-white/10 px-5 py-4 text-[.58rem] font-extrabold uppercase tracking-[.13em] text-white/48"><span>Project proof · Rancamaya, Bogor</span><span>01</span></figcaption>
+          <img src={field.progress} alt="Proses pemasangan decking dengan struktur bawah masih terlihat" width="337" height="600" loading="lazy" decoding="async" class="aspect-[4/3] w-full object-cover object-center sm:aspect-[16/10]" />
+          <figcaption class="flex items-center justify-between gap-4 border-t border-white/10 px-5 py-4 text-[.58rem] font-extrabold uppercase tracking-[.13em] text-white/48"><span>Proses pemasangan · substructure terbuka</span><span>01</span></figcaption>
         </figure>
         <figure class="overflow-hidden bg-white/5 lg:col-span-5">
-          <Image src={detailImage} alt="Detail susunan papan deck ulin proyek Rancamaya Bogor" width={1200} height={1400} loading="lazy" format="webp" class="aspect-[4/3] w-full object-cover sm:aspect-[16/10] lg:aspect-[5/6]" />
-          <figcaption class="flex items-center justify-between gap-4 border-t border-white/10 px-5 py-4 text-[.58rem] font-extrabold uppercase tracking-[.13em] text-white/48"><span>Detail papan & modul · proyek sendiri</span><span>02</span></figcaption>
+          <img src={field.module} alt="Detail susunan modul papan decking saat pemasangan" width="450" height="600" loading="lazy" decoding="async" class="aspect-[4/3] w-full object-cover sm:aspect-[16/10] lg:aspect-[5/6]" />
+          <figcaption class="flex items-center justify-between gap-4 border-t border-white/10 px-5 py-4 text-[.58rem] font-extrabold uppercase tracking-[.13em] text-white/48"><span>Modul papan · alignment & gap</span><span>02</span></figcaption>
         </figure>
 
-        <figure class="overflow-hidden border border-white/10 bg-white/[.03] lg:col-span-5">
-          <img src={craftsmanshipReference} alt="Referensi visual pekerjaan pertukangan kayu dengan power drill" width="1400" height="1000" loading="lazy" decoding="async" class="aspect-[4/3] w-full object-cover" />
-          <figcaption class="px-5 py-4 text-[.58rem] font-extrabold uppercase tracking-[.13em] text-white/42">Referensi teknis · bukan dokumentasi proyek · Pexels</figcaption>
+        <figure class="overflow-hidden bg-white/5 lg:col-span-4">
+          <img src={field.finished} alt="Hasil pemasangan decking kayu pada area outdoor" width="337" height="600" loading="lazy" decoding="async" class="aspect-[4/5] w-full object-cover" />
+          <figcaption class="px-5 py-4 text-[.58rem] font-extrabold uppercase tracking-[.13em] text-white/48">Hasil akhir · area outdoor</figcaption>
         </figure>
-        <div class="flex flex-col justify-between border border-white/10 p-7 sm:p-10 lg:col-span-7">
-          <div><p class="text-[.58rem] font-extrabold uppercase tracking-[.14em] text-[#e6c88f]">Apa yang kami baca dari foto lapangan</p><h3 class="mt-6 max-w-3xl font-serif text-4xl font-semibold tracking-[-.045em] sm:text-5xl">Struktur bawah, arah papan, elevasi, tepi, sambungan, dan jalur air harus terbaca sebelum hasil akhirnya kelihatan rapi.</h3></div>
-          <div class="mt-10 grid gap-px border border-white/10 bg-white/10 sm:grid-cols-2">{[['01','Substructure','Jarak tumpuan dan elevasi bukan elemen tersembunyi yang boleh asal.'],['02','Module','Arah papan, panjang potong, sambungan, dan border ditentukan sebelum pemasangan masif.'],['03','Water path','Deck outdoor harus membiarkan air pergi, bukan menyembunyikan genangan di bawah papan.'],['04','Finish','Finishing dibaca bersama paparan matahari, hujan, traffic, dan maintenance.']].map(([n,h,t]) => <div class="bg-[#172019] p-5"><p class="text-[.55rem] font-extrabold uppercase tracking-[.14em] text-[#e6c88f]">{n}</p><p class="mt-4 font-serif text-2xl font-semibold">{h}</p><p class="mt-3 text-xs leading-6 text-white/48">{t}</p></div>)}</div>
+        <figure class="overflow-hidden bg-white/5 lg:col-span-4">
+          <img src={field.wet} alt="Permukaan decking kayu dalam kondisi basah setelah hujan" width="320" height="480" loading="lazy" decoding="async" class="aspect-[4/5] w-full object-cover" />
+          <figcaption class="px-5 py-4 text-[.58rem] font-extrabold uppercase tracking-[.13em] text-white/48">Kondisi basah · setelah hujan</figcaption>
+        </figure>
+        <figure class="overflow-hidden bg-white/5 lg:col-span-4">
+          <img src={field.material} alt="Papan kayu mentah sebelum proses machining dan finishing" width="320" height="480" loading="lazy" decoding="async" class="aspect-[4/5] w-full object-cover" />
+          <figcaption class="px-5 py-4 text-[.58rem] font-extrabold uppercase tracking-[.13em] text-white/48">Material stock · sebelum machining</figcaption>
+        </figure>
+
+        <div class="flex flex-col justify-between border border-white/10 p-7 sm:p-10 lg:col-span-12 lg:grid lg:grid-cols-[.7fr_1.3fr] lg:gap-12">
+          <div><p class="text-[.58rem] font-extrabold uppercase tracking-[.14em] text-[#e6c88f]">Apa yang harus kelihatan sebelum papan menutup semuanya</p><h3 class="mt-6 max-w-3xl font-serif text-4xl font-semibold tracking-[-.045em] sm:text-5xl">Deck yang rapi di atas harus punya keputusan yang rapi di bawah.</h3></div>
+          <div class="mt-10 grid gap-px border border-white/10 bg-white/10 sm:grid-cols-2 lg:mt-0">{[['01','Substructure','Jarak tumpuan dan elevasi bukan elemen tersembunyi yang boleh asal.'],['02','Module','Arah papan, panjang potong, sambungan, dan border ditentukan sebelum pemasangan masif.'],['03','Water path','Deck outdoor harus membiarkan air pergi, bukan menyembunyikan genangan di bawah papan.'],['04','Finish','Finishing dibaca bersama paparan matahari, hujan, traffic, dan maintenance.']].map(([n,h,t]) => <div class="bg-[#172019] p-5"><p class="text-[.55rem] font-extrabold uppercase tracking-[.14em] text-[#e6c88f]">{n}</p><p class="mt-4 font-serif text-2xl font-semibold">{h}</p><p class="mt-3 text-xs leading-6 text-white/48">{t}</p></div>)}</div>
         </div>
       </div>
     </div>
@@ -85,14 +99,14 @@ const schema = {
   <section id="proyek" class="overflow-hidden bg-[#e1d6c3] py-24 sm:py-32 lg:py-40">
     <div class="section-shell grid gap-12 lg:grid-cols-[1.05fr_.95fr] lg:items-center">
       <div class="overflow-hidden bg-[#cfc0a8]"><Image src={detailImage} alt="Detail deck kayu ulin Rancamaya Bogor" width={1400} height={1100} loading="lazy" format="webp" class="aspect-[4/3] w-full object-cover lg:aspect-[4/5]" /></div>
-      <div class="lg:pl-6"><p class="section-kicker">Project proof</p><p class="mt-6 text-[.6rem] font-extrabold uppercase tracking-[.15em] text-[#727b73]">Rancamaya · Bogor</p><h2 class="display-title mt-4 text-5xl sm:text-6xl lg:text-8xl">Deck ulin untuk area outdoor yang benar-benar <em>dipakai.</em></h2><p class="mt-7 max-w-xl text-sm leading-7 text-[#59645b]">Dokumentasi proyek Rancamaya jadi acuan utama subdomain ini. Fokusnya bukan katalog kayu, tapi bagaimana material diterjemahkan ke layout, sambungan, struktur bawah, detail tepi, dan kondisi outdoor nyata.</p><a href="https://www.jasakayuprofesional.com/portfolio/deck-ulin-rancamaya-bogor" class="group mt-8 flex max-w-sm items-center justify-between border-b border-[#17231d]/20 pb-3 text-[.66rem] font-extrabold uppercase tracking-[.13em] text-[#315443]">Lihat project dossier <span class="text-xl transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">↗</span></a></div>
+      <div class="lg:pl-6"><p class="section-kicker">Project proof</p><p class="mt-6 text-[.6rem] font-extrabold uppercase tracking-[.15em] text-[#727b73]">Rancamaya · Bogor</p><h2 class="display-title mt-4 text-5xl sm:text-6xl lg:text-8xl">Deck ulin untuk area outdoor yang benar-benar <em>dipakai.</em></h2><p class="mt-7 max-w-xl text-sm leading-7 text-[#59645b]">Dokumentasi proyek Rancamaya jadi salah satu acuan utama subdomain ini. Fokusnya bukan katalog kayu, tapi bagaimana material diterjemahkan ke layout, sambungan, struktur bawah, detail tepi, dan kondisi outdoor nyata.</p><a href="https://www.jasakayuprofesional.com/portfolio/deck-ulin-rancamaya-bogor" class="group mt-8 flex max-w-sm items-center justify-between border-b border-[#17231d]/20 pb-3 text-[.66rem] font-extrabold uppercase tracking-[.13em] text-[#315443]">Lihat project dossier <span class="text-xl transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">↗</span></a></div>
     </div>
   </section>
 
   <section class="bg-[#f3f0e7] py-24 sm:py-32 lg:py-40">
     <div class="section-shell grid gap-10 lg:grid-cols-[.95fr_1.05fr] lg:items-center">
-      <div class="order-2 lg:order-1"><p class="section-kicker">Outdoor berarti basah</p><h2 class="display-title mt-6 text-5xl sm:text-6xl lg:text-8xl">Jangan desain deck seolah-olah <em>hujan tidak ada.</em></h2><p class="mt-7 max-w-xl text-sm leading-7 text-[#59645b]">Foto kondisi basah justru berguna untuk membaca apakah air punya jalur keluar, apakah permukaan punya area rawan genangan, dan apakah detail tepi tetap masuk akal setelah hujan. Di Indonesia, ini bukan kondisi ekstrem—ini kondisi kerja normal.</p><div class="mt-8 grid gap-4 sm:grid-cols-3">{[['Slope','Arah aliran air harus jelas.'],['Gap','Jarak papan membantu drainase dan perubahan dimensi.'],['Access','Area tertentu perlu tetap bisa dicek dan dirawat.']].map(([h,t]) => <div class="border-t border-[#17231d]/20 pt-4"><p class="font-serif text-2xl font-semibold">{h}</p><p class="mt-2 text-xs leading-6 text-[#667068]">{t}</p></div>)}</div></div>
-      <figure class="order-1 overflow-hidden bg-[#d7cbb8] lg:order-2"><img src={wetDeckReference} alt="Referensi visual permukaan deck kayu setelah hujan" width="1400" height="1000" loading="lazy" decoding="async" class="aspect-[4/3] w-full object-cover lg:aspect-[4/5]" /><figcaption class="px-5 py-4 text-[.55rem] font-extrabold uppercase tracking-[.13em] text-[#677168]">Referensi kondisi deck setelah hujan · bukan dokumentasi proyek · Pexels</figcaption></figure>
+      <div class="order-2 lg:order-1"><p class="section-kicker">Outdoor berarti basah</p><h2 class="display-title mt-6 text-5xl sm:text-6xl lg:text-8xl">Jangan desain deck seolah-olah <em>hujan tidak ada.</em></h2><p class="mt-7 max-w-xl text-sm leading-7 text-[#59645b]">Dokumentasi kondisi basah justru penting untuk membaca apakah air punya jalur keluar, apakah ada area rawan genangan, dan apakah detail tepi tetap masuk akal setelah hujan. Di Indonesia, ini bukan kondisi ekstrem—ini kondisi kerja normal.</p><div class="mt-8 grid gap-4 sm:grid-cols-3">{[['Slope','Arah aliran air harus jelas.'],['Gap','Jarak papan membantu drainase dan perubahan dimensi.'],['Access','Area tertentu perlu tetap bisa dicek dan dirawat.']].map(([h,t]) => <div class="border-t border-[#17231d]/20 pt-4"><p class="font-serif text-2xl font-semibold">{h}</p><p class="mt-2 text-xs leading-6 text-[#667068]">{t}</p></div>)}</div></div>
+      <figure class="order-1 overflow-hidden bg-[#d7cbb8] lg:order-2"><img src={field.wet} alt="Dokumentasi permukaan deck kayu dalam kondisi basah setelah hujan" width="320" height="480" loading="lazy" decoding="async" class="aspect-[4/3] w-full object-cover lg:aspect-[4/5]" /><figcaption class="px-5 py-4 text-[.55rem] font-extrabold uppercase tracking-[.13em] text-[#677168]">Dokumentasi lapangan · kondisi basah setelah hujan</figcaption></figure>
     </div>
   </section>
 
