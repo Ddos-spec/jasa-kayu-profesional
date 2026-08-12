@@ -64,7 +64,7 @@ test('premium service pages render their specialized systems', async ({ page }) 
   await expect(page.getByRole('link', { name: /Lihat project dossier/i })).toBeVisible();
 });
 
-test('deck ulin specialist landing has working images and mobile layout', async ({ page }) => {
+test('deck ulin specialist landing has visible image pixels and mobile layout', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/deck-ulin');
   await expect(page).toHaveTitle(/Deck Ulin/);
@@ -75,13 +75,36 @@ test('deck ulin specialist landing has working images and mobile layout', async 
   await expect(page.locator('#hero').getByRole('link', { name: /Konsultasi via WhatsApp/i })).toBeVisible();
   await expect(page.locator('script[type="application/ld+json"]')).not.toHaveCount(0);
 
-  const fieldImages = page.locator('[data-deck-image]');
-  await expect(fieldImages).toHaveCount(6);
-  for (let index = 0; index < await fieldImages.count(); index += 1) {
-    const image = fieldImages.nth(index);
+  const deckImages = page.locator('[data-deck-image]');
+  await expect(deckImages).toHaveCount(6);
+
+  for (let index = 0; index < await deckImages.count(); index += 1) {
+    const image = deckImages.nth(index);
     await image.scrollIntoViewIfNeeded();
     await expect(image).toBeVisible();
     await expect.poll(async () => image.evaluate((img) => (img as HTMLImageElement).naturalWidth), { timeout: 10000 }).toBeGreaterThan(0);
+
+    const visual = await image.evaluate(async (node) => {
+      const img = node as HTMLImageElement;
+      try { await img.decode(); } catch {}
+      const canvas = document.createElement('canvas');
+      canvas.width = 32;
+      canvas.height = 32;
+      const ctx = canvas.getContext('2d', { willReadFrequently: true });
+      if (!ctx) return { variance: 0, opacity: 0 };
+      ctx.drawImage(img, 0, 0, 32, 32);
+      const pixels = ctx.getImageData(0, 0, 32, 32).data;
+      const values: number[] = [];
+      for (let i = 0; i < pixels.length; i += 16) {
+        values.push((pixels[i] + pixels[i + 1] + pixels[i + 2]) / 3);
+      }
+      const mean = values.reduce((sum, value) => sum + value, 0) / values.length;
+      const variance = values.reduce((sum, value) => sum + ((value - mean) ** 2), 0) / values.length;
+      return { variance, opacity: Number.parseFloat(getComputedStyle(img).opacity || '1') };
+    });
+
+    expect(visual.opacity).toBeGreaterThan(0.2);
+    expect(visual.variance).toBeGreaterThan(5);
   }
 
   const hasHorizontalOverflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
