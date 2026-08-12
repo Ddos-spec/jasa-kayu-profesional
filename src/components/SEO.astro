@@ -76,8 +76,9 @@ const serviceSchema = {
   },
 };
 
-// Breadcrumb Schema
-const pathSegments = Astro.url.pathname.split('/').filter((segment) => segment);
+// Breadcrumb Schema follows the canonical URL so host-routed pages keep one SEO identity.
+const pathSegments = canonicalURL.pathname.split('/').filter((segment) => segment);
+const breadcrumbBase = new URL('/', canonicalURL.origin);
 const breadcrumbList = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
@@ -86,13 +87,13 @@ const breadcrumbList = {
       '@type': 'ListItem',
       position: 1,
       name: 'Beranda',
-      item: Astro.site,
+      item: breadcrumbBase.href,
     },
     ...pathSegments.map((segment, index) => ({
       '@type': 'ListItem',
       position: index + 2,
       name: segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, ' '),
-      item: new URL(`/${pathSegments.slice(0, index + 1).join('/')}`, Astro.site).href,
+      item: new URL(`/${pathSegments.slice(0, index + 1).join('/')}`, breadcrumbBase).href,
     })),
   ],
 };
