@@ -73,7 +73,10 @@ test('deck ulin specialist landing has visible images, practical copy, and mobil
   await expect(page.getByText('Dokumentasi proyek ulin')).toBeVisible();
   await expect(page.getByText(/Deck Ulin Rancamaya/i).first()).toBeVisible();
   await expect(page.locator('#sistem').getByText('Urutan pekerjaan', { exact: true })).toBeVisible();
+  await expect(page.locator('#biaya')).toContainText('Harga tidak ditentukan dari luas saja');
   await expect(page.locator('#estimasi')).toContainText('Kirim empat informasi ini');
+  await expect(page.locator('#perawatan')).toContainText('Perawatan deck outdoor tetap perlu');
+  await expect(page.getByText(/Berapa harga pemasangan deck kayu ulin per meter/i)).toBeVisible();
   await expect(page.locator('#hero').getByRole('link', { name: /Kirim foto area/i })).toBeVisible();
   await expect(page.getByRole('link', { name: /Kirim foto via WA/i })).toBeVisible();
   await expect(page.getByRole('link', { name: 'Telepon' })).toBeVisible();
@@ -124,6 +127,28 @@ test('deck ulin specialist landing has visible images, practical copy, and mobil
 
   const hasHorizontalOverflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
   expect(hasHorizontalOverflow).toBe(false);
+});
+
+test('deck ulin stays usable across common phone widths', async ({ page }) => {
+  for (const viewport of [
+    { width: 320, height: 700 },
+    { width: 360, height: 800 },
+    { width: 390, height: 844 },
+    { width: 430, height: 932 },
+  ]) {
+    await page.setViewportSize(viewport);
+    await page.goto('/deck-ulin');
+    await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
+    await expect(page.getByRole('link', { name: /Kirim foto via WA/i })).toBeVisible();
+    await expect(page.getByRole('link', { name: 'Telepon' })).toBeVisible();
+    const layout = await page.evaluate(() => ({
+      scrollWidth: document.documentElement.scrollWidth,
+      innerWidth: window.innerWidth,
+      headerWidth: document.querySelector('header')?.getBoundingClientRect().width ?? 0,
+    }));
+    expect(layout.scrollWidth).toBeLessThanOrEqual(layout.innerWidth + 1);
+    expect(layout.headerWidth).toBeLessThanOrEqual(layout.innerWidth + 1);
+  }
 });
 
 test('journal hub and article remain crawlable', async ({ page }) => {
